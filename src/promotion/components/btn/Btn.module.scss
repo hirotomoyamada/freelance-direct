@@ -1,0 +1,39 @@
+// サイト共有の初期設定
+@import "../../../styles/config";
+@import "../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.btn {
+  padding: 16px 32px;
+  background: $acnt_clr;
+  color: $base_clr;
+  border-radius: 26px;
+
+  transition: all 0.4s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: responsive-width(sp)) {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  &_square {
+    border-radius: 8px;
+  }
+
+  &_acnt {
+    background: $base_clr;
+    color: $acnt_clr;
+
+    &:hover {
+      background: $acnt_clr;
+      border-color: $acnt_clr;
+      color: $base_clr;
+    }
+  }
+}

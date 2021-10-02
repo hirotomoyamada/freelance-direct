@@ -1,0 +1,42 @@
+// サイト共有の初期設定
+@import "../../../styles/config";
+@import "../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.auth {
+  padding: 8px 16px;
+  color: $base_clr;
+  border-radius: 8px;
+  background: $acnt_clr;
+
+  transition: all 0.4s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &_signup {
+    background: $acnt_bg_clr;
+    color: $acnt_clr;
+  }
+
+  @media (max-width: responsive-width(sp)) {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  &_change {
+    &:hover {
+    }
+
+    @media (max-width: responsive-width(sp)) {
+    }
+
+    &_signup {
+      &:hover {
+      }
+    }
+  }
+}
