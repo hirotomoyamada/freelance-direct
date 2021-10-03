@@ -1,18 +1,17 @@
 import { auth } from "../../../../firebase";
 import * as userSlice from "../../userSlice";
 
-export const getRedirect = ({ dispatch, email, verified }) => {
+export const getRedirect = ({ dispatch }) => {
   auth
     .getRedirectResult()
     .then((result) => {
       if (result.credential) {
-        (email || verified.status === "") &&
-          dispatch(
-            userSlice.handleAnnounce({
-              type: "success",
-              text: "認証されました",
-            })
-          );
+        dispatch(
+          userSlice.handleAnnounce({
+            type: "success",
+            text: "認証されました",
+          })
+        );
       }
     })
     .catch((e) => {
