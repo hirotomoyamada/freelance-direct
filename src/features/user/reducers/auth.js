@@ -61,6 +61,7 @@ export const logout = (state) => {
   state.user = {};
   state.load = false;
   state.verified = {
+    index: false,
     email: false,
     profile: false,
     agree: false,

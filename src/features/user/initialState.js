@@ -28,6 +28,7 @@ export const initialState = {
   data: {},
 
   verified: {
+    index: false,
     email: false,
     profile: false,
     agree: false,
