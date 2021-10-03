@@ -1,7 +1,7 @@
 import { auth } from "../../../../firebase";
 import * as userSlice from "../../userSlice";
 
-export const getRedirect = ({ dispatch, email, verified }) => {
+export const getRedirect = ({ dispatch }) => {
   auth
     .getRedirectResult()
     .then((result) => {
