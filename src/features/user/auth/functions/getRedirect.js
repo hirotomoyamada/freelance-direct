@@ -5,13 +5,28 @@ export const getRedirect = ({ dispatch }) => {
   auth
     .getRedirectResult()
     .then((result) => {
-      if (result.credential) {
+      if (result.credential && result.user.emailVerified) {
         dispatch(
           userSlice.handleAnnounce({
             type: "success",
             text: "認証されました",
           })
         );
+      }
+
+      if (!result.user.emailVerified) {
+        auth.currentUser
+          .sendEmailVerification({
+            url: "https://freelance-direct/login",
+          })
+          .catch((e) => {
+            dispatch(
+              userSlice.handleAnnounce({
+                type: "error",
+                text: "再度時間をおいてください",
+              })
+            );
+          });
       }
     })
     .catch((e) => {
