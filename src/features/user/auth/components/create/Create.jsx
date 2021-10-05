@@ -1,7 +1,13 @@
+import styles from "./Create.module.scss";
 import root from "../../Auth.module.scss";
 
 import { Name } from "./components/Name";
 import { Agree } from "./components/Agree";
+import { Position } from "./components/Position";
+import { Location } from "./components/Location";
+import { Age } from "./components/Age";
+import { Sex } from "./components/Sex";
+import { Handles } from "./components/Handles";
 
 export const Create = ({ handleLogout, setTerms }) => {
   return (
@@ -13,7 +19,21 @@ export const Create = ({ handleLogout, setTerms }) => {
       >
         ログイン画面に戻る
       </button>
+
       <Name />
+
+      <div className={styles.grid}>
+        <Age />
+        <Sex />
+      </div>
+
+      <div className={`${styles.grid} ${styles.grid_mid}`}>
+        <Position />
+        <Location />
+      </div>
+
+      <Handles />
+
       <Agree setTerms={setTerms} />
 
       <button type="submit" className={root.auth_btn}>

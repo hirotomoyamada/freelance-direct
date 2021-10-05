@@ -48,7 +48,11 @@ export const Auth = () => {
     setProfile(verified.profile);
   }, [location.pathname, verified]);
 
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: {
+      handles: [{ handle: "" }, { handle: "" }, { handle: "" }, { handle: "" }],
+    },
+  });
 
   const handleSignIn = (data) => {
     functions.handleSignIn({ dispatch, methods, data });

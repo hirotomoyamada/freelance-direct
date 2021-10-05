@@ -5,22 +5,130 @@
 // ページのレスポンシブ設定
 $width: responsive-width(pc);
 
-.create {
-  &_tag {
-    font-size: 16px;
-    color: $icn_clr;
+.tag {
+  font-size: 16px;
+  color: $icn_clr;
+
+  @media (max-width: responsive-width(sp)) {
+    font-size: 14px;
+  }
+
+  &_desc {
+    white-space: pre;
+    color: $sub_clr;
+    font-size: 12px;
 
     @media (max-width: responsive-width(sp)) {
-      font-size: 14px;
+      font-size: 10px;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  &_mid {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  &_field {
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: responsive-width(miniPc)) {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    &_desc {
-      white-space: pre;
-      color: $sub_clr;
-      font-size: 12px;
+    @media (max-width: responsive-width(sp)) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.select {
+  position: relative;
+
+  &:after {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid $acnt_clr;
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 20px;
+    width: 0;
+
+    @media (max-width: responsive-width(sp)) {
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid $acnt_clr;
+      top: 17px;
+    }
+  }
+}
+
+.field {
+  position: relative;
+
+  &_btn {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    display: flex;
+    gap: 8px;
+
+    @media (max-width: responsive-width(sp)) {
+      top: -8px;
+      right: -8px;
+    }
+
+    &_col {
+      flex-direction: column;
+      gap: 24px;
 
       @media (max-width: responsive-width(sp)) {
-        font-size: 10px;
+        gap: 16px;
+      }
+    }
+
+    &_add {
+      background: $add_clr;
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+
+      @media (max-width: responsive-width(sp)) {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &_remove {
+      background: $icn_clr;
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+
+      @media (max-width: responsive-width(sp)) {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &_icon {
+      color: $base_clr;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 16px !important;
       }
     }
   }
@@ -148,21 +256,5 @@ $width: responsive-width(pc);
   &_link {
     color: $link_clr;
     margin-right: 8px;
-  }
-
-  &_overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 99;
-    width: 100vw;
-    height: 100vh;
-    background: $main_clr;
-    opacity: 0.8;
-    cursor: pointer;
-
-    @media (max-width: responsive-width(sp)) {
-      display: none;
-    }
   }
 }

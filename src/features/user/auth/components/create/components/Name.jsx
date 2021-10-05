@@ -10,10 +10,10 @@ export const Name = () => {
   } = useFormContext();
 
   return (
-    <>
-      <span className={styles.create_tag}>
+    <div className={root.auth_col}>
+      <span className={styles.tag}>
         名前
-        <span className={styles.create_tag_desc}>
+        <span className={styles.tag_desc}>
           &nbsp;※&nbsp;必ず、フルネームで入力してください
         </span>
       </span>
@@ -42,8 +42,10 @@ export const Name = () => {
             },
           })}
         />
-        <span className={root.auth_error}>{errors.name?.message}</span>
+        {errors.name?.message && (
+          <span className={root.auth_error}>{errors.name?.message}</span>
+        )}
       </div>
-    </>
+    </div>
   );
 };
