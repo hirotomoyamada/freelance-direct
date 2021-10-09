@@ -1,5 +1,5 @@
 export const initialState = {
-  index: "post",
+  index: "matters",
 
   search: {
     value: "",
@@ -18,7 +18,7 @@ export const initialState = {
 
   posts: {
     search: {
-      posts: {
+      matters: {
         posts: [],
         hit: {
           posts: 0,
@@ -26,7 +26,7 @@ export const initialState = {
           currentPage: 0,
         },
       },
-      users: {
+      companys: {
         posts: [],
         hit: {
           posts: 0,
@@ -48,7 +48,7 @@ export const initialState = {
     },
 
     home: {
-      posts: {
+      matters: {
         posts: [],
         hit: {
           posts: 0,
@@ -57,7 +57,7 @@ export const initialState = {
         },
         control: true,
       },
-      users: {
+      companys: {
         posts: [],
         hit: {
           posts: 0,

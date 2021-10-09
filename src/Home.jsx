@@ -14,8 +14,10 @@ export const Home = () => {
   const info = useSelector(userSlice.data).information;
 
   useEffect(() => {
+    dispatch(postSlice.handlePage("home"));
+
     (index === "enable" || index === "hold" || index === "disable") &&
-      dispatch(postSlice.handleIndex("post"));
+      dispatch(postSlice.handleIndex("matters"));
   }, [dispatch, index]);
 
   return (

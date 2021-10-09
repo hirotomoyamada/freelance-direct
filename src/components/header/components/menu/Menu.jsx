@@ -4,18 +4,18 @@ export const Menu = ({ handleIndex, index, type }) => {
   return type !== "requests" ? (
     <div className={styles.menu}>
       <button
-        onClick={() => handleIndex("post")}
+        onClick={() => handleIndex("matters")}
         className={`${styles.menu_btn} ${
-          index === "post" && styles.menu_btn_active
+          index === "matters" && styles.menu_btn_active
         }`}
       >
         案件
       </button>
 
       <button
-        onClick={() => handleIndex("user")}
+        onClick={() => handleIndex("companys")}
         className={`${styles.menu_btn} ${
-          index === "user" && styles.menu_btn_active
+          index === "companys" && styles.menu_btn_active
         }`}
       >
         {type === "home" ? "フォロー" : "営業"}

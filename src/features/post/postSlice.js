@@ -90,9 +90,9 @@ export const search = (state) => state.post.search;
 export const sort = (state) => state.post.sort;
 
 export const posts = ({ state, page, index }) =>
-  page && state.post.posts[page][index].posts;
+  page && state.post.posts[page]?.[index]?.posts;
 export const hit = ({ state, page, index }) =>
-  page && state.post.posts[page][index].hit;
+  page && state.post.posts[page]?.[index]?.hit;
 export const control = ({ state, index }) =>
   state.post.posts.home[index].control;
 

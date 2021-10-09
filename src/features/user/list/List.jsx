@@ -15,13 +15,13 @@ export const List = (props) => {
 
   useEffect(() => {
     dispatch(postSlice.handlePage(list));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     list === "requests"
       ? dispatch(postSlice.handleIndex("hold"))
-      : index !== "post" && dispatch(postSlice.handleIndex("post"));
+      : index !== "matters" && dispatch(postSlice.handleIndex("matters"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [list]);
 
