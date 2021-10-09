@@ -33,8 +33,12 @@ export const Menu = ({ user }) => {
     };
   }, []);
 
-  const handlePage = (page) => {
-    history.push(page);
+  const handlePage = (p) => {
+    if (p === page) {
+      return;
+    }
+    history.push(`/${p}`);
+    dispatch(postSlice.handlePage(p));
     control && dispatch(userSlice.handleMenu("close"));
   };
 

@@ -1,17 +1,26 @@
-import React from "react";
+import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Header } from "./components/header/Header";
 import * as userSlice from "./features/user/userSlice";
+import * as postSlice from "./features/post/postSlice";
+
+import { Header } from "./components/header/Header";
 
 export const Home = () => {
   const dispatch = useDispatch();
+
+  const index = useSelector(postSlice.index);
   const user = useSelector(userSlice.user);
-  const menu = useSelector(userSlice.menu);
+  const info = useSelector(userSlice.data).information;
+
+  useEffect(() => {
+    (index === "enable" || index === "hold" || index === "disable") &&
+      dispatch(postSlice.handleIndex("post"));
+  }, [dispatch, index]);
 
   return (
     <div>
-      <Header user={user} />
+      <Header user={user} type="home" info={info} index={index} />
     </div>
   );
 };

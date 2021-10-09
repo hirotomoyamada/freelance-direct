@@ -7,7 +7,7 @@ export const Btn = ({ icon, page, current, user, text, handlePage }) => {
     <li>
       <button
         type="button"
-        onClick={() => handlePage(`/${current}`)}
+        onClick={() => handlePage(current)}
         className={`${styles.nav_btn} ${
           page === current && styles.nav_btn_current
         }`}

@@ -1,5 +1,5 @@
 export const initialState = {
-  index: "matters",
+  index: "post",
 
   search: {
     value: "",
