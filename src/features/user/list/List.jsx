@@ -23,7 +23,7 @@ export const List = (props) => {
       ? dispatch(postSlice.handleIndex("hold"))
       : index !== "post" && dispatch(postSlice.handleIndex("post"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [list]);
 
   return (
     <div>
