@@ -18,7 +18,7 @@ export const initialState = {
 
   posts: {
     search: {
-      matters: {
+      posts: {
         posts: [],
         hit: {
           posts: 0,
@@ -26,15 +26,7 @@ export const initialState = {
           currentPage: 0,
         },
       },
-      resources: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
-      companys: {
+      users: {
         posts: [],
         hit: {
           posts: 0,
@@ -47,37 +39,16 @@ export const initialState = {
     bests: [],
 
     user: {
-      companys: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
-    },
-
-    selectUser: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
-      resources: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
       },
     },
 
     home: {
-      matters: {
+      posts: {
         posts: [],
         hit: {
           posts: 0,
@@ -86,7 +57,7 @@ export const initialState = {
         },
         control: true,
       },
-      resources: {
+      users: {
         posts: [],
         hit: {
           posts: 0,
@@ -98,40 +69,59 @@ export const initialState = {
     },
 
     likes: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
-      resources: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
       },
     },
 
     entries: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
       },
-      resources: {
+    },
+
+    history: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
+      },
+    },
+
+    requests: {
+      enable: {
         posts: [],
         hit: {
           posts: 0,
           pages: 0,
           currentPage: 0,
         },
+        control: true,
+      },
+      hold: {
+        posts: [],
+        hit: {
+          posts: 0,
+          pages: 0,
+          currentPage: 0,
+        },
+        control: true,
+      },
+      disable: {
+        posts: [],
+        hit: {
+          posts: 0,
+          pages: 0,
+          currentPage: 0,
+        },
+        control: true,
       },
     },
   },
@@ -139,7 +129,6 @@ export const initialState = {
   post: {},
 
   page: "home",
-  modal: { type: "", open: false },
 
   load: true,
   fatch: false,

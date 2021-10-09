@@ -6,20 +6,6 @@ export const handleIndex = (state, action) => {
     state.search.target = "";
     state.search.type = "";
     state.search.control = false;
-
-    Object.keys(state.posts).forEach((type) => {
-      if (type === "bests") {
-        return;
-      }
-
-      Object.keys(state.posts[type]).forEach((index) => {
-        state.posts[type][index].posts = state.posts[type][index].posts.slice(
-          0,
-          50
-        );
-        state.posts[type][index].hit.currentPage = 0;
-      });
-    });
   }
 };
 
@@ -77,16 +63,22 @@ export const handlePage = (state, action) => {
           return;
         }
 
-        Object.keys(state.posts[type]).forEach((index) => {
-          if (type !== "selectUser") {
+        if (type !== "home" && type !== "search" && type !== "requests") {
+          if (type !== "user") {
+            state.posts[type].posts = state.posts[type].posts.slice(0, 50);
+          } else {
+            state.posts[type].posts = [];
+          }
+          state.posts[type].hit.currentPage = 0;
+        } else {
+          Object.keys(state.posts[type]).forEach((index) => {
             state.posts[type][index].posts = state.posts[type][
               index
             ].posts.slice(0, 50);
-          } else {
-            state.posts[type][index].posts = [];
-          }
-          state.posts[type][index].hit.currentPage = 0;
-        });
+
+            state.posts[type][index].hit.currentPage = 0;
+          });
+        }
       });
     }
 

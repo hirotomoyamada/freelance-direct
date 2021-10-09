@@ -10,28 +10,12 @@ export const login = (state, action) => {
     state.user.agree = action.payload.user.agree;
     state.user.createAt = action.payload.user.createAt;
     state.user.updateAt = action.payload.user.updateAt;
+    state.user.likes = action.payload.user.likes;
+    state.user.entries = action.payload.user.entries;
+    state.user.requests = action.payload.user.requests;
+    state.user.history = action.payload.user.history;
     state.user.follows = action.payload.user.follows;
-
-    if (action.payload.user.entries) {
-      state.user.entries = {
-        matters: action.payload.user.entries.matters
-          ? action.payload.user.entries.matters
-          : [],
-        resources: action.payload.user.entries.resources
-          ? action.payload.user.entries.resources
-          : [],
-      };
-    }
-    if (action.payload.user.likes) {
-      state.user.likes = {
-        matters: action.payload.user.likes.matters
-          ? action.payload.user.likes.matters
-          : [],
-        resources: action.payload.user.likes.resources
-          ? action.payload.user.likes.resources
-          : [],
-      };
-    }
+    state.user.home = action.payload.user.home;
 
     if (action.payload.user.agree === "disable") {
       state.verified.agree = true;
