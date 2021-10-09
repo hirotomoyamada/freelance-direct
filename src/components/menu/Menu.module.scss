@@ -1,0 +1,71 @@
+// サイト共有の初期設定
+@import "../../styles/config";
+@import "../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.menu {
+  padding: 32px;
+
+  @media (max-width: responsive-width(tb)) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 300px;
+    padding: 0;
+    transform: translateX(-300px);
+  }
+
+  &_open {
+    @media (max-width: responsive-width(tb)) {
+      animation: open 0.4s forwards;
+
+      @keyframes open {
+        0% {
+          transform: translateX(-300px);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  &_close {
+    @media (max-width: responsive-width(tb)) {
+      animation: close 0.4s forwards;
+
+      @keyframes close {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(-300px);
+        }
+      }
+    }
+  }
+
+  &_inner {
+    position: sticky;
+    top: 32px;
+
+    background: $base_clr;
+    padding: 32px;
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (max-width: responsive-width(tb)) {
+      top: 0;
+      height: 100vh;
+      border-radius: 0;
+    }
+  }
+}

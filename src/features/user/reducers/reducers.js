@@ -12,7 +12,12 @@ import { addLike, removeLike } from "./like";
 import { addEntry } from "./entry";
 import { addFollow, removeFollow } from "./follow";
 
-import { handleAnnounce, handleModal, handleNotFound } from "./handle";
+import {
+  handleAnnounce,
+  handleModal,
+  handleMenu,
+  handleNotFound,
+} from "./handle";
 
 import { load } from "./load";
 
@@ -31,6 +36,7 @@ export {
   addFollow,
   removeFollow,
   handleModal,
+  handleMenu,
   handleAnnounce,
   handleNotFound,
   load,

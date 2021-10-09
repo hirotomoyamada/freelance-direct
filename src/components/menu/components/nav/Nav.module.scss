@@ -1,0 +1,53 @@
+// サイト共有の初期設定
+@import "../../../../styles/config";
+@import "../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.nav {
+  display: flex;
+  flex-direction: column;
+
+  &_wrap {
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    border-top: 1px solid $bg_clr;
+
+    &:last-child {
+      border-bottom: 1px solid $bg_clr;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+
+  &_btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: all 0.4s;
+    color: $icn_clr;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &_icon {
+      font-size: 24px !important;
+    }
+
+    &_current {
+      color: $acnt_clr;
+    }
+
+    &_txt {
+      letter-spacing: 0.8px;
+    }
+  }
+}

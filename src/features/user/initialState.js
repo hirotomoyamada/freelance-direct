@@ -20,6 +20,8 @@ export const initialState = {
     open: false,
   },
 
+  menu: { display: false, control: false },
+
   announce: {
     success: "",
     error: "",

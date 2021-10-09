@@ -31,10 +31,12 @@ import { User } from "./features/user/User";
 import { List } from "./features/user/list/List";
 import { Setting } from "./features/user/setting/Setting";
 
+import { Menu } from "./components/menu/Menu";
+
 const Branch = (props) => {
   const index = props.match.params.index;
   const id = props.match.params.id;
-  return index === "matters" || index === "resources" ? (
+  return index === "post" ? (
     <Post index={index} objectID={id} />
   ) : (
     (index === "companys" || index === "persons") && (
@@ -43,10 +45,11 @@ const Branch = (props) => {
   );
 };
 
-const App = () => {
+export const App = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(userSlice.user);
+  const menu = useSelector(userSlice.menu);
   const access = useSelector(userSlice.verified).access;
   const notFound = {
     user: useSelector(userSlice.notFound),
@@ -54,6 +57,9 @@ const App = () => {
   };
 
   const [browser, setBrowser] = useState(true);
+  const [control, setControl] = useState(
+    window.innerWidth < 959 ? true : false
+  );
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -73,10 +79,26 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const resize = () => {
+      window.innerWidth < 959 ? setControl(true) : setControl(false);
+    };
+
+    !control && dispatch(userSlice.handleMenu("reset"));
+
+    window.addEventListener("resize", resize);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [control]);
+
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Meta />
+
         {notFound.user || notFound.post ? (
           <NotFound />
         ) : browser ? (
@@ -109,24 +131,39 @@ const App = () => {
                 )}
               </Switch>
             ) : (
-              <Switch>
-                <Redirect exact path="/login" to="/" />
-                <Redirect exact path="/signup" to="/" />
+              <div className="main">
+                <Menu user={user} />
 
-                <Route exact path={["/", "/home"]} component={Home} />
-                <Route exact path="/home" component={Home} />
-                <Route exact path="/search" component={Search} />
-                <Route exact path="/setting" component={Setting} />
+                <Switch>
+                  <Redirect exact path="/login" to="/" />
+                  <Redirect exact path="/signup" to="/" />
 
-                <Route exact path="/terms" component={Terms} />
-                <Route exact path="/asct" component={Asct} />
+                  <Route exact path={["/", "/home"]} component={Home} />
+                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/search" component={Search} />
+                  <Route exact path="/setting" component={Setting} />
 
-                <Route exact path="/:list" component={List} />
+                  <Route exact path="/terms" component={Terms} />
+                  <Route exact path="/asct" component={Asct} />
 
-                <Route exact path="/:index/:id" component={Branch} />
+                  <Route exact path="/:list" component={List} />
 
-                <Route component={NotFound} />
-              </Switch>
+                  <Route exact path="/:index/:id" component={Branch} />
+
+                  <Route component={NotFound} />
+                </Switch>
+
+                {control && (
+                  <div
+                    className={`overlay ${
+                      menu.display
+                        ? "overlay_open"
+                        : menu.control && "overlay_close"
+                    }`}
+                    onClick={() => dispatch(userSlice.handleMenu("close"))}
+                  ></div>
+                )}
+              </div>
             )}
           </>
         ) : (
@@ -138,5 +175,3 @@ const App = () => {
     </HelmetProvider>
   );
 };
-
-export default App;

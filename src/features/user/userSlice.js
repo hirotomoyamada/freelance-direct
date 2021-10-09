@@ -27,6 +27,7 @@ export const userSlice = createSlice({
     removeFollow: (state, action) => reducers.removeFollow(state, action),
 
     handleModal: (state, action) => reducers.handleModal(state, action),
+    handleMenu: (state, action) => reducers.handleMenu(state, action),
     handleAnnounce: (state, action) => reducers.handleAnnounce(state, action),
     handleNotFound: (state, action) => reducers.handleNotFound(state, action),
   },
@@ -61,6 +62,7 @@ export const {
   removeFollow,
 
   handleModal,
+  handleMenu,
   handleAnnounce,
   handleNotFound,
 } = userSlice.actions;
@@ -71,6 +73,7 @@ export const data = (state) => state.user.data;
 export const verified = (state) => state.user.verified;
 export const load = (state) => state.user.load;
 export const modal = (state) => state.user.modal;
+export const menu = (state) => state.user.menu;
 export const announce = (state) => state.user.announce;
 export const notFound = (state) => state.user.notFound;
 

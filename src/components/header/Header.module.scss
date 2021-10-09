@@ -1,0 +1,21 @@
+// サイト共有の初期設定
+@import "../../styles/config";
+@import "../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.header {
+  padding: 16px 32px 0;
+  pointer-events: auto;
+
+  &_icon {
+    display: none;
+    width: 48px;
+    height: 48px;
+    
+    @media (max-width: responsive-width(tb)) {
+      display: block;
+    }
+  }
+}
