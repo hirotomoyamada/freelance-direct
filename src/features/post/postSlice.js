@@ -16,6 +16,8 @@ export const postSlice = createSlice({
   initialState,
 
   reducers: {
+    resetPost: (state, action) => reducers.resetPost(state, action),
+
     addLike: (state, action) => reducers.addLike(state, action),
     removeLike: (state, action) => reducers.removeLike(state, action),
     addEntry: (state, action) => reducers.addEntry(state, action),
@@ -70,8 +72,7 @@ export const postSlice = createSlice({
 });
 
 export const {
-  handleIndex,
-  selectPost,
+  resetPost,
 
   addLike,
   removeLike,
@@ -79,6 +80,7 @@ export const {
   addFollow,
   removeFollow,
 
+  handleIndex,
   handleSearch,
   handleSort,
   handlePage,

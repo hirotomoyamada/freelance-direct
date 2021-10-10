@@ -34,11 +34,10 @@ $width: responsive-width(pc);
     @media (max-width: responsive-width(tb)) {
       width: 100vw;
       margin: 0;
-      padding: 0 12px 24px;
+      padding: 0 16px 24px;
     }
 
     @media (max-width: responsive-width(sp)) {
-      padding-top: 24px;
       gap: 12px;
       font-size: 14px;
     }

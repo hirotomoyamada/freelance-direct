@@ -17,6 +17,7 @@ import { followsPosts } from "./followsPosts";
 import { userPosts } from "./userPosts";
 import { extractPosts } from "./extractPosts";
 import { showPost } from "./showPost";
+import { resetPost } from "./resetPost";
 
 import { load, fetch } from "./load";
 
@@ -38,6 +39,7 @@ export {
   userPosts,
   extractPosts,
   showPost,
+  resetPost,
   load,
   fetch,
 };

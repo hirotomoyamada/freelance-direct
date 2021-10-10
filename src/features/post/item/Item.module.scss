@@ -14,8 +14,10 @@ $width: responsive-width(pc);
   color: $main_clr;
   font-size: 14px;
 
+  @media (max-width: responsive-width(tb)) {
+    padding: 16px;
+  }
   @media (max-width: responsive-width(sp)) {
-    padding: 16px 12px;
     font-size: 11px;
   }
 

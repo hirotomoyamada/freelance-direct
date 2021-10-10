@@ -33,18 +33,6 @@ import { Setting } from "./features/user/setting/Setting";
 
 import { Menu } from "./components/menu/Menu";
 
-const Branch = (props) => {
-  const index = props.match.params.index;
-  const id = props.match.params.id;
-  return index === "post" ? (
-    <Post index={index} objectID={id} />
-  ) : (
-    (index === "companys" || index === "persons") && (
-      <User type={index} uid={id} />
-    )
-  );
-};
-
 export const App = () => {
   const dispatch = useDispatch();
 
@@ -148,7 +136,8 @@ export const App = () => {
 
                   <Route exact path="/:list" component={List} />
 
-                  <Route exact path="/:index/:id" component={Branch} />
+                  <Route exact path="/post/:objectID" component={Post} />
+                  <Route exact path="/user/:uid" component={User} />
 
                   <Route component={NotFound} />
                 </Switch>
