@@ -12,36 +12,27 @@ import { Menu } from "../menu/Menu";
 import { Follow } from "../../../components/follow/Follow";
 
 export const Item = ({
-  index,
   post,
   user,
-  status,
-  display,
   search,
   select,
   selectUser,
   companys,
   home,
+  none,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handlePost = () => {
+  const handleOpen = (index) => {
     search && dispatch(postSlice.handleSearch({ control: true }));
-    history.push(`/post/${post.objectID}`);
-  };
-
-  const handleUser = () => {
-    search && dispatch(postSlice.handleSearch({ control: true }));
-    history.push(`/user/${post.uid}`);
-
-    index === "companys" && dispatch(postSlice.handleIndex("matters"));
+    history.push(`/${index}/${post.objectID}`);
   };
 
   return (
-    <div className={styles.item_outer}>
+    <div className={`${styles.item_outer} ${none && styles.item_outer_none}`}>
       {!companys ? (
-        <Menu index={index} post={post} user={user} postItem />
+        <Menu post={post} user={user} postItem />
       ) : (
         <Follow
           user={user}
@@ -51,22 +42,24 @@ export const Item = ({
         />
       )}
       {!companys ? (
-        <button type="button" onClick={handlePost} className={styles.item_btn}>
+        <button
+          type="button"
+          onClick={() => handleOpen("post")}
+          className={`${styles.item_btn} ${
+            !post?.objectID && styles.item_btn_disable
+          }`}
+        >
           <article className={styles.item}>
-            <Post
-              index={index}
-              post={post}
-              user={user}
-              status={status}
-              display={display}
-            />
+            <Post post={post} user={user} />
           </article>
         </button>
       ) : (
         <button
           type="button"
-          onClick={handleUser}
-          className={`${styles.item_btn} ${home && styles.item_btn_disable}`}
+          onClick={() => handleOpen("user")}
+          className={`${styles.item_btn} ${
+            (home || !post?.uid) && styles.item_btn_disable
+          }`}
         >
           <article className={`${styles.item} ${home && styles.item_home}`}>
             <User post={post} user={user} />

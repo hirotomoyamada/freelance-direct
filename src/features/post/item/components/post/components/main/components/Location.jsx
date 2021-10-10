@@ -10,12 +10,3 @@ export const Location = ({ post }) => {
     </div>
   );
 };
-
-export const Station = ({ post }) => {
-  return (
-    <div className={styles.main_wrap}>
-      <LocationOnIcon className={styles.main_icon} />
-      <p>{post?.station}</p>
-    </div>
-  );
-};

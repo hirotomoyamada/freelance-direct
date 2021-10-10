@@ -24,23 +24,27 @@ export const Follow = ({ user, post, profile, select, selectUser }) => {
     );
   };
 
-  return user?.uid !== post?.uid && !select ? (
-    <button
-      onClick={handleFollow}
-      className={`${styles.follow} ${follow && styles.follow_followed} ${
-        profile && styles.follow_profile
-      }`}
-    >
-      {!follow ? "フォローする" : "フォロー中"}
-    </button>
+  return post?.uid ? (
+    !select ? (
+      <button
+        onClick={handleFollow}
+        className={`${styles.follow} ${follow && styles.follow_followed} ${
+          profile && styles.follow_profile
+        }`}
+      >
+        {!follow ? "フォローする" : "フォロー中"}
+      </button>
+    ) : (
+      <button
+        onClick={() => selectUser(post.uid)}
+        className={`${styles.follow} ${target && styles.follow_remove} ${
+          !target && select.length >= 15 && styles.follow_disable
+        }`}
+      >
+        {!target ? "未選択" : "解除"}
+      </button>
+    )
   ) : (
-    <button
-      onClick={() => selectUser(post.uid)}
-      className={`${styles.follow} ${target && styles.follow_remove} ${
-        !target && select.length >= 15 && styles.follow_disable
-      }`}
-    >
-      {!target ? "未選択" : "解除"}
-    </button>
+    <></>
   );
 };

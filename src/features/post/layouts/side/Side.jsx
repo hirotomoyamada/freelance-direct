@@ -8,58 +8,45 @@ import * as postSlice from "../../postSlice";
 
 import { Item } from "../../item/Item";
 
-export const Side = ({ index, post, posts, user }) => {
+export const Side = ({ post, posts, user }) => {
   const load = useSelector(postSlice.load);
 
   return (
     <div className={styles.side}>
       <span className={styles.side_tag}>投稿したユーザー</span>
 
-      {post?.user?.uid ? (
-        <Item user={user} post={post?.user} companys />
+      {post?.user ? (
+        <Item user={user} post={post?.user} companys none />
       ) : (
         <div className={styles.side_load}>
           <Loader type="Grid" color="#4387f4" height={32} width={32} />
         </div>
       )}
 
-      {user?.uid !== post?.user?.uid && (
-        <Link to={`/user/companys/${post?.user?.uid}`}>
+      {post?.uid && (
+        <Link to={`/user/${post?.user?.uid}`}>
           <span className={styles.side_desc}>このユーザーの他の投稿を見る</span>
         </Link>
       )}
 
-      <span className={styles.side_tag}>
-        {index === "matters"
-          ? user?.payment?.status !== "canceled"
-            ? "こんな案件もオススメ"
-            : "もっと案件をご覧になりますか？"
-          : index === "resources" && user?.payment?.status !== "canceled"
-          ? "こんな人材もオススメ"
-          : "もっと人材をご覧になりますか？"}
-      </span>
+      <span className={styles.side_tag}>こんな案件もオススメ</span>
 
-      {posts?.length ? (
-        posts.map(
-          (post) =>
-            post && (
-              <Item
-                key={post?.objectID}
-                index={index}
-                post={post}
-                user={user}
-              />
-            )
-        )
-      ) : load ? (
-        <div className={styles.side_load}>
-          <Loader type="Grid" color="#4387f4" height={32} width={32} />
-        </div>
-      ) : (
-        <span className={styles.side_desc}>
-          似ている案件が見つかりませんでした
-        </span>
-      )}
+      <div className={styles.side_list}>
+        {posts?.length ? (
+          posts.map(
+            (post) =>
+              post && <Item key={post?.objectID} post={post} user={user} />
+          )
+        ) : load ? (
+          <div className={styles.side_load}>
+            <Loader type="Grid" color="#4387f4" height={32} width={32} />
+          </div>
+        ) : (
+          <span className={styles.side_desc}>
+            似ている案件が見つかりませんでした
+          </span>
+        )}
+      </div>
     </div>
   );
 };

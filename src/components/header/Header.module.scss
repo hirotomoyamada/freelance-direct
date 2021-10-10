@@ -39,17 +39,22 @@ $width: responsive-width(pc);
     gap: 32px;
 
     @media (max-width: responsive-width(tb)) {
+      padding: 16px 32px;
       grid-template-columns: 48px 1fr 48px;
-      padding: 16px 12px;
-      gap: 12px;
     }
 
     @media (max-width: responsive-width(sp)) {
       grid-template-columns: 32px 1fr 32px;
+      padding: 16px 12px;
+      gap: 12px;
     }
 
     &_requests {
       @media (max-width: responsive-width(tb)) {
+        padding: 16px 32px 0;
+      }
+
+      @media (max-width: responsive-width(sp)) {
         padding: 16px 12px 0;
         gap: 12px;
       }
@@ -60,12 +65,12 @@ $width: responsive-width(pc);
 
       @media (max-width: responsive-width(tb)) {
         grid-template-columns: 48px 1fr;
-        padding: 16px 12px 0;
-        gap: 12px;
       }
 
       @media (max-width: responsive-width(sp)) {
         grid-template-columns: 32px 1fr;
+        padding: 16px 12px 0;
+        gap: 12px;
       }
     }
   }

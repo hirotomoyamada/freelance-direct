@@ -6,10 +6,10 @@
 $width: responsive-width(pc);
 
 .main {
+  position: relative;
   padding: 32px;
 
   font-size: 16px;
-  display: inline-block;
 
   @media (max-width: responsive-width(sp)) {
     padding: 12px;
@@ -17,7 +17,7 @@ $width: responsive-width(pc);
   }
 
   &_load {
-    height: calc(100vh - 32px * 2);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,10 +25,6 @@ $width: responsive-width(pc);
     @media (max-width: responsive-width(sp)) {
       height: calc(100vh - 12px * 2);
     }
-  }
-
-  &_inner {
-    position: relative;
   }
 
   &_col {

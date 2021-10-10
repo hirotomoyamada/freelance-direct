@@ -3,10 +3,10 @@ import { Title } from "./components/title/Title";
 import { Main } from "./components/main/Main";
 import { Footer } from "./components/footer/Footer";
 
-export const Post = ({ index, post, user, display, status }) => {
-  return index === "matters" ? (
+export const Post = ({ post, user }) => {
+  return (
     <div>
-      <Header post={post} user={user} display={display} status={status} />
+      <Header post={post} />
 
       <Title post={post} />
 
@@ -14,17 +14,5 @@ export const Post = ({ index, post, user, display, status }) => {
 
       <Footer post={post} user={user} />
     </div>
-  ) : (
-    index === "resources" && (
-      <div>
-        <Header post={post} user={user} display={display} status={status} />
-
-        <Title post={post} resources />
-
-        <Main post={post} resources />
-
-        <Footer post={post} user={user} />
-      </div>
-    )
   );
 };
