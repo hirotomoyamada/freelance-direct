@@ -8,12 +8,9 @@ import { fetchPost } from "./functions/fetchPost";
 import * as postSlice from "./postSlice";
 import * as userSlice from "../user/userSlice";
 
-// import { Menu } from "../../components/menu/Menu";
-// import { Modal } from "../../components/modal/Modal";
-
 import { Meta } from "./Meta";
-import { Main } from "./layouts/main/Main";
-import { Side } from "./layouts/side/Side";
+import { Main } from "../components/main/Main";
+import { Footer } from "../components/footer/Footer";
 
 export const Post = (props) => {
   const dispatch = useDispatch();
@@ -56,10 +53,7 @@ export const Post = (props) => {
 
       <Main post={post} user={user} entry={entry} handleEntry={handleEntry} />
 
-      <Side post={post} posts={posts} user={user} />
-
-      {/* {Object.keys(post).length && <Menu user={user} back />} */}
-      {/* <Modal user={user} post={post} /> */}
+      <Footer post={post} posts={posts} user={user} />
     </div>
   );
 };

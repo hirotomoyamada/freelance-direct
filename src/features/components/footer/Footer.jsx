@@ -1,14 +1,14 @@
-import styles from "./Side.module.scss";
+import styles from "./Footer.module.scss";
 import Loader from "react-loader-spinner";
 
 import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
-import * as postSlice from "../../postSlice";
+import * as postSlice from "../../post/postSlice";
 
-import { Item } from "../../item/Item";
+import { Item } from "../../post/item/Item";
 
-export const Side = ({ post, posts, user }) => {
+export const Footer = ({ post, posts, user }) => {
   const load = useSelector(postSlice.load);
 
   return (

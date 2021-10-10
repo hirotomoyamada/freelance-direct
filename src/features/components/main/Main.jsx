@@ -2,9 +2,9 @@ import styles from "./Main.module.scss";
 import Loader from "react-loader-spinner";
 
 import { useSelector } from "react-redux";
-import * as postSlice from "../../postSlice";
+import * as postSlice from "../../post/postSlice";
 
-import { Menu } from "../../menu/Menu";
+import { Menu } from "../../post/menu/Menu";
 
 import { Header } from "./components/header/Header";
 import { Txt } from "./components/Txt";

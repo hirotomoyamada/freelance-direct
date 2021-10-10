@@ -15,8 +15,6 @@ import { Edit } from "./components/edit/Edit";
 import { Profile } from "./components/profile/Profile";
 import { Follow } from "../../components/follow/Follow";
 
-// import { Modal } from "../../components/modal/Modal";
-
 import { Meta } from "./Meta";
 import { List } from "../post/list/List";
 
@@ -91,8 +89,6 @@ export const User = (props) => {
           hit={hit}
         />
       )}
-
-      {/* <Modal user={user} /> */}
     </div>
   );
 };
