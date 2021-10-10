@@ -83,12 +83,14 @@ export const User = (props) => {
         </div>
       )}
 
-      <List
-        user={currentUser}
-        selectUser={selectUser}
-        posts={posts}
-        hit={hit}
-      />
+      {currentUser?.uid !== user?.uid && (
+        <List
+          user={currentUser}
+          selectUser={selectUser}
+          posts={posts}
+          hit={hit}
+        />
+      )}
 
       {/* <Modal user={user} /> */}
     </div>
