@@ -34,7 +34,6 @@ export const Menu = ({ user }) => {
   }, []);
 
   const handlePage = (p) => {
-    console.log(p);
     if (p === page) {
       return;
     }

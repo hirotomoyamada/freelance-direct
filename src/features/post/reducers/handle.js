@@ -92,6 +92,5 @@ export const handleNotFound = (state, action) => {
 };
 
 export const handleControl = (state) => {
-  state.posts.home.posts.control = true;
-  state.posts.home.users.control = true;
+  state.posts.home.matters.control = true;
 };

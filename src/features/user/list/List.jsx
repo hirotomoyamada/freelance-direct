@@ -15,8 +15,7 @@ export const List = (props) => {
 
   useEffect(() => {
     dispatch(postSlice.handlePage(list));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch, list]);
 
   useEffect(() => {
     list === "requests"

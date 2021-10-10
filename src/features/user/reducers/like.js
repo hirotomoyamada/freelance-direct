@@ -4,7 +4,9 @@ export const addLike = (state, action) => {
   state.user.likes = [action.payload, ...state.user.likes];
 
   const addLike = functions.httpsCallable("fd-addLike");
-  addLike(action.payload).catch((e) => {});
+  addLike(action.payload).catch((e) => {
+    console.log(e);
+  });
 };
 
 export const removeLike = (state, action) => {
@@ -13,5 +15,7 @@ export const removeLike = (state, action) => {
   );
 
   const removeLike = functions.httpsCallable("fd-removeLike");
-  removeLike(action.payload).catch((e) => {});
+  removeLike(action.payload).catch((e) => {
+    console.log(e);
+  });
 };
