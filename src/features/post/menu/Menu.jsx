@@ -24,11 +24,11 @@ export const Menu = ({ post, user, postItem }) => {
 
   const handleLike = () => {
     if (!like) {
-      dispatch(userSlice.addLike({ objectID: post.objectID }));
-      dispatch(postSlice.addLike({ post: post }));
+      dispatch(userSlice.addLike(post.objectID));
+      dispatch(postSlice.addLike(post));
     } else {
-      dispatch(userSlice.removeLike({ objectID: post.objectID }));
-      dispatch(postSlice.removeLike({ post: post }));
+      dispatch(userSlice.removeLike(post.objectID));
+      dispatch(postSlice.removeLike(post));
     }
 
     setLike(!like);

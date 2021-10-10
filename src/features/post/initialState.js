@@ -64,7 +64,6 @@ export const initialState = {
           pages: 0,
           currentPage: 0,
         },
-        control: true,
       },
     },
 

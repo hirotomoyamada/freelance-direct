@@ -11,7 +11,6 @@ export const fetchPosts = createAsyncThunk("post/fetchPosts", async (data) => {
     page: data.page,
   })
     .then(({ data }) => {
-      console.log(data);
       return {
         index: data.index,
         posts: data.posts.filter((post) => post),

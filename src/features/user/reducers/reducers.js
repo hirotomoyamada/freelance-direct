@@ -11,6 +11,7 @@ import { changeEmail } from "./changeEmail";
 import { addLike, removeLike } from "./like";
 import { addEntry } from "./entry";
 import { addFollow, removeFollow } from "./follow";
+import { updateHome } from "./home";
 
 import {
   handleAnnounce,
@@ -35,6 +36,7 @@ export {
   addEntry,
   addFollow,
   removeFollow,
+  updateHome,
   handleModal,
   handleMenu,
   handleAnnounce,
