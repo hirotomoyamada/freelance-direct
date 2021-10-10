@@ -26,7 +26,7 @@ export const Item = ({
 
   const handleOpen = (index) => {
     search && dispatch(postSlice.handleSearch({ control: true }));
-    history.push(`/${index}/${post.objectID}`);
+    history.push(`/${index}/${index === "post" ? post.objectID : post.uid}`);
   };
 
   return (

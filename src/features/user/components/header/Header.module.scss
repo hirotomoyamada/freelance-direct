@@ -1,0 +1,30 @@
+// サイト共有の初期設定
+@import "../../../../styles/config";
+@import "../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.header {
+  height: auto-clamp(160px, 320px);
+  position: relative;
+
+  @media (max-width: responsive-width(sp)) {
+    height: 80px;
+  }
+
+  &_icon {
+    position: absolute;
+    bottom: -56px;
+    left: auto-clamp(32px, 48px);
+    width: 80px;
+    height: 80px;
+
+    @media (max-width: responsive-width(sp)) {
+      width: 56px;
+      height: 56px;
+      bottom: -44px;
+      left: 12px;
+    }
+  }
+}

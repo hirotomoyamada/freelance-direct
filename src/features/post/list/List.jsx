@@ -2,12 +2,13 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import { fetchPosts } from "../functions/fetchPosts";
-import { followsPosts } from "../functions/followsPosts";
+import { homePosts } from "../functions/homePosts";
+import { userPosts } from "../functions/userPosts";
 import { Load } from "./components/Load";
 import { Posts } from "./components/Posts";
 import { NotFound } from "./components/NotFound";
 
-export const List = ({ index, posts, user, home, search, hit }) => {
+export const List = ({ index, posts, user, home, search, selectUser, hit }) => {
   const dispatch = useDispatch();
 
   const load = useRef();
@@ -69,9 +70,22 @@ export const List = ({ index, posts, user, home, search, hit }) => {
       hit.pages &&
       page !== hit.pages &&
       dispatch(
-        followsPosts({
+        homePosts({
           index: index,
           follows: [user.uid, ...user.home],
+          page: page,
+        })
+      ).then(() => {
+        setIntersecting(!intersecting);
+      });
+
+    selectUser &&
+      intersecting &&
+      hit.pages &&
+      page !== hit.pages &&
+      dispatch(
+        userPosts({
+          uid: selectUser.uid,
           page: page,
         })
       ).then(() => {

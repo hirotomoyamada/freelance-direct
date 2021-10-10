@@ -5,9 +5,9 @@ import { initialState } from "./initialState";
 import { promotionPosts } from "./functions/promotionPosts";
 import { fetchPosts } from "./functions/fetchPosts";
 import { userPosts } from "./functions/userPosts";
-import { followsPosts } from "./functions/followsPosts";
+import { homePosts } from "./functions/homePosts";
 import { extractPosts } from "./functions/extractPosts";
-import { showPost } from "./functions/showPost";
+import { fetchPost } from "./functions/fetchPost";
 
 import * as reducers from "./reducers/reducers";
 
@@ -51,12 +51,12 @@ export const postSlice = createSlice({
       reducers.userPosts(state, action)
     );
 
-    builder.addCase(followsPosts.pending, (state, action) => {
+    builder.addCase(homePosts.pending, (state, action) => {
       action.meta.arg.fetch && reducers.fetch(state);
       reducers.load(state);
     });
-    builder.addCase(followsPosts.fulfilled, (state, action) =>
-      reducers.followsPosts(state, action)
+    builder.addCase(homePosts.fulfilled, (state, action) =>
+      reducers.homePosts(state, action)
     );
 
     builder.addCase(extractPosts.pending, (state) => reducers.load(state));
@@ -64,9 +64,9 @@ export const postSlice = createSlice({
       reducers.extractPosts(state, action)
     );
 
-    builder.addCase(showPost.pending, (state) => reducers.load(state));
-    builder.addCase(showPost.fulfilled, (state, action) =>
-      reducers.showPost(state, action)
+    builder.addCase(fetchPost.pending, (state) => reducers.load(state));
+    builder.addCase(fetchPost.fulfilled, (state, action) =>
+      reducers.fetchPost(state, action)
     );
   },
 });
@@ -91,12 +91,13 @@ export const {
 export const index = (state) => state.post.index;
 
 export const search = (state) => state.post.search;
-export const sort = (state) => state.post.sort;
 
 export const posts = ({ state, page, index }) =>
-  page && state.post.posts[page]?.[index]?.posts;
+  index
+    ? state.post.posts[page]?.[index]?.posts
+    : state.post.posts[page]?.posts;
 export const hit = ({ state, page, index }) =>
-  page && state.post.posts[page]?.[index]?.hit;
+  index ? state.post.posts[page]?.[index]?.hit : state.post.posts[page]?.hit;
 export const control = ({ state, index }) =>
   state.post.posts.home[index].control;
 

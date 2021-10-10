@@ -13,10 +13,10 @@ import {
 
 import { promotionPosts } from "./promotionPosts";
 import { fetchPosts } from "./fetchPosts";
-import { followsPosts } from "./followsPosts";
+import { homePosts } from "./homePosts";
 import { userPosts } from "./userPosts";
 import { extractPosts } from "./extractPosts";
-import { showPost } from "./showPost";
+import { fetchPost } from "./fetchPost";
 import { resetPost } from "./resetPost";
 
 import { load, fetch } from "./load";
@@ -35,10 +35,10 @@ export {
   handleControl,
   promotionPosts,
   fetchPosts,
-  followsPosts,
+  homePosts,
   userPosts,
   extractPosts,
-  showPost,
+  fetchPost,
   resetPost,
   load,
   fetch,

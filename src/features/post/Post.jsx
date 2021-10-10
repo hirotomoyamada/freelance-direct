@@ -2,14 +2,14 @@ import styles from "./Post.module.scss";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-import { showPost } from "./functions/showPost";
+import { fetchPost } from "./functions/fetchPost";
 import * as postSlice from "./postSlice";
 import * as userSlice from "../user/userSlice";
 
-import { Menu } from "../../components/menu/Menu";
-import { Modal } from "../../components/modal/Modal";
+// import { Menu } from "../../components/menu/Menu";
+// import { Modal } from "../../components/modal/Modal";
 
 import { Meta } from "./Meta";
 import { Main } from "./layouts/main/Main";
@@ -35,7 +35,7 @@ export const Post = (props) => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(showPost(objectID));
+    dispatch(fetchPost(objectID));
 
     return () => {
       dispatch(postSlice.resetPost());

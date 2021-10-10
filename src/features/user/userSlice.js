@@ -4,7 +4,7 @@ import { initialState } from "./initialState";
 
 import { login } from "./functions/login";
 import { createProfile } from "./functions/createProfile";
-import { showUser } from "./functions/showUser";
+import { fetchUser } from "./functions/fetchUser";
 
 import * as reducers from "./reducers/reducers";
 
@@ -42,8 +42,8 @@ export const userSlice = createSlice({
     builder.addCase(createProfile.fulfilled, (state) =>
       reducers.createProfile(state)
     );
-    builder.addCase(showUser.fulfilled, (state, action) =>
-      reducers.showUser(state, action)
+    builder.addCase(fetchUser.fulfilled, (state, action) =>
+      reducers.fetchUser(state, action)
     );
   },
 });

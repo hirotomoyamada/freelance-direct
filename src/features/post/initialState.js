@@ -10,12 +10,6 @@ export const initialState = {
     control: false,
   },
 
-  sort: {
-    status: "",
-    display: "",
-    control: false,
-  },
-
   posts: {
     search: {
       matters: {

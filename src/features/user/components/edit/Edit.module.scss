@@ -1,0 +1,40 @@
+// サイト共有の初期設定
+@import "../../../../styles/config";
+@import "../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.edit {
+  position: absolute;
+  top: auto-clamp(16px, 24px);
+  right: 32px;
+
+  display: flex;
+  gap: 8px;
+
+  @media (max-width: responsive-width(sp)) {
+    top: 12px;
+    right: 12px;
+  }
+
+  &_btn {
+    padding: 0 16px 1px;
+    color: $acnt_clr;
+    border: 1px solid $acnt_clr;
+    border-radius: 20px;
+    height: 40px;
+    font-size: 14px;
+
+    @media (max-width: responsive-width(sp)) {
+      padding: 0 12px;
+      font-size: 10px;
+      height: 32px;
+    }
+
+    &_account {
+      color: $sub_clr;
+      border-color: $sub_clr;
+    }
+  }
+}

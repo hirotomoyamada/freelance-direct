@@ -15,12 +15,12 @@ import { Times } from "./components/Times";
 import { Interviews } from "./components/Interviews";
 import { Entry } from "./components/entry/Entry";
 
-export const Main = ({ index, post, user, entry, handleEntry }) => {
+export const Main = ({ post, user, entry, handleEntry }) => {
   const load = useSelector(postSlice.load);
 
   return !load && post.objectID ? (
     <div className={styles.main}>
-      <Menu index={index} post={post} user={user} />
+      <Menu post={post} user={user} />
 
       <Header post={post} user={user} />
 

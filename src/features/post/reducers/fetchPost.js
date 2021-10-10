@@ -1,4 +1,4 @@
-export const showPost = (state, action) => {
+export const fetchPost = (state, action) => {
   if (!action.payload.notFound) {
     state.post = action.payload.post;
     state.posts.bests = action.payload.bests;

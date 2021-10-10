@@ -1,6 +1,6 @@
 import { login, logout } from "./auth";
 import { createProfile } from "./createProfile";
-import { showUser } from "./showUser";
+import { fetchUser } from "./fetchUser";
 
 import { editProfile } from "./editProfile";
 import { enableAgree } from "./enableAgree";
@@ -25,7 +25,7 @@ import { load } from "./load";
 export {
   login,
   createProfile,
-  showUser,
+  fetchUser,
   logout,
   editProfile,
   enableAgree,
