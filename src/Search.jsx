@@ -6,6 +6,7 @@ import * as userSlice from "./features/user/userSlice";
 import * as postSlice from "./features/post/postSlice";
 
 import { Header } from "./components/header/Header";
+import { List } from "./features/post/list/List";
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ export const Search = () => {
   return (
     <div>
       <Header user={user} type="search" index={index} />
+      <List user={user} index={index} posts={posts} hit={hit} search />
     </div>
   );
 };
