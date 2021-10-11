@@ -13,13 +13,10 @@ export const CreateAt = ({ user }) => {
 
   return (
     <div className={styles.profile_createAt}>
-      <FontAwesomeIcon
-        icon={faCalendarAlt}
-        className={styles.profile_icon}
-      />
+      <FontAwesomeIcon icon={faCalendarAlt} className={styles.profile_icon} />
       <span>
         {timestamp(user?.createAt)}
-        からSES_HUBを利用しています
+        からFreelance Directを利用しています
       </span>
     </div>
   );
