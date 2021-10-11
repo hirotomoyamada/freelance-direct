@@ -26,19 +26,12 @@ export const userSlice = createSlice({
     addFollow: (state, action) => reducers.addFollow(state, action),
     removeFollow: (state, action) => reducers.removeFollow(state, action),
     updateHome: (state, action) => reducers.updateHome(state, action),
-
-    handleModal: (state, action) => reducers.handleModal(state, action),
-    handleMenu: (state, action) => reducers.handleMenu(state, action),
-    handleAnnounce: (state, action) => reducers.handleAnnounce(state, action),
-    handleNotFound: (state, action) => reducers.handleNotFound(state, action),
   },
 
   extraReducers: (builder) => {
-    builder.addCase(login.pending, (state) => reducers.load(state));
     builder.addCase(login.fulfilled, (state, action) =>
       reducers.login(state, action)
     );
-    builder.addCase(createProfile.pending, (state) => reducers.load(state));
     builder.addCase(createProfile.fulfilled, (state) =>
       reducers.createProfile(state)
     );
@@ -62,21 +55,9 @@ export const {
   addFollow,
   removeFollow,
   updateHome,
-
-  handleModal,
-  handleMenu,
-  handleAnnounce,
-  handleNotFound,
 } = userSlice.actions;
 
 export const user = (state) => state.user.user;
 export const selectUser = (state) => state.user.selectUser;
-export const data = (state) => state.user.data;
-export const verified = (state) => state.user.verified;
-export const load = (state) => state.user.load;
-export const modal = (state) => state.user.modal;
-export const menu = (state) => state.user.menu;
-export const announce = (state) => state.user.announce;
-export const notFound = (state) => state.user.notFound;
 
 export default userSlice.reducer;

@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import { fetchPost } from "./functions/fetchPost";
-import * as postSlice from "./postSlice";
+import * as rootSlice from "../root/rootSlice.js";
 import * as userSlice from "../user/userSlice";
+import * as postSlice from "./postSlice";
 
 import { Meta } from "./Meta";
-import { Main } from "../components/main/Main";
-import { Footer } from "../components/footer/Footer";
+import { Main } from "./components/main/Main";
+import { Footer } from "./components/footer/Footer";
 
 export const Post = (props) => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ export const Post = (props) => {
   }, [pathname]);
 
   useEffect(() => {
-    dispatch(postSlice.handlePage("post"));
+    dispatch(rootSlice.handlePage("post"));
   }, [dispatch]);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export const Post = (props) => {
   }, [objectID, user.entries]);
 
   const handleEntry = () => {
-    dispatch(userSlice.handleModal({ type: "entry", open: true }));
+    dispatch(rootSlice.handleModal({ type: "entry", open: true }));
   };
 
   return (

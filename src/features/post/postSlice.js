@@ -17,48 +17,29 @@ export const postSlice = createSlice({
 
   reducers: {
     resetPost: (state, action) => reducers.resetPost(state, action),
-
-    handleIndex: (state, action) => reducers.handleIndex(state, action),
-    handleSearch: (state, action) => reducers.handleSearch(state, action),
-    handleSort: (state, action) => reducers.handleSort(state, action),
-    handlePage: (state, action) => reducers.handlePage(state, action),
-    handleNotFound: (state, action) => reducers.handleNotFound(state, action),
-    handleControl: (state) => reducers.handleControl(state),
   },
 
   extraReducers: (builder) => {
-    builder.addCase(promotionPosts.pending, (state) => reducers.load(state));
     builder.addCase(promotionPosts.fulfilled, (state, action) =>
       reducers.promotionPosts(state, action)
     );
 
-    builder.addCase(fetchPosts.pending, (state, action) => {
-      action.meta.arg.fetch && reducers.fetch(state);
-      reducers.load(state);
-    });
     builder.addCase(fetchPosts.fulfilled, (state, action) =>
       reducers.fetchPosts(state, action)
     );
 
-    builder.addCase(userPosts.pending, (state) => reducers.load(state));
     builder.addCase(userPosts.fulfilled, (state, action) =>
       reducers.userPosts(state, action)
     );
 
-    builder.addCase(homePosts.pending, (state, action) => {
-      action.meta.arg.fetch && reducers.fetch(state);
-      reducers.load(state);
-    });
     builder.addCase(homePosts.fulfilled, (state, action) =>
       reducers.homePosts(state, action)
     );
 
-    builder.addCase(extractPosts.pending, (state) => reducers.load(state));
     builder.addCase(extractPosts.fulfilled, (state, action) =>
       reducers.extractPosts(state, action)
     );
 
-    builder.addCase(fetchPost.pending, (state) => reducers.load(state));
     builder.addCase(fetchPost.fulfilled, (state, action) =>
       reducers.fetchPost(state, action)
     );
@@ -85,41 +66,33 @@ export const postSlice = createSlice({
       (action) => action.type.endsWith("/removeFollow"),
       (state, action) => reducers.removeFollow(state, action)
     );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/updateHome"),
+      (state) => reducers.resetControl(state)
+    );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/handleIndex"),
+      (state, action) => reducers.resetPost(state, action)
+    );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/handlePage"),
+      (state, action) => reducers.resetPost(state, action)
+    );
   },
 });
 
-export const {
-  resetPost,
-
-  handleIndex,
-  handleSearch,
-  handleSort,
-  handlePage,
-  handleNotFound,
-  handleControl,
-} = postSlice.actions;
-
-export const index = (state) => state.post.index;
-
-export const search = (state) => state.post.search;
+export const { resetPost } = postSlice.actions;
 
 export const posts = ({ state, page, index }) =>
-  index
-    ? state.post.posts[page]?.[index]?.posts
-    : state.post.posts[page]?.posts;
+  index ? state.post[page]?.[index]?.posts : state.post[page]?.posts;
 export const hit = ({ state, page, index }) =>
-  index ? state.post.posts[page]?.[index]?.hit : state.post.posts[page]?.hit;
-export const control = ({ state, index }) =>
-  state.post.posts.home[index].control;
+  index ? state.post[page]?.[index]?.hit : state.post[page]?.hit;
+export const control = ({ state, index }) => state.post.home[index].control;
 
 export const post = (state) => state.post.post;
-export const bests = (state) => state.post.posts.bests;
-
-export const page = (state) => state.post.page;
-export const modal = (state) => state.post.modal;
-
-export const load = (state) => state.post.load;
-export const fetch = (state) => state.post.fetch;
-export const notFound = (state) => state.post.notFound;
+export const bests = (state) => state.post.bests;
 
 export default postSlice.reducer;

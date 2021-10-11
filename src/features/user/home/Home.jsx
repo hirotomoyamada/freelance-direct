@@ -3,14 +3,13 @@ import styles from "./Home.module.scss";
 import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
+import { userPosts } from "../../post/functions/userPosts";
+import * as rootSlice from "../../root/rootSlice";
+import * as postSlice from "../../post/postSlice";
+import * as userSlice from "../userSlice";
 
 import { Header } from "./components/header/Header";
 import { List } from "./components/List/List";
-
-import { userPosts } from "../../post/functions/userPosts";
-
-import * as postSlice from "../../post/postSlice";
-import * as userSlice from "../userSlice";
 import { Select } from "./components/select/Select";
 
 export const Home = ({ user }) => {
@@ -51,13 +50,11 @@ export const Home = ({ user }) => {
   }, [dispatch, posts, user.follows, user.uid]);
 
   const handleClose = () => {
-    dispatch(userSlice.handleModal({ open: false }));
+    dispatch(rootSlice.handleModal());
   };
 
   const handleEdit = () => {
     dispatch(userSlice.updateHome(select));
-    dispatch(postSlice.handleControl());
-    dispatch(userSlice.handleModal({ open: false }));
   };
 
   const handleDelete = () => {

@@ -3,10 +3,10 @@ import styles from "../List.module.scss";
 import Loader from "react-loader-spinner";
 
 import { useSelector } from "react-redux";
-import * as postSlice from "../../postSlice";
+import * as rootSlice from "../../../root/rootSlice";
 
 export const NotFound = ({ index, list }) => {
-  const load = useSelector(postSlice.load);
+  const load = useSelector(rootSlice.load).list;
 
   return (
     <div className={styles.list_none} ref={list}>

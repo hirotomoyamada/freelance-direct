@@ -2,7 +2,7 @@ import styles from "./Main.module.scss";
 import Loader from "react-loader-spinner";
 
 import { useSelector } from "react-redux";
-import * as postSlice from "../../postSlice";
+import * as rootSlice from "../../../root/rootSlice";
 
 import { Menu } from "../../menu/Menu";
 
@@ -16,7 +16,7 @@ import { Interviews } from "./components/Interviews";
 import { Entry } from "./components/entry/Entry";
 
 export const Main = ({ post, user, entry, handleEntry }) => {
-  const load = useSelector(postSlice.load);
+  const load = useSelector(rootSlice.load).root;
 
   return !load && post.objectID ? (
     <div className={styles.main}>

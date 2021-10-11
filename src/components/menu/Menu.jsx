@@ -3,8 +3,7 @@ import styles from "./Menu.module.scss";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import * as postSlice from "../../features/post/postSlice";
-import * as userSlice from "../../features/user/userSlice";
+import * as rootSlice from "../../features/root/rootSlice";
 
 import { Header } from "./components/header/Header";
 import { Nav } from "./components/nav/Nav";
@@ -14,8 +13,8 @@ export const Menu = ({ user }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const page = useSelector(postSlice.page);
-  const menu = useSelector(userSlice.menu);
+  const page = useSelector(rootSlice.page);
+  const menu = useSelector(rootSlice.menu);
 
   const [control, setControl] = useState(
     window.innerWidth < 959 ? true : false
@@ -38,7 +37,7 @@ export const Menu = ({ user }) => {
       return;
     }
     history.push(`/${p}`);
-    control && dispatch(userSlice.handleMenu("close"));
+    control && dispatch(rootSlice.handleMenu("close"));
   };
 
   return (

@@ -1,38 +1,43 @@
 export const initialState = {
-  index: "matters",
-
   search: {
-    value: "",
-    target: "",
-    type: "",
-    status: "",
-    display: "",
-    control: false,
+    matters: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
+      },
+    },
+    companys: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
+      },
+    },
   },
 
-  posts: {
-    search: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
-      companys: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
+  user: {
+    posts: [],
+    hit: {
+      posts: 0,
+      pages: 0,
+      currentPage: 0,
     },
+  },
 
-    bests: [],
-
-    user: {
+  home: {
+    matters: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
+      },
+      control: true,
+    },
+    companys: {
       posts: [],
       hit: {
         posts: 0,
@@ -40,90 +45,65 @@ export const initialState = {
         currentPage: 0,
       },
     },
+  },
 
-    home: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-        control: true,
-      },
-      companys: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
+  likes: {
+    posts: [],
+    hit: {
+      posts: 0,
+      pages: 0,
+      currentPage: 0,
     },
+  },
 
-    likes: {
+  entries: {
+    posts: [],
+    hit: {
+      posts: 0,
+      pages: 0,
+      currentPage: 0,
+    },
+  },
+
+  history: {
+    posts: [],
+    hit: {
+      posts: 0,
+      pages: 0,
+      currentPage: 0,
+    },
+  },
+
+  requests: {
+    enable: {
       posts: [],
       hit: {
         posts: 0,
         pages: 0,
         currentPage: 0,
       },
+      control: true,
     },
-
-    entries: {
+    hold: {
       posts: [],
       hit: {
         posts: 0,
         pages: 0,
         currentPage: 0,
       },
+      control: true,
     },
-
-    history: {
+    disable: {
       posts: [],
       hit: {
         posts: 0,
         pages: 0,
         currentPage: 0,
       },
-    },
-
-    requests: {
-      enable: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-        control: true,
-      },
-      hold: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-        control: true,
-      },
-      disable: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-        control: true,
-      },
+      control: true,
     },
   },
 
   post: {},
-
-  page: "home",
-
-  load: true,
-  fatch: false,
-  notFound: false,
+  bests: [],
 };

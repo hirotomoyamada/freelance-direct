@@ -3,7 +3,7 @@ import styles from "./Edit.module.scss";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import * as userSlice from "../../userSlice";
+import * as rootSlice from "../../../root/rootSlice";
 
 export const Edit = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export const Edit = () => {
       <button
         type="button"
         onClick={() =>
-          dispatch(userSlice.handleModal({ type: "profile", open: true }))
+          dispatch(rootSlice.handleModal({ type: "profile", open: true }))
         }
         className={styles.edit_btn}
       >

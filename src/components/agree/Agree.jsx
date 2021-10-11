@@ -5,14 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 import * as userSlice from "../../features/user/userSlice";
+import * as rootSlice from "../../features/root/rootSlice";
 
 import { timestamp } from "../../functions/timestamp";
 
 export const Agree = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const agree = useSelector(userSlice.data).agree;
-  const verification = useSelector(userSlice.verified).agree;
+  const agree = useSelector(rootSlice.data).agree;
+  const verification = useSelector(rootSlice.verified).agree;
 
   useEffect(() => {
     verification && location?.pathname !== "/terms"

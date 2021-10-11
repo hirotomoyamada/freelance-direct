@@ -3,7 +3,7 @@ import styles from "./Item.module.scss";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import * as postSlice from "../../post/postSlice";
+import * as rootSlice from "../../root/rootSlice";
 
 import { Post } from "./components/post/Post";
 import { User } from "./components/user/User";
@@ -25,7 +25,7 @@ export const Item = ({
   const history = useHistory();
 
   const handleOpen = (index) => {
-    search && dispatch(postSlice.handleSearch({ control: true }));
+    search && dispatch(rootSlice.handleSearch({ control: true }));
     history.push(`/${index}/${index === "post" ? post.objectID : post.uid}`);
   };
 

@@ -1,20 +1,17 @@
 export const addFollow = (state, action) => {
-  if (state.posts.home.companys.posts.length) {
-    state.posts.home.companys.posts = [
-      action.payload,
-      ...state.posts.home.companys.posts,
-    ];
+  if (state.home.companys.posts.length) {
+    state.home.companys.posts = [action.payload, ...state.home.companys.posts];
   }
 
-  state.posts.home.matters.control = true;
+  state.home.matters.control = true;
 };
 
 export const removeFollow = (state, action) => {
-  state.posts.home.companys.posts = state.posts.home.companys.posts.filter(
+  state.home.companys.posts = state.home.companys.posts.filter(
     (post) => post.uid !== action.payload
   );
 
-  state.posts.home.matters.posts = state.posts.home.matters.posts.filter(
+  state.home.matters.posts = state.home.matters.posts.filter(
     (post) => post.uid !== action.payload
   );
 };

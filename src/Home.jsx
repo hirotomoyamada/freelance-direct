@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { homePosts } from "./features/post/functions/homePosts";
 
 import { useDispatch, useSelector } from "react-redux";
+import * as rootSlice from "./features/root/rootSlice";
 import * as userSlice from "./features/user/userSlice";
 import * as postSlice from "./features/post/postSlice";
 
@@ -14,9 +15,8 @@ import { List } from "./features/post/list/List";
 export const Home = () => {
   const dispatch = useDispatch();
 
-  const index = useSelector(postSlice.index);
+  const index = useSelector(rootSlice.index);
   const user = useSelector(userSlice.user);
-  const info = useSelector(userSlice.data).information;
 
   const posts = useSelector((state) =>
     postSlice.posts({
@@ -42,10 +42,12 @@ export const Home = () => {
   );
 
   useEffect(() => {
-    dispatch(postSlice.handlePage("home"));
+    dispatch(rootSlice.handlePage("home"));
+  }, [dispatch]);
 
+  useEffect(() => {
     (index === "enable" || index === "hold" || index === "disable") &&
-      dispatch(postSlice.handleIndex("matters"));
+      dispatch(rootSlice.handleIndex("matters"));
   }, [dispatch, index]);
 
   useEffect(() => {
@@ -66,7 +68,7 @@ export const Home = () => {
     <div>
       <Fetch />
 
-      <Header user={user} type="home" info={info} index={index} />
+      <Header user={user} type="home" index={index} />
       <List user={user} index={index} posts={posts} hit={hit} home />
     </div>
   );

@@ -4,12 +4,12 @@ import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
-import * as postSlice from "../../post/postSlice";
+import * as rootSlice from "../../../root/rootSlice";
 
-import { Item } from "../../post/item/Item";
+import { Item } from "../../item/Item";
 
 export const Footer = ({ post, posts, user }) => {
-  const load = useSelector(postSlice.load);
+  const load = useSelector(rootSlice.load);
 
   return (
     <div className={styles.side}>

@@ -1,19 +1,19 @@
 import styles from "./Header.module.scss";
 
-import { useDispatch } from "react-redux";
-import * as userSlice from "../../features/user/userSlice";
-import * as postSlice from "../../features/post/postSlice";
+import { useDispatch, useSelector } from "react-redux";
+import * as rootSlice from "../../features/root/rootSlice";
 
 import { Icon } from "../icon/Icon";
 import { Search } from "./components/search/Search";
 import { Menu } from "./components/menu/Menu";
 import { Information } from "./components/information/Information";
 
-export const Header = ({ user, index, info, posts, type }) => {
+export const Header = ({ user, index, posts, type }) => {
   const dispatch = useDispatch();
+  const info = useSelector(rootSlice.data).information;
 
   const handleMenu = () => {
-    dispatch(userSlice.handleMenu("open"));
+    dispatch(rootSlice.handleMenu("open"));
   };
 
   const handleIndex = (i) => {
@@ -21,7 +21,7 @@ export const Header = ({ user, index, info, posts, type }) => {
       return;
     }
     window.scrollTo(0, 0);
-    dispatch(postSlice.handleIndex(i));
+    dispatch(rootSlice.handleIndex(i));
   };
 
   return (

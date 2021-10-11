@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 
+import * as rootSlice from "../../root/rootSlice";
 import * as userSlice from "../userSlice";
-import * as postSlice from "../../post/postSlice";
+
 import * as functions from "./functions/functions";
 import { auth } from "../../../firebase";
 
@@ -22,7 +23,7 @@ export const Setting = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(userSlice.user);
-  const demo = useSelector(userSlice.verified).demo;
+  const demo = useSelector(rootSlice.verified).demo;
 
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState(false);
@@ -34,7 +35,7 @@ export const Setting = () => {
   const methods = useForm();
 
   useEffect(() => {
-    dispatch(postSlice.handlePage("setting"));
+    dispatch(rootSlice.handlePage("setting"));
   }, [dispatch]);
 
   const handleClose = () => {
@@ -109,7 +110,7 @@ export const Setting = () => {
     history.push("/");
 
     dispatch(
-      userSlice.handleAnnounce({
+      rootSlice.handleAnnounce({
         type: "success",
         text: "ログアウトしました",
       })

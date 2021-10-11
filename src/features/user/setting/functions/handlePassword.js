@@ -1,7 +1,8 @@
 import firebase from "firebase/app";
 import { auth } from "../../../../firebase";
 
-import * as userSlice from "../../userSlice";
+import * as rootSlice from "../../../root/rootSlice";
+
 
 export const handlePassword = async ({
   dispatch,
@@ -26,7 +27,7 @@ export const handlePassword = async ({
         methods.reset();
 
         dispatch(
-          userSlice.handleAnnounce({
+          rootSlice.handleAnnounce({
             type: "error",
             text: "パスワードが正しくありません",
           })
@@ -47,7 +48,7 @@ export const handlePassword = async ({
             methods.reset();
 
             dispatch(
-              userSlice.handleAnnounce({
+              rootSlice.handleAnnounce({
                 type: "success",
                 text: "パスワードを更新しました",
               })
@@ -55,7 +56,7 @@ export const handlePassword = async ({
           })
           .catch((e) => {
             dispatch(
-              userSlice.handleAnnounce({
+              rootSlice.handleAnnounce({
                 type: "error",
                 text: "パスワードの更新に失敗しました",
               })
@@ -64,7 +65,7 @@ export const handlePassword = async ({
       })
       .catch(() => {
         dispatch(
-          userSlice.handleAnnounce({
+          rootSlice.handleAnnounce({
             type: "error",
             text: "パスワードが正しくありません",
           })

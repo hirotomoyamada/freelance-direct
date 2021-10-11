@@ -6,8 +6,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { auth } from "./firebase";
 
 import { login } from "./features/user/functions/login";
+import * as rootSlice from "./features/root/rootSlice";
 import * as userSlice from "./features/user/userSlice";
-import * as postSlice from "./features/post/postSlice";
 
 import { Meta } from "./Meta";
 
@@ -36,12 +36,9 @@ export const App = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(userSlice.user);
-  const menu = useSelector(userSlice.menu);
-  const access = useSelector(userSlice.verified).access;
-  const notFound = {
-    user: useSelector(userSlice.notFound),
-    post: useSelector(postSlice.notFound),
-  };
+  const menu = useSelector(rootSlice.menu);
+  const access = useSelector(rootSlice.verified).access;
+  const notFound = useSelector(rootSlice.notFound);
 
   const [browser, setBrowser] = useState(true);
   const [control, setControl] = useState(
@@ -71,7 +68,7 @@ export const App = () => {
       window.innerWidth < 959 ? setControl(true) : setControl(false);
     };
 
-    !control && dispatch(userSlice.handleMenu("reset"));
+    !control && dispatch(rootSlice.handleMenu("reset"));
 
     window.addEventListener("resize", resize);
 
@@ -86,7 +83,7 @@ export const App = () => {
       <BrowserRouter>
         <Meta />
 
-        {notFound.user || notFound.post ? (
+        {notFound ? (
           <NotFound />
         ) : browser ? (
           <>
@@ -146,7 +143,7 @@ export const App = () => {
                         ? "overlay_open"
                         : menu.control && "overlay_close"
                     }`}
-                    onClick={() => dispatch(userSlice.handleMenu("close"))}
+                    onClick={() => dispatch(rootSlice.handleMenu("close"))}
                   ></div>
                 )}
               </div>

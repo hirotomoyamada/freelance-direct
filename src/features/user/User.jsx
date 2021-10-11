@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchUser } from "./functions/fetchUser";
 import { userPosts } from "../post/functions/userPosts";
-import * as postSlice from "../post/postSlice";
+import * as rootSlice from "../root/rootSlice";
 import * as userSlice from "./userSlice";
+import * as postSlice from "../post/postSlice";
 
 import { Header } from "./components/header/Header";
 import { Edit } from "./components/edit/Edit";
@@ -45,7 +46,7 @@ export const User = (props) => {
   );
 
   useEffect(() => {
-    dispatch(postSlice.handlePage("user"));
+    dispatch(rootSlice.handlePage("user"));
   }, [dispatch]);
 
   useEffect(() => {

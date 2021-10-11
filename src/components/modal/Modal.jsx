@@ -1,22 +1,16 @@
 import styles from "./Modal.module.scss";
 
 import { useSelector } from "react-redux";
-import * as postSlice from "../../features/post/postSlice";
-import * as userSlice from "../../features/user/userSlice";
+import * as rootSlice from "../../features/root/rootSlice";
 
 import { Profile } from "../../features/user/profile/Profile";
 import { Entry } from "../../features/user/entry/Entry";
 import { Home } from "../../features/user/home/Home";
 
-export const Modal = ({ index, user, post, selectUser }) => {
-  const postModal = useSelector(postSlice.modal);
-  const userModal = useSelector(userSlice.modal);
-  const type = postModal.type
-    ? postModal.type
-    : userModal.type && userModal.type;
-  const open = postModal.open
-    ? postModal.open
-    : userModal.open && userModal.open;
+export const Modal = ({ index, user, post }) => {
+  const modal = useSelector(rootSlice.modal);
+  const type = modal.type;
+  const open = modal.open;
 
   const Inner = () => {
     switch (type) {
