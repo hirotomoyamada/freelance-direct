@@ -103,7 +103,7 @@ export const Search = ({ index, posts }) => {
         <CloseIcon className={styles.search_icon} />
       </button>
 
-      {index === "post" && (
+      {index === "matters" && (
         <div className={styles.search_cmd}>
           <button
             type="button"

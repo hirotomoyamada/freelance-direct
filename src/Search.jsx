@@ -6,6 +6,8 @@ import * as userSlice from "./features/user/userSlice";
 import * as postSlice from "./features/post/postSlice";
 
 import { Header } from "./components/header/Header";
+import { Fetch } from "./components/load/Load";
+
 import { List } from "./features/post/list/List";
 
 export const Search = () => {
@@ -16,11 +18,19 @@ export const Search = () => {
   const user = useSelector(userSlice.user);
 
   const posts = useSelector((state) =>
-    postSlice.posts({ state: state, page: "search", index: index })
+    postSlice.posts({
+      state: state,
+      page: "search",
+      index: index === "matters" || index === "companys" ? index : "matters",
+    })
   );
 
   const hit = useSelector((state) =>
-    postSlice.hit({ state: state, page: "search", index: index })
+    postSlice.hit({
+      state: state,
+      page: "search",
+      index: index === "matters" || index === "companys" ? index : "matters",
+    })
   );
 
   useEffect(() => {
@@ -54,6 +64,8 @@ export const Search = () => {
 
   return (
     <div>
+      <Fetch />
+
       <Header user={user} type="search" index={index} />
       <List user={user} index={index} posts={posts} hit={hit} search />
     </div>

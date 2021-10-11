@@ -72,7 +72,8 @@ export const List = ({ index, posts, user, home, search, selectUser, hit }) => {
       dispatch(
         homePosts({
           index: index,
-          follows: [user.uid, ...user.home],
+          follows:
+            index === "matters" ? [user.uid, ...user.home] : user.follows,
           page: page,
         })
       ).then(() => {

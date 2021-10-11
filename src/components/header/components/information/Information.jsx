@@ -1,48 +1,28 @@
 import styles from "./Information.module.scss";
 
+import { useDispatch } from "react-redux";
+import * as userSlice from "../../../../features/user/userSlice";
 import InfoIcon from "@material-ui/icons/Info";
-
-import { useState } from "react";
-
-import { timestamp } from "../../../../functions/timestamp";
+import SettingsIcon from "@material-ui/icons/Settings";
 
 export const Information = ({ info }) => {
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleOpen = () => {
-    setOpen(!open);
-    document.body.classList.add("lock");
-  };
-  const handleClose = () => {
-    setOpen(!open);
-    document.body.classList.remove("lock");
-  };
   return (
-    <>
-      <button type="button" onClick={handleOpen} className={styles.info}>
+    <div className={styles.info}>
+      <button
+        type="button"
+        onClick={() =>
+          dispatch(userSlice.handleModal({ type: "info", open: true }))
+        }
+        className={styles.info_wrap}
+      >
         <InfoIcon className={styles.info_icon} />
         <span className={styles.info_title}>{info?.title}</span>
       </button>
-      
-      <div className={open ? styles.open : styles.close}>
-        <div className={styles.overlay} onClick={handleClose}></div>
-
-        <div className={styles.popup}>
-          <span className={styles.popup_time}>{timestamp(info?.updateAt)}</span>
-
-          <span className={styles.popup_title}>{info?.title}</span>
-
-          <div className={styles.popup_body}>{info?.body}</div>
-
-          <button
-            type="button"
-            className={styles.popup_btn}
-            onClick={handleClose}
-          >
-            とじる
-          </button>
-        </div>
-      </div>
-    </>
+      <button className={styles.setting}>
+        <SettingsIcon className={styles.setting_icon} />
+      </button>
+    </div>
   );
 };

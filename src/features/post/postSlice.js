@@ -18,12 +18,6 @@ export const postSlice = createSlice({
   reducers: {
     resetPost: (state, action) => reducers.resetPost(state, action),
 
-    addLike: (state, action) => reducers.addLike(state, action),
-    removeLike: (state, action) => reducers.removeLike(state, action),
-    addEntry: (state, action) => reducers.addEntry(state, action),
-    addFollow: (state, action) => reducers.addFollow(state, action),
-    removeFollow: (state, action) => reducers.removeFollow(state, action),
-
     handleIndex: (state, action) => reducers.handleIndex(state, action),
     handleSearch: (state, action) => reducers.handleSearch(state, action),
     handleSort: (state, action) => reducers.handleSort(state, action),
@@ -68,17 +62,34 @@ export const postSlice = createSlice({
     builder.addCase(fetchPost.fulfilled, (state, action) =>
       reducers.fetchPost(state, action)
     );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/addLike"),
+      (state, action) => reducers.addLike(state, action)
+    );
+    builder.addMatcher(
+      (action) => action.type.endsWith("/removeLike"),
+      (state, action) => reducers.removeLike(state, action)
+    );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/addEntry"),
+      (state, action) => reducers.addEntry(state, action)
+    );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/addFollow"),
+      (state, action) => reducers.addFollow(state, action)
+    );
+    builder.addMatcher(
+      (action) => action.type.endsWith("/removeFollow"),
+      (state, action) => reducers.removeFollow(state, action)
+    );
   },
 });
 
 export const {
   resetPost,
-
-  addLike,
-  removeLike,
-  addEntry,
-  addFollow,
-  removeFollow,
 
   handleIndex,
   handleSearch,

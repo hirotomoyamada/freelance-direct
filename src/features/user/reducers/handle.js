@@ -9,7 +9,9 @@ export const handleAnnounce = (state, action) => {
   }
 };
 
-export const handleModal = (state, action) => {};
+export const handleModal = (state, action) => {
+  console.log(action.payload);
+};
 
 export const handleMenu = (state, action) => {
   if (action.payload === "open") {
