@@ -1,12 +1,12 @@
 import styles from "./Information.module.scss";
 
 import { useSelector } from "react-redux";
-import * as userSlice from "../../../../features/user/userSlice";
+import * as rootSlice from "../../../../features/root/rootSlice";
 
 import { timestamp } from "../../../../functions/timestamp";
 
 export const Information = ({ handleClose }) => {
-  const info = useSelector(userSlice.data).information;
+  const info = useSelector(rootSlice.data).information;
 
   return (
     <div className={styles.info}>
