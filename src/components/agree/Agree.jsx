@@ -15,9 +15,7 @@ export const Agree = () => {
   const verification = useSelector(userSlice.verified).agree;
 
   useEffect(() => {
-    verification &&
-    location?.pathname !== "/asct" &&
-    location?.pathname !== "/terms"
+    verification && location?.pathname !== "/terms"
       ? document.body.classList.add("lock")
       : document.body.classList.remove("lock");
   }, [location, verification]);
@@ -29,9 +27,7 @@ export const Agree = () => {
   return (
     <div
       className={
-        verification &&
-        location?.pathname !== "/asct" &&
-        location?.pathname !== "/terms"
+        verification && location?.pathname !== "/terms"
           ? styles.open
           : styles.close
       }
@@ -47,7 +43,6 @@ export const Agree = () => {
 
         <div className={styles.agree_link}>
           <Link to={"/terms"}>利用規約</Link>
-          <Link to={"/asct"}>特定商取引法に基づく表示</Link>
         </div>
 
         <button

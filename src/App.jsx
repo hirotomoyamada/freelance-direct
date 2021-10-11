@@ -21,7 +21,6 @@ import { Demo } from "./components/demo/Demo";
 import { Promotion } from "./promotion/Promotion";
 import { Contact } from "./promotion/pages/contact/Contact";
 import { Terms } from "./promotion/pages/terms/Terms";
-import { Asct } from "./promotion/pages/asct/Asct";
 import { Auth } from "./features/user/auth/Auth";
 
 import { Home } from "./Home";
@@ -105,7 +104,6 @@ export const App = () => {
 
                 <Route exact path="/contact" component={Contact} />
                 <Route exact path="/terms" component={Terms} />
-                <Route exact path="/asct" component={Asct} />
 
                 {!access && (
                   <>
@@ -132,7 +130,6 @@ export const App = () => {
                   <Route exact path="/setting" component={Setting} />
 
                   <Route exact path="/terms" component={Terms} />
-                  <Route exact path="/asct" component={Asct} />
 
                   <Route exact path="/:list" component={List} />
 

@@ -1,5 +1,5 @@
 import styles from "../Header.module.scss";
-import { timestamp } from "../../../../../../functions/timestamp";
+import { timestamp } from "../../../../../../../functions/timestamp";
 
 export const At = ({ post }) => {
   return (

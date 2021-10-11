@@ -52,10 +52,6 @@ export const Main = ({
           利用規約
         </Link>
 
-        <Link to={"/asct"} className={styles.main_link}>
-          特定商取引法に基づく表示
-        </Link>
-
         <button
           type="button"
           onClick={() => setRemove(true)}

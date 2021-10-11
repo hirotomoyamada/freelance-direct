@@ -18,9 +18,6 @@ export const Footer = ({ handleOpen }) => {
           <li>
             <Link to={"/terms"}>利用規約</Link>
           </li>
-          <li>
-            <Link to={"/asct"}>特定商取引法に基づく表示</Link>
-          </li>
         </ul>
       </nav>
       <small>© Hitmeup, Inc. All Rights Reserved.</small>
