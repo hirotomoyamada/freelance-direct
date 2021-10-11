@@ -32,7 +32,7 @@ export const Main = ({ post, user, entry, handleEntry }) => {
         </div>
       )}
 
-      <Txt tag="概要" txt={post?.body} txtarea />
+      <Txt tag="詳細" txt={post?.body} txtarea />
 
       <Feilds tag="必須" objects={post?.requires} />
 
