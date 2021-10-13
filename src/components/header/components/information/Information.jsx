@@ -12,9 +12,7 @@ export const Information = ({ info }) => {
     <div className={styles.info}>
       <button
         type="button"
-        onClick={() =>
-          dispatch(rootSlice.handleModal({ type: "info", open: true }))
-        }
+        onClick={() => dispatch(rootSlice.handleModal({ type: "info" }))}
         className={styles.info_wrap}
       >
         <InfoIcon className={styles.info_icon} />
