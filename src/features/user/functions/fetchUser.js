@@ -7,11 +7,6 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async (data) => {
     .then(({ data }) => {
       return data;
     })
-    .catch(() => {
-      return {
-        notFound: true,
-      };
-    });
 
   return user;
 });

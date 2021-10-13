@@ -54,6 +54,16 @@ export const rootSlice = createSlice({
       (action) => action.type.endsWith("/logout"),
       (state) => {
         state.load.root = false;
+
+        state.verified = {
+          index: false,
+          email: false,
+          profile: false,
+          agree: false,
+          status: "",
+          access: true,
+          demo: false,
+        };
       }
     );
 
@@ -82,13 +92,10 @@ export const rootSlice = createSlice({
     builder.addMatcher(
       (action) => action.type.endsWith("/createProfile/fulfilled"),
       (state) => {
-        state.verified = {
-          email: false,
-          profile: false,
-          agree: false,
-          plan: false,
-          status: "hold",
-        };
+        state.verified.email = false;
+        state.verified.profile = false;
+        state.verified.agree = false;
+        state.verified.status = "hold";
       }
     );
   },
