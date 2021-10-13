@@ -1,5 +1,4 @@
-import { login, logout } from "./auth";
-import { createProfile } from "./createProfile";
+import { login } from "./login";
 import { fetchUser } from "./fetchUser";
 
 import { editProfile } from "./editProfile";
@@ -15,9 +14,7 @@ import { updateHome } from "./home";
 
 export {
   login,
-  createProfile,
   fetchUser,
-  logout,
   editProfile,
   enableAgree,
   addProvider,
@@ -28,5 +25,4 @@ export {
   addFollow,
   removeFollow,
   updateHome,
-
 };

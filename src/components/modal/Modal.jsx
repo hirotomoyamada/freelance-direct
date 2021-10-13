@@ -1,68 +1,91 @@
 import styles from "./Modal.module.scss";
 
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import * as rootSlice from "../../features/root/rootSlice";
+import * as userSlice from "../../features/user/userSlice";
+import * as postSlice from "../../features/post/postSlice";
 
-import { Profile } from "../../features/user/profile/Profile";
-import { Entry } from "../../features/user/entry/Entry";
-import { Home } from "../../features/user/home/Home";
+import { Profile } from "./components/profile/Profile";
+import { Entry } from "./components/entry/Entry";
+import { Home } from "./components/home/Home";
+import { Information } from "./components/information/Information";
+import { Demo } from "./components/demo/Demo";
+import { Agree } from "./components/agree/Agree";
+import { Delete } from "./components/delete/Delete";
 
-export const Modal = ({ index, user, post }) => {
+export const Modal = () => {
+  const dispatch = useDispatch();
+  const index = useSelector(rootSlice.index);
+  const user = useSelector(userSlice.user);
+  const post = useSelector(postSlice.post);
   const modal = useSelector(rootSlice.modal);
-  const type = modal.type;
-  const open = modal.open;
+
+  const location = useLocation();
+
+  useEffect(() => {
+    location?.pathname === "/terms"
+      ? document.body.classList.remove("lock")
+      : modal.open && document.body.classList.add("lock");
+  }, [location, modal.open]);
 
   const Inner = () => {
-    switch (type) {
+    switch (modal.type) {
+      case "agree":
+        return <Agree user={user} />;
+      case "demo":
+        return <Demo user={user} handleClose={handleClose} />;
+      case "info":
+        return <Information user={user} handleClose={handleClose} />;
       case "home":
-        return <Home user={user} />;
-      case "profile":
-        return <Profile user={user} />;
+        return <Home user={user} handleClose={handleClose} />;
       case "entry":
-        return <Entry index={index} user={user} post={post} />;
+        return (
+          <Entry
+            index={index}
+            user={user}
+            post={post}
+            handleClose={handleClose}
+          />
+        );
+      case "profile":
+        return <Profile user={user} handleClose={handleClose} />;
+      case "delete":
+        return (
+          <Delete
+            text={modal.text}
+            close={modal.close}
+            handleClose={handleClose}
+            handleDelete={modal.delete}
+          />
+        );
       default:
         return <></>;
     }
   };
 
+  const handleClose = () => {
+    dispatch(rootSlice.handleModal());
+  };
+
   return (
-    <div className={open ? styles.open : styles.close}>
+    <div
+      className={
+        modal.open &&
+        location?.pathname !== "/asct" &&
+        location?.pathname !== "/terms"
+          ? styles.open
+          : styles.close
+      }
+    >
       <div className={styles.overlay}></div>
-      <div className={`${styles.modal} ${type !== "home" && styles.modal_sp}`}>
+      <div
+        className={`${styles.modal} ${
+          modal.type !== "home" && styles.modal_sp
+        }`}
+      >
         <Inner />
-      </div>
-    </div>
-  );
-};
-
-export const VerificationModal = ({ verification, text, cancel, submit }) => {
-  return (
-    <div className={verification ? styles.open : styles.close}>
-      <div className={styles.overlay}></div>
-
-      <div className={styles.modal}>
-        <div className={styles.modal_verification}>
-          <p className={styles.modal_ttl}>{text}を削除</p>
-          <span className={styles.modal_desc}>
-            本当にこの{text}を削除してよろしいですか？
-          </span>
-          <div className={styles.modal_menu}>
-            <button
-              type="button"
-              className={styles.modal_menu_cancel}
-              onClick={cancel}
-            >
-              キャンセル
-            </button>
-            <button
-              type={submit !== "submit" ? "button" : "submit"}
-              className={styles.modal_menu_submit}
-              onClick={submit !== "submit" ? submit : undefined}
-            >
-              削除
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );

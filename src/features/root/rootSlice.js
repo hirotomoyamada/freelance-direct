@@ -26,6 +26,17 @@ export const rootSlice = createSlice({
         state.load.list = true;
       }
     );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/rejected"),
+      (state) => {
+        state.notFound = true;
+
+        state.load.fetch = false;
+        state.load.list = false;
+      }
+    );
+
     builder.addMatcher(
       (action) => action.type.endsWith("/fulfilled"),
       (state) => {
@@ -40,8 +51,45 @@ export const rootSlice = createSlice({
     );
 
     builder.addMatcher(
-      (action) => action.type.endsWith("/updateHome"),
+      (action) => action.type.endsWith("/logout"),
+      (state) => {
+        state.load.root = false;
+      }
+    );
+
+    builder.addMatcher(
+      (action) =>
+        action.type.endsWith("/editProfile") ||
+        action.type.endsWith("/updateHome"),
       (state) => reducers.modal(state)
+    );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/enableAgree"),
+      (state) => {
+        state.verified.agree = false;
+        reducers.modal(state);
+      }
+    );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/addProvider"),
+      (state) => {
+        state.announce.success = "認証されました";
+      }
+    );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/createProfile/fulfilled"),
+      (state) => {
+        state.verified = {
+          email: false,
+          profile: false,
+          agree: false,
+          plan: false,
+          status: "hold",
+        };
+      }
     );
   },
 });

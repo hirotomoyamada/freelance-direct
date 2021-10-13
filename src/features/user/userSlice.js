@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
 
 import { login } from "./functions/login";
-import { createProfile } from "./functions/createProfile";
 import { fetchUser } from "./functions/fetchUser";
 
 import * as reducers from "./reducers/reducers";
@@ -13,7 +12,9 @@ export const userSlice = createSlice({
   initialState,
 
   reducers: {
-    logout: (state) => reducers.logout(state),
+    logout: () => {
+      return initialState;
+    },
 
     editProfile: (state, action) => reducers.editProfile(state, action),
     enableAgree: (state) => reducers.enableAgree(state),
@@ -31,9 +32,6 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) =>
       reducers.login(state, action)
-    );
-    builder.addCase(createProfile.fulfilled, (state) =>
-      reducers.createProfile(state)
     );
     builder.addCase(fetchUser.fulfilled, (state, action) =>
       reducers.fetchUser(state, action)

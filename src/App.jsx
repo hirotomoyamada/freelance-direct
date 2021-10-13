@@ -10,26 +10,25 @@ import * as rootSlice from "./features/root/rootSlice";
 import * as userSlice from "./features/user/userSlice";
 
 import { Meta } from "./Meta";
-
 import { Load } from "./components/load/Load";
 import { Announce } from "./components/announce/Announce";
-import { Agree } from "./components/agree/Agree";
-import { Maintenance } from "./components/maintenance/Maintenance";
-import { NotFound } from "./components/notFound/NotFound";
-import { Demo } from "./components/demo/Demo";
-
-import { Promotion } from "./promotion/Promotion";
-import { Contact } from "./promotion/pages/contact/Contact";
-import { Terms } from "./promotion/pages/terms/Terms";
-import { Auth } from "./features/user/auth/Auth";
 
 import { Home } from "./Home";
 import { Search } from "./Search";
 import { Post } from "./features/post/Post";
 import { User } from "./features/user/User";
-import { List } from "./features/user/list/List";
-import { Setting } from "./features/user/setting/Setting";
 
+import { Auth } from "./pages/auth/Auth";
+import { List } from "./pages/list/List";
+import { Setting } from "./pages/setting/Setting";
+import { Terms } from "./pages/terms/Terms";
+import { NotFound } from "./pages/notFound/NotFound";
+import { Maintenance } from "./pages/maintenance/Maintenance";
+
+import { Promotion } from "./promotion/Promotion";
+import { Contact } from "./promotion/pages/contact/Contact";
+
+import { Modal } from "./components/modal/Modal";
 import { Menu } from "./components/menu/Menu";
 
 export const App = () => {
@@ -87,11 +86,10 @@ export const App = () => {
           <NotFound />
         ) : browser ? (
           <>
-            <Maintenance />
-            <Announce />
-            <Agree />
-            <Demo />
             <Load />
+            <Announce />
+            <Maintenance />
+            <Modal />
 
             {!user.uid ? (
               <Switch>

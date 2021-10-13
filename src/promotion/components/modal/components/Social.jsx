@@ -5,7 +5,7 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-import { handleProvider } from "../../../../features/user/auth/functions/handleProvider";
+import { handleProvider } from "../../../../pages/auth/functions/handleProvider";
 
 export const Social = () => {
   return (
