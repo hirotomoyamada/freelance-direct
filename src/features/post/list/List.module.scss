@@ -30,6 +30,30 @@ $width: responsive-width(pc);
     &_user {
       height: 320px;
     }
+
+    &_list {
+      height: calc(100% - 48px);
+
+      @media (max-width: responsive-width(tb)) {
+        height: calc(100% - 80px);
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        height: calc(100% - 64px);
+      }
+    }
+
+    &_requests {
+      height: calc(100% - 97px);
+
+      @media (max-width: responsive-width(tb)) {
+        height: calc(100% - 129px);
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        height: calc(100% - 89px);
+      }
+    }
   }
 
   &_load {
