@@ -26,6 +26,10 @@ $width: responsive-width(pc);
       font-size: 14px;
       color: $sub_clr;
     }
+
+    &_user {
+      height: 320px;
+    }
   }
 
   &_load {

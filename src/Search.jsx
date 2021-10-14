@@ -41,11 +41,6 @@ export const Search = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    (index === "enable" || index === "hold" || index === "disable") &&
-      dispatch(rootSlice.handleIndex("matters"));
-  }, [dispatch, index]);
-
-  useEffect(() => {
     (index === "matters" || index === "companys") &&
       (search.value || search.target || search.type || !search.control) &&
       dispatch(

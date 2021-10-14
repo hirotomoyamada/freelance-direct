@@ -5,11 +5,14 @@ import Loader from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import * as rootSlice from "../../../root/rootSlice";
 
-export const NotFound = ({ index, list }) => {
+export const NotFound = ({ index, list, selectUser }) => {
   const load = useSelector(rootSlice.load).list;
 
   return (
-    <div className={styles.list_none} ref={list}>
+    <div
+      className={`${styles.list_none} ${selectUser && styles.list_none_user}`}
+      ref={list}
+    >
       {load ? (
         <Loader type="Grid" color="#4387f4" height={56} width={56} />
       ) : (

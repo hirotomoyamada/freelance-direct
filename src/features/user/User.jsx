@@ -26,6 +26,8 @@ export const User = (props) => {
 
   const currentUser = useSelector(userSlice.user);
   const selectUser = useSelector(userSlice.selectUser);
+  const index = "matters";
+
   const user =
     currentUser?.uid === uid
       ? currentUser
@@ -53,7 +55,6 @@ export const User = (props) => {
     if (currentUser?.uid !== user?.uid) {
       dispatch(fetchUser(uid));
       dispatch(userPosts({ uid: uid }));
-      dispatch(postSlice.resetPost("user"));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uid]);
@@ -84,6 +85,7 @@ export const User = (props) => {
 
       {currentUser?.uid !== user?.uid && (
         <List
+          index={index}
           user={currentUser}
           selectUser={selectUser}
           posts={posts}

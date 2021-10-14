@@ -102,7 +102,7 @@ export const List = ({ index, posts, user, home, search, selectUser, hit }) => {
       {posts?.length ? (
         <Posts index={index} posts={posts} user={user} list={list} />
       ) : (
-        <NotFound index={index} list={list} />
+        <NotFound index={index} list={list} selectUser={selectUser} />
       )}
 
       {posts?.length >= 50 && <Load load={load} page={page} hit={hit} />}

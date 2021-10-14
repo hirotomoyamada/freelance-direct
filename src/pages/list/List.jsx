@@ -17,13 +17,6 @@ export const List = (props) => {
     dispatch(rootSlice.handlePage(list));
   }, [dispatch, list]);
 
-  useEffect(() => {
-    list === "requests"
-      ? dispatch(rootSlice.handleIndex("hold"))
-      : index !== "matters" && dispatch(rootSlice.handleIndex("matters"));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [list]);
-
   return (
     <div>
       <Header user={user} type={list} index={index} />

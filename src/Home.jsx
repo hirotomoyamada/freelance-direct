@@ -47,11 +47,6 @@ export const Home = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    (index === "enable" || index === "hold" || index === "disable") &&
-      dispatch(rootSlice.handleIndex("matters"));
-  }, [dispatch, index]);
-
-  useEffect(() => {
     (index === "matters" || index === "companys") &&
       (!posts.length || control) &&
       dispatch(
