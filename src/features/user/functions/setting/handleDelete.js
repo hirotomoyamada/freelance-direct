@@ -52,7 +52,6 @@ export const handleDelete = async ({
               })
             );
             dispatch(rootSlice.handleModal());
-            history.push("/");
           })
           .catch((e) => {
             dispatch(
@@ -84,7 +83,6 @@ export const handleDelete = async ({
           })
         );
         dispatch(rootSlice.handleModal());
-        history.push("/");
       })
       .catch((e) => {
         dispatch(

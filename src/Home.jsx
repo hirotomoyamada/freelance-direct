@@ -52,7 +52,7 @@ export const Home = () => {
   }, [dispatch, index]);
 
   useEffect(() => {
-    (index === "matters" || index === "resources") &&
+    (index === "matters" || index === "companys") &&
       (!posts.length || control) &&
       dispatch(
         homePosts({
@@ -68,7 +68,6 @@ export const Home = () => {
   return (
     <div>
       <Fetch />
-
       <Header user={user} type="home" index={index} />
       <List user={user} index={index} posts={posts} hit={hit} home />
     </div>

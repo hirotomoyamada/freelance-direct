@@ -70,7 +70,6 @@ export const Search = () => {
   return (
     <div>
       <Fetch />
-
       <Header user={user} type="search" index={index} />
       <List user={user} index={index} posts={posts} hit={hit} search />
     </div>

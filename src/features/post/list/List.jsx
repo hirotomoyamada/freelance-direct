@@ -29,8 +29,10 @@ export const List = ({ index, posts, user, home, search, selectUser, hit }) => {
     ) {
       const observer = new IntersectionObserver(
         ([results]) => {
-          if (results.isIntersecting && !intersecting && page < hit.pages) {
-            setIntersecting(results.isIntersecting);
+          if (results.isIntersecting && !intersecting) {
+            if (page < hit.pages) {
+              setIntersecting(results.isIntersecting);
+            }
             setPage((prevPage) => prevPage + 1);
           }
         },

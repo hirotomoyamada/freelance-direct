@@ -12,7 +12,6 @@ import { Information } from "./components/information/Information";
 export const Header = ({
   user,
   index,
-  posts,
   type,
   back,
   email,
@@ -61,7 +60,7 @@ export const Header = ({
           <Icon src={user?.icon} />
         </button>
         {type === "search" ? (
-          <Search index={index} posts={posts} />
+          <Search index={index} />
         ) : type === "home" ? (
           <Information info={info} />
         ) : (
