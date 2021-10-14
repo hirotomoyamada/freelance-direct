@@ -28,6 +28,10 @@ $width: responsive-width(pc);
     height: calc(100vh - 129px);
     background: none;
     z-index: 99;
+
+    @media (max-width: responsive-width(sp)) {
+      height: calc(100vh - 89px);
+    }
   }
 
   &_opacity {
