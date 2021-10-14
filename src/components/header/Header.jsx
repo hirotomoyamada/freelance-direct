@@ -1,6 +1,7 @@
 import styles from "./Header.module.scss";
 
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as rootSlice from "../../features/root/rootSlice";
 
 import { Icon } from "../icon/Icon";
@@ -8,8 +9,21 @@ import { Search } from "./components/search/Search";
 import { Menu } from "./components/menu/Menu";
 import { Information } from "./components/information/Information";
 
-export const Header = ({ user, index, posts, type }) => {
+export const Header = ({
+  user,
+  index,
+  posts,
+  type,
+  back,
+  email,
+  password,
+  create,
+  remove,
+  handleCancel,
+}) => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const info = useSelector(rootSlice.data).information;
 
   const handleMenu = () => {
@@ -24,7 +38,11 @@ export const Header = ({ user, index, posts, type }) => {
     dispatch(rootSlice.handleIndex(i));
   };
 
-  return (
+  const handleBack = () => {
+    history.goBack();
+  };
+
+  return !back || type === "setting" ? (
     <div
       className={`${styles.header} ${
         type === "requests" && styles.header_requests
@@ -64,6 +82,25 @@ export const Header = ({ user, index, posts, type }) => {
       {(type === "home" || type === "search" || type === "requests") && (
         <Menu index={index} type={type} handleIndex={handleIndex} />
       )}
+    </div>
+  ) : (
+    <div
+      className={`${styles.header} ${styles.header_back} ${
+        !type && styles.header_none
+      }`}
+    >
+      <button
+        type="button"
+        className={styles.header_back_cancel}
+        onClick={
+          !email && !password && !create && !remove ? handleBack : handleCancel
+        }
+      >
+        もどる
+      </button>
+      <span className={styles.header_back_ttl}>
+        {!email && !password && !create && !remove ? type : ""}
+      </span>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import { fetchPosts } from "../functions/fetchPosts";
-import { homePosts } from "../functions/homePosts";
-import { userPosts } from "../functions/userPosts";
+import { fetchPosts } from "../actions/fetchPosts";
+import { homePosts } from "../actions/homePosts";
+import { userPosts } from "../actions/userPosts";
 import { Load } from "./components/Load";
 import { Posts } from "./components/Posts";
 import { NotFound } from "./components/NotFound";

@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Uid } from "./components/Uid";
 import { Email } from "./components/Email";
 import { Password } from "./components/Password";
-import { Plan } from "./components/Plan";
 import { At } from "./components/At";
 import { Provider } from "./components/provider/Provider";
 
@@ -20,7 +19,6 @@ export const Main = ({
   setRemove,
   handleProvider,
   handleLogout,
-  history,
 }) => {
   return (
     <div className={`${root.setting_inner} ${root.setting_inner_other}`}>
@@ -29,8 +27,6 @@ export const Main = ({
       <Email user={user} email={email} setEmail={setEmail} />
 
       <Password user={user} password={password} setPassword={setPassword} />
-
-      <Plan user={user} history={history} />
 
       <At user={user} />
 
@@ -54,10 +50,6 @@ export const Main = ({
 
         <Link to={"/terms"} className={styles.main_link}>
           利用規約
-        </Link>
-
-        <Link to={"/asct"} className={styles.main_link}>
-          特定商取引法に基づく表示
         </Link>
 
         <button

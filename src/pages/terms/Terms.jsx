@@ -69,8 +69,8 @@ export const Terms = ({ setTerms }) => {
 
   return (
     <div className={styles.terms}>
-      <Header setTerms={setTerms} ttl="利用規約" back />
-      
+      <Header setTerms={setTerms} type="利用規約" back />
+
       <div className={styles.terms_inner}>
         <Body />
         {sections.map((section, index) => (

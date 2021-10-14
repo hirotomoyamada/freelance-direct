@@ -1,10 +1,10 @@
 import styles from "./Setting.module.scss";
 
-import { useState } from "react";
 import { auth } from "../../firebase";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as rootSlice from "../../features/root/rootSlice";
 import * as userSlice from "../../features/user/userSlice";
@@ -18,7 +18,7 @@ import { Reset } from "./components/page/Reset";
 import { Delete } from "./components/page/Delete";
 import { Main } from "./components/main/Main";
 
-import * as functions from "./functions/functions";
+import * as functions from "../../features/user/functions/functions";
 
 export const Setting = () => {
   const dispatch = useDispatch();
@@ -35,6 +35,10 @@ export const Setting = () => {
 
   const methods = useForm();
 
+  useEffect(() => {
+    dispatch(rootSlice.handlePage("setting"));
+  }, [dispatch]);
+
   const handleCancel = () => {
     setEmail(false);
     setPassword(false);
@@ -49,7 +53,7 @@ export const Setting = () => {
       return;
     }
 
-    functions.handleCreate({ dispatch, methods, handleCancel, data });
+    functions.setting.handleCreate({ dispatch, methods, handleCancel, data });
   };
 
   const handleProvider = (provider) => {
@@ -57,11 +61,11 @@ export const Setting = () => {
       return;
     }
 
-    functions.handleProvider(provider);
+    functions.setting.handleProvider(provider);
   };
 
   const handleEmail = (data) => {
-    functions.handleEmail({
+    functions.setting.handleEmail({
       dispatch,
       methods,
       setEmail,
@@ -72,7 +76,7 @@ export const Setting = () => {
   };
 
   const handlePassword = (data) => {
-    functions.handlePassword({
+    functions.setting.handlePassword({
       dispatch,
       methods,
       setPassword,
@@ -87,7 +91,7 @@ export const Setting = () => {
       return;
     }
 
-    functions.handleReset({
+    functions.setting.handleReset({
       dispatch,
       methods,
       setEmail,
@@ -111,7 +115,7 @@ export const Setting = () => {
   };
 
   const handleDelete = (data) => {
-    functions.handleDelete({
+    functions.setting.handleDelete({
       dispatch,
       history,
       methods,
@@ -124,72 +128,74 @@ export const Setting = () => {
   };
 
   return (
-    <FormProvider {...methods}>
-      <form
-        id="form"
-        className={`${styles.setting} ${
-          !email &&
-          !password &&
-          !create &&
-          !remove &&
-          !reset &&
-          !next &&
-          styles.setting_main
-        }`}
-        onSubmit={methods.handleSubmit(
-          reset
-            ? handleReset
-            : email
-            ? handleEmail
-            : password
-            ? handlePassword
-            : create
-            ? handleCreate
-            : remove && handleDelete
-        )}
-      >
-        <Header
-          user={user}
-          email={email}
-          password={password}
-          create={create}
-          remove={remove}
-          handleCancel={handleCancel}
-          ttl="アカウント情報"
-          back
-          setting
-        />
-
-        {reset ? (
-          <Reset />
-        ) : create ? (
-          <Create />
-        ) : remove ? (
-          <Delete
-            next={next}
-            user={user}
-            setReset={setReset}
-            setNext={setNext}
-          />
-        ) : email ? (
-          <Email next={next} user={user} setReset={setReset} />
-        ) : password ? (
-          <Password next={next} setReset={setReset} />
-        ) : (
-          <Main
+    <div>
+      <FormProvider {...methods}>
+        <form
+          id="form"
+          className={`${styles.setting} ${
+            !email &&
+            !password &&
+            !create &&
+            !remove &&
+            !reset &&
+            !next &&
+            styles.setting_main
+          }`}
+          onSubmit={methods.handleSubmit(
+            reset
+              ? handleReset
+              : email
+              ? handleEmail
+              : password
+              ? handlePassword
+              : create
+              ? handleCreate
+              : remove && handleDelete
+          )}
+        >
+          <Header
             user={user}
             email={email}
-            setEmail={setEmail}
             password={password}
-            setPassword={setPassword}
-            setCreate={setCreate}
-            setRemove={setRemove}
-            handleProvider={handleProvider}
-            handleLogout={handleLogout}
-            history={history}
+            create={create}
+            remove={remove}
+            handleCancel={handleCancel}
+            type={
+              !email && !password && !create && !remove ? "setting" : "back"
+            }
+            back
           />
-        )}
-      </form>
-    </FormProvider>
+
+          {reset ? (
+            <Reset />
+          ) : create ? (
+            <Create />
+          ) : remove ? (
+            <Delete
+              next={next}
+              user={user}
+              setReset={setReset}
+              setNext={setNext}
+            />
+          ) : email ? (
+            <Email next={next} user={user} setReset={setReset} />
+          ) : password ? (
+            <Password next={next} setReset={setReset} />
+          ) : (
+            <Main
+              user={user}
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+              setCreate={setCreate}
+              setRemove={setRemove}
+              handleProvider={handleProvider}
+              handleLogout={handleLogout}
+            />
+          )}
+        </form>
+      </FormProvider>
+    </div>
   );
 };

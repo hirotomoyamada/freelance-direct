@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchPosts } from "../../../../features/post/functions/fetchPosts";
+import { fetchPosts } from "../../../../features/post/actions/fetchPosts";
 import * as rootSlice from "../../../../features/root/rootSlice";
 
 import { Command } from "../../../command/Command";

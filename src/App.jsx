@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
+import { auth } from "./firebase";
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { HelmetProvider } from "react-helmet-async";
-import { auth } from "./firebase";
 
-import { login } from "./features/user/functions/login";
+import { login } from "./features/user/actions/login";
+
 import * as rootSlice from "./features/root/rootSlice";
 import * as userSlice from "./features/user/userSlice";
 
@@ -21,6 +22,7 @@ import { User } from "./features/user/User";
 import { Auth } from "./pages/auth/Auth";
 import { List } from "./pages/list/List";
 import { Setting } from "./pages/setting/Setting";
+import { HowTo } from "./pages/howTo/HowTo";
 import { Terms } from "./pages/terms/Terms";
 import { NotFound } from "./pages/notFound/NotFound";
 import { Maintenance } from "./pages/maintenance/Maintenance";
@@ -124,6 +126,7 @@ export const App = () => {
                   <Route exact path="/search" component={Search} />
                   <Route exact path="/setting" component={Setting} />
 
+                  <Route exact path="/howto" component={HowTo} />
                   <Route exact path="/terms" component={Terms} />
 
                   <Route exact path="/:list" component={List} />

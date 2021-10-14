@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { initialState } from "./initialState";
 
-import { login } from "./functions/login";
-import { fetchUser } from "./functions/fetchUser";
+import { login } from "./actions/login";
+import { fetchUser } from "./actions/fetchUser";
 
 import * as reducers from "./reducers/reducers";
 

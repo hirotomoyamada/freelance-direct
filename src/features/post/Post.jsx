@@ -1,10 +1,11 @@
 import styles from "./Post.module.scss";
 
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { fetchPost } from "./functions/fetchPost";
+import { fetchPost } from "./actions/fetchPost";
+
 import * as rootSlice from "../root/rootSlice.js";
 import * as userSlice from "../user/userSlice";
 import * as postSlice from "./postSlice";

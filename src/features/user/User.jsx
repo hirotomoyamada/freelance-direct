@@ -5,8 +5,8 @@ import Loader from "react-loader-spinner";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchUser } from "./functions/fetchUser";
-import { userPosts } from "../post/functions/userPosts";
+import { fetchUser } from "./actions/fetchUser";
+import { userPosts } from "../post/actions/userPosts";
 import * as rootSlice from "../root/rootSlice";
 import * as userSlice from "./userSlice";
 import * as postSlice from "../post/postSlice";

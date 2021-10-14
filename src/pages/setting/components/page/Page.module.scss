@@ -30,6 +30,8 @@ $width: responsive-width(pc);
     font-size: 14px;
     text-align: center;
 
+    line-height: 1.4;
+
     @media (max-width: responsive-width(sp)) {
       font-size: 12px;
     }

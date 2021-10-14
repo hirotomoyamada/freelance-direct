@@ -106,4 +106,39 @@ $width: responsive-width(pc);
       height: 32px;
     }
   }
+
+  &_back {
+    position: static;
+    padding: 0 32px;
+
+    display: grid;
+    grid-template-columns: 72px 1fr 72px;
+    border: none;
+
+    font-size: 18px;
+
+    @media (max-width: responsive-width(sp)) {
+      padding: 0 12px;
+      font-size: 14px;
+    }
+
+    &_cancel {
+      color: $acnt_clr;
+      line-height: 48px;
+      font-size: 16px;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 14px;
+      }
+      
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &_ttl {
+      line-height: 48px;
+      text-align: center;
+    }
+  }
 }

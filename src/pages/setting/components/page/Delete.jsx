@@ -73,7 +73,8 @@ export const Delete = ({ next, user, setReset, setNext }) => {
       <div className={styles.head}>
         <p className={styles.head_ttl}>アカウントを削除</p>
         <p className={styles.head_desc}>
-          アカウントを削除すると、これまでのデータはすべて削除されます
+          アカウントを削除すると、
+          <span>これまでのデータはすべて削除されます</span>
         </p>
       </div>
 

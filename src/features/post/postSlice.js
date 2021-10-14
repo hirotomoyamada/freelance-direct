@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { initialState } from "./initialState";
 
-import { promotionPosts } from "./functions/promotionPosts";
-import { fetchPosts } from "./functions/fetchPosts";
-import { userPosts } from "./functions/userPosts";
-import { homePosts } from "./functions/homePosts";
-import { extractPosts } from "./functions/extractPosts";
-import { fetchPost } from "./functions/fetchPost";
+import { promotionPosts } from "./actions/promotionPosts";
+import { fetchPosts } from "./actions/fetchPosts";
+import { userPosts } from "./actions/userPosts";
+import { homePosts } from "./actions/homePosts";
+import { extractPosts } from "./actions/extractPosts";
+import { fetchPost } from "./actions/fetchPost";
 
 import * as reducers from "./reducers/reducers";
 
