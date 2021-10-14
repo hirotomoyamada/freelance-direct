@@ -10,6 +10,7 @@ import { changeEmail } from "./changeEmail";
 import { addLike, removeLike } from "./like";
 import { addEntry } from "./entry";
 import { addFollow, removeFollow } from "./follow";
+import { enableRequest, disableRequest } from "./request";
 import { updateHome } from "./home";
 
 export {
@@ -24,5 +25,7 @@ export {
   addEntry,
   addFollow,
   removeFollow,
+  enableRequest,
+  disableRequest,
   updateHome,
 };

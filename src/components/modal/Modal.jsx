@@ -40,6 +40,8 @@ export const Modal = () => {
         return <Information user={user} handleClose={handleClose} />;
       case "home":
         return <Home user={user} handleClose={handleClose} />;
+      case "profile":
+        return <Profile user={user} handleClose={handleClose} />;
       case "entry":
         return (
           <Entry
@@ -49,8 +51,6 @@ export const Modal = () => {
             handleClose={handleClose}
           />
         );
-      case "profile":
-        return <Profile user={user} handleClose={handleClose} />;
       case "delete":
         return (
           <Delete

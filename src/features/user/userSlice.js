@@ -26,6 +26,8 @@ export const userSlice = createSlice({
     addEntry: (state, action) => reducers.addEntry(state, action),
     addFollow: (state, action) => reducers.addFollow(state, action),
     removeFollow: (state, action) => reducers.removeFollow(state, action),
+    enableRequest: (state, action) => reducers.enableRequest(state, action),
+    disableRequest: (state, action) => reducers.disableRequest(state, action),
     updateHome: (state, action) => reducers.updateHome(state, action),
   },
 
@@ -52,6 +54,8 @@ export const {
   addEntry,
   addFollow,
   removeFollow,
+  enableRequest,
+  disableRequest,
   updateHome,
 } = userSlice.actions;
 

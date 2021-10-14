@@ -21,12 +21,15 @@ export const Body = () => {
               message: "先頭にスペースは使えません",
             },
             maxLength: {
-              value: 144,
-              message: "144文字以内で入力してください",
+              value: 360,
+              message: "360文字以内で入力してください",
             },
           })}
         ></textarea>
-        <span className={styles.form_error}>{errors.body?.message}</span>
+
+        {errors.body?.message && (
+          <span className={styles.form_error}>{errors.body?.message}</span>
+        )}
       </div>
     </div>
   );

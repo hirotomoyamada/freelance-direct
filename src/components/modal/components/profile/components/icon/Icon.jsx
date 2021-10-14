@@ -4,10 +4,10 @@ import { useFormContext } from "react-hook-form";
 export const Icon = () => {
   const { register } = useFormContext();
 
-  const icon = 17;
+  const icon = 35;
   const input = [];
 
-  for (let i = 0; i <= icon; i++) {
+  for (let i = 18; i <= icon; i++) {
     input.push(
       <div key={i} className={styles.icon_item}>
         <input

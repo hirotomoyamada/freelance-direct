@@ -4,7 +4,6 @@ import { functions } from "../../../firebase";
 export const extractPosts = createAsyncThunk(
   "post/extractPosts",
   async (data) => {
-    console.log(data);
     const extractPosts = functions.httpsCallable("fd-extractPosts");
     const posts = extractPosts({
       index: data.index,

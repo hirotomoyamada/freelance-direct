@@ -46,7 +46,7 @@ export const Post = (props) => {
   }, [objectID, user.entries]);
 
   const handleEntry = () => {
-    dispatch(rootSlice.handleModal({ type: "entry", open: true }));
+    dispatch(rootSlice.handleModal({ type: "entry" }));
   };
 
   return (

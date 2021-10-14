@@ -3,7 +3,7 @@ import styles from "../Header.module.scss";
 export const Tools = ({ post }) => {
   const tools = post?.tools;
 
-  return tools[0] ? (
+  return tools?.[0] ? (
     <div className={tools && styles.header_tags}>
       {tools?.[0] &&
         tools.map(

@@ -16,14 +16,14 @@ export const List = (props) => {
 
   const index = useSelector(rootSlice.index);
   const user = useSelector(userSlice.user);
-  const list = props.match.params.list;
+  const type = props.match.params.list;
 
   const posts = useSelector((state) =>
     postSlice.posts({
       state: state,
-      page: list,
+      page: type,
       index:
-        list === "requests"
+        type === "requests"
           ? index === "enable" || index === "hold" || index === "disable"
             ? index
             : "hold"
@@ -34,9 +34,9 @@ export const List = (props) => {
   const hit = useSelector((state) =>
     postSlice.hit({
       state: state,
-      page: list,
+      page: type,
       index:
-        list === "requests"
+        type === "requests"
           ? index === "enable" || index === "hold" || index === "disable"
             ? index
             : "hold"
@@ -45,28 +45,28 @@ export const List = (props) => {
   );
 
   useEffect(() => {
-    dispatch(rootSlice.handlePage(list));
-  }, [dispatch, list]);
+    dispatch(rootSlice.handlePage(type));
+  }, [dispatch, type]);
 
   useEffect(() => {
-    ((list === "requests" && index !== "matters") ||
-      (list !== "requests" && index === "matters")) &&
+    ((type === "requests" && index !== "matters") ||
+      (type !== "requests" && index === "matters")) &&
       !posts.length &&
       dispatch(
         extractPosts({
           index: index,
-          type: list,
-          objectIDs: list !== "requests" ? user[list] : user[list][index],
+          type: type,
+          objectIDs: type !== "requests" ? user[type] : user[type][index],
           fetch: posts.length && true,
         })
       );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, index, list, user]);
+  }, [dispatch, index, type, user]);
 
   return (
     <div>
-      <Header user={user} type={list} index={index} />
-      <Main user={user} index={index} posts={posts} hit={hit} />
+      <Header user={user} type={type} index={index} />
+      <Main user={user} index={index} type={type} posts={posts} hit={hit} />
     </div>
   );
 };

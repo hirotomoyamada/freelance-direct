@@ -10,35 +10,54 @@ import { Header } from "./components/header/Header";
 import { Cover } from "./components/cover/Cover";
 import { Icon } from "./components/icon/Icon";
 import { Form } from "./components/form/Form";
-import { Line } from "./components/line/Line";
 
 export const Profile = ({ user, handleClose }) => {
   const dispatch = useDispatch();
   const [cover, setCover] = useState(false);
   const [icon, setIcon] = useState(false);
-  const [line, setLine] = useState(false);
 
   const methods = useForm({
     defaultValues: {
       name: user?.profile?.name,
-      person: user?.profile?.person,
       icon: user?.icon,
       cover: user?.cover,
       body: user?.profile?.body,
-      more: user?.profile?.more,
-      region: user?.profile?.region,
-      postal: user?.profile?.postal,
-      address: user?.profile?.address,
-      tel: user?.profile?.tel,
-      url: user?.profile?.url,
-      social: user?.profile?.social,
+      age: user?.profile?.age,
+      sex: user?.profile?.sex,
+      position: user?.profile?.position,
+      location: user?.profile?.location,
+      handles: user?.profile?.handles?.[0]
+        ? user?.profile?.handles.map((value) => ({
+            handle: value,
+          }))
+        : [{ handle: "" }, { handle: "" }, { handle: "" }, { handle: "" }],
+      tools: user?.profile?.tools?.[0]
+        ? user?.profile?.tools.map((value) => ({
+            tool: value,
+          }))
+        : [{ tool: "" }, { tool: "" }, { tool: "" }, { tool: "" }],
+      skills: user?.profile?.skills?.[0]
+        ? user?.profile?.skills.map((value) => ({
+            skill: value,
+          }))
+        : [{ skill: "" }, { skill: "" }, { skill: "" }],
+      urls: user?.profile?.urls?.[0]
+        ? user?.profile?.urls.map((value) => ({
+            url: value,
+          }))
+        : [{ url: "" }],
+      data: user?.profile?.data,
+      costs: user?.profile?.costs,
+      working: user?.profile?.working ? user?.profile?.working : 3,
+      resident: user?.profile?.resident ? user?.profile?.resident : "常駐可",
+      clothes: user?.profile?.clothes ? user?.profile?.clothes : "カジュアル",
+      period: user?.profile?.period,
     },
   });
 
   const handleBack = () => {
     setCover(false);
     setIcon(false);
-    setLine(false);
   };
 
   const handleEdit = (data) => {
@@ -51,7 +70,7 @@ export const Profile = ({ user, handleClose }) => {
     <FormProvider {...methods}>
       <form
         className={`${styles.profile} ${
-          (cover || icon || line) && styles.profile_change
+          (cover || icon) && styles.profile_change
         }`}
         onSubmit={methods.handleSubmit(handleEdit)}
       >
@@ -60,12 +79,9 @@ export const Profile = ({ user, handleClose }) => {
           handleBack={handleBack}
           cover={cover}
           icon={icon}
-          line={line}
         />
 
-        {line ? (
-          <Line />
-        ) : cover ? (
+        {cover ? (
           <Cover />
         ) : icon ? (
           <Icon />
@@ -75,7 +91,6 @@ export const Profile = ({ user, handleClose }) => {
             icon={icon}
             setCover={setCover}
             setIcon={setIcon}
-            setLine={setLine}
           />
         )}
       </form>
