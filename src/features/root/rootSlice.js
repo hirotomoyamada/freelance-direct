@@ -68,6 +68,16 @@ export const rootSlice = createSlice({
     );
 
     builder.addMatcher(
+      (action) => action.type.endsWith("/createProfile/fulfilled"),
+      (state) => {
+        state.verified.email = false;
+        state.verified.profile = false;
+        state.verified.agree = false;
+        state.verified.status = "hold";
+      }
+    );
+    
+    builder.addMatcher(
       (action) =>
         action.type.endsWith("/editProfile") ||
         action.type.endsWith("/updateHome"),
@@ -90,12 +100,9 @@ export const rootSlice = createSlice({
     );
 
     builder.addMatcher(
-      (action) => action.type.endsWith("/createProfile/fulfilled"),
+      (action) => action.type.endsWith("/fetchPosts/fulfilled"),
       (state) => {
-        state.verified.email = false;
-        state.verified.profile = false;
-        state.verified.agree = false;
-        state.verified.status = "hold";
+        state.search.control = true;
       }
     );
   },

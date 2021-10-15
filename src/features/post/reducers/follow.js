@@ -8,10 +8,10 @@ export const addFollow = (state, action) => {
 
 export const removeFollow = (state, action) => {
   state.home.companys.posts = state.home.companys.posts.filter(
-    (post) => post.uid !== action.payload
+    (post) => post.uid !== action.payload.uid
   );
 
   state.home.matters.posts = state.home.matters.posts.filter(
-    (post) => post.uid !== action.payload
+    (post) => post.uid !== action.payload.uid
   );
 };

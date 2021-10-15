@@ -1,3 +1,5 @@
+import styles from "./List.module.scss";
+
 import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
@@ -15,6 +17,8 @@ export const List = ({
   user,
   home,
   search,
+  companys,
+  select,
   selectUser,
   type,
   hit,
@@ -83,16 +87,18 @@ export const List = ({
       page !== hit.pages &&
       dispatch(
         homePosts({
-          index: index,
+          index: select ? "companys" : index,
           follows:
-            index === "matters" ? [user.uid, ...user.home] : user.follows,
+            index !== "matters" || select
+              ? user.follows
+              : [user.uid, ...user.home],
           page: page,
         })
       ).then(() => {
         setIntersecting(!intersecting);
       });
 
-    selectUser &&
+    companys &&
       intersecting &&
       hit.pages &&
       page !== hit.pages &&
@@ -123,14 +129,27 @@ export const List = ({
   }, [page]);
 
   return (
-    <>
+    <div className={select && styles.list_scroll}>
       {posts?.length ? (
-        <Posts index={index} posts={posts} user={user} list={list} />
+        <Posts
+          index={index}
+          posts={posts}
+          user={user}
+          list={list}
+          select={select}
+          selectUser={selectUser}
+        />
       ) : (
-        <NotFound index={index} list={list} selectUser={selectUser} />
+        <NotFound
+          index={index}
+          list={list}
+          select={select}
+          home={home}
+          companys={companys}
+        />
       )}
 
       {posts?.length >= 50 && <Load load={load} page={page} hit={hit} />}
-    </>
+    </div>
   );
 };

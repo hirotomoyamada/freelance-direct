@@ -15,9 +15,13 @@ $width: responsive-width(pc);
     padding-bottom: 16px;
   }
 
+  &_scroll {
+    overflow-y: scroll;
+  }
+
   &_none {
     width: 100%;
-    height: calc(100% - 130px);
+    height: calc(100vh - 130px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,31 +31,39 @@ $width: responsive-width(pc);
       color: $sub_clr;
     }
 
-    &_user {
+    &_select {
+      height: calc(80vh - 72px);
+
+      @media (max-width: responsive-width(sp)) {
+        height: calc(80vh - 78px);
+      }
+    }
+
+    &_companys {
       height: 320px;
     }
 
     &_list {
-      height: calc(100% - 48px);
+      height: calc(100vh - 48px);
 
       @media (max-width: responsive-width(tb)) {
-        height: calc(100% - 80px);
+        height: calc(100vh - 80px);
       }
 
       @media (max-width: responsive-width(sp)) {
-        height: calc(100% - 64px);
+        height: calc(100vh - 64px);
       }
     }
 
     &_requests {
-      height: calc(100% - 97px);
+      height: calc(100vh - 97px);
 
       @media (max-width: responsive-width(tb)) {
-        height: calc(100% - 129px);
+        height: calc(100vh - 129px);
       }
 
       @media (max-width: responsive-width(sp)) {
-        height: calc(100% - 89px);
+        height: calc(100vh - 89px);
       }
     }
   }

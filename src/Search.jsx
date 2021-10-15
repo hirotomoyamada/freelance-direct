@@ -42,7 +42,7 @@ export const Search = () => {
 
   useEffect(() => {
     (index === "matters" || index === "companys") &&
-      (search.value || search.target || search.type || !search.control) &&
+      !search.control &&
       dispatch(
         fetchPosts({
           index: index,
@@ -66,13 +66,7 @@ export const Search = () => {
     <div>
       <Fetch />
       <Header user={user} type="search" index={index} />
-      <List
-        user={user}
-        index={index}
-        posts={posts}
-        hit={hit}
-        search={search}
-      />
+      <List user={user} index={index} posts={posts} hit={hit} search={search} />
     </div>
   );
 };

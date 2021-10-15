@@ -3,12 +3,12 @@ import styles from "./Home.module.scss";
 import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { userPosts } from "../../../../features/post/actions/userPosts";
+import { homePosts } from "../../../../features/post/actions/homePosts";
 import * as postSlice from "../../../../features/post/postSlice";
 import * as userSlice from "../../../../features/user/userSlice";
 
 import { Header } from "./components/header/Header";
-import { List } from "./components/List/List";
+import { List } from "../../../../features/post/list/List";
 import { Select } from "./components/select/Select";
 
 export const Home = ({ user, handleClose }) => {
@@ -19,7 +19,7 @@ export const Home = ({ user, handleClose }) => {
   const posts = useSelector((state) =>
     postSlice.posts({
       state: state,
-      page: "user",
+      page: "home",
       index: "companys",
     })
   );
@@ -27,7 +27,7 @@ export const Home = ({ user, handleClose }) => {
   const hit = useSelector((state) =>
     postSlice.hit({
       state: state,
-      page: "user",
+      page: "home",
       index: "companys",
     })
   );
@@ -40,10 +40,10 @@ export const Home = ({ user, handleClose }) => {
     !posts.length &&
       user.follows.length &&
       dispatch(
-        userPosts({
+        homePosts({
           index: "companys",
-          uid: user.uid,
-          uids: user.follows,
+          follows: user.follows,
+          fetch: posts.length && true,
         })
       );
   }, [dispatch, posts, user.follows, user.uid]);
@@ -81,6 +81,7 @@ export const Home = ({ user, handleClose }) => {
         hit={hit}
         select={select}
         selectUser={selectUser}
+        home
       />
     </div>
   );

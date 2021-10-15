@@ -7,6 +7,10 @@ export const homePosts = (state, action) => {
       ];
     } else {
       state.home[action.payload.index].posts = action.payload.posts;
+
+      if (action.payload.index === "matters") {
+        state.home.matters.control = false;
+      }
     }
 
     state.home[action.payload.index].hit = {

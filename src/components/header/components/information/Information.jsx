@@ -18,7 +18,11 @@ export const Information = ({ info }) => {
         <InfoIcon className={styles.info_icon} />
         <span className={styles.info_title}>{info?.title}</span>
       </button>
-      <button className={styles.setting}>
+      <button
+        type="button"
+        onClick={() => dispatch(rootSlice.handleModal({ type: "home" }))}
+        className={styles.setting}
+      >
         <SettingsIcon className={styles.setting_icon} />
       </button>
     </div>

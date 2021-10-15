@@ -38,7 +38,7 @@ export const Home = () => {
   const control = useSelector((state) =>
     postSlice.control({
       state: state,
-      index: index === "matters" || index === "companys" ? index : "matters",
+      index: "matters",
     })
   );
 

@@ -2,9 +2,12 @@ import styles from "../List.module.scss";
 
 import { Item } from "../../item/Item";
 
-export const Posts = ({ index, posts, user, list }) => {
+export const Posts = ({ index, posts, user, list, select, selectUser }) => {
   return (
-    <div className={styles.list} ref={list}>
+    <div
+      className={styles.list}
+      ref={list}
+    >
       {posts.map(
         (post) =>
           post && (
@@ -13,6 +16,8 @@ export const Posts = ({ index, posts, user, list }) => {
               index={index}
               post={post}
               user={user}
+              select={select}
+              selectUser={selectUser}
             />
           )
       )}

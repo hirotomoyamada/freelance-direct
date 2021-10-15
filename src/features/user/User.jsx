@@ -97,6 +97,7 @@ export const User = (props) => {
           selectUser={selectUser}
           posts={posts}
           hit={hit}
+          companys
         />
       )}
     </div>
