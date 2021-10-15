@@ -3,7 +3,7 @@ import styles from "../Person.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
-export const Email = ({ user, demo }) => {
+export const Email = ({ user }) => {
   return (
     <div className={styles.profile_field}>
       <FontAwesomeIcon icon={faEnvelope} className={styles.profile_icon} />
@@ -11,7 +11,7 @@ export const Email = ({ user, demo }) => {
         href={`mailto:${user?.profile?.email}`}
         className={styles.profile_link}
       >
-        {!demo ? user?.profile?.email : "demo@ses-hub.app"}
+        {user?.profile?.email}
       </a>
     </div>
   );

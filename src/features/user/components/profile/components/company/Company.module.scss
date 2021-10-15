@@ -11,26 +11,24 @@ $width: responsive-width(pc);
   gap: 24px;
 
   @media (max-width: responsive-width(sp)) {
-    gap: 8px;
+    gap: 16px;
   }
 
   &_container {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    font-size: 14px;
 
     @media (max-width: responsive-width(sp)) {
       font-size: 12px;
       gap: 8px;
-      margin-bottom: 0;
     }
   }
 
   &_wrap {
     display: flex;
     flex-wrap: wrap;
-    align-items: centZer;
+    align-items: center;
     gap: 8px;
   }
 
@@ -42,7 +40,6 @@ $width: responsive-width(pc);
   }
 
   &_icon {
-    font-size: 14px;
     color: $sub_clr;
     margin-top: 1px;
 

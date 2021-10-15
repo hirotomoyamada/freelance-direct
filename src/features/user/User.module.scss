@@ -25,7 +25,11 @@ $width: responsive-width(pc);
     border-bottom: 1px solid $bg_clr;
 
     @media (max-width: responsive-width(sp)) {
-      padding: 56px 12px 12px;
+      padding: 56px 12px 16px;
+    }
+
+    &_none {
+      border: none;
     }
   }
 }

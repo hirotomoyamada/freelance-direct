@@ -28,9 +28,8 @@ export const Company = ({ user, demo }) => {
         <Url user={user} demo={demo} />
 
         <CreateAt user={user} />
-
-        <Social user={user} demo={demo} />
       </div>
+      <Social user={user} demo={demo} />
     </div>
   );
 };

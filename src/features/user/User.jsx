@@ -18,6 +18,7 @@ import { Follow } from "../../components/follow/Follow";
 
 import { Meta } from "./Meta";
 import { List } from "../post/list/List";
+import { Back } from "./components/back/Back";
 
 export const User = (props) => {
   const dispatch = useDispatch();
@@ -63,11 +64,17 @@ export const User = (props) => {
     <div className={styles.user}>
       <Meta user={user} />
 
+      <Back />
+
       {user.uid ? (
         <>
           <Header user={user} />
 
-          <div className={styles.user_inner}>
+          <div
+            className={`${styles.user_inner} ${
+              currentUser?.uid === user?.uid && styles.user_inner_none
+            }`}
+          >
             {currentUser?.uid === user?.uid ? (
               <Edit />
             ) : (

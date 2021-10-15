@@ -10,6 +10,6 @@ export const Profile = ({ currentUser, user }) => {
   return currentUser?.uid !== user?.uid ? (
     <Company user={user} demo={demo} />
   ) : (
-    <Person user={user} demo={demo} />
+    <Person user={user} />
   );
 };

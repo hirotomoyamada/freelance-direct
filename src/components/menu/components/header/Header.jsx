@@ -1,10 +1,15 @@
 import styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
 import { Icon } from "../../../icon/Icon";
 
-export const Header = ({ user }) => {
+export const Header = ({ user, handlePage }) => {
   return (
-    <Link to={`/user/${user.uid}`} className={styles.header}>
+    <button
+      type="button"
+      className={styles.header}
+      onClick={() => {
+        handlePage("user");
+      }}
+    >
       <div className={styles.header_icon}>
         <Icon src={user?.icon} />
       </div>
@@ -12,6 +17,6 @@ export const Header = ({ user }) => {
         <p className={styles.header_name}>{user?.profile?.name}</p>
         <span className={styles.header_uid}>{user?.uid}</span>
       </div>
-    </Link>
+    </button>
   );
 };

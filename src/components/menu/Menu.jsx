@@ -36,7 +36,7 @@ export const Menu = ({ user }) => {
     if (p === page) {
       return;
     }
-    history.push(`/${p}`);
+    history.push(p === "user" ? `/user/${user.uid}` : `/${p}`);
     control && dispatch(rootSlice.handleMenu("close"));
   };
 
