@@ -11,8 +11,8 @@ export const Name = () => {
     <div className={styles.form_col}>
       <span className={styles.form_tag}>
         名前&nbsp;
-        <span className={styles.form_tag_desc}>
-          ※&nbsp;検索結果にはイニシャル表記になります。承認後、開示されます。
+        <span className={styles.form_tag_exp}>
+          ※検索結果にはイニシャル表記になります。承認後、開示されます。
         </span>
       </span>
       <div>

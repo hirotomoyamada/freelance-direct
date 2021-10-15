@@ -38,6 +38,16 @@ $width: responsive-width(pc);
       }
     }
 
+    &_exp {
+      white-space: pre;
+      color: $sub_clr;
+      font-size: 12px;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 10px;
+      }
+    }
+
     input {
       display: none;
     }
@@ -187,6 +197,10 @@ $width: responsive-width(pc);
 
     &_error {
       border: 1px solid $remove_clr;
+    }
+
+    &_email {
+      color: $sub_clr;
     }
 
     &::placeholder {

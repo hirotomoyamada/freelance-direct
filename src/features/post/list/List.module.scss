@@ -60,6 +60,12 @@ $width: responsive-width(pc);
     display: flex;
     justify-content: center;
 
+    padding-bottom: 32px;
+
+    @media (max-width: responsive-width(sp)) {
+      padding-bottom: 64px;
+    }
+
     &_none {
       display: none;
     }

@@ -66,7 +66,13 @@ export const Search = () => {
     <div>
       <Fetch />
       <Header user={user} type="search" index={index} />
-      <List user={user} index={index} posts={posts} hit={hit} search />
+      <List
+        user={user}
+        index={index}
+        posts={posts}
+        hit={hit}
+        search={search}
+      />
     </div>
   );
 };

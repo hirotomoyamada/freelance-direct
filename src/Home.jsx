@@ -30,7 +30,7 @@ export const Home = () => {
   const hit = useSelector((state) =>
     postSlice.hit({
       state: state,
-      page: "search",
+      page: "home",
       index: index === "matters" || index === "companys" ? index : "matters",
     })
   );

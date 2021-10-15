@@ -17,6 +17,7 @@ import { Working } from "./components/Working";
 import { Clothes } from "./components/Clothes";
 import { Period } from "./components/Period";
 import { Costs } from "./components/Costs";
+import { Email } from "./components/Email";
 
 export const Form = ({ cover, icon, setCover, setIcon }) => {
   return (
@@ -25,6 +26,7 @@ export const Form = ({ cover, icon, setCover, setIcon }) => {
 
       <div className={styles.form}>
         <Name />
+        <Email />
         <Body />
 
         <div className={`${styles.form_grid} ${styles.form_grid_mid}`}>
