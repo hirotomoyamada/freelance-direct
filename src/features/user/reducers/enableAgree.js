@@ -1,3 +1,6 @@
-// import { functions } from "../../../firebase";
+import { functions } from "../../../firebase";
 
-export const enableAgree = (state) => {};
+export const enableAgree = (state) => {
+  const enableAgree = functions.httpsCallable("fd-enableAgree");
+  enableAgree().catch((e) => {});
+};
