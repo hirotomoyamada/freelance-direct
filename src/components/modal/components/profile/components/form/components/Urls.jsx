@@ -60,7 +60,7 @@ export const Urls = () => {
                   <RemoveIcon className={styles.form_btn_icon} />
                 </button>
               )}
-              {i === urlsFields.length - 1 && i < 7 && (
+              {i === urlsFields.length - 1 && i < 2 && (
                 <button
                   type="button"
                   className={styles.form_btn_add}

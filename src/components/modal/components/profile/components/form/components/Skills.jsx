@@ -58,7 +58,7 @@ export const Skills = () => {
                   <RemoveIcon className={styles.form_btn_icon} />
                 </button>
               )}
-              {i === skillsFields.length - 1 && i < 7 && (
+              {i === skillsFields.length - 1 && i < 4 && (
                 <button
                   type="button"
                   className={styles.form_btn_add}
