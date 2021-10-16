@@ -1,23 +1,24 @@
 import styles from "./Form.module.scss";
 
 import { Header } from "./components/header/Header";
-import { Name } from "./components/Name";
-import { Body } from "./components/Body";
 
+import { NickName } from "./components/NickName";
+import { Name } from "./components/Name";
+import { Email } from "./components/Email";
+import { Body } from "./components/Body";
+import { Position } from "./components/Position";
+import { Period } from "./components/Period";
+import { Age } from "./components/Age";
+import { Sex } from "./components/Sex";
+import { Location } from "./components/Location";
 import { Handles } from "./components/Handles";
 import { Tools } from "./components/Tools";
 import { Skills } from "./components/Skills";
 import { Urls } from "./components/Urls";
-import { Age } from "./components/Age";
-import { Sex } from "./components/Sex";
-import { Location } from "./components/Location";
-import { Position } from "./components/Position";
 import { Resident } from "./components/Resident";
 import { Working } from "./components/Working";
 import { Clothes } from "./components/Clothes";
-import { Period } from "./components/Period";
 import { Costs } from "./components/Costs";
-import { Email } from "./components/Email";
 
 export const Form = ({ cover, icon, setCover, setIcon }) => {
   return (
@@ -25,6 +26,7 @@ export const Form = ({ cover, icon, setCover, setIcon }) => {
       <Header cover={cover} icon={icon} setCover={setCover} setIcon={setIcon} />
 
       <div className={styles.form}>
+        <NickName />
         <Name />
         <Email />
         <Body />

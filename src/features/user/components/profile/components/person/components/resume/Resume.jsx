@@ -1,7 +1,6 @@
 import root from "../../Person.module.scss";
 
-import { useEffect, useState } from "react";
-import { useForm, FormProvider } from "react-hook-form";
+import { useEffect, useState, useRef } from "react";
 
 import { useDispatch } from "react-redux";
 import { uploadResume } from "../../../../../../actions/uploadResume";
@@ -12,29 +11,28 @@ import { Upload } from "./components/Upload";
 
 export const Resume = ({ user }) => {
   const dispatch = useDispatch();
-  const methods = useForm();
 
-  const resume = methods.watch("file");
-
+  const input = useRef();
+  const [resume, setResume] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!resume?.[0]) {
+    if (!resume) {
       setError(null);
       setSuccess(false);
 
       return;
     }
 
-    if (resume?.[0]?.type !== "application/pdf") {
+    if (resume?.type !== "application/pdf") {
       setError("pdf のみアップロードできます");
       setSuccess(false);
 
       return;
     }
 
-    if (resume?.[0]?.size > 400 * 1000) {
+    if (resume?.size > 400 * 1000) {
       setError("400KB までアップロードできます");
       setSuccess(false);
 
@@ -43,15 +41,28 @@ export const Resume = ({ user }) => {
 
     setError(null);
     setSuccess(true);
-    console.log(resume[0]);
   }, [resume]);
 
-  const handleUpload = (data) => {
-    dispatch(uploadResume(data.resume));
+  const handleUpload = (e) => {
+    e.preventDefault();
+
+    const arrayBuffer = new Uint8Array(resume);
+    const base64 = btoa(
+      arrayBuffer.reduce((p, c) => {
+        return p + String.fromCharCode(c);
+      }, "")
+    );
+
+    dispatch(uploadResume(base64));
+  };
+
+  const handleChange = (e) => {
+    setResume(e.target.files[0]);
   };
 
   const handleCancel = () => {
-    methods.reset();
+    input.current.value = null;
+    setResume(null);
     setError(null);
     setSuccess(false);
   };
@@ -61,15 +72,16 @@ export const Resume = ({ user }) => {
   };
 
   return (
-    <FormProvider {...methods}>
-      <form
-        onSubmit={methods.handleSubmit(handleUpload)}
-        className={root.profile_container}
-      >
-        <File user={user} resume={resume} handleDelete={handleDelete} />
+    <form onSubmit={handleUpload} className={root.profile_container}>
+      <File user={user} resume={resume} handleDelete={handleDelete} />
 
-        <Upload success={success} error={error} handleCancel={handleCancel} />
-      </form>
-    </FormProvider>
+      <Upload
+        input={input}
+        success={success}
+        error={error}
+        handleChange={handleChange}
+        handleCancel={handleCancel}
+      />
+    </form>
   );
 };

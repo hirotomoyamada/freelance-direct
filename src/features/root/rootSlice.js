@@ -76,7 +76,7 @@ export const rootSlice = createSlice({
         state.verified.status = "hold";
       }
     );
-    
+
     builder.addMatcher(
       (action) =>
         action.type.endsWith("/editProfile") ||

@@ -16,7 +16,7 @@ export const File = ({ user, resume, handleDelete }) => {
         {user?.profile?.resume[0] ? (
           <div className={styles.resume_file}>
             <a
-              href={user?.profile?.resume ? user?.profile?.resume : "#"}
+              href={user?.profile?.resume ? "aaa" : "#"}
               target="_blank"
               rel="noreferrer noopener"
             >
@@ -34,10 +34,10 @@ export const File = ({ user, resume, handleDelete }) => {
           </div>
         ) : (
           <label
-            htmlFor="file"
+            htmlFor="resume"
             className={`${styles.resume_file} ${styles.resume_file_label}`}
           >
-            <span>{!resume?.[0] ? "ファイルを選択" : resume?.[0]?.name}</span>
+            <span>{!resume ? "ファイルを選択" : resume?.name}</span>
             <AddIcon className={styles.resume_icon} />
           </label>
         )}

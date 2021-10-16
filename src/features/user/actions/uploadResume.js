@@ -12,7 +12,9 @@ export const uploadResume = createAsyncThunk(
         console.log(data);
         return data;
       })
-      .catch((e) => {});
+      .catch((e) => {
+        console.log(e);
+      });
 
     return file;
   }

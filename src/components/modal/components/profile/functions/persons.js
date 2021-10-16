@@ -3,7 +3,7 @@ export const persons = (data) => {
     icon: data.icon,
     cover: data.cover,
 
-    name: data.name,
+    nickName: data.nickName,
     body: data.body,
     age: data.age,
     sex: data.sex,

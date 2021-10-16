@@ -2,9 +2,10 @@ export const defaultValues = (user) => {
   return {
     icon: user?.icon,
     cover: user?.cover,
+    name: user?.profile?.name,
     email: user?.profile?.email,
 
-    name: user?.profile?.name,
+    nickName: user?.profile?.nickName,
     body: user?.profile?.body,
     age: user?.profile?.age,
     sex: user?.profile?.sex,

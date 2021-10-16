@@ -2,10 +2,7 @@ import styles from "../Form.module.scss";
 import { useFormContext } from "react-hook-form";
 
 export const Email = () => {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext();
+  const { register } = useFormContext();
 
   return (
     <div className={styles.form_col}>
@@ -18,12 +15,9 @@ export const Email = () => {
         <input
           readOnly
           disabled
-          className={`${styles.form_input} ${styles.form_input_email}`}
-          {...register("email", {})}
+          className={`${styles.form_input} ${styles.form_input_disable}`}
+          {...register("email")}
         />
-        {errors.email?.message && (
-          <span className={styles.form_error}>{errors.email?.message}</span>
-        )}
       </div>
     </div>
   );

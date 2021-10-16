@@ -1,19 +1,22 @@
 import root from "../../../Person.module.scss";
 import styles from "../Resume.module.scss";
 
-import { useFormContext } from "react-hook-form";
-
-export const Upload = ({ success, error, handleCancel }) => {
-  const { register } = useFormContext();
-
+export const Upload = ({
+  input,
+  success,
+  error,
+  handleChange,
+  handleCancel,
+}) => {
   return (
     <div className={root.profile_col}>
       <div className={root.profile_wrap}>
         <input
+          ref={input}
           type="file"
-          id="file"
+          id="resume"
+          onChange={(e) => handleChange(e)}
           className={styles.resume_input}
-          {...register("file")}
         />
 
         <button
