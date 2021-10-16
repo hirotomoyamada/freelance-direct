@@ -32,11 +32,6 @@ export const defaultValues = (user) => {
           url: value,
         }))
       : [{ url: "" }],
-    data: user?.profile?.data?.[0]
-      ? user?.profile?.data.map((value) => ({
-          data: value,
-        }))
-      : [{ data: "" }],
 
     resident: user?.profile?.resident ? user?.profile?.resident : "常駐可",
     working: user?.profile?.working ? user?.profile?.working : 3,

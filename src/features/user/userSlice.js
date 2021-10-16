@@ -6,6 +6,7 @@ import { login } from "./actions/login";
 import { fetchUser } from "./actions/fetchUser";
 
 import * as reducers from "./reducers/reducers";
+import { uploadResume } from "./actions/uploadResume";
 
 export const userSlice = createSlice({
   name: "user",
@@ -20,6 +21,8 @@ export const userSlice = createSlice({
     enableAgree: (state) => reducers.enableAgree(state),
     addProvider: (state, action) => reducers.addProvider(state, action),
     changeEmail: (state, action) => reducers.changeEmail(state, action),
+
+    deleteResume: (state) => reducers.deleteResume(state),
 
     addLike: (state, action) => reducers.addLike(state, action),
     removeLike: (state, action) => reducers.removeLike(state, action),
@@ -38,6 +41,14 @@ export const userSlice = createSlice({
     builder.addCase(fetchUser.fulfilled, (state, action) =>
       reducers.fetchUser(state, action)
     );
+    builder.addCase(uploadResume.fulfilled, (state, action) =>
+      reducers.uploadResume(state, action)
+    );
+
+    builder.addMatcher(
+      (action) => action.type.endsWith("/fetchPost/fulfilled"),
+      (state, action) => reducers.addHistory(state, action)
+    );
   },
 });
 
@@ -48,6 +59,8 @@ export const {
   enableAgree,
   addProvider,
   changeEmail,
+
+  deleteResume,
 
   addLike,
   removeLike,

@@ -2,7 +2,7 @@ import styles from "../Entry.module.scss";
 import { Btn } from "./Btn";
 
 export const Social = ({ handleEntry, user }) => {
-  return (
+  return user.uid ? (
     <div className={styles.entry_sns}>
       <div className={styles.entry_sns_wrap}>
         <Btn handleEntry={handleEntry} user={user} type="line" />
@@ -15,5 +15,7 @@ export const Social = ({ handleEntry, user }) => {
         こちらのユーザーが登録しているSNS
       </span>
     </div>
+  ) : (
+    <></>
   );
 };

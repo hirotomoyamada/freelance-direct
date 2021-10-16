@@ -11,7 +11,10 @@ import { addLike, removeLike } from "./like";
 import { addEntry } from "./entry";
 import { addFollow, removeFollow } from "./follow";
 import { enableRequest, disableRequest } from "./request";
+import { addHistory } from "./history";
 import { updateHome } from "./home";
+
+import { uploadResume, deleteResume } from "./resume";
 
 export {
   login,
@@ -27,5 +30,8 @@ export {
   removeFollow,
   enableRequest,
   disableRequest,
+  addHistory,
   updateHome,
+  uploadResume,
+  deleteResume,
 };

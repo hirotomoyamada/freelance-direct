@@ -12,12 +12,8 @@ export const createProfile = createAsyncThunk(
           .updateProfile({
             displayName: data.profile.person,
           })
-          .catch((e) => {
-            console.log(e);
-          });
+          .catch((e) => {});
       })
-      .catch((e) => {
-        console.log(e);
-      });
+      .catch((e) => {});
   }
 );

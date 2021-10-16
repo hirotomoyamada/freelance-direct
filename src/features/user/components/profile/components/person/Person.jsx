@@ -14,6 +14,7 @@ import { Work } from "./components/Work";
 import { Private } from "./components/Private";
 import { Costs } from "./components/Costs";
 import { Period } from "./components/Period";
+import { Resume } from "./components/resume/Resume";
 
 export const Person = ({ user }) => {
   return (
@@ -37,6 +38,8 @@ export const Person = ({ user }) => {
         <Costs user={user} />
         <Period user={user} />
       </div>
+
+      <Resume user={user} />
 
       <div className={styles.profile_container}>
         <Private user={user} />

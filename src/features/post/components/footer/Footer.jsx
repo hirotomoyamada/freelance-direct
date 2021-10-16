@@ -10,6 +10,7 @@ import { Item } from "../../item/Item";
 
 export const Footer = ({ post, posts, user }) => {
   const load = useSelector(rootSlice.load);
+  const index = "matters";
 
   return (
     <div className={styles.side}>
@@ -35,7 +36,14 @@ export const Footer = ({ post, posts, user }) => {
         {posts?.length ? (
           posts.map(
             (post) =>
-              post && <Item key={post?.objectID} post={post} user={user} />
+              post && (
+                <Item
+                  index={index}
+                  key={post?.objectID}
+                  post={post}
+                  user={user}
+                />
+              )
           )
         ) : load ? (
           <div className={styles.side_load}>

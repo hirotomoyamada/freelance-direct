@@ -2,7 +2,7 @@ export const persons = (data) => {
   return {
     icon: data.icon,
     cover: data.cover,
-    
+
     name: data.name,
     body: data.body,
     age: data.age,
@@ -21,9 +21,6 @@ export const persons = (data) => {
       .filter((object) => object[Object.keys(object)])
       .map((object) => object[Object.keys(object)]),
     urls: data.urls
-      .filter((object) => object[Object.keys(object)])
-      .map((object) => object[Object.keys(object)]),
-    data: data.data
       .filter((object) => object[Object.keys(object)])
       .map((object) => object[Object.keys(object)]),
 

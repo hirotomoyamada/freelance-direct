@@ -29,8 +29,8 @@ export const Entry = ({ index, user, post, handleClose }) => {
   };
 
   const handleEntry = () => {
-    if (user.entries[index].indexOf(post.objectID) < 0) {
-      dispatch(userSlice.addEntry({ index: index, post: post }));
+    if (user.entries.indexOf(post.objectID) < 0) {
+      dispatch(userSlice.addEntry(post));
     }
   };
 

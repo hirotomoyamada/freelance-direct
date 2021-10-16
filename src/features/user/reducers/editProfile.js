@@ -16,7 +16,6 @@ export const editProfile = (state, action) => {
   state.user.profile.tools = action.payload.tools;
   state.user.profile.skills = action.payload.skills;
   state.user.profile.urls = action.payload.urls;
-  state.user.profile.data = action.payload.data;
 
   state.user.profile.resident = action.payload.resident;
   state.user.profile.working = action.payload.working;
