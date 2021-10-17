@@ -22,7 +22,6 @@ export const rootSlice = createSlice({
     builder.addMatcher(
       (action) => action.type.endsWith("/pending"),
       (state, action) => {
-        console.log(action);
         state.load.fetch = action.meta.arg.fetch ? true : false;
         state.load.list = true;
       }

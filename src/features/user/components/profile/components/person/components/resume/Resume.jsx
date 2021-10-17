@@ -50,9 +50,14 @@ export const Resume = ({ user }) => {
     const reader = new FileReader();
 
     reader.onload = () => {
-      const file = Buffer.from(reader.result).toString("base64");
+      const arrayBuffer = new Uint8Array(reader.result);
+      const base64 = btoa(
+        arrayBuffer.reduce((p, c) => {
+          return p + String.fromCharCode(c);
+        }, "")
+      );
 
-      dispatch(uploadResume({ file: file, fetch: true }));
+      dispatch(uploadResume({ file: base64, fetch: true }));
 
       handleCancel();
     };
