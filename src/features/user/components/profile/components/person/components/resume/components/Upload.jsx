@@ -9,7 +9,7 @@ export const Upload = ({
   handleChange,
   handleCancel,
 }) => {
-  return !user?.profile?.resume ? (
+  return !user?.resume?.url ? (
     <div className={root.profile_col}>
       <div className={root.profile_wrap}>
         <input

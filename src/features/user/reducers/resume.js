@@ -1,11 +1,12 @@
 import { functions } from "../../../firebase";
 
 export const uploadResume = (state, action) => {
-  state.user.profile.resume = action.payload;
+  state.user.resume.url = action.payload;
 };
 
 export const deleteResume = (state) => {
-  state.user.profile.resume = "";
+  state.user.resume.key = "";
+  state.user.resume.url = "";
 
   const deleteResume = functions.httpsCallable("fd-deleteResume");
   deleteResume().catch((e) => {});

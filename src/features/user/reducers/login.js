@@ -12,6 +12,7 @@ export const login = (state, action) => {
     state.user.entries = action.payload.user.entries;
     state.user.requests = action.payload.user.requests;
     state.user.history = action.payload.user.history;
+    state.user.resume = action.payload.user.resume;
     state.user.follows = action.payload.user.follows;
     state.user.home = action.payload.user.home;
   }

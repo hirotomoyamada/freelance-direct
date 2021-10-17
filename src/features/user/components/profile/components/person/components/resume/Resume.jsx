@@ -30,10 +30,13 @@ export const Resume = ({ user }) => {
       setError("pdf のみアップロードできます");
       setSuccess(false);
 
+      // 5242,880
+      // 400,000
+
       return;
     }
 
-    if (resume?.size > 400 * 1000) {
+    if (resume?.size > 0.4 * 1024 * 1024) {
       setError("400KB までアップロードできます");
       setSuccess(false);
 
@@ -50,9 +53,8 @@ export const Resume = ({ user }) => {
     const reader = new FileReader();
 
     reader.onload = () => {
-      const arrayBuffer = new Uint8Array(reader.result);
-      const base64 = btoa(
-        arrayBuffer.reduce((p, c) => {
+      const base64 = window.btoa(
+        new Uint8Array(reader.result).reduce((p, c) => {
           return p + String.fromCharCode(c);
         }, "")
       );
