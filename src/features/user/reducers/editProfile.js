@@ -4,7 +4,7 @@ export const editProfile = (state, action) => {
   state.user.icon = action.payload.icon;
   state.user.cover = action.payload.cover;
 
-  state.user.profile.name = action.payload.name;
+  state.user.profile.nickName = action.payload.nickName;
   state.user.profile.body = action.payload.body;
   state.user.profile.age = action.payload.age;
   state.user.profile.sex = action.payload.sex;

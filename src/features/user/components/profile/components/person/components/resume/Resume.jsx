@@ -30,9 +30,6 @@ export const Resume = ({ user }) => {
       setError("pdf のみアップロードできます");
       setSuccess(false);
 
-      // 5242,880
-      // 400,000
-
       return;
     }
 
@@ -58,6 +55,8 @@ export const Resume = ({ user }) => {
           return p + String.fromCharCode(c);
         }, "")
       );
+
+      console.log(base64.length);
 
       dispatch(uploadResume({ file: base64, fetch: true }));
 
