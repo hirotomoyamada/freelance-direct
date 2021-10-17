@@ -1,8 +1,12 @@
 import { functions } from "../../../firebase";
 
-export const uploadResume = (state, action) => {};
+export const uploadResume = (state, action) => {
+  state.user.profile.resume = action.payload;
+};
 
 export const deleteResume = (state) => {
-  const deleteResume = functions.httpsCallable("fd-deleteFile");
+  state.user.profile.resume = "";
+
+  const deleteResume = functions.httpsCallable("fd-deleteResume");
   deleteResume().catch((e) => {});
 };

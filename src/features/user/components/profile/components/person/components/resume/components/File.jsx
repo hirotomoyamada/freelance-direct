@@ -13,10 +13,14 @@ export const File = ({ user, resume, handleDelete }) => {
       <span className={root.profile_tag}>職務経歴書</span>
 
       <div className={styles.resume_container}>
-        {user?.profile?.resume[0] ? (
+        {user?.profile?.resume ? (
           <div className={styles.resume_file}>
             <a
-              href={user?.profile?.resume ? "aaa" : "#"}
+              href={
+                user?.profile?.resume
+                  ? `https://firebasestorage.googleapis.com/v0/b/ses-hub-resume/o/${user?.profile?.resume}.pdf?alt=media`
+                  : "#"
+              }
               target="_blank"
               rel="noreferrer noopener"
             >

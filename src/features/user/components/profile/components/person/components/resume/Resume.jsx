@@ -13,7 +13,7 @@ export const Resume = ({ user }) => {
   const dispatch = useDispatch();
 
   const input = useRef();
-  const [resume, setResume] = useState("");
+  const [resume, setResume] = useState(null);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
@@ -46,14 +46,17 @@ export const Resume = ({ user }) => {
   const handleUpload = (e) => {
     e.preventDefault();
 
-    const arrayBuffer = new Uint8Array(resume);
-    const base64 = btoa(
-      arrayBuffer.reduce((p, c) => {
-        return p + String.fromCharCode(c);
-      }, "")
-    );
+    const reader = new FileReader();
 
-    dispatch(uploadResume(base64));
+    reader.onload = () => {
+      const data = Buffer.from(reader.result).toString("base64");
+
+      dispatch(uploadResume(data));
+
+      handleCancel();
+    };
+
+    reader.readAsArrayBuffer(resume);
   };
 
   const handleChange = (e) => {
