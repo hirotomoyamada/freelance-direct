@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { uploadResume } from "../../../../../../actions/uploadResume";
 import * as userSlice from "../../../../../../userSlice";
+import * as rootSlice from "../../../../../../../root/rootSlice";
 
 import { File } from "./components/File";
 import { Upload } from "./components/Upload";
@@ -49,9 +50,9 @@ export const Resume = ({ user }) => {
     const reader = new FileReader();
 
     reader.onload = () => {
-      const data = Buffer.from(reader.result).toString("base64");
+      const file = Buffer.from(reader.result).toString("base64");
 
-      dispatch(uploadResume(data));
+      dispatch(uploadResume({ file: file, fetch: true }));
 
       handleCancel();
     };
@@ -71,7 +72,15 @@ export const Resume = ({ user }) => {
   };
 
   const handleDelete = () => {
-    dispatch(userSlice.deleteResume());
+    dispatch(
+      rootSlice.handleModal({
+        type: "delete",
+        text: "ファイル",
+        delete: () => {
+          dispatch(userSlice.deleteResume());
+        },
+      })
+    );
   };
 
   return (
@@ -79,6 +88,7 @@ export const Resume = ({ user }) => {
       <File user={user} resume={resume} handleDelete={handleDelete} />
 
       <Upload
+        user={user}
         input={input}
         success={success}
         error={error}

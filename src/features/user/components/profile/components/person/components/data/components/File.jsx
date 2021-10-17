@@ -4,10 +4,16 @@ import styles from "../Resume.module.scss";
 import AddIcon from "@material-ui/icons/AddCircle";
 import RemoveIcon from "@material-ui/icons/Remove";
 
+import { useSelector } from "react-redux";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
+import * as rootSlice from "../../../../../../../../root/rootSlice";
+import Loader from "react-loader-spinner";
 
 export const File = ({ user, resume, handleDelete }) => {
+  const load = useSelector(rootSlice.load).fetch;
+
   return (
     <div className={root.profile_col}>
       <span className={root.profile_tag}>職務経歴書</span>
@@ -35,6 +41,10 @@ export const File = ({ user, resume, handleDelete }) => {
                 className={`${styles.resume_icon} ${styles.resume_icon_delete}`}
               />
             </button>
+          </div>
+        ) : load ? (
+          <div className={`${styles.resume_file} ${styles.resume_file_load}`}>
+            <Loader type="Grid" color="#4387f4" height={36} width={36} />
           </div>
         ) : (
           <label

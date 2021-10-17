@@ -2,13 +2,14 @@ import root from "../../../Person.module.scss";
 import styles from "../Resume.module.scss";
 
 export const Upload = ({
+  user,
   input,
   success,
   error,
   handleChange,
   handleCancel,
 }) => {
-  return (
+  return !user?.profile?.resume ? (
     <div className={root.profile_col}>
       <div className={root.profile_wrap}>
         <input
@@ -39,5 +40,7 @@ export const Upload = ({
 
       {error && <span className={styles.resume_error}>{error}</span>}
     </div>
+  ) : (
+    <></>
   );
 };

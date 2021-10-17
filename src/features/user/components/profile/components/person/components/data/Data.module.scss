@@ -82,6 +82,10 @@ $width: responsive-width(pc);
       }
     }
 
+    &_load {
+      pointer-events: none;
+    }
+
     &_icon {
       color: $remove_clr;
       font-size: 48px;

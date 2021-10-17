@@ -4,12 +4,10 @@ import { functions } from "../../../firebase";
 export const uploadResume = createAsyncThunk(
   "user/uploadResume",
   async (data) => {
-    console.log(data);
     const uploadResume = functions.httpsCallable("fd-uploadResume");
 
-    const file = uploadResume(data)
+    const file = uploadResume(data.file)
       .then(async ({ data }) => {
-        console.log(data);
         return data;
       })
       .catch((e) => {

@@ -9,4 +9,10 @@ export const store = configureStore({
     post: postReducer,
     user: userReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["root/handleModal", "post/deletePost"],
+      },
+    }),
 });

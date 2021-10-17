@@ -22,6 +22,7 @@ export const rootSlice = createSlice({
     builder.addMatcher(
       (action) => action.type.endsWith("/pending"),
       (state, action) => {
+        console.log(action);
         state.load.fetch = action.meta.arg.fetch ? true : false;
         state.load.list = true;
       }
@@ -80,6 +81,7 @@ export const rootSlice = createSlice({
     builder.addMatcher(
       (action) =>
         action.type.endsWith("/editProfile") ||
+        action.type.endsWith("/deleteResume") ||
         action.type.endsWith("/updateHome"),
       (state) => reducers.modal(state)
     );
