@@ -64,6 +64,7 @@ export const Home = () => {
     <div>
       <Fetch />
       <Header user={user} type="home" index={index} />
+      <span>これはテストです</span>
       <List user={user} index={index} posts={posts} hit={hit} home />
     </div>
   );
