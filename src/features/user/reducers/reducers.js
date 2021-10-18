@@ -1,6 +1,5 @@
-import { login, logout } from "./auth";
-import { createProfile } from "./createProfile";
-import { showUser } from "./showUser";
+import { login } from "./login";
+import { fetchUser } from "./fetchUser";
 
 import { editProfile } from "./editProfile";
 import { enableAgree } from "./enableAgree";
@@ -11,16 +10,15 @@ import { changeEmail } from "./changeEmail";
 import { addLike, removeLike } from "./like";
 import { addEntry } from "./entry";
 import { addFollow, removeFollow } from "./follow";
+import { enableRequest, disableRequest } from "./request";
+import { addHistory } from "./history";
+import { updateHome } from "./home";
 
-import { handleAnnounce, handleModal, handleNotFound } from "./handle";
-
-import { load } from "./load";
+import { uploadResume, deleteResume } from "./resume";
 
 export {
   login,
-  createProfile,
-  showUser,
-  logout,
+  fetchUser,
   editProfile,
   enableAgree,
   addProvider,
@@ -30,8 +28,10 @@ export {
   addEntry,
   addFollow,
   removeFollow,
-  handleModal,
-  handleAnnounce,
-  handleNotFound,
-  load,
+  enableRequest,
+  disableRequest,
+  addHistory,
+  updateHome,
+  uploadResume,
+  deleteResume,
 };

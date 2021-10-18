@@ -1,0 +1,298 @@
+// サイト共有の初期設定
+@import "../../../../../../styles/config";
+@import "../../../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.form {
+  margin-top: 64px;
+  padding: 0 32px 32px;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: responsive-width(sp)) {
+    margin-top: 48px;
+    padding: 0 12px 48px;
+    gap: 12px;
+  }
+
+  &_tag {
+    font-size: 16px;
+    color: $icn_clr;
+
+    @media (max-width: responsive-width(sp)) {
+      font-size: 12px;
+    }
+
+    &_desc {
+      white-space: pre;
+      color: $remove_clr;
+      font-size: 12px;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 10px;
+      }
+    }
+
+    &_exp {
+      white-space: pre;
+      color: $sub_clr;
+      font-size: 12px;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 10px;
+      }
+    }
+
+    input {
+      display: none;
+    }
+
+    &_display {
+      color: $link_clr;
+      font-size: 12px;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 10px;
+      }
+    }
+  }
+
+  &_strike {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 8px 0;
+
+    span {
+      display: block;
+      position: relative;
+      z-index: 1;
+      background: $base_clr;
+      padding: 0 24px;
+      color: $sub_clr;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: $bdr_clr;
+      top: 50%;
+      left: 0;
+      position: absolute;
+    }
+  }
+
+  &_col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      gap: 8px;
+    }
+  }
+
+  &_grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+
+    @media (max-width: responsive-width(tb)) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: responsive-width(sp)) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    &_mid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &_triangle {
+      grid-template-columns: 1fr 1fr 2.1fr;
+    }
+
+    &_costs {
+      grid-template-columns: 5fr 1fr 5fr;
+    }
+
+    &_period {
+      grid-template-columns: 1.5fr 1fr;
+    }
+  }
+
+  &_wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    &_center {
+      justify-content: center;
+      gap: 8px;
+    }
+  }
+
+  &_item {
+    position: relative;
+  }
+
+  &_select {
+    position: relative;
+
+    &:after {
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid $acnt_clr;
+      content: "";
+      position: absolute;
+      right: 12px;
+      top: 20px;
+      width: 0;
+
+      @media (max-width: responsive-width(sp)) {
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 5px solid $acnt_clr;
+        top: 14px;
+      }
+    }
+  }
+
+  &_mark {
+    color: $icn_clr;
+    line-height: 48px;
+    text-align: center;
+
+    @media (max-width: responsive-width(sp)) {
+      line-height: 32px;
+    }
+  }
+
+  &_input {
+    background: $base_clr;
+    border: 1px solid $bdr_clr;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    padding: 8px 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      height: 32px;
+      padding: 4px 12px;
+    }
+
+    &_center {
+      text-align: center;
+    }
+
+    &_error {
+      border: 1px solid $remove_clr;
+    }
+
+    &_disable {
+      color: $sub_clr;
+    }
+
+    &::placeholder {
+      color: $sub_clr;
+      opacity: 0.6;
+    }
+  }
+
+  &_textarea {
+    border: 1px solid $bdr_clr;
+    width: 100%;
+    height: 240px;
+    border-radius: 8px;
+    padding: 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      height: 160px;
+      padding: 12px;
+    }
+
+    &_error {
+      border: 1px solid $remove_clr;
+    }
+  }
+
+  &_error {
+    display: block;
+    white-space: pre;
+    color: $remove_clr;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  &_btn {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    display: flex;
+    gap: 8px;
+
+    @media (max-width: responsive-width(sp)) {
+      top: -8px;
+      right: -8px;
+    }
+
+    &_col {
+      flex-direction: column;
+      gap: 24px;
+
+      @media (max-width: responsive-width(sp)) {
+        gap: 16px;
+      }
+    }
+
+    &_add {
+      background: $acnt_clr;
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+
+      @media (max-width: responsive-width(sp)) {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &_remove {
+      background: $icn_clr;
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+
+      @media (max-width: responsive-width(sp)) {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &_icon {
+      color: $base_clr;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 16px !important;
+      }
+    }
+  }
+}

@@ -1,45 +1,28 @@
-import { selectIndex, selectPost } from "./select";
+import { promotionPosts } from "./promotionPosts";
+import { fetchPosts } from "./fetchPosts";
+import { homePosts } from "./homePosts";
+import { userPosts } from "./userPosts";
+import { extractPosts } from "./extractPosts";
+import { fetchPost } from "./fetchPost";
 
 import { addLike, removeLike } from "./like";
 import { addEntry } from "./entry";
 import { addFollow, removeFollow } from "./follow";
 
-import {
-  handleModal,
-  handlePage,
-  handleSearch,
-  handleSort,
-  handleNotFound,
-} from "./handle";
-
-import { promotionPosts } from "./promotionPosts";
-import { fetchPosts } from "./fetchPosts";
-import { followsPosts } from "./followsPosts";
-import { userPosts } from "./userPosts";
-import { extractPosts } from "./extractPosts";
-import { showPost } from "./showPost";
-
-import { load, fetch } from "./load";
+import { resetPost, resetControl } from "./reset";
 
 export {
-  selectIndex,
-  selectPost,
+  promotionPosts,
+  fetchPosts,
+  homePosts,
+  userPosts,
+  extractPosts,
+  fetchPost,
   addLike,
   removeLike,
   addEntry,
   addFollow,
   removeFollow,
-  handleSearch,
-  handleModal,
-  handlePage,
-  handleSort,
-  handleNotFound,
-  promotionPosts,
-  fetchPosts,
-  followsPosts,
-  userPosts,
-  extractPosts,
-  showPost,
-  load,
-  fetch,
+  resetPost,
+  resetControl,
 };

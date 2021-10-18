@@ -1,0 +1,69 @@
+// サイト共有の初期設定
+@import "../../styles/config";
+@import "../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.setting {
+  min-height: 100vh;
+  position: relative;
+
+  &_inner {
+    height: calc(100vh - 48px);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+
+    @media (max-width: responsive-width(sp)) {
+      gap: 16px;
+      font-size: 14px;
+      padding: 0 16px 32px;
+    }
+
+    &_other {
+      padding-top: 0;
+      justify-content: flex-start;
+
+      & > :not(:last-child) {
+        padding-top: 24px;
+        border-top: 1px solid $bdr_clr;
+
+        @media (max-width: responsive-width(sp)) {
+          padding-top: 12px;
+        }
+      }
+
+      & > :first-child {
+        border: none;
+      }
+    }
+  }
+
+  &_btn {
+    background: $acnt_clr;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+
+    color: $base_clr;
+    text-align: center;
+    line-height: 48px;
+
+    @media (max-width: responsive-width(sp)) {
+      margin-top: 16px;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    &_logout {
+      background: $sub_clr;
+    }
+
+    &_delete {
+      background: $remove_clr;
+    }
+  }
+}

@@ -1,147 +1,109 @@
 export const initialState = {
-  index: "matters",
-
   search: {
-    value: "",
-    target: "",
-    type: "",
-    status: "",
-    display: "",
-    control: false,
+    matters: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
+      },
+    },
+    companys: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
+      },
+    },
   },
 
-  sort: {
-    status: "",
-    display: "",
-    control: false,
+  user: {
+    posts: [],
+    hit: {
+      posts: 0,
+      pages: 0,
+      currentPage: 0,
+    },
   },
 
-  posts: {
-    search: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
+  home: {
+    matters: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
       },
-      resources: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
-      companys: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
+      control: true,
+    },
+    companys: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
       },
     },
+  },
 
-    bests: [],
-
-    user: {
-      companys: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
+  likes: {
+    posts: [],
+    hit: {
+      posts: 0,
+      pages: 0,
+      currentPage: 0,
     },
+  },
 
-    selectUser: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
-      resources: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
+  entries: {
+    posts: [],
+    hit: {
+      posts: 0,
+      pages: 0,
+      currentPage: 0,
     },
+  },
 
-    home: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-        control: true,
-      },
-      resources: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-        control: true,
-      },
+  history: {
+    posts: [],
+    hit: {
+      posts: 0,
+      pages: 0,
+      currentPage: 0,
     },
+  },
 
-    likes: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
+  requests: {
+    enable: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
       },
-      resources: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
-      },
+      control: true,
     },
-
-    entries: {
-      matters: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
+    hold: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
       },
-      resources: {
-        posts: [],
-        hit: {
-          posts: 0,
-          pages: 0,
-          currentPage: 0,
-        },
+      control: true,
+    },
+    disable: {
+      posts: [],
+      hit: {
+        posts: 0,
+        pages: 0,
+        currentPage: 0,
       },
+      control: true,
     },
   },
 
   post: {},
-
-  page: "home",
-  modal: { type: "", open: false },
-
-  load: true,
-  fatch: false,
-  notFound: false,
+  bests: [],
 };

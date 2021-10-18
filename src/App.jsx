@@ -1,59 +1,50 @@
 import { useEffect, useState } from "react";
 
+import { auth } from "./firebase";
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { HelmetProvider } from "react-helmet-async";
-import { auth } from "./firebase";
 
-import { login } from "./features/user/functions/login";
+import { login } from "./features/user/actions/login";
+
+import * as rootSlice from "./features/root/rootSlice";
 import * as userSlice from "./features/user/userSlice";
-import * as postSlice from "./features/post/postSlice";
 
 import { Meta } from "./Meta";
-
 import { Load } from "./components/load/Load";
 import { Announce } from "./components/announce/Announce";
-import { Agree } from "./components/agree/Agree";
-import { Maintenance } from "./components/maintenance/Maintenance";
-import { NotFound } from "./components/notFound/NotFound";
-import { Demo } from "./components/demo/Demo";
-
-import { Promotion } from "./promotion/Promotion";
-import { Contact } from "./promotion/pages/contact/Contact";
-import { Terms } from "./promotion/pages/terms/Terms";
-import { Asct } from "./promotion/pages/asct/Asct";
-import { Auth } from "./features/user/auth/Auth";
 
 import { Home } from "./Home";
 import { Search } from "./Search";
 import { Post } from "./features/post/Post";
 import { User } from "./features/user/User";
-import { List } from "./features/user/list/List";
-import { Setting } from "./features/user/setting/Setting";
 
-const Branch = (props) => {
-  const index = props.match.params.index;
-  const id = props.match.params.id;
-  return index === "matters" || index === "resources" ? (
-    <Post index={index} objectID={id} />
-  ) : (
-    (index === "companys" || index === "persons") && (
-      <User type={index} uid={id} />
-    )
-  );
-};
+import { Auth } from "./pages/auth/Auth";
+import { List } from "./pages/list/List";
+import { Setting } from "./pages/setting/Setting";
+import { HowTo } from "./pages/howTo/HowTo";
+import { Terms } from "./pages/terms/Terms";
+import { NotFound } from "./pages/notFound/NotFound";
+import { Maintenance } from "./pages/maintenance/Maintenance";
 
-const App = () => {
+import { Promotion } from "./promotion/Promotion";
+import { Contact } from "./promotion/pages/contact/Contact";
+
+import { Modal } from "./components/modal/Modal";
+import { Menu } from "./components/menu/Menu";
+
+export const App = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(userSlice.user);
-  const access = useSelector(userSlice.verified).access;
-  const notFound = {
-    user: useSelector(userSlice.notFound),
-    post: useSelector(postSlice.notFound),
-  };
+  const menu = useSelector(rootSlice.menu);
+  const access = useSelector(rootSlice.verified).access;
+  const notFound = useSelector(rootSlice.notFound);
 
   const [browser, setBrowser] = useState(true);
+  const [control, setControl] = useState(
+    window.innerWidth < 959 ? true : false
+  );
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -73,19 +64,34 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const resize = () => {
+      window.innerWidth < 959 ? setControl(true) : setControl(false);
+    };
+
+    !control && dispatch(rootSlice.handleMenu("reset"));
+
+    window.addEventListener("resize", resize);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [control]);
+
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Meta />
-        {notFound.user || notFound.post ? (
+
+        {notFound ? (
           <NotFound />
         ) : browser ? (
           <>
-            <Maintenance />
-            <Announce />
-            <Agree />
-            <Demo />
             <Load />
+            <Announce />
+            <Maintenance />
+            <Modal />
 
             {!user.uid ? (
               <Switch>
@@ -95,7 +101,6 @@ const App = () => {
 
                 <Route exact path="/contact" component={Contact} />
                 <Route exact path="/terms" component={Terms} />
-                <Route exact path="/asct" component={Asct} />
 
                 {!access && (
                   <>
@@ -109,24 +114,40 @@ const App = () => {
                 )}
               </Switch>
             ) : (
-              <Switch>
-                <Redirect exact path="/login" to="/" />
-                <Redirect exact path="/signup" to="/" />
+              <div className="main">
+                <Menu user={user} />
 
-                <Route exact path={["/", "/home"]} component={Home} />
-                <Route exact path="/home" component={Home} />
-                <Route exact path="/search" component={Search} />
-                <Route exact path="/setting" component={Setting} />
+                <Switch>
+                  <Redirect exact path="/login" to="/" />
+                  <Redirect exact path="/signup" to="/" />
 
-                <Route exact path="/terms" component={Terms} />
-                <Route exact path="/asct" component={Asct} />
+                  <Route exact path={["/", "/home"]} component={Home} />
+                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/search" component={Search} />
+                  <Route exact path="/setting" component={Setting} />
 
-                <Route exact path="/:list" component={List} />
+                  <Route exact path="/howto" component={HowTo} />
+                  <Route exact path="/terms" component={Terms} />
 
-                <Route exact path="/:index/:id" component={Branch} />
+                  <Route exact path="/:list" component={List} />
 
-                <Route component={NotFound} />
-              </Switch>
+                  <Route exact path="/post/:objectID" component={Post} />
+                  <Route exact path="/user/:uid" component={User} />
+
+                  <Route component={NotFound} />
+                </Switch>
+
+                {control && (
+                  <div
+                    className={`overlay ${
+                      menu.display
+                        ? "overlay_open"
+                        : menu.control && "overlay_close"
+                    }`}
+                    onClick={() => dispatch(rootSlice.handleMenu("close"))}
+                  ></div>
+                )}
+              </div>
             )}
           </>
         ) : (
@@ -138,5 +159,3 @@ const App = () => {
     </HelmetProvider>
   );
 };
-
-export default App;

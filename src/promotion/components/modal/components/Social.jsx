@@ -5,14 +5,14 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-import { handleProvider } from "../../../../features/user/auth/functions/handleProvider";
+import * as functions from "../../../../features/user/functions/functions";
 
 export const Social = () => {
   return (
     <div className={styles.modal_container}>
       <button
         type="button"
-        onClick={() => handleProvider("google")}
+        onClick={() => functions.auth.handleProvider("google")}
         className={`${styles.modal_btn_google} ${styles.modal_btn}`}
       >
         <FontAwesomeIcon icon={faGoogle} />
@@ -21,7 +21,7 @@ export const Social = () => {
 
       <button
         type="button"
-        onClick={() => handleProvider("twitter")}
+        onClick={() => functions.auth.handleProvider("twitter")}
         className={`${styles.modal_btn_twitter} ${styles.modal_btn}`}
       >
         <FontAwesomeIcon icon={faTwitter} />
@@ -30,7 +30,7 @@ export const Social = () => {
 
       <button
         type="button"
-        onClick={() => handleProvider("github")}
+        onClick={() => functions.auth.handleProvider("github")}
         className={`${styles.modal_btn_github} ${styles.modal_btn}`}
       >
         <FontAwesomeIcon icon={faGithub} />

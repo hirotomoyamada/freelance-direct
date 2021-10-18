@@ -1,0 +1,41 @@
+// サイト共有の初期設定
+@import "../../../../styles/config";
+@import "../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  transition: all 0.4s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &_icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  &_wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &_nickName {
+    font-size: 18px;
+    font-weight: bold;
+    color: $icn_clr;
+    letter-spacing: 0.8px;
+  }
+
+  &_uid {
+    font-size: 10px;
+    color: $sub_clr;
+  }
+}
