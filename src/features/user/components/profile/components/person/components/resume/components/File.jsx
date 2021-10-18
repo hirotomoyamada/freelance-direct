@@ -1,6 +1,7 @@
 import root from "../../../Person.module.scss";
 import styles from "../Resume.module.scss";
 
+import Loader from "react-loader-spinner";
 import AddIcon from "@material-ui/icons/AddCircle";
 import RemoveIcon from "@material-ui/icons/Remove";
 
@@ -9,7 +10,6 @@ import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
 import * as rootSlice from "../../../../../../../../root/rootSlice";
-import Loader from "react-loader-spinner";
 
 export const File = ({ user, resume, handleDelete }) => {
   const load = useSelector(rootSlice.load).fetch;

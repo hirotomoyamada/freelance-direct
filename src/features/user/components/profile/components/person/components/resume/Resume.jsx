@@ -56,8 +56,6 @@ export const Resume = ({ user }) => {
         }, "")
       );
 
-      console.log(base64.length);
-
       dispatch(uploadResume({ file: base64, fetch: true }));
 
       handleCancel();
