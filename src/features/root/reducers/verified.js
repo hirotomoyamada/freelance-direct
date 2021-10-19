@@ -6,6 +6,11 @@ export const verified = (state, action) => {
       state.verified.agree = true;
     }
 
+    if (!action.payload.user.profile.nickName) {
+      state.modal.open = true;
+      state.modal.type = "profile";
+    }
+
     state.data = action.payload.data;
     state.verified.demo = action.payload.demo;
   }

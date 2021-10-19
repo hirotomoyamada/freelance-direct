@@ -35,6 +35,10 @@ $width: responsive-width(pc);
     &_dev {
       border: none;
       padding: 0;
+
+      &_border {
+        border-bottom: 1px solid $bdr_clr;
+      }
     }
   }
 

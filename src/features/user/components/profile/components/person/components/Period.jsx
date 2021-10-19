@@ -1,7 +1,7 @@
 import styles from "../Person.module.scss";
 
 export const Period = ({ user }) => {
-  return (
+  return user?.profile?.period?.year && user?.profile?.period?.month ? (
     <div className={styles.profile_col}>
       <span className={styles.profile_tag}>稼働開始時期</span>
       <span>
@@ -9,5 +9,7 @@ export const Period = ({ user }) => {
         月&nbsp;〜
       </span>
     </div>
+  ) : (
+    <></>
   );
 };

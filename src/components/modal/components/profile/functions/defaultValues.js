@@ -11,7 +11,14 @@ export const defaultValues = (user) => {
     sex: user?.profile?.sex,
     position: user?.profile?.position,
     location: user?.profile?.location,
-    period: user?.profile?.period,
+    period: {
+      year: user?.profile?.period?.year
+        ? user?.profile?.period?.year
+        : new Date().getFullYear(),
+      month: user?.profile?.period?.month
+        ? user?.profile?.period.month
+        : new Date().getMonth() + 1,
+    },
 
     handles: user?.profile?.handles?.[0]
       ? user?.profile?.handles.map((value) => ({

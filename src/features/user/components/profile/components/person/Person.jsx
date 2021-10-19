@@ -23,15 +23,19 @@ export const Person = ({ user }) => {
       <Head user={user} />
 
       <div
-        className={`${styles.profile_container} ${styles.profile_container_dev}`}
+        className={`${styles.profile_container} ${
+          user?.profile?.body && styles.profile_container_dev
+        } `}
       >
         <Handles user={user} />
         <Tools user={user} />
       </div>
 
-      <div className={styles.profile_container}>
-        <Body user={user} />
-      </div>
+      {user?.profile?.body && (
+        <div className={styles.profile_container}>
+          <Body user={user} />
+        </div>
+      )}
 
       <div className={styles.profile_container}>
         <Work user={user} />
