@@ -88,7 +88,7 @@ export const Period = () => {
   return (
     <div className={styles.form_col}>
       <span className={styles.form_tag}>
-        稼働可能時期&nbsp;<span className={styles.form_tag_desc}>※1</span>
+        稼働可能時期
       </span>
       <div className={`${styles.form_grid} ${styles.form_grid_period}`}>
         <Year />

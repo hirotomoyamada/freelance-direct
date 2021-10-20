@@ -17,7 +17,7 @@ export const Costs = () => {
     <div className={`${styles.form_grid} ${styles.form_grid_mid}`}>
       <div className={styles.form_col}>
         <span className={styles.form_tag}>
-          単価&nbsp;<span className={styles.form_tag_desc}>※1</span>
+          単価&nbsp;
           <input
             type="radio"
             id="costsDisplay1"
@@ -32,11 +32,11 @@ export const Costs = () => {
           />
           {display === "public" ? (
             <label className={styles.form_tag_display} htmlFor="costsDisplay1">
-              &nbsp;※表示したくありませんか？
+              ※表示したくありませんか？
             </label>
           ) : (
             <label className={styles.form_tag_display} htmlFor="costsDisplay2">
-              &nbsp;※単価を入力する
+              ※単価を入力する
             </label>
           )}
         </span>

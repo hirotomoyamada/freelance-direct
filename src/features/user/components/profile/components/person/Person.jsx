@@ -1,21 +1,24 @@
 import styles from "./Person.module.scss";
 
 import { Head } from "./components/Head";
-import { Body } from "./components/Body";
 
-import { Email } from "./components/Email";
-
-import { CreateAt } from "./components/CreateAt";
 import { Handles } from "./components/Handles";
 import { Tools } from "./components/Tools";
-import { Skills } from "./components/Skills";
-import { Urls } from "./components/Urls";
+
+import { Body } from "./components/Body";
+
 import { Work } from "./components/Work";
-import { Private } from "./components/Private";
+import { Name } from "./components/Name";
+import { Skills } from "./components/Skills";
 import { Costs } from "./components/Costs";
 import { Period } from "./components/Period";
+
 import { Resume } from "./components/resume/Resume";
-import { Name } from "./components/Name";
+
+import { Private } from "./components/Private";
+import { Email } from "./components/Email";
+import { Urls } from "./components/Urls";
+import { CreateAt } from "./components/CreateAt";
 
 export const Person = ({ user }) => {
   return (
