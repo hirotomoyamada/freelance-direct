@@ -12,7 +12,12 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ["root/handleModal", "post/deletePost"],
+        ignoredActions: [
+          "root/handleModal",
+          "post/deletePost",
+          "user/disableRequest",
+          "post/extractPosts/pending",
+        ],
       },
     }),
 });

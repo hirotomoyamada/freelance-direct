@@ -2,16 +2,23 @@ import styles from "./Request.module.scss";
 
 import { useDispatch } from "react-redux";
 import * as userSlice from "../../features/user/userSlice";
+import * as rootSlice from "../../features/root/rootSlice";
 
-export const Request = ({ index, user, post }) => {
+export const Request = ({ index, user }) => {
   const dispatch = useDispatch();
 
   const handleEnable = () => {
-    dispatch(userSlice.enableRequest(user.uid));
+    dispatch(userSlice.enableRequest(user));
   };
 
   const handleDisable = () => {
-    dispatch(userSlice.disableRequest(user.uid));
+    dispatch(
+      rootSlice.handleModal({
+        type: "block",
+        text: "アカウント",
+        delete: () => dispatch(userSlice.disableRequest(user)),
+      })
+    );
   };
 
   const Enable = () => {
