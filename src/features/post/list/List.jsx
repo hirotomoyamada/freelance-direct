@@ -3,13 +3,12 @@ import styles from "./List.module.scss";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import { fetchPosts } from "../actions/fetchPosts";
-import { homePosts } from "../actions/homePosts";
-import { extractPosts } from "../actions/extractPosts";
-import { userPosts } from "../actions/userPosts";
-import { Load } from "./components/Load";
 import { Posts } from "./components/Posts";
 import { NotFound } from "./components/NotFound";
+import { Load } from "./components/Load";
+
+import { createObserver } from "./functions/createObserver";
+import { fetchScroll } from "./functions/fetchScroll";
 
 export const List = ({
   index,
@@ -37,91 +36,39 @@ export const List = ({
   }, [hit.currentPage, hit.pages]);
 
   useEffect(() => {
-    if (
-      JSON.stringify(list.current.getBoundingClientRect().height) >
-      window.innerHeight + 100
-    ) {
-      const observer = new IntersectionObserver(
-        ([results]) => {
-          if (results.isIntersecting && !intersecting) {
-            if (page < hit.pages) {
-              setIntersecting(results.isIntersecting);
-            }
-            setPage((prevPage) => prevPage + 1);
-          }
-        },
-        {
-          rootMargin: `0px 0px ${window.innerHeight}px 0px`,
-        }
-      );
+    const observer = createObserver(
+      list,
+      hit,
+      page,
+      setPage,
+      intersecting,
+      setIntersecting
+    );
 
-      const ref = load.current;
-      ref && observer.observe(ref);
+    const ref = load.current;
+    ref && observer.observe(ref);
 
-      return () => {
-        ref && observer.unobserve(ref);
-      };
-    }
+    return () => {
+      ref && observer.unobserve(ref);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hit.pages, intersecting, page]);
 
   useEffect(() => {
-    search &&
-      intersecting &&
+    intersecting &&
       hit.pages &&
       page !== hit.pages &&
-      dispatch(
-        fetchPosts({
-          index: index,
-          value: search.value,
-          target: search.target,
-          type: search.type,
-          page: page,
-        })
-      ).then(() => {
-        setIntersecting(!intersecting);
-      });
-
-    home &&
-      intersecting &&
-      hit.pages &&
-      page !== hit.pages &&
-      dispatch(
-        homePosts({
-          index: select ? "companys" : index,
-          follows:
-            index !== "matters" || select
-              ? user.follows
-              : [user.uid, ...user.home],
-          page: page,
-        })
-      ).then(() => {
-        setIntersecting(!intersecting);
-      });
-
-    companys &&
-      intersecting &&
-      hit.pages &&
-      page !== hit.pages &&
-      dispatch(
-        userPosts({
-          uid: selectUser.uid,
-          page: page,
-        })
-      ).then(() => {
-        setIntersecting(!intersecting);
-      });
-
-    type &&
-      intersecting &&
-      hit.pages &&
-      page !== hit.pages &&
-      dispatch(
-        extractPosts({
-          index: index,
-          type: type,
-          objectIDs: type !== "requests" ? user[type] : user[type][index],
-          page: page,
-        })
+      fetchScroll(
+        dispatch,
+        index,
+        user,
+        selectUser,
+        home,
+        search,
+        companys,
+        type,
+        select,
+        page
       ).then(() => {
         setIntersecting(!intersecting);
       });
