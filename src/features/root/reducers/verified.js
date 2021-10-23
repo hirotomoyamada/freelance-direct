@@ -4,6 +4,8 @@ export const verified = (state, action) => {
 
     if (action.payload.user.agree === "disable") {
       state.verified.agree = true;
+      state.modal.open = true;
+      state.modal.type = "agree";
     }
 
     if (!action.payload.user.profile.nickName) {
