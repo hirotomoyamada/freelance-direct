@@ -34,7 +34,7 @@ export const Nav = ({ page, user, handlePage }) => {
           {Object.keys(nav).map((i) => (
             <Btn
               key={i}
-              current={i}
+              i={i}
               page={page}
               user={user}
               icon={nav[i].icon}

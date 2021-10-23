@@ -46,6 +46,23 @@ $width: responsive-width(pc);
       color: $acnt_clr;
     }
 
+    &_notice {
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 20px;
+
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        background: $add_clr;
+      }
+    }
+
     &_txt {
       letter-spacing: 0.8px;
     }
