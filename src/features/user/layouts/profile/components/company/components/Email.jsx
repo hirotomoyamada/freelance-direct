@@ -11,7 +11,7 @@ export const Email = ({ user, demo }) => {
         href={`mailto:${user?.profile?.email}`}
         className={styles.profile_link}
       >
-        {!demo ? user?.profile?.email : "demo@ses-hub.app"}
+        {!demo ? user?.profile?.email : "demo@freelance-direct.app"}
       </a>
     </div>
   );

@@ -17,7 +17,7 @@ export const getRedirect = ({ dispatch }) => {
       if (!result.user.emailVerified) {
         auth.currentUser
           .sendEmailVerification({
-            url: "https://freelance-direct/login",
+            url: `${process.env.REACT_APP_URL}/login`,
           })
           .catch((e) => {
             dispatch(

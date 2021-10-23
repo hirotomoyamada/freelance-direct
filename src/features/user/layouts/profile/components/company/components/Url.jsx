@@ -13,7 +13,7 @@ export const Url = ({ user, demo }) => {
         target="_blank"
         rel="noreferrer noopener"
       >
-        {!demo ? user?.profile?.url : "https://ses-hub.app"}
+        {!demo ? user?.profile?.url : process.env.REACT_APP_URL}
       </a>
     </div>
   ) : (

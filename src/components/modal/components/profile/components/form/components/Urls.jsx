@@ -30,7 +30,7 @@ export const Urls = () => {
         {urlsFields.map((field, i) => (
           <div key={field.id} className={styles.form_item}>
             <input
-              placeholder="https://freelance-direct.app"
+              placeholder={process.env.REACT_APP_URL}
               className={`${styles.form_input} ${
                 errors.urls?.[i]?.url && styles.form_input_error
               }`}
