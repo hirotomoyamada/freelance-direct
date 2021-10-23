@@ -11,8 +11,8 @@ import * as userSlice from "../user/userSlice";
 import * as postSlice from "./postSlice";
 
 import { Meta } from "./Meta";
-import { Main } from "./components/main/Main";
-import { Footer } from "./components/footer/Footer";
+import { Main } from "./layouts/main/Main";
+import { Footer } from "./layouts/footer/Footer";
 
 export const Post = (props) => {
   const dispatch = useDispatch();
