@@ -8,12 +8,12 @@ export const createProfile = createAsyncThunk(
 
     createProfile(data)
       .then(async ({ data }) => {
-        await auth.currentUser.updateProfile({
-          displayName: data.profile.nickName,
-        });
+        await auth.currentUser
+          .updateProfile({
+            displayName: data.displayName,
+          })
+          .catch((e) => {});
       })
-      .catch((e) => {
-        console.log(e);
-      });
+      .catch((e) => {});
   }
 );
