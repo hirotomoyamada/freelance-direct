@@ -51,7 +51,9 @@ export const Item = ({ index, post, user, select, selectUser, none }) => {
         <button
           type="button"
           onClick={() => handleOpen("user")}
-          className={`${styles.item_btn} ${select && styles.item_btn_disable}`}
+          className={`${styles.item_btn} ${
+            (select || post.status === "none") && styles.item_btn_disable
+          }`}
         >
           <article className={styles.item}>
             <User post={post} user={user} />
