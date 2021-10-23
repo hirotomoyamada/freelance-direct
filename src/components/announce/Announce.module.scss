@@ -36,9 +36,9 @@ $width: responsive-width(pc);
     }
 
     &_success {
-      border: 1px solid $add_clr;
-      color: $add_clr;
-      background: $add_bg_clr;
+      border: 1px solid $acnt_clr;
+      color: $acnt_clr;
+      background: $acnt_bg_clr;
     }
 
     &_error {
