@@ -10,9 +10,7 @@ export const Resident = () => {
 
   return (
     <div className={styles.form_col}>
-      <span className={styles.form_tag}>
-        形態&nbsp;<span className={styles.form_tag_desc}>※1</span>
-      </span>
+      <span className={styles.form_tag}>形態</span>
       <div className={styles.form_select}>
         <select
           className={`${styles.form_input} ${
