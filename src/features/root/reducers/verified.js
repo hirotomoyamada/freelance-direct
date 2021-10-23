@@ -4,7 +4,7 @@ export const verified = (state, action) => {
 
     if (action.payload.user.agree === "disable") {
       state.verified.agree = true;
-      
+
       state.modal.type = "agree";
       state.modal.open = true;
     }
@@ -16,6 +16,11 @@ export const verified = (state, action) => {
 
     state.data = action.payload.data;
     state.verified.demo = action.payload.demo;
+  }
+
+  if (action.payload && state.verified.demo) {
+    state.modal.type = "demo";
+    state.modal.open = true;
   }
 
   if (action.payload && action.payload.emailVerified) {
