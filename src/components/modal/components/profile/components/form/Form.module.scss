@@ -89,10 +89,20 @@ $width: responsive-width(pc);
     }
   }
 
-  &_col {
+  &_container {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      gap: 12px;
+    }
+  }
+
+  &_col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
     @media (max-width: responsive-width(sp)) {
       gap: 8px;

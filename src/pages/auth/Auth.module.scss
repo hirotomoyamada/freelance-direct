@@ -120,6 +120,10 @@ $width: responsive-width(pc);
       border: 1px solid $remove_clr;
     }
 
+    &_none {
+      display: none;
+    }
+
     &::placeholder {
       color: $sub_clr;
       opacity: 0.6;

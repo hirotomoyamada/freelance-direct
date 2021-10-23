@@ -9,35 +9,35 @@ export const handleSignUp = async ({
   data,
 }) => {
   const { email, password } = data;
-  try {
-    await auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(async (e) => {
-        await auth.currentUser
-          .sendEmailVerification({
-            url: "https://ses-hub.app/login",
-          })
-          .then(() => {
-            setCreate(true);
-            setEmail(true);
-          })
-          .catch((e) => {
-            dispatch(
-              rootSlice.handleAnnounce({
-                type: "error",
-                text: "再度時間をおいてください",
-              })
-            );
-          });
-      });
-    methods.reset();
-  } catch (e) {
-    dispatch(
-      rootSlice.handleAnnounce({
-        type: "error",
-        text: "アカウントの作成に失敗しました",
-      })
-    );
-    methods.reset({ email: data.email, password: "", verifiedPassword: "" });
-  }
+
+  await auth
+    .createUserWithEmailAndPassword(email, password)
+    .then(async (e) => {
+      await auth.currentUser
+        .sendEmailVerification({
+          url: "https://ses-hub.app/login",
+        })
+        .then(() => {
+          setCreate(true);
+          setEmail(true);
+          methods.reset();
+        })
+        .catch((e) => {
+          dispatch(
+            rootSlice.handleAnnounce({
+              type: "error",
+              text: "再度時間をおいてください",
+            })
+          );
+        });
+    })
+    .catch((e) => {
+      dispatch(
+        rootSlice.handleAnnounce({
+          type: "error",
+          text: "アカウントの作成に失敗しました",
+        })
+      );
+      methods.reset({ email: data.email, password: "", verifiedPassword: "" });
+    });
 };

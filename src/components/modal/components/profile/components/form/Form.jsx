@@ -47,7 +47,7 @@ export const Form = ({ cover, icon, setCover, setIcon }) => {
         <Skills />
         <Urls />
 
-        <div className={styles.form_col}>
+        <div className={styles.form_container}>
           <p className={styles.form_strike}>
             <span>勤務</span>
           </p>

@@ -21,6 +21,12 @@ export const Auth = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
+  const methods = useForm({
+    defaultValues: {
+      handles: [{ handle: "" }, { handle: "" }, { handle: "" }, { handle: "" }],
+    },
+  });
+
   const verified = useSelector(rootSlice.verified);
 
   const [sign, setSign] = useState(false);
@@ -31,6 +37,9 @@ export const Auth = () => {
   const [help, setHelp] = useState(false);
   const [terms, setTerms] = useState(false);
   const [create, setCreate] = useState(false);
+  const [error, setError] = useState(null);
+
+  const file = methods.watch("file")?.[0];
 
   useEffect(() => {
     functions.auth.getRedirect({ dispatch });
@@ -48,11 +57,27 @@ export const Auth = () => {
     setProfile(verified.profile);
   }, [location.pathname, verified]);
 
-  const methods = useForm({
-    defaultValues: {
-      handles: [{ handle: "" }, { handle: "" }, { handle: "" }, { handle: "" }],
-    },
-  });
+  useEffect(() => {
+    if (!file) {
+      setError(null);
+
+      return;
+    }
+
+    if (file?.type !== "application/pdf") {
+      setError("pdf のみアップロードできます");
+
+      return;
+    }
+
+    if (file?.size > 0.4 * 1024 * 1024) {
+      setError("400KB までアップロードできます");
+
+      return;
+    }
+
+    setError(null);
+  }, [file]);
 
   const handleSignIn = (data) => {
     functions.auth.handleSignIn({ dispatch, methods, data });
@@ -90,7 +115,7 @@ export const Auth = () => {
   };
 
   const handleCreate = (data) => {
-    functions.auth.handleCreate({ dispatch, data });
+    !error && functions.auth.handleCreate({ dispatch, data });
   };
 
   return (
@@ -124,7 +149,12 @@ export const Auth = () => {
             verified={verified}
           />
         ) : profile ? (
-          <Create handleLogout={handleLogout} setTerms={setTerms} />
+          <Create
+            handleLogout={handleLogout}
+            file={file}
+            error={error}
+            setTerms={setTerms}
+          />
         ) : reset ? (
           <Reset reset={reset} setReset={setReset} />
         ) : (

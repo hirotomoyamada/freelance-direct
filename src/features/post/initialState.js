@@ -82,7 +82,6 @@ export const initialState = {
         pages: 0,
         currentPage: 0,
       },
-      control: true,
     },
     hold: {
       posts: [],
@@ -91,7 +90,6 @@ export const initialState = {
         pages: 0,
         currentPage: 0,
       },
-      control: true,
     },
     disable: {
       posts: [],
@@ -100,7 +98,6 @@ export const initialState = {
         pages: 0,
         currentPage: 0,
       },
-      control: true,
     },
   },
 

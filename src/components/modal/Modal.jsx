@@ -60,6 +60,16 @@ export const Modal = () => {
             handleDelete={modal.delete}
           />
         );
+      case "block":
+        return (
+          <Delete
+            text={modal.text}
+            close={modal.close}
+            handleClose={handleClose}
+            handleDelete={modal.delete}
+            block
+          />
+        );
       default:
         return <></>;
     }

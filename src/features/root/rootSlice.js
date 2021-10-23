@@ -81,6 +81,7 @@ export const rootSlice = createSlice({
       (action) =>
         action.type.endsWith("/editProfile") ||
         action.type.endsWith("/deleteResume") ||
+        action.type.endsWith("/disableRequest") ||
         action.type.endsWith("/updateHome"),
       (state) => reducers.modal(state)
     );

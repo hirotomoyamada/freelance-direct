@@ -33,7 +33,7 @@ export const Item = ({ index, post, user, select, selectUser, none }) => {
           selectUser={selectUser}
         />
       ) : (
-        <Request index={index} user={user} post={post} />
+        <Request index={index} user={post} />
       )}
       {index === "matters" ? (
         <button

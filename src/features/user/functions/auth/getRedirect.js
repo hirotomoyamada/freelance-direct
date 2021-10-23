@@ -17,7 +17,7 @@ export const getRedirect = ({ dispatch }) => {
       if (!result.user.emailVerified) {
         auth.currentUser
           .sendEmailVerification({
-            url: "https://ses-hub.app/login",
+            url: "https://freelance-direct/login",
           })
           .catch((e) => {
             dispatch(

@@ -38,7 +38,9 @@ export const Sign = ({ sign, reset, setSign, setReset, handleProvider }) => {
             },
           })}
         />
-        <span className={styles.auth_error}>{errors.email?.message}</span>
+        {errors.email?.message && (
+          <span className={styles.auth_error}>{errors.email?.message}</span>
+        )}
       </div>
 
       <div>
@@ -59,7 +61,9 @@ export const Sign = ({ sign, reset, setSign, setReset, handleProvider }) => {
             },
           })}
         />
-        <span className={styles.auth_error}>{errors.password?.message}</span>
+        {errors.password?.message && (
+          <span className={styles.auth_error}>{errors.password?.message}</span>
+        )}
       </div>
       {sign && (
         <div>
@@ -97,12 +101,15 @@ export const Sign = ({ sign, reset, setSign, setReset, handleProvider }) => {
                   }
             )}
           />
-          <span className={styles.auth_error}>
-            {errors.verifiedPassword?.type === "verified" &&
-              "パスワードが一致しません"}
-          </span>
-
-          <span className={styles.auth_error}>{errors.password?.message}</span>
+          {errors.verifiedPassword?.type === "verified" && (
+            <span className={styles.auth_error}>パスワードが一致しません</span>
+          )}
+          
+          {errors.password?.message && (
+            <span className={styles.auth_error}>
+              {errors.password?.message}
+            </span>
+          )}
         </div>
       )}
 
@@ -124,7 +131,7 @@ export const Sign = ({ sign, reset, setSign, setReset, handleProvider }) => {
           {sign ? "アカウントをお持ちですか？" : "新規登録はこちら"}
         </button>
       </div>
-      
+
       <div className={styles.auth_col}>
         <button type="submit" className={styles.auth_btn}>
           {sign ? "新規登録" : "ログイン"}

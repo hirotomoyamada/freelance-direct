@@ -10,9 +10,7 @@ export const Clothes = () => {
 
   return (
     <div className={styles.form_col}>
-      <span className={styles.form_tag}>
-        服装&nbsp;<span className={styles.form_tag_desc}>※1</span>
-      </span>
+      <span className={styles.form_tag}>服装</span>
       <div className={styles.form_select}>
         <select
           className={`${styles.form_input} ${

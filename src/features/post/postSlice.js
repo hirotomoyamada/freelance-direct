@@ -68,6 +68,15 @@ export const postSlice = createSlice({
     );
 
     builder.addMatcher(
+      (action) => action.type.endsWith("/enableRequest"),
+      (state, action) => reducers.enableRequest(state, action)
+    );
+    builder.addMatcher(
+      (action) => action.type.endsWith("/disableRequest"),
+      (state, action) => reducers.disableRequest(state, action)
+    );
+
+    builder.addMatcher(
       (action) => action.type.endsWith("/updateHome"),
       (state) => reducers.resetControl(state)
     );

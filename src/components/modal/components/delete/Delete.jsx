@@ -1,12 +1,18 @@
 import styles from "./Delete.module.scss";
 
-export const Delete = ({ text, handleClose, close, handleDelete }) => {
+export const Delete = ({ text, handleClose, close, handleDelete, block }) => {
   return (
     <div className={styles.delete}>
-      {text !== "出力" && <p className={styles.delete_ttl}>{text}を削除</p>}
+      {text !== "出力" && (
+        <p className={styles.delete_ttl}>
+          {text}を{!block ? "削除" : "ブロック"}
+        </p>
+      )}
       <span className={styles.delete_desc}>
         {text !== "出力"
-          ? `本当にこの${text}を削除してよろしいですか？`
+          ? `本当にこの${text}を${
+              !block ? "削除" : "ブロック"
+            }してよろしいですか？`
           : "出力リストから選択した項目を削除しますか？"}
       </span>
       <div className={styles.delete_menu}>
@@ -23,7 +29,7 @@ export const Delete = ({ text, handleClose, close, handleDelete }) => {
           className={styles.delete_menu_submit}
           onClick={handleDelete ? handleDelete : undefined}
         >
-          {text !== "出力" ? "削除" : "すべて削除する"}
+          {block ? "ブロック" : text !== "出力" ? "削除" : "すべて削除する"}
         </button>
       </div>
     </div>

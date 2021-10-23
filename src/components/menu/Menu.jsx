@@ -38,6 +38,8 @@ export const Menu = ({ user }) => {
     }
     history.push(p === "user" ? `/user/${user.uid}` : `/${p}`);
     control && dispatch(rootSlice.handleMenu("close"));
+
+    window.scrollTo(0, 0);
   };
 
   return (

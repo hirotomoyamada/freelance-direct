@@ -19,7 +19,7 @@ export const NickName = () => {
           {...register("nickName", {
             required: {
               value: true,
-              message: "名前を入力してください",
+              message: "ニックネームを入力してください",
             },
             pattern: {
               value: /^\S+/,

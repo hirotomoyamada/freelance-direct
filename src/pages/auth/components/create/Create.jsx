@@ -8,8 +8,9 @@ import { Location } from "./components/Location";
 import { Age } from "./components/Age";
 import { Sex } from "./components/Sex";
 import { Handles } from "./components/Handles";
+import { Resume } from "./components/Resume";
 
-export const Create = ({ handleLogout, setTerms }) => {
+export const Create = ({ handleLogout, file, error, setTerms }) => {
   return (
     <div className={root.auth_inner}>
       <button
@@ -33,6 +34,8 @@ export const Create = ({ handleLogout, setTerms }) => {
       </div>
 
       <Handles />
+
+      <Resume file={file} error={error} />
 
       <Agree setTerms={setTerms} />
 

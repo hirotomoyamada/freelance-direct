@@ -43,6 +43,7 @@ export const Profile = ({ user, handleClose }) => {
         onSubmit={methods.handleSubmit(handleEdit)}
       >
         <Header
+          user={user}
           handleClose={handleClose}
           handleBack={handleBack}
           cover={cover}

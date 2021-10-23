@@ -8,6 +8,7 @@ import { fetchPost } from "./fetchPost";
 import { addLike, removeLike } from "./like";
 import { addEntry } from "./entry";
 import { addFollow, removeFollow } from "./follow";
+import { enableRequest, disableRequest } from "./request";
 
 import { resetPost, resetControl } from "./reset";
 
@@ -23,6 +24,8 @@ export {
   addEntry,
   addFollow,
   removeFollow,
+  enableRequest,
+  disableRequest,
   resetPost,
   resetControl,
 };

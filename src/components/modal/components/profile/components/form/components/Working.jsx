@@ -10,9 +10,7 @@ export const Working = () => {
 
   return (
     <div className={styles.form_col}>
-      <span className={styles.form_tag}>
-        日数&nbsp;(週)&nbsp;<span className={styles.form_tag_desc}>※1</span>
-      </span>
+      <span className={styles.form_tag}>日数</span>
       <div className={styles.form_select}>
         <select
           className={`${styles.form_input} ${
