@@ -7,7 +7,7 @@ export const Menu = ({ page, setPage }) => {
     { page: "likes", name: "いいね" },
     { page: "entries", name: "エントリー" },
     { page: "requests", name: "リクエスト" },
-    { page: "histroy", name: "履歴" },
+    { page: "history", name: "履歴" },
     { page: "profile", name: "プロフィール" },
   ];
 
