@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 import * as rootSlice from "../../features/root/rootSlice";
 
-export const Load = () => {
+export const Root = () => {
   const load = useSelector(rootSlice.load).root;
 
   const [none, setNone] = useState(true);
@@ -35,7 +35,7 @@ export const Load = () => {
 export const Fetch = () => {
   const load = useSelector(rootSlice.load).fetch;
 
-  const [none, setNone] = useState(false);
+  const [none, setNone] = useState(true);
 
   useEffect(() => {
     !none && setNone(load);

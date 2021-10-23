@@ -9,7 +9,6 @@ import * as userSlice from "./features/user/userSlice";
 import * as postSlice from "./features/post/postSlice";
 
 import { Header } from "./components/header/Header";
-import { Fetch } from "./components/load/Load";
 
 import { List } from "./features/post/list/List";
 
@@ -62,7 +61,6 @@ export const Home = () => {
 
   return (
     <div>
-      <Fetch />
       <Header user={user} type="home" index={index} />
       <List user={user} index={index} posts={posts} hit={hit} home />
     </div>

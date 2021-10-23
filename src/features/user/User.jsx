@@ -4,6 +4,7 @@ import Loader from "react-loader-spinner";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import { fetchUser } from "./actions/fetchUser";
 import { userPosts } from "../post/actions/userPosts";
@@ -23,6 +24,7 @@ import { Meta } from "./Meta";
 
 export const User = (props) => {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const uid = props.match.params.uid;
 
@@ -50,8 +52,9 @@ export const User = (props) => {
   );
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(rootSlice.handlePage("user"));
-  }, [dispatch]);
+  }, [dispatch, pathname]);
 
   useEffect(() => {
     if (currentUser?.uid !== user?.uid) {
@@ -65,7 +68,7 @@ export const User = (props) => {
     <div className={styles.user}>
       <Meta user={user} />
 
-      <Back />
+      {user.uid && <Back />}
 
       {user.uid ? (
         <>
