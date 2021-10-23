@@ -6,10 +6,14 @@ export const createProfile = createAsyncThunk(
   async (data) => {
     const createProfile = functions.httpsCallable("fd-createProfile");
 
-    createProfile(data).then(async ({ data }) => {
-      await auth.currentUser.updateProfile({
-        displayName: data.profile.nickName,
+    createProfile(data)
+      .then(async ({ data }) => {
+        await auth.currentUser.updateProfile({
+          displayName: data.profile.nickName,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
       });
-    });
   }
 );
