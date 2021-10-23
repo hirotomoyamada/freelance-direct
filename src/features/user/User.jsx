@@ -13,12 +13,13 @@ import * as postSlice from "../post/postSlice";
 
 import { Header } from "./layouts/header/Header";
 import { Profile } from "./layouts/profile/Profile";
-import { Edit } from "./components/edit/Edit";
+import { List } from "../post/list/List";
+
 import { Follow } from "../../components/follow/Follow";
+import { Edit } from "./components/edit/Edit";
+import { Back } from "./components/back/Back";
 
 import { Meta } from "./Meta";
-import { List } from "../post/list/List";
-import { Back } from "./components/back/Back";
 
 export const User = (props) => {
   const dispatch = useDispatch();

@@ -5,9 +5,10 @@ export const Menu = ({ page, setPage }) => {
     { page: "home", name: "ホーム" },
     { page: "search", name: "検索" },
     { page: "likes", name: "いいね" },
-    { page: "outputs", name: "出力" },
-    { page: "entries", name: "お問い合わせ" },
-    { page: "posts", name: "投稿" },
+    { page: "entries", name: "エントリー" },
+    { page: "requests", name: "リクエスト" },
+    { page: "histroy", name: "履歴" },
+    { page: "profile", name: "プロフィール" },
   ];
 
   return (
