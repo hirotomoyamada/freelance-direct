@@ -11,9 +11,9 @@ import * as rootSlice from "../root/rootSlice";
 import * as userSlice from "./userSlice";
 import * as postSlice from "../post/postSlice";
 
-import { Header } from "./components/header/Header";
+import { Header } from "./layouts/header/Header";
+import { Profile } from "./layouts/profile/Profile";
 import { Edit } from "./components/edit/Edit";
-import { Profile } from "./components/profile/Profile";
 import { Follow } from "../../components/follow/Follow";
 
 import { Meta } from "./Meta";
