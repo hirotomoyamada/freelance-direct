@@ -13,6 +13,7 @@ export const Email = ({ user }) => {
       >
         {user?.profile?.email}
       </a>
+      <span className={styles.profile_request}>リクエスト</span>
     </div>
   );
 };

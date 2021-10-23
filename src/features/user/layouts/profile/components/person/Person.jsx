@@ -56,6 +56,15 @@ export const Person = ({ user }) => {
         <Urls user={user} />
         <CreateAt user={user} />
       </div>
+
+      <div className={styles.profile_field}>
+        <span className={styles.profile_request}>リクエスト</span>
+        <span
+          className={`${styles.profile_desc} ${styles.profile_desc_request}`}
+        >
+          承認後、開示される情報です
+        </span>
+      </div>
     </div>
   );
 };
