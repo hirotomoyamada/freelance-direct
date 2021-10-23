@@ -11,7 +11,7 @@ import * as rootSlice from "./features/root/rootSlice";
 import * as userSlice from "./features/user/userSlice";
 
 import { Meta } from "./Meta";
-import { Load } from "./components/load/Load";
+import * as load from "./components/load/Load";
 import { Announce } from "./components/announce/Announce";
 
 import { Home } from "./Home";
@@ -88,7 +88,9 @@ export const App = () => {
           <NotFound />
         ) : browser ? (
           <>
-            <Load />
+            <load.Root />
+            <load.Fetch />
+            
             <Announce />
             <Maintenance />
             <Modal />

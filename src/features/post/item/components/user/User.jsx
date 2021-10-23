@@ -12,7 +12,9 @@ export const User = ({ post }) => {
 
         <div className={styles.user_head_wrap}>
           <h1 className={styles.user_person}>{post?.profile?.person}</h1>
-          <h2 className={styles.user_name}>{post?.profile?.name}</h2>
+          {post?.profile?.name && (
+            <h2 className={styles.user_name}>{post?.profile?.name}</h2>
+          )}
         </div>
       </div>
 

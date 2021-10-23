@@ -4,6 +4,7 @@ import Loader from "react-loader-spinner";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import { fetchUser } from "./actions/fetchUser";
 import { userPosts } from "../post/actions/userPosts";
@@ -13,15 +14,17 @@ import * as postSlice from "../post/postSlice";
 
 import { Header } from "./layouts/header/Header";
 import { Profile } from "./layouts/profile/Profile";
-import { Edit } from "./components/edit/Edit";
+import { List } from "../post/list/List";
+
 import { Follow } from "../../components/follow/Follow";
+import { Edit } from "./components/edit/Edit";
+import { Back } from "./components/back/Back";
 
 import { Meta } from "./Meta";
-import { List } from "../post/list/List";
-import { Back } from "./components/back/Back";
 
 export const User = (props) => {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const uid = props.match.params.uid;
 
@@ -49,8 +52,9 @@ export const User = (props) => {
   );
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(rootSlice.handlePage("user"));
-  }, [dispatch]);
+  }, [dispatch, pathname]);
 
   useEffect(() => {
     if (currentUser?.uid !== user?.uid) {
@@ -64,7 +68,7 @@ export const User = (props) => {
     <div className={styles.user}>
       <Meta user={user} />
 
-      <Back />
+      {user.uid && <Back />}
 
       {user.uid ? (
         <>

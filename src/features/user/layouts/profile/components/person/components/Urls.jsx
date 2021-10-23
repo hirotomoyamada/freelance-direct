@@ -25,6 +25,7 @@ export const Urls = ({ user }) => {
                 >
                   {url}
                 </a>
+                <span className={styles.profile_request}>リクエスト</span>
               </div>
             )
         )}

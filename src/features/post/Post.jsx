@@ -27,11 +27,8 @@ export const Post = (props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
-
-  useEffect(() => {
     dispatch(rootSlice.handlePage("post"));
-  }, [dispatch]);
+  }, [dispatch, pathname]);
 
   useEffect(() => {
     dispatch(fetchPost(objectID));

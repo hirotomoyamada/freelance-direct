@@ -16,7 +16,10 @@ export const File = ({ user, resume, handleDelete }) => {
 
   return (
     <div className={root.profile_col}>
-      <span className={root.profile_tag}>職務経歴書</span>
+      <div className={root.profile_wrap}>
+        <span className={root.profile_tag}>職務経歴書</span>
+        <span className={root.profile_request}>リクエスト</span>
+      </div>
 
       <div className={styles.resume_container}>
         {user?.resume?.url ? (

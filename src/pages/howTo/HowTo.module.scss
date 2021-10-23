@@ -77,5 +77,23 @@ $width: responsive-width(pc);
     @media (max-width: responsive-width(sp)) {
       padding: 24px;
     }
+
+    ul {
+      color: $remove_clr;
+      
+      li {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 8px;
+          height: 8px;
+          background: $remove_clr;
+        }
+      }
+    }
   }
 }
