@@ -70,7 +70,7 @@ export const Header = ({
               : type === "requests"
               ? "リクエスト"
               : type === "entries"
-              ? "お問い合わせ"
+              ? "エントリー"
               : type === "history"
               ? "履歴"
               : type === "setting" && "アカウント設定"}
