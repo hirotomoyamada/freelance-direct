@@ -72,7 +72,7 @@ export const Header = ({
               : type === "entries"
               ? "エントリー"
               : type === "history"
-              ? "履歴"
+              ? "閲覧履歴"
               : type === "setting" && "アカウント設定"}
           </div>
         )}
