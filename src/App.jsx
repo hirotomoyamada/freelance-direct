@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
-
-import { auth } from "./firebase";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-import { login } from "./features/user/actions/login";
-
-import * as rootSlice from "./features/root/rootSlice";
-import * as userSlice from "./features/user/userSlice";
 
 import { Meta } from "./Meta";
 import * as load from "./components/load/Load";
 import { Announce } from "./components/announce/Announce";
+import { Modal } from "./components/modal/Modal";
+import { Menu } from "./components/menu/Menu";
 
 import { Home } from "./Home";
 import { Search } from "./Search";
@@ -29,55 +22,11 @@ import { Maintenance } from "./pages/maintenance/Maintenance";
 
 import { Promotion } from "./promotion/Promotion";
 import { Contact } from "./promotion/pages/contact/Contact";
-
-import { Modal } from "./components/modal/Modal";
-import { Menu } from "./components/menu/Menu";
+import { useApp } from "./hook/useApp";
+import { Overlay } from "./components/overlay/Overlay";
 
 export const App = () => {
-  const dispatch = useDispatch();
-
-  const user = useSelector(userSlice.user);
-  const menu = useSelector(rootSlice.menu);
-  const access = useSelector(rootSlice.verified).access;
-  const notFound = useSelector(rootSlice.notFound);
-
-  const [browser, setBrowser] = useState(true);
-  const [control, setControl] = useState(
-    window.innerWidth < 959 ? true : false
-  );
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        dispatch(login(user));
-      } else {
-        auth.signOut();
-        dispatch(userSlice.logout());
-      }
-    });
-  }, [dispatch]);
-
-  useEffect(() => {
-    const agent = window.navigator.userAgent.toLowerCase();
-    if (agent.indexOf("msie") !== -1 || agent.indexOf("trident") !== -1) {
-      setBrowser(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    const resize = () => {
-      window.innerWidth < 959 ? setControl(true) : setControl(false);
-    };
-
-    !control && dispatch(rootSlice.handleMenu("reset"));
-
-    window.addEventListener("resize", resize);
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [control]);
+  const [user, access, notFound, browser, control] = useApp();
 
   return (
     <HelmetProvider>
@@ -139,16 +88,7 @@ export const App = () => {
                   <Route component={NotFound} />
                 </Switch>
 
-                {control && (
-                  <div
-                    className={`overlay ${
-                      menu.display
-                        ? "overlay_open"
-                        : menu.control && "overlay_close"
-                    }`}
-                    onClick={() => dispatch(rootSlice.handleMenu("close"))}
-                  ></div>
-                )}
+                {control && <Overlay />}
               </div>
             )}
           </>

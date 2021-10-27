@@ -2,16 +2,6 @@ import styles from "./User.module.scss";
 
 import Loader from "react-loader-spinner";
 
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-
-import { fetchUser } from "./actions/fetchUser";
-import { userPosts } from "../post/actions/userPosts";
-import * as rootSlice from "../root/rootSlice";
-import * as userSlice from "./userSlice";
-import * as postSlice from "../post/postSlice";
-
 import { Header } from "./layouts/header/Header";
 import { Profile } from "./layouts/profile/Profile";
 import { List } from "../post/list/List";
@@ -21,48 +11,13 @@ import { Edit } from "./components/edit/Edit";
 import { Back } from "./components/back/Back";
 
 import { Meta } from "./Meta";
+import { useUser } from "./hook/useUser";
 
 export const User = (props) => {
-  const dispatch = useDispatch();
-  const { pathname } = useLocation();
-
   const uid = props.match.params.uid;
-
-  const currentUser = useSelector(userSlice.user);
-  const selectUser = useSelector(userSlice.selectUser);
   const index = "matters";
 
-  const user =
-    currentUser?.uid === uid
-      ? currentUser
-      : selectUser?.uid === uid && selectUser;
-
-  const posts = useSelector((state) =>
-    postSlice.posts({
-      state: state,
-      page: "user",
-    })
-  );
-
-  const hit = useSelector((state) =>
-    postSlice.hit({
-      state: state,
-      page: "user",
-    })
-  );
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    dispatch(rootSlice.handlePage("user"));
-  }, [dispatch, pathname]);
-
-  useEffect(() => {
-    if (currentUser?.uid !== user?.uid) {
-      dispatch(fetchUser(uid));
-      dispatch(userPosts({ uid: uid }));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [uid]);
+  const [currentUser, user, posts, hit] = useUser(uid);
 
   return (
     <div className={styles.user}>
@@ -71,7 +26,7 @@ export const User = (props) => {
       {user.uid && <Back />}
 
       {user.uid ? (
-        <>
+        <div>
           <Header user={user} />
 
           <div
@@ -87,7 +42,7 @@ export const User = (props) => {
 
             <Profile currentUser={currentUser} user={user} />
           </div>
-        </>
+        </div>
       ) : (
         <div className={styles.user_load}>
           <Loader type="Grid" color="#4387f4" height={56} width={56} />
@@ -98,7 +53,7 @@ export const User = (props) => {
         <List
           index={index}
           user={currentUser}
-          selectUser={selectUser}
+          selectUser={user}
           posts={posts}
           hit={hit}
           companys
