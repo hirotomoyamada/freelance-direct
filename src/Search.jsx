@@ -1,15 +1,13 @@
 import { useEffect } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
+import { usePosts } from "./hook/usePosts";
 
 import { fetchPosts } from "./features/post/actions/fetchPosts";
 
 import * as rootSlice from "./features/root/rootSlice";
 import * as userSlice from "./features/user/userSlice";
-import * as postSlice from "./features/post/postSlice";
 
 import { Header } from "./components/header/Header";
-
 import { List } from "./features/post/list/List";
 
 export const Search = () => {
@@ -19,25 +17,7 @@ export const Search = () => {
   const search = useSelector(rootSlice.search);
   const user = useSelector(userSlice.user);
 
-  const posts = useSelector((state) =>
-    postSlice.posts({
-      state: state,
-      page: "search",
-      index: index === "matters" || index === "companys" ? index : "matters",
-    })
-  );
-
-  const hit = useSelector((state) =>
-    postSlice.hit({
-      state: state,
-      page: "search",
-      index: index === "matters" || index === "companys" ? index : "matters",
-    })
-  );
-
-  useEffect(() => {
-    dispatch(rootSlice.handlePage("search"));
-  }, [dispatch]);
+  const { posts, hit } = usePosts({ index: index, page: "search" });
 
   useEffect(() => {
     (index === "matters" || index === "companys") &&

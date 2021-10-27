@@ -1,4 +1,5 @@
 import styles from "./User.module.scss";
+import { useUser } from "./hook/useUser";
 
 import Loader from "react-loader-spinner";
 
@@ -11,7 +12,6 @@ import { Edit } from "./components/edit/Edit";
 import { Back } from "./components/back/Back";
 
 import { Meta } from "./Meta";
-import { useUser } from "./hook/useUser";
 
 export const User = (props) => {
   const uid = props.match.params.uid;

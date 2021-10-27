@@ -1,10 +1,10 @@
 import styles from "./Post.module.scss";
+import { usePost } from "./hook/usePost";
 
 import { Meta } from "./Meta";
 import { Main } from "./layouts/main/Main";
 import { Footer } from "./layouts/footer/Footer";
 import { useEntry } from "./hook/useEntry";
-import { usePost } from "./hook/usePost";
 
 export const Post = (props) => {
   const objectID = props.match.params.objectID;
