@@ -27,7 +27,9 @@ export const Modal = () => {
   useEffect(() => {
     location?.pathname === "/terms"
       ? document.body.classList.remove("lock")
-      : modal.open && document.body.classList.add("lock");
+      : modal.open
+      ? document.body.classList.add("lock")
+      : document.body.classList.remove("lock");
   }, [location, modal.open]);
 
   const Inner = () => {
