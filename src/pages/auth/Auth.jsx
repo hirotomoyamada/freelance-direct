@@ -5,7 +5,12 @@ import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 
+import { useResize } from "./hook/useResize";
+import { useVerifiedFile } from "./hook/useVerifiedFile";
+import { useVerification } from "./hook/useVerification";
+
 import * as rootSlice from "../../features/root/rootSlice";
+import * as functions from "../../features/user/functions/functions";
 
 import { Sign } from "./components/Sign";
 import { Reset } from "./components/Reset";
@@ -13,11 +18,6 @@ import { Create } from "./components/create/Create";
 import { Verified } from "./components/Verified";
 import { Help, StartGuide } from "./components/help/Help";
 import { Terms } from "../terms/Terms";
-
-import * as functions from "../../features/user/functions/functions";
-import { useResize } from "./hook/useResize";
-import { useVerifiedFile } from "./hook/useVerifiedFile";
-import { useVerification } from "./hook/useVerification";
 
 export const Auth = () => {
   const dispatch = useDispatch();
