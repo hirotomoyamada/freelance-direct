@@ -18,6 +18,7 @@ export const Information = ({ info }) => {
         <InfoIcon className={styles.info_icon} />
         <span className={styles.info_title}>{info?.title}</span>
       </button>
+      
       <button
         type="button"
         onClick={() => dispatch(rootSlice.handleModal({ type: "home" }))}

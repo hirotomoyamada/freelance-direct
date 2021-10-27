@@ -36,7 +36,7 @@ $width: responsive-width(pc);
     grid-template-columns: 1fr;
     justify-content: space-between;
     align-items: center;
-    gap: 32px;
+    gap: 16px;
 
     @media (max-width: responsive-width(tb)) {
       padding: 16px 32px;
