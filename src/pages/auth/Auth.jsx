@@ -94,12 +94,7 @@ export const Auth = () => {
   return (
     <FormProvider {...methods}>
       <form
-        className={`${styles.auth} ${terms && styles.auth_terms} ${
-          (email ||
-            verified.status === "hold" ||
-            verified.status === "disable") &&
-          styles.auth_verified
-        }`}
+        className={`${styles.auth} ${terms && styles.auth_terms}`}
         onSubmit={
           reset
             ? methods.handleSubmit(handleReset)

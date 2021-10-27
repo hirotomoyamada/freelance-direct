@@ -10,11 +10,11 @@ export const useResize = () => {
       JSON.stringify(inner?.current?.getBoundingClientRect().height) >
       window.innerHeight
     ) {
-      form.current.classList.add(styles.auth_block);
-      inner.current.classList.add(styles.auth_inner_block);
+      form?.current?.classList.add(styles.auth_block);
+      inner?.current?.classList.add(styles.auth_inner_block);
     } else {
-      form.current.classList.remove(styles.auth_block);
-      inner.current.classList.remove(styles.auth_inner_block);
+      form?.current?.classList.remove(styles.auth_block);
+      inner?.current?.classList.remove(styles.auth_inner_block);
     }
   };
 
