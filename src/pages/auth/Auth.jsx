@@ -2,7 +2,6 @@ import styles from "./Auth.module.scss";
 
 import { auth } from "../../firebase";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,10 +15,12 @@ import { Help, StartGuide } from "./components/help/Help";
 import { Terms } from "../terms/Terms";
 
 import * as functions from "../../features/user/functions/functions";
+import { useResize } from "./hook/useResize";
+import { useVerifiedFile } from "./hook/useVerifiedFile";
+import { useVerification } from "./hook/useVerification";
 
 export const Auth = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
 
   const methods = useForm({
     defaultValues: {
@@ -29,55 +30,27 @@ export const Auth = () => {
 
   const verified = useSelector(rootSlice.verified);
 
-  const [sign, setSign] = useState(false);
   const [reset, setReset] = useState(false);
-
-  const [profile, setProfile] = useState(false);
-  const [email, setEmail] = useState(false);
   const [help, setHelp] = useState(false);
   const [terms, setTerms] = useState(false);
-  const [create, setCreate] = useState(false);
-  const [error, setError] = useState(null);
 
-  const file = methods.watch("file")?.[0];
+  const [
+    sign,
+    setSign,
+    profile,
+    setProfile,
+    email,
+    setEmail,
+    create,
+    setCreate,
+  ] = useVerification(verified);
+
+  const [file, error] = useVerifiedFile(methods);
+  const [form, inner] = useResize();
 
   useEffect(() => {
     functions.auth.getRedirect({ dispatch });
   }, [dispatch]);
-
-  useEffect(() => {
-    setSign(location.pathname === "/signup" ? true : false);
-
-    setCreate(
-      verified.email || verified.profile || verified.status === "hold"
-        ? true
-        : false
-    );
-    setEmail(verified.email);
-    setProfile(verified.profile);
-  }, [location.pathname, verified]);
-
-  useEffect(() => {
-    if (!file) {
-      setError(null);
-
-      return;
-    }
-
-    if (file?.type !== "application/pdf") {
-      setError("pdf のみアップロードできます");
-
-      return;
-    }
-
-    if (file?.size > 0.4 * 1024 * 1024) {
-      setError("400KB までアップロードできます");
-
-      return;
-    }
-
-    setError(null);
-  }, [file]);
 
   const handleSignIn = (data) => {
     functions.auth.handleSignIn({ dispatch, methods, data });
@@ -136,6 +109,7 @@ export const Auth = () => {
             ? methods.handleSubmit(handleSignUp)
             : methods.handleSubmit(handleSignIn)
         }
+        ref={form}
       >
         {terms ? (
           <Terms create setTerms={setTerms} />
@@ -150,6 +124,7 @@ export const Auth = () => {
           />
         ) : profile ? (
           <Create
+            inner={inner}
             handleLogout={handleLogout}
             file={file}
             error={error}
@@ -159,6 +134,7 @@ export const Auth = () => {
           <Reset reset={reset} setReset={setReset} />
         ) : (
           <Sign
+            inner={inner}
             sign={sign}
             reset={reset}
             setSign={setSign}

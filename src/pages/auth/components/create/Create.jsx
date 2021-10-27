@@ -10,9 +10,9 @@ import { Sex } from "./components/Sex";
 import { Handles } from "./components/Handles";
 import { Resume } from "./components/Resume";
 
-export const Create = ({ handleLogout, file, error, setTerms }) => {
+export const Create = ({ inner, handleLogout, file, error, setTerms }) => {
   return (
-    <div className={root.auth_inner}>
+    <div className={root.auth_inner} ref={inner}>
       <button
         type="button"
         className={`${root.auth_desc} ${root.auth_desc_logout}`}
