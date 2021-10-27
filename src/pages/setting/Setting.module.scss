@@ -7,10 +7,27 @@ $width: responsive-width(pc);
 
 .setting {
   position: relative;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: 48px 1fr;
+  align-items: center;
+
+  @media (max-width: responsive-width(tb)) {
+    grid-template-rows: 80px 1fr;
+  }
+
+  @media (max-width: responsive-width(sp)) {
+    grid-template-rows: 64px 1fr;
+  }
+
+  &_main {
+    align-items: flex-start;
+  }
 
   &_inner {
     padding: 32px;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,25 +36,7 @@ $width: responsive-width(pc);
     @media (max-width: responsive-width(sp)) {
       gap: 16px;
       font-size: 14px;
-      padding: 0 16px 32px;
-    }
-
-    &_other {
-      padding-top: 0;
-      justify-content: flex-start;
-
-      & > :not(:last-child) {
-        padding-top: 24px;
-        border-top: 1px solid $bdr_clr;
-
-        @media (max-width: responsive-width(sp)) {
-          padding-top: 12px;
-        }
-      }
-
-      & > :first-child {
-        border: none;
-      }
+      padding: 32px 12px;
     }
   }
 
