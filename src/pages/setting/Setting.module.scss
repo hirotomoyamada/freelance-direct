@@ -6,12 +6,11 @@
 $width: responsive-width(pc);
 
 .setting {
-  min-height: 100vh;
   position: relative;
 
   &_inner {
-    height: calc(100vh - 48px);
     padding: 32px;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
