@@ -18,7 +18,7 @@ $width: responsive-width(pc);
     background: $base_clr;
 
     @media (max-width: responsive-width(sp)) {
-      padding: 0 16px;
+      padding: 0 12px;
     }
   }
 
@@ -39,11 +39,11 @@ $width: responsive-width(pc);
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding: 16px 0 32px;
+    padding: 32px 0;
 
     @media (max-width: responsive-width(sp)) {
       gap: 24px;
-      padding: 8px 0 24px;
+      padding: 24px 0;
     }
   }
 
@@ -80,7 +80,7 @@ $width: responsive-width(pc);
 
     ul {
       color: $remove_clr;
-      
+
       li {
         display: flex;
         gap: 8px;

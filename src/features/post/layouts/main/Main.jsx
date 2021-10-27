@@ -38,7 +38,7 @@ export const Main = ({ post, user, entry, handleEntry }) => {
 
       <Feilds tag="尚可" objects={post?.prefers} />
 
-      <Period period={post?.period} matters />
+      <Period period={post?.period} />
 
       <Txt
         tag="場所"

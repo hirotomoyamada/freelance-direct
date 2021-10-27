@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import * as userSlice from "../../../../features/user/userSlice";
 
 import { matters } from "./functions/matters";
-import { resources } from "./functions/resources";
+
 import { Body } from "./components/Body";
 import { Social } from "./components/Social";
 
@@ -16,11 +16,7 @@ export const Entry = ({ index, user, post, handleClose }) => {
   const [copy, setCopy] = useState(false);
 
   useEffect(() => {
-    setValue(
-      index === "matters"
-        ? matters({ post })
-        : index === "resources" && resources({ post })
-    );
+    setValue(matters({ post }));
   }, [index, post]);
 
   const handleCopy = () => {
