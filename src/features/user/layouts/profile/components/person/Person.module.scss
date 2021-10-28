@@ -151,6 +151,14 @@ $width: responsive-width(pc);
     &_acnt {
       background: $acnt_clr;
     }
+
+    &_disable {
+      background: $sub_clr;
+    }
+
+    &_hurry {
+      background: $remove_clr;
+    }
   }
 
   &_request {

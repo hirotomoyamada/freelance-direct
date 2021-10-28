@@ -55,6 +55,14 @@ $width: responsive-width(pc);
       border-radius: 6px;
       font-size: 10px;
     }
+
+    &_disable {
+      background: $sub_clr;
+    }
+
+    &_hurry {
+      background: $remove_clr;
+    }
   }
 
   &_uid {

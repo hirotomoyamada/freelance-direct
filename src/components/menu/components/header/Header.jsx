@@ -25,7 +25,16 @@ export const Header = ({ user, handlePage }) => {
           <p className={styles.header_nickName}>
             {user?.profile?.nickName ? user.profile.nickName : nickName}
           </p>
-          <span className={styles.header_state}>{user?.profile?.state}</span>
+          <span
+            className={`${styles.header_state} ${
+              (user?.profile?.state === "確定" ||
+                user?.profile?.state === "商談中" ||
+                user?.profile?.state === "情報収集中") &&
+              styles.header_state_disable
+            } ${user?.profile?.state === "至急" && styles.header_state_hurry}`}
+          >
+            {user?.profile?.state}
+          </span>
         </div>
         <span className={styles.header_uid}>{user?.uid}</span>
       </div>
