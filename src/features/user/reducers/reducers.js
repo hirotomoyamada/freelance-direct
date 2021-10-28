@@ -5,7 +5,7 @@ import { editProfile } from "./editProfile";
 import { enableAgree } from "./enableAgree";
 
 import { addProvider } from "./addProvider";
-import { changeEmail } from "./changeEmail";
+import { changeEmail, changeState } from "./change";
 
 import { addLike, removeLike } from "./like";
 import { addEntry } from "./entry";
@@ -23,6 +23,7 @@ export {
   enableAgree,
   addProvider,
   changeEmail,
+  changeState,
   addLike,
   removeLike,
   addEntry,

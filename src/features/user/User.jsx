@@ -35,7 +35,7 @@ export const User = (props) => {
             }`}
           >
             {currentUser?.uid === user?.uid ? (
-              <Edit />
+              <Edit user={currentUser} />
             ) : (
               user?.uid && <Follow user={currentUser} post={user} profile />
             )}

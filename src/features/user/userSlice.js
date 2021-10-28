@@ -21,6 +21,7 @@ export const userSlice = createSlice({
     enableAgree: (state) => reducers.enableAgree(state),
     addProvider: (state, action) => reducers.addProvider(state, action),
     changeEmail: (state, action) => reducers.changeEmail(state, action),
+    changeState: (state, action) => reducers.changeState(state, action),
 
     deleteResume: (state) => reducers.deleteResume(state),
 
@@ -59,6 +60,7 @@ export const {
   enableAgree,
   addProvider,
   changeEmail,
+  changeState,
 
   deleteResume,
 

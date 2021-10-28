@@ -133,7 +133,7 @@ $width: responsive-width(pc);
     }
   }
 
-  &_position {
+  &_category {
     display: inline-block;
     padding: 0 8px;
     border-radius: 8px;
@@ -146,6 +146,10 @@ $width: responsive-width(pc);
       line-height: 20px;
       border-radius: 6px;
       font-size: 10px;
+    }
+
+    &_acnt {
+      background: $acnt_clr;
     }
   }
 

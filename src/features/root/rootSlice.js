@@ -93,6 +93,12 @@ export const rootSlice = createSlice({
         reducers.modal(state);
       }
     );
+    builder.addMatcher(
+      (action) => action.type.endsWith("/changeState"),
+      (state) => {
+        state.announce.success = "変更されました";
+      }
+    );
 
     builder.addMatcher(
       (action) => action.type.endsWith("/addProvider"),

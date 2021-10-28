@@ -6,3 +6,10 @@ export const changeEmail = (state, action) => {
   const changeEmail = functions.httpsCallable("fd-changeEmail");
   changeEmail({ email: action.payload }).catch((e) => {});
 };
+
+export const changeState = (state, action) => {
+  state.user.profile.state = action.payload;
+
+  const changeState = functions.httpsCallable("fd-changeState");
+  changeState(action.payload).catch((e) => {});
+};

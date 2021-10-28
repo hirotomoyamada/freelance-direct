@@ -14,7 +14,12 @@ export const Head = ({ user }) => {
         {user?.profile?.nickName ? user.profile.nickName : nickName}
       </h1>
 
-      <div className={styles.profile_position}>{user?.profile?.position}</div>
+      <div className={styles.profile_category}>{user?.profile?.position}</div>
+      <div
+        className={`${styles.profile_category} ${styles.profile_category_acnt}`}
+      >
+        {user?.profile?.state}
+      </div>
     </div>
   );
 };
