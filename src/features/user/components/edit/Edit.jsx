@@ -8,7 +8,9 @@ import * as rootSlice from "../../../root/rootSlice";
 
 export const Edit = ({ user }) => {
   const dispatch = useDispatch();
-  const { register, watch, handleSubmit } = useForm();
+  const { register, watch, handleSubmit } = useForm({
+    defaultValues: { state: user?.profile?.state },
+  });
 
   const state = watch("state");
 
