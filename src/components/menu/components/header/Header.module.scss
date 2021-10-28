@@ -47,7 +47,7 @@ $width: responsive-width(pc);
     border-radius: 8px;
     line-height: 24px;
     font-size: 12px;
-    background: $acnt_clr;
+    background: $acnt_ext_clr;
     color: $base_clr;
 
     @media (max-width: responsive-width(sp)) {
