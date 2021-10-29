@@ -1,0 +1,89 @@
+// サイト共有の初期設定
+@import "../../../../../styles/config";
+@import "../../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.main {
+  max-width: 1280px;
+  height: 100%;
+
+  padding: 72px 16px 0;
+  margin: 0 auto;
+
+  position: relative;
+
+  &_container {
+    position: relative;
+    z-index: 1;
+    margin-top: auto-clamp(80px, 240px);
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (max-width: responsive-width(sp)) {
+      margin-top: 48px;
+      gap: 16px;
+    }
+  }
+
+  &_wrap {
+    display: flex;
+    gap: 16px;
+  }
+
+  &_ttl {
+    font-size: auto-clamp(48px, 64px);
+    font-weight: bold;
+
+    @media (max-width: responsive-width(sp)) {
+      font-size: 32px;
+    }
+  }
+
+  &_desc {
+    line-height: 1.6;
+
+    @media (max-width: responsive-width(sp)) {
+      font-size: 12px;
+    }
+  }
+
+  &_input {
+    background: $base_clr;
+    border: 1px solid $bdr_clr;
+    width: 320px;
+    height: 48px;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: $main_clr;
+
+    @media (max-width: responsive-width(sp)) {
+      height: 40px;
+      padding: 4px 12px;
+      font-size: 14px;
+    }
+
+    &::placeholder {
+      color: $acnt_bg_clr;
+    }
+  }
+
+  &_img {
+    position: absolute;
+    width: 720px;
+    top: auto-clamp(240px, 480px);
+    right: 0;
+
+    @media (max-width: responsive-width(miniPc)) {
+      top: 320px;
+      right: -32px;
+    }
+    @media (max-width: responsive-width(tb)) {
+      width: 640px;
+      top: 400px;
+    }
+  }
+}

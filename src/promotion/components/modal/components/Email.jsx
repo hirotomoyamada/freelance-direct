@@ -5,13 +5,17 @@ import { useFormContext } from "react-hook-form";
 export const Email = () => {
   const {
     register,
+    watch,
     formState: { errors },
   } = useFormContext();
+
+  const email = watch("signup");
 
   return (
     <div>
       <input
         type="text"
+        defaultValue={email}
         className={`${styles.modal_input} ${
           errors.email && styles.modal_input_error
         }`}

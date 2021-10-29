@@ -38,4 +38,14 @@ $width: responsive-width(pc);
       color: $base_clr;
     }
   }
+
+  &_input {
+    background: $base_clr;
+    border: 1px solid $bdr_clr;
+    width: 320px;
+    height: 48px;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: $acnt_bg_clr;
+  }
 }

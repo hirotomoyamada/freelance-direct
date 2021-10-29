@@ -1,26 +1,36 @@
 import styles from "./Modal.module.scss";
 
-import { Singup } from "./components/Singup";
+import { FormProvider } from "react-hook-form";
+
+import { SignUp } from "./components/SignUp";
 import { Social } from "./components/Social";
+import { useSignUp } from "./hook/useSignUp";
 
 export const Modal = ({ handleClose, open }) => {
+  const [methods, handleSignUp] = useSignUp();
+
   return (
     <div className={open ? styles.open : styles.close}>
       <div className={styles.overlay} onClick={handleClose}></div>
 
-      <div className={styles.modal}>
-        <div className={styles.modal_inner}>
-          <h1 className={styles.modal_ttl}>新規登録</h1>
+      <FormProvider {...methods}>
+        <form
+          className={styles.modal}
+          onSubmit={methods.handleSubmit(handleSignUp)}
+        >
+          <div className={styles.modal_inner}>
+            <h1 className={styles.modal_ttl}>新規登録</h1>
 
-          <Singup />
+            <SignUp />
 
-          <p className={styles.modal_strike}>
-            <span>または</span>
-          </p>
+            <p className={styles.modal_strike}>
+              <span>または</span>
+            </p>
 
-          <Social />
-        </div>
-      </div>
+            <Social />
+          </div>
+        </form>
+      </FormProvider>
     </div>
   );
 };

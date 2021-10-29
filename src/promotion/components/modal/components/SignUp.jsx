@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Email } from "./Email";
 import { Password } from "./Password";
 
-export const Singup = () => {
+export const SignUp = () => {
   return (
     <div className={styles.modal_container}>
       <Email />
