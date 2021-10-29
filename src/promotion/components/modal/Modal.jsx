@@ -1,6 +1,6 @@
 import styles from "./Modal.module.scss";
 
-import { Input } from "./components/Input";
+import { Singup } from "./components/Singup";
 import { Social } from "./components/Social";
 
 export const Modal = ({ handleClose, open }) => {
@@ -11,7 +11,8 @@ export const Modal = ({ handleClose, open }) => {
       <div className={styles.modal}>
         <div className={styles.modal_inner}>
           <h1 className={styles.modal_ttl}>新規登録</h1>
-          <Input />
+
+          <Singup />
 
           <p className={styles.modal_strike}>
             <span>または</span>

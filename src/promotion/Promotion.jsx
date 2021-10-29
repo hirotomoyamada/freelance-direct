@@ -1,5 +1,7 @@
 import styles from "./Promotion.module.scss";
-import { useEffect, useState, useRef } from "react";
+
+import { useOpen } from "./hook/useOpen";
+import { useChange } from "./hook/useChange";
 import { useForm, FormProvider } from "react-hook-form";
 
 import { Header } from "./layouts/header/Header";
@@ -10,43 +12,10 @@ import { Footer } from "./layouts/footer/Footer";
 import { Modal } from "./components/modal/Modal";
 
 export const Promotion = () => {
-  const [open, setOpen] = useState(false);
-  const [change, setChange] = useState(false);
-
-  const fv = useRef();
+  const [open, handleOpen, handleClose] = useOpen();
+  const [fv, change] = useChange();
 
   const methods = useForm();
-
-  useEffect(() => {
-    const changeHeader = () => {
-      if (
-        JSON.stringify(
-          fv.current && fv.current.getBoundingClientRect().height
-        ) -
-          96 <
-        window.scrollY
-      ) {
-        setChange(true);
-      } else {
-        setChange(false);
-      }
-    };
-    window.addEventListener("scroll", changeHeader);
-
-    return () => {
-      window.removeEventListener("scroll", changeHeader);
-    };
-  }, []);
-
-  const handleOpen = () => {
-    setOpen(!open);
-    document.body.classList.add("lock");
-  };
-
-  const handleClose = () => {
-    setOpen(!open);
-    document.body.classList.remove("lock");
-  };
 
   const handleSignUp = () => {};
 
@@ -58,7 +27,7 @@ export const Promotion = () => {
       >
         <Modal handleClose={handleClose} open={open} />
         <Header change={change} />
-        <Fv open={open} handleOpen={handleOpen} fv={fv} />
+        <Fv handleOpen={handleOpen} fv={fv} />
 
         <div className={styles.promotion_main}></div>
 

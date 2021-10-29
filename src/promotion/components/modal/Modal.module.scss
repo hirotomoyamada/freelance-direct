@@ -169,28 +169,13 @@ $width: responsive-width(pc);
 
     transition: all 0.4s;
 
-    @media (max-width: responsive-width(sp)) {
-      height: 40px;
-      line-height: 40px;
-    }
-
     &:hover {
       opacity: 0.8;
     }
 
-    &_reset {
-      align-self: flex-start;
-      color: $link_clr;
-      font-size: 14px;
-      margin-bottom: 16px;
-
-      @media (max-width: responsive-width(sp)) {
-        font-size: 12px;
-      }
-
-      &:hover {
-        opacity: 0.8;
-      }
+    @media (max-width: responsive-width(sp)) {
+      height: 40px;
+      line-height: 40px;
     }
 
     &_google {

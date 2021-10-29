@@ -1,9 +1,8 @@
 import styles from "../Modal.module.scss";
 
 import { useFormContext } from "react-hook-form";
-import { Link } from "react-router-dom";
 
-export const Input = () => {
+export const Password = () => {
   const {
     register,
     watch,
@@ -13,31 +12,7 @@ export const Input = () => {
   const password = watch("password");
 
   return (
-    <div className={styles.modal_container}>
-      <div>
-        <input
-          type="text"
-          className={`${styles.modal_input} ${
-            errors.email && styles.modal_input_error
-          }`}
-          placeholder="メールアドレス"
-          {...register("email", {
-            required: {
-              value: true,
-              message: "メールアドレスを入力してください",
-            },
-            pattern: {
-              value:
-                /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/,
-              message: "メールアドレスを正しい形式で入力してください",
-            },
-          })}
-        />
-        {errors.email?.message && (
-          <span className={styles.modal_error}>{errors.email?.message}</span>
-        )}
-      </div>
-
+    <>
       <div>
         <input
           type="password"
@@ -85,18 +60,11 @@ export const Input = () => {
         {errors.verifiedPassword?.type === "verified" && (
           <span className={styles.modal_error}>パスワードが一致しません</span>
         )}
+        
         {errors.password?.message && (
           <span className={styles.modal_error}>{errors.password?.message}</span>
         )}
       </div>
-
-      <Link to={"/login"} type="button" className={styles.modal_login}>
-        アカウントをお持ちですか？
-      </Link>
-
-      <button type="submit" className={styles.modal_btn}>
-        新規登録
-      </button>
-    </div>
+    </>
   );
 };

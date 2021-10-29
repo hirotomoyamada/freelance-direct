@@ -1,8 +1,9 @@
 import styles from "./Fv.module.scss";
 
-import { Signup } from "./components/Signup";
+import { Email } from "../../components/modal/components/Email";
+import { Btn } from "../../components/btn/Btn";
 
-export const Fv = ({ open, handleOpen, fv }) => {
+export const Fv = ({ handleOpen, fv }) => {
   return (
     <div className={styles.fv} ref={fv}>
       <div className={styles.fv_inner}>
@@ -18,7 +19,11 @@ export const Fv = ({ open, handleOpen, fv }) => {
             <br />
           </p>
 
-          <Signup open={open} handleOpen={handleOpen} />
+          <div className={styles.fv_head_signup}>
+            <Email />
+
+            <Btn txt={"新規登録"} func={handleOpen} square />
+          </div>
         </div>
 
         <img
