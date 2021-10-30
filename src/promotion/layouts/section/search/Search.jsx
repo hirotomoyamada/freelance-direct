@@ -12,7 +12,7 @@ import { Btn } from "../../../components/btn/Btn";
 import { Form } from "./components/form/Form";
 
 export const Search = ({ handleOpen }) => {
-  const load = useSelector(rootSlice.load);
+  const load = useSelector(rootSlice.load).list;
 
   const posts = useSelector((state) =>
     postSlice.posts({ state: state, page: "search", index: "matters" })
@@ -20,7 +20,7 @@ export const Search = ({ handleOpen }) => {
 
   return (
     <section className={`${styles.search} ${root.section}`}>
-      <div className={root.section_inner}>
+      <div className={`${root.section_inner} ${root.section_inner_content}`}>
         <h1 className={`${styles.search_ttl} ${root.section_ttl}`}>
           探してみよう
         </h1>

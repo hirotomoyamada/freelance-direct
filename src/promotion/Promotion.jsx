@@ -25,8 +25,8 @@ export const Promotion = () => {
       <Fv handleOpen={handleOpen} fv={fv} />
 
       <div className={styles.promotion_main}>
-        <Search handleOpen={handleOpen} />
         <What />
+        <Search handleOpen={handleOpen} />
         <Can />
         <Lets />
       </div>

@@ -11,7 +11,7 @@ export const Main = ({ handleOpen }) => {
         <p className={styles.main_desc}>
           欲しいもの、知りたい情報を素早く簡単に見つけよう
           <br />
-          フリーランスエンジニアが求める、検索サイト
+          フリーランスエンジニアが求める、営業支援アプリ
           <br />
         </p>
 
@@ -22,7 +22,7 @@ export const Main = ({ handleOpen }) => {
       </div>
 
       <img
-        src={`${process.env.PUBLIC_URL}/img/promotion/top.png`}
+        src={`${process.env.PUBLIC_URL}/img/promotion/top.svg`}
         alt=""
         className={styles.main_img}
       />

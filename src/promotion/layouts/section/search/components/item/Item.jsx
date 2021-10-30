@@ -11,7 +11,7 @@ import { Handles } from "./Handles";
 
 export const Item = ({ post }) => {
   return (
-    <div className={styles.item}>
+    <div className={`${styles.item}`}>
       <div className={styles.item_inner}>
         <div className={styles.item_position}>
           <h2>{post?.position}</h2>
