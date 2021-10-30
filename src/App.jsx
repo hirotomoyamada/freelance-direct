@@ -19,9 +19,9 @@ import { HowTo } from "./pages/howTo/HowTo";
 import { Terms } from "./pages/terms/Terms";
 import { NotFound } from "./pages/notFound/NotFound";
 import { Maintenance } from "./pages/maintenance/Maintenance";
+import { Contact } from "./pages/contact/Contact";
 
 import { Promotion } from "./promotion/Promotion";
-import { Contact } from "./promotion/pages/contact/Contact";
 import { useApp } from "./hook/useApp";
 import { Overlay } from "./components/overlay/Overlay";
 

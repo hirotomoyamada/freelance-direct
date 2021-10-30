@@ -20,7 +20,7 @@ export const Footer = ({ post, posts, user }) => {
         <Item user={user} post={post?.user} companys none />
       ) : (
         <div className={styles.side_load}>
-          <Loader type="Grid" color="#4387f4" height={32} width={32} />
+          <Loader type="Grid" color="#1d9bf0" height={32} width={32} />
         </div>
       )}
 
@@ -47,7 +47,7 @@ export const Footer = ({ post, posts, user }) => {
           )
         ) : load ? (
           <div className={styles.side_load}>
-            <Loader type="Grid" color="#4387f4" height={32} width={32} />
+            <Loader type="Grid" color="#1d9bf0" height={32} width={32} />
           </div>
         ) : (
           <span className={styles.side_desc}>

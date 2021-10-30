@@ -45,7 +45,7 @@ export const User = (props) => {
         </div>
       ) : (
         <div className={styles.user_load}>
-          <Loader type="Grid" color="#4387f4" height={56} width={56} />
+          <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
         </div>
       )}
 

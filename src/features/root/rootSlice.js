@@ -60,7 +60,7 @@ export const rootSlice = createSlice({
           email: false,
           profile: false,
           agree: false,
-          status: "",
+          status: "promo",
           access: false,
           demo: false,
         };

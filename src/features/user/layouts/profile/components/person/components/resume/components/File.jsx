@@ -43,7 +43,7 @@ export const File = ({ user, resume, handleDelete }) => {
           </div>
         ) : load ? (
           <div className={`${styles.resume_file} ${styles.resume_file_load}`}>
-            <Loader type="Grid" color="#4387f4" height={36} width={36} />
+            <Loader type="Grid" color="#1d9bf0" height={36} width={36} />
           </div>
         ) : (
           <label

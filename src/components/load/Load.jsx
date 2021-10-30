@@ -27,7 +27,7 @@ export const Root = () => {
       ${!none && styles.load_none}
       `}
     >
-      <Loader type="Grid" color="#4387f4" height={56} width={56} />
+      <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
     </div>
   );
 };
@@ -52,7 +52,7 @@ export const Fetch = () => {
       ${!none && styles.load_none}
       `}
     >
-      <Loader type="Grid" color="#4387f4" height={56} width={56} />
+      <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
     </div>
   );
 };

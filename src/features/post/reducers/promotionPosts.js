@@ -1,1 +1,5 @@
-export const promotionPosts = (state, action) => {};
+export const promotionPosts = (state, action) => {
+  if (action.payload) {
+    state.search.matters.posts = action.payload;
+  }
+};

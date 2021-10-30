@@ -5,8 +5,12 @@ import { useChange } from "./hook/useChange";
 
 import { Header } from "./layouts/header/Header";
 import { Fv } from "./layouts/fv/Fv";
-
 import { Footer } from "./layouts/footer/Footer";
+
+import { Lets } from "./layouts/section/lets/Lets";
+import { What } from "./layouts/section/what/What";
+import { Can } from "./layouts/section/can/Can";
+import { Search } from "./layouts/section/search/Search";
 
 import { Modal } from "./components/modal/Modal";
 
@@ -20,7 +24,12 @@ export const Promotion = () => {
       <Header change={change} />
       <Fv handleOpen={handleOpen} fv={fv} />
 
-      <div className={styles.promotion_main}></div>
+      <div className={styles.promotion_main}>
+        <Search handleOpen={handleOpen} />
+        <What />
+        <Can />
+        <Lets />
+      </div>
 
       <Footer handleOpen={handleOpen} />
     </div>

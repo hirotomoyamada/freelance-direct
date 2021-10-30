@@ -11,7 +11,7 @@ export const Load = ({ load, page, hit }) => {
       }`}
     >
       {page < hit.pages && (
-        <Loader type="Oval" color="#4387f4" height={32} width={32} />
+        <Loader type="Oval" color="#1d9bf0" height={32} width={32} />
       )}
     </div>
   );

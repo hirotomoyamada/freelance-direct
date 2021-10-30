@@ -69,7 +69,7 @@ export const Main = ({ post, user, entry, handleEntry }) => {
     </div>
   ) : (
     <div className={styles.main_load}>
-      <Loader type="Grid" color="#4387f4" height={56} width={56} />
+      <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
     </div>
   );
 };
