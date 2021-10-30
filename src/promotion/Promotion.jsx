@@ -7,10 +7,12 @@ import { Header } from "./layouts/header/Header";
 import { Fv } from "./layouts/fv/Fv";
 import { Footer } from "./layouts/footer/Footer";
 
-import { Lets } from "./layouts/section/lets/Lets";
 import { What } from "./layouts/section/what/What";
 import { Can } from "./layouts/section/can/Can";
+import { Feature } from "./layouts/section/feature/Feature";
 import { Search } from "./layouts/section/search/Search";
+import { Target } from "./layouts/section/target/Target";
+import { Lets } from "./layouts/section/lets/Lets";
 
 import { Modal } from "./components/modal/Modal";
 
@@ -26,8 +28,10 @@ export const Promotion = () => {
 
       <div className={styles.promotion_main}>
         <What />
-        <Search handleOpen={handleOpen} />
         <Can />
+        <Feature />
+        <Search handleOpen={handleOpen} />
+        <Target />
         <Lets />
       </div>
 

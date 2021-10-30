@@ -5,11 +5,7 @@
 $width: responsive-width(pc);
 
 .search {
-  padding-top: 48px;
-
-  @media (max-width: responsive-width(sp)) {
-    padding-bottom: 24px;
-  }
+  padding-top: 96px;
 
   &_ttl {
     margin-bottom: 48px;

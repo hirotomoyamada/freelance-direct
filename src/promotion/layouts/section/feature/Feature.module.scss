@@ -1,0 +1,13 @@
+@import "../../../../styles/config";
+@import "../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.feature {
+  padding-top: 96px;
+
+  &_ttl {
+    margin-bottom: 48px;
+  }
+}
