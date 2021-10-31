@@ -18,9 +18,9 @@ export const User = ({ post }) => {
         </div>
       </div>
 
-      {/* {post?.profile?.body && (
+      {post?.profile?.body && (
         <p className={styles.user_body}>{post?.profile?.body}</p>
-      )} */}
+      )}
     </div>
   );
 };
