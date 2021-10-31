@@ -3,3 +3,27 @@
 
 // ページのレスポンシブ設定
 $width: responsive-width(pc);
+
+.contact {
+  padding-top: 48px;
+
+  &_figure {
+    padding-top: 48px;
+
+    &_pop {
+      position: absolute;
+      top: 16px;
+      left: 24%;
+      transform: rotate(-6deg);
+
+      width: 320px;
+      border-radius: 16px;
+      box-shadow: 12px 32px 48px $shdw_clr;
+    }
+
+    &_mockup {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

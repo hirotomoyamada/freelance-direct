@@ -4,23 +4,17 @@
 // ページのレスポンシブ設定
 $width: responsive-width(pc);
 
-.request {
+.follow {
   padding-top: 48px;
 
   &_figure {
-    margin: 48px 0 96px;
-    padding-top: 48px;
+    margin-bottom: 96px;
 
-    transform-style: preserve-3d;
-    perspective: 480px;
-
-    &_hold {
+    &_user {
       position: absolute;
-      top: 12px;
-      left: 218px;
+      top: 56px;
+      right: 48px;
       z-index: 1;
-
-      transform: rotateX(2deg) rotateY(6deg) rotateZ(-4deg);
 
       display: flex;
       flex-direction: column;
@@ -32,7 +26,7 @@ $width: responsive-width(pc);
 
     &_card {
       width: 80%;
-      box-shadow: -8px 16px 24px $shdw_clr;
+      box-shadow: -8px 8px 32px $shdw_clr;
 
       border-radius: 8px;
 

@@ -74,6 +74,7 @@ $width: responsive-width(pc);
       width: 360px;
     }
   }
+  
   &_matching {
     @media (max-width: responsive-width(tb)) {
       width: 560px;
