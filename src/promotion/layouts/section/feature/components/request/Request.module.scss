@@ -14,7 +14,7 @@ $width: responsive-width(pc);
     transform-style: preserve-3d;
     perspective: 480px;
 
-    &_hold {
+    &_user {
       position: absolute;
       top: 12px;
       left: 218px;
@@ -28,6 +28,11 @@ $width: responsive-width(pc);
       gap: 16px;
 
       width: 480px;
+
+      @media (max-width: responsive-width(tb)) {
+        width: 320px;
+        left: 144px;
+      }
     }
 
     &_card {

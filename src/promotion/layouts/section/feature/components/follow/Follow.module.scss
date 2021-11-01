@@ -22,6 +22,11 @@ $width: responsive-width(pc);
       gap: 16px;
 
       width: 480px;
+
+      @media (max-width: responsive-width(tb)) {
+        width: 320px;
+        top: 16px;
+      }
     }
 
     &_card {
@@ -38,6 +43,8 @@ $width: responsive-width(pc);
     &_mockup {
       width: 100%;
       height: auto;
+
+      filter: drop-shadow(8px -4px 16px $shdw_clr);
     }
   }
 }

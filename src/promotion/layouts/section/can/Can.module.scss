@@ -19,16 +19,20 @@ $width: responsive-width(pc);
       }
     }
 
+    &:not(:first-child) {
+      @media (max-width: responsive-width(tb)) {
+        margin-top: 48px;
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        margin-top: 32px;
+      }
+    }
+
     @media (max-width: responsive-width(tb)) {
       grid-template-columns: 1fr;
       flex-direction: column-reverse;
       align-items: center;
-
-      margin-bottom: 48px;
-    }
-
-    @media (max-width: responsive-width(sp)) {
-      margin-bottom: 32px;
     }
   }
 
@@ -74,15 +78,10 @@ $width: responsive-width(pc);
       width: 360px;
     }
   }
-  
+
   &_matching {
-    @media (max-width: responsive-width(tb)) {
-      width: 560px;
-      padding-right: 72px;
-    }
     @media (max-width: responsive-width(sp)) {
       width: 440px;
-      padding-right: 48px;
     }
   }
 }

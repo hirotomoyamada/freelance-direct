@@ -5,7 +5,7 @@ export const Request = () => {
   return (
     <div className={`${root.feature_container} ${styles.request}`}>
       <figure className={`${root.feature_figure} ${styles.request_figure}`}>
-        <div className={styles.request_figure_hold}>
+        <div className={styles.request_figure_user}>
           <img
             src={`${process.env.PUBLIC_URL}/img/promotion/feature_request_matsumoto.png`}
             alt=""
@@ -42,12 +42,14 @@ export const Request = () => {
           </span>
           <br />
           <br />
-          リクエストを受けると、案件担当者からのメッセージを見ることができます。
+          リクエストを受けると、
+          <span>案件担当者からのメッセージを見ることができます。</span>
           <br />
           話を聞いてみたいと思ったら、承認するだけ。
           <br />
           <br />
-          あなたが繋がりたいと思う案件担当者のみ個人情報を見せることができるので
+          あなたが繋がりたいと思う案件担当者のみ
+          <span>個人情報を見せることができるので</span>
           <br />
           不要な営業メッセージから、あなたを守ります。
         </p>

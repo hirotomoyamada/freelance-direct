@@ -19,6 +19,12 @@ $width: responsive-width(pc);
       width: 320px;
       border-radius: 16px;
       box-shadow: 12px 32px 48px $shdw_clr;
+
+      @media (max-width: responsive-width(tb)) {
+        width: 200px;
+        top: 0;
+        left: 20%;
+      }
     }
 
     &_mockup {

@@ -8,6 +8,10 @@ $width: responsive-width(pc);
   background: $acnt_clr;
   margin-top: 196px;
 
+  @media (max-width: responsive-width(tb)) {
+    margin-top: 96px;
+  }
+
   &_inner {
     padding: 120px 0;
 
@@ -61,10 +65,13 @@ $width: responsive-width(pc);
     right: -72px;
     opacity: 0.8;
 
+    @media (max-width: responsive-width(tb)) {
+      opacity: 0.6;
+    }
+
     @media (max-width: responsive-width(sp)) {
       width: 100%;
       top: 0;
-      opacity: 0.6;
     }
   }
 }
