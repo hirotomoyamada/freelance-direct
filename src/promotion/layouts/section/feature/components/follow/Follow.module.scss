@@ -10,6 +10,10 @@ $width: responsive-width(pc);
   &_figure {
     margin-bottom: 96px;
 
+    @media (max-width: responsive-width(sp)) {
+      margin-bottom: 48px;
+    }
+
     &_user {
       position: absolute;
       top: 56px;
@@ -27,6 +31,14 @@ $width: responsive-width(pc);
         width: 320px;
         top: 16px;
       }
+
+      @media (max-width: responsive-width(sp)) {
+        gap: 8px;
+
+        width: 184px;
+        top: 8px;
+        right: 16px;
+      }
     }
 
     &_card {
@@ -34,6 +46,11 @@ $width: responsive-width(pc);
       box-shadow: -8px 8px 32px $shdw_clr;
 
       border-radius: 8px;
+
+      @media (max-width: responsive-width(sp)) {
+        width: 88%;
+        border-radius: 6px;
+      }
 
       &_acnt {
         width: 100%;

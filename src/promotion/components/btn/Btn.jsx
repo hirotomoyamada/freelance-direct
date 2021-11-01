@@ -1,7 +1,7 @@
 import styles from "./Btn.module.scss";
 import { Link } from "react-router-dom";
 
-export const Btn = ({ txt, acnt, square, input, func, submit }) => {
+export const Btn = ({ txt, acnt, square, input, func, submit, hidden }) => {
   return (
     <button
       type={submit ? "submit" : "button"}
@@ -9,7 +9,7 @@ export const Btn = ({ txt, acnt, square, input, func, submit }) => {
         square && styles.btn_square
       } && styles.btn_acnt} ${acnt && styles.btn_acnt} ${
         input && styles.btn_input
-      }`}
+      } ${hidden && styles.btn_hidden}`}
       onClick={() => (submit ? null : func())}
     >
       {txt}

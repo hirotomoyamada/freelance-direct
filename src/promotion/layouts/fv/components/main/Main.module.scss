@@ -51,26 +51,6 @@ $width: responsive-width(pc);
     }
   }
 
-  &_input {
-    background: $base_clr;
-    border: 1px solid $bdr_clr;
-    width: 320px;
-    height: 48px;
-    border-radius: 8px;
-    padding: 8px 16px;
-    color: $main_clr;
-
-    @media (max-width: responsive-width(sp)) {
-      height: 40px;
-      padding: 4px 12px;
-      font-size: 14px;
-    }
-
-    &::placeholder {
-      color: $acnt_bg_clr;
-    }
-  }
-
   &_img {
     width: auto-clamp(960px, 1040px);
     position: absolute;
@@ -84,8 +64,9 @@ $width: responsive-width(pc);
     }
 
     @media (max-width: responsive-width(tb)) {
-      width: 720px;
-      right: -56px;
+      width: 400px;
+      bottom: -72px;
+      right: -24px;
     }
   }
 }

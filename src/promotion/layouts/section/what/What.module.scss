@@ -9,10 +9,18 @@ $width: responsive-width(pc);
 
   &_ttl {
     margin-bottom: 48px;
+
+    @media (max-width: responsive-width(sp)) {
+      font-size: 26px;
+    }
   }
 
   &_main {
     margin-bottom: 96px;
+
+    @media (max-width: responsive-width(sp)) {
+      margin-bottom: 48px;
+    }
 
     &_txt {
       text-align: center;
@@ -25,9 +33,5 @@ $width: responsive-width(pc);
     width: 100%;
     height: auto;
     margin: 0 auto;
-
-    @media (max-width: responsive-width(sp)) {
-      width: 400px;
-    }
   }
 }

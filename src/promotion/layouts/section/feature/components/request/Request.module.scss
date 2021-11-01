@@ -14,6 +14,10 @@ $width: responsive-width(pc);
     transform-style: preserve-3d;
     perspective: 480px;
 
+    @media (max-width: responsive-width(sp)) {
+      margin: 0 0 48px;
+    }
+
     &_user {
       position: absolute;
       top: 12px;
@@ -33,6 +37,13 @@ $width: responsive-width(pc);
         width: 320px;
         left: 144px;
       }
+
+      @media (max-width: responsive-width(sp)) {
+        gap: 8px;
+        width: 240px;
+        top: 0;
+        left: 48px;
+      }
     }
 
     &_card {
@@ -40,6 +51,10 @@ $width: responsive-width(pc);
       box-shadow: -8px 16px 24px $shdw_clr;
 
       border-radius: 8px;
+
+      @media (max-width: responsive-width(sp)) {
+        border-radius: 6px;
+      }
 
       &_acnt {
         width: 100%;

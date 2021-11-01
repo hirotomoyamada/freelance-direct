@@ -7,6 +7,10 @@ $width: responsive-width(pc);
 .contact {
   padding-top: 48px;
 
+  @media (max-width: responsive-width(sp)) {
+    padding-top: 0;
+  }
+
   &_figure {
     padding-top: 48px;
 
@@ -23,6 +27,13 @@ $width: responsive-width(pc);
       @media (max-width: responsive-width(tb)) {
         width: 200px;
         top: 0;
+        left: 20%;
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        width: 120px;
+        border-radius: 8px;
+        top: 8px;
         left: 20%;
       }
     }

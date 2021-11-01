@@ -37,6 +37,10 @@ $width: responsive-width(pc);
     &_desc {
       font-size: 18px;
       line-height: 1.6;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 12px;
+      }
     }
   }
 }

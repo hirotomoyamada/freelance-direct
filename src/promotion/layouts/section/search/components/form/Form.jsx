@@ -19,7 +19,9 @@ export const Form = () => {
   const value = watch("value");
 
   useEffect(() => {
-    status === "promo" && dispatch(promotionPosts(value));
+    status === "promo" &&
+      typeof value === "string" &&
+      dispatch(promotionPosts(value));
   }, [dispatch, status, value]);
 
   const handleSearch = (data) => {};
@@ -43,7 +45,7 @@ export const Form = () => {
           <CloseIcon className={styles.form_icon} />
         </button>
       </div>
-      <Btn txt="検索" submit square />
+      <Btn txt="検索" submit square hidden />
     </form>
   );
 };

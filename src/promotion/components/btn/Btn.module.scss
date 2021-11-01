@@ -11,6 +11,7 @@ $width: responsive-width(pc);
   background: $acnt_clr;
   color: $base_clr;
   border-radius: 26px;
+  white-space: nowrap;
 
   transition: all 0.4s;
 
@@ -24,6 +25,12 @@ $width: responsive-width(pc);
     font-size: 14px;
   }
 
+  &_hidden {
+    @media (max-width: responsive-width(sp)) {
+      display: none;
+    }
+  }
+
   &_square {
     border-radius: 8px;
   }
@@ -34,18 +41,22 @@ $width: responsive-width(pc);
 
     &:hover {
       background: $acnt_clr;
-      border-color: $acnt_clr;
       color: $base_clr;
     }
   }
 
   &_input {
     background: $base_clr;
-    border: 1px solid $bdr_clr;
     width: 320px;
     height: 48px;
     border-radius: 8px;
     padding: 8px 16px;
     color: $acnt_bg_clr;
+
+    @media (max-width: responsive-width(sp)) {
+      width: 100%;
+      height: 40px;
+      padding: 4px 12px;
+    }
   }
 }

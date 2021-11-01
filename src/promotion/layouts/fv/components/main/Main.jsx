@@ -6,7 +6,7 @@ export const Main = ({ handleOpen }) => {
   return (
     <div className={styles.main}>
       <div className={styles.main_container}>
-        <h1 className={styles.main_ttl}>まだ、探してるの？</h1>
+        <h1 className={styles.main_ttl}>じぶんから選ぶ</h1>
 
         <p className={styles.main_desc}>
           欲しいもの、知りたい情報を素早く簡単に見つけよう

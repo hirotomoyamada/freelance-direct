@@ -65,23 +65,11 @@ $width: responsive-width(pc);
     width: 480px;
 
     @media (max-width: responsive-width(sp)) {
-      width: 400px;
+      width: 100%;
     }
 
     &_img {
       width: 100%;
-    }
-  }
-
-  &_search {
-    @media (max-width: responsive-width(sp)) {
-      width: 360px;
-    }
-  }
-
-  &_matching {
-    @media (max-width: responsive-width(sp)) {
-      width: 440px;
     }
   }
 }

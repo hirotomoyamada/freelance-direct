@@ -47,6 +47,11 @@ $width: responsive-width(pc);
     overflow: hidden;
     background: $base_clr;
 
+    @media (max-width: responsive-width(sp)) {
+      width: 40px;
+      height: 40px;
+    }
+
     &_typescript {
       top: 48%;
       right: 16%;
@@ -56,6 +61,10 @@ $width: responsive-width(pc);
       @media (max-width: responsive-width(tb)) {
         top: 8%;
         right: 84%;
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        left: 16px;
       }
     }
 
@@ -69,6 +78,11 @@ $width: responsive-width(pc);
         top: 36%;
         right: 40%;
       }
+
+      @media (max-width: responsive-width(sp)) {
+        top: 16%;
+        right: 44%;
+      }
     }
 
     &_react {
@@ -78,6 +92,11 @@ $width: responsive-width(pc);
       @media (max-width: responsive-width(tb)) {
         top: 4%;
         right: 8%;
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        top: 0;
+        right: 16px;
       }
     }
 
@@ -89,6 +108,11 @@ $width: responsive-width(pc);
         top: 72%;
         right: 20%;
       }
+
+      @media (max-width: responsive-width(sp)) {
+        top: 56%;
+        right: 8%;
+      }
     }
 
     &_figma {
@@ -99,6 +123,11 @@ $width: responsive-width(pc);
         top: 64%;
         right: 72%;
       }
+
+      @media (max-width: responsive-width(sp)) {
+        top: 64%;
+        left: 8%;
+      }
     }
 
     &_flutter {
@@ -107,6 +136,11 @@ $width: responsive-width(pc);
 
       @media (max-width: responsive-width(tb)) {
         top: 16%;
+        right: 64%;
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        top: 42%;
         right: 64%;
       }
     }
@@ -119,6 +153,11 @@ $width: responsive-width(pc);
         top: 56%;
         right: 56%;
       }
+
+      @media (max-width: responsive-width(sp)) {
+        top: 68%;
+        right: 36%;
+      }
     }
 
     &_unity {
@@ -126,7 +165,7 @@ $width: responsive-width(pc);
       right: 24%;
 
       @media (max-width: responsive-width(tb)) {
-        top: 24%;
+        top: 28%;
         right: 24%;
       }
     }

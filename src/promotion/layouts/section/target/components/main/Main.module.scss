@@ -16,6 +16,10 @@ $width: responsive-width(pc);
     background: $base_clr;
     padding: 32px;
     border-radius: 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      margin-top: 16px;
+    }
   }
 
   &_wrap {
