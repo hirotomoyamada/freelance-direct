@@ -7,12 +7,12 @@ export const Contact = () => {
         <h2 className={styles.can_cnt_ttl}>案件元に直接問い合わせ</h2>
 
         <p className={styles.can_cnt_desc}>
-          あなたが関心を持った<span>案件を保有する​エージェントに</span>
+          あなたが関心を持った<span>案件を保有する​案件担当者に</span>
           <br />
           直接問い合わせすることができます。
           <br />
           <br />
-          エージェントは、自分のSNSやメールアドレスを公開しています。
+          ​案件担当者は、自分のSNSやメールアドレスを公開しています。
           <br />
           あなたが、よく使うSNSで連絡を取ることもできます。
         </p>

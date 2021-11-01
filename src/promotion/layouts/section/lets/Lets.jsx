@@ -10,7 +10,7 @@ export const Lets = () => {
         className={`${root.section_inner} ${root.section_inner_content} ${styles.lets_inner}`}
       >
         <p className={styles.lets_desc}>
-          \&nbsp;&nbsp;案件がたくさん&nbsp;&nbsp;/
+          \&nbsp;&nbsp;登録・利用料&nbsp;0円&nbsp;&nbsp;/
         </p>
         <h1 className={styles.lets_ttl}>もっと、探しませんか？</h1>
         <div className={styles.lets_btn}>

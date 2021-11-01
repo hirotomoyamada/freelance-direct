@@ -9,7 +9,7 @@ export const Search = () => {
         <p className={styles.can_cnt_desc}>
           掲載されている案件は
           <br />
-          業務委託案件を保有する元請け、<span>2次請けまでに限定。</span>
+          業務委託案件を保有する元請け、<span>2次請けまでがメイン。</span>
           <br />
           <br />
           よくあるカテゴリーで選択して検索なんて、時代遅れです。
