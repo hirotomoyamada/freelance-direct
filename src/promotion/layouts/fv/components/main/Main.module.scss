@@ -36,7 +36,7 @@ $width: responsive-width(pc);
       }
 
       @media (max-width: responsive-width(sp)) {
-        margin-top: 16px;
+        margin-top: 0;
         gap: 16px;
       }
     }

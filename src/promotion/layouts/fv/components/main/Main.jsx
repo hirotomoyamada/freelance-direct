@@ -24,10 +24,11 @@ export const Main = ({ handleOpen, option }) => {
           </p>
         ) : (
           <p className={styles.main_desc}>
-            フリーランスを検索やアプローチ、
+            あなたが登録した案件に、
+            <span>直接フリーランスエンジニアがエントリー</span>
             <br />
-            プロフィールやスキルシートの閲覧などの
-            <span>機能がご利用いただけます。</span>
+            直接コミュニケーションをとって
+            <span>相性のよい人材をアサインできます</span>
           </p>
         )}
 

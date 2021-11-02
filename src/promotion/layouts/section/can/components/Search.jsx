@@ -5,7 +5,7 @@ export const Search = ({ option }) => {
     <div className={styles.can_container}>
       <div className={styles.can_cnt}>
         <h2 className={styles.can_cnt_ttl}>
-          {!option ? "案件を見る" : "フリーランスを探す"}
+          {!option ? "案件を見る" : "ダイレクトにやりとり"}
         </h2>
 
         {!option ? (
@@ -27,20 +27,14 @@ export const Search = ({ option }) => {
           </p>
         ) : (
           <p className={styles.can_cnt_desc}>
-            掲載されているフリーランスは、
+            データベースに登録したあなたの案件情報をみて、
             <br />
-            幅広い分野で活躍するプロフェッショナルばかり。
-            <br />
-            <br />
-            よくあるカテゴリーで選択して検索なんて、時代遅れです。
-            <br />
-            全文検索のたった「一つ」の検索バーだけで
-            <span>「すべて」取得できます。</span>
+            フリーランスから直に問い合わせ。
             <br />
             <br />
-            また、フリーランスのプロフィールも充実しているので
+            リアルタイムに動いている案件に適した
             <br />
-            的確にアプローチすることができます。
+            エンジニアとコミュニケーションをとることができます。
           </p>
         )}
       </div>

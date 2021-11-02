@@ -5,7 +5,7 @@ export const Matching = ({ option }) => {
     <div className={styles.can_container}>
       <div className={styles.can_cnt}>
         <h2 className={styles.can_cnt_ttl}>
-          {!option ? "相性を見てマッチング" : "すぐにマッチング"}
+          {!option ? "相性を見てマッチング" : "マッチングし放題"}
         </h2>
 
         {!option ? (
@@ -25,16 +25,12 @@ export const Matching = ({ option }) => {
           </p>
         ) : (
           <p className={styles.can_cnt_desc}>
-            フリーランスとマッチングすると
+            フリーランスダイレクトでは、
             <br />
-            あなたに通知が届き、プロフィールを見ることができます。
+            何人マッチング・アサインしても追加費用は発生なし。
             <br />
             <br />
-            フリーランスのプロフィールには、
-            <br />
-            連絡先も記載されているので
-            <br />
-            すぐにコミニュケーションをスタートできます。
+            採用コストを落としてその分還元に回しちゃいましょう。
           </p>
         )}
       </div>

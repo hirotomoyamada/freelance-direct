@@ -5,7 +5,7 @@ export const Contact = ({ option }) => {
     <div className={styles.can_container}>
       <div className={styles.can_cnt}>
         <h2 className={styles.can_cnt_ttl}>
-          {!option ? "案件元に直接問い合わせ" : "プロフィールを見てアプローチ"}
+          {!option ? "案件元に直接問い合わせ" : "プロフィールからアプローチ"}
         </h2>
 
         {!option ? (
@@ -21,9 +21,12 @@ export const Contact = ({ option }) => {
           </p>
         ) : (
           <p className={styles.can_cnt_desc}>
-            あなたが関心を持った<span>フリーランスへ</span>
+            エンジニアのプロフィールはとても充実しています。
             <br />
-            簡単にアプローチすることが可能です。
+            <br />
+            業務を依頼したいフリーランスへ
+            <br />
+            簡単にアプローチすることも 可能です。
             <br />
             <br />
             ​アプローチにはメッセージも送付することができるので
