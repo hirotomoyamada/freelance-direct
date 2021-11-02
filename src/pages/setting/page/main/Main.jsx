@@ -48,7 +48,10 @@ export const Main = ({
           How to App
         </Link>
 
-        <Link to={"/terms"} className={styles.main_link}>
+        <Link
+          to={{ pathname: "/terms", state: { setting: true } }}
+          className={styles.main_link}
+        >
           利用規約
         </Link>
 

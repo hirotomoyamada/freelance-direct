@@ -12,6 +12,7 @@ $width: responsive-width(pc);
   background: $base_clr;
 
   width: 100%;
+  margin: 0 auto;
   border-bottom: 1px solid $bdr_clr;
 
   display: flex;
@@ -130,7 +131,7 @@ $width: responsive-width(pc);
       @media (max-width: responsive-width(sp)) {
         font-size: 14px;
       }
-      
+
       &:hover {
         opacity: 0.8;
       }
@@ -139,6 +140,14 @@ $width: responsive-width(pc);
     &_ttl {
       line-height: 48px;
       text-align: center;
+    }
+  }
+
+  &_terms {
+    max-width: calc(720px + 64px);
+
+    @media (max-width: responsive-width(tb)) {
+      padding: 0 12px;
     }
   }
 }

@@ -31,6 +31,15 @@ $width: responsive-width(pc);
       gap: 32px;
       padding-top: 12px;
     }
+
+    &_setting {
+      width: 100%;
+      padding: 24px 32px 64px;
+
+      @media (max-width: responsive-width(sp)) {
+        padding: 24px 12px 64px;
+      }
+    }
   }
 
   &_body {

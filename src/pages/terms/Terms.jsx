@@ -33,8 +33,9 @@ import { transfer } from "./data/transfer";
 import { rules } from "./data/rules";
 import { separation } from "./data/separation";
 import { law } from "./data/law";
+import { useSetting } from "./hook/useSetting";
 
-export const Terms = ({ setTerms }) => {
+export const Terms = ({ create, setTerms, props }) => {
   const sections = [
     definition,
     application,
@@ -63,15 +64,27 @@ export const Terms = ({ setTerms }) => {
     law,
   ];
 
+  const [setting] = useSetting();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className={styles.terms}>
-      <Header setTerms={setTerms} type="利用規約" back />
+      <Header
+        create={create}
+        terms={setting}
+        handleCancel={() => setTerms(false)}
+        type="利用規約"
+        back
+      />
 
-      <div className={styles.terms_inner}>
+      <div
+        className={`${styles.terms_inner} ${
+          setting && styles.terms_inner_setting
+        }`}
+      >
         <Body />
         {sections.map((section, index) => (
           <Section key={index} index={index + 1} section={section} />

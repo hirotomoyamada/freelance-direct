@@ -18,6 +18,7 @@ export const Header = ({
   password,
   create,
   remove,
+  terms,
   handleCancel,
 }) => {
   const dispatch = useDispatch();
@@ -86,7 +87,7 @@ export const Header = ({
     <div
       className={`${styles.header} ${styles.header_back} ${
         !type && styles.header_none
-      }`}
+      } ${!terms && styles.header_terms}`}
     >
       <button
         type="button"
@@ -98,7 +99,9 @@ export const Header = ({
         もどる
       </button>
       <span className={styles.header_back_ttl}>
-        {!email && !password && !create && !remove ? type : ""}
+        {(!email && !password && !create && !remove) || type === "利用規約"
+          ? type
+          : ""}
       </span>
     </div>
   );
