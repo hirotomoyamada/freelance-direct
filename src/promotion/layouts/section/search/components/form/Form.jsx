@@ -39,7 +39,7 @@ export const Form = () => {
           />
         </button>
 
-        <input {...register("value")} />
+        <input type="search" placeholder="検索" {...register("value")} />
 
         <button type="button" onClick={handleReset}>
           <CloseIcon className={styles.form_icon} />
