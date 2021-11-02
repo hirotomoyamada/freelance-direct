@@ -12,7 +12,7 @@ export const Post = ({ post, user }) => {
 
       <Main post={post} />
 
-      <Footer post={post} user={user} />
+      <Footer post={post} />
     </div>
   );
 };
