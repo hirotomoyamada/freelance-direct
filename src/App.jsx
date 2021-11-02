@@ -46,7 +46,7 @@ export const App = () => {
 
             {!user.uid ? (
               <Switch>
-                <Route exact path="/" component={Promotion} />
+                <Route exact path={["/", "/option"]} component={Promotion} />
                 <Route exact path="/login" component={Auth} />
                 <Route exact path="/signup" component={Auth} />
 
