@@ -13,7 +13,7 @@ export const Main = ({ handleOpen, option }) => {
         <h1
           className={`${styles.main_ttl} ${option && styles.main_ttl_option}`}
         >
-          {!option ? "じぶんから選ぶ" : "フリーランスダイレクト"}
+          {!option ? "じぶんから選ぶ" : "Freelance\nDirect"}
         </h1>
 
         {!option ? (
