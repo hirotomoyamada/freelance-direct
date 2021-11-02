@@ -14,7 +14,9 @@ export const Footer = ({ post, posts, user }) => {
 
   return (
     <div className={styles.side}>
-      <span className={styles.side_tag}>投稿したユーザー</span>
+      <span className={styles.side_tag}>
+        投稿した{post?.user?.type !== "corporate" ? "ユーザー" : "企業"}
+      </span>
 
       {post?.user ? (
         <Item user={user} post={post?.user} companys none />
@@ -26,7 +28,10 @@ export const Footer = ({ post, posts, user }) => {
 
       {post?.uid && (
         <Link to={`/user/${post?.user?.uid}`}>
-          <span className={styles.side_desc}>このユーザーの他の投稿を見る</span>
+          <span className={styles.side_desc}>
+            この{post?.user?.type !== "corporate" ? "ユーザー" : "企業"}
+            の他の投稿を見る
+          </span>
         </Link>
       )}
 
