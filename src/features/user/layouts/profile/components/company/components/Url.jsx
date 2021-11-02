@@ -13,7 +13,7 @@ export const Url = ({ user, demo }) => {
         target="_blank"
         rel="noreferrer noopener"
       >
-        {!demo ? user?.profile?.url : process.env.REACT_APP_URL}
+        {!demo ? user?.profile?.url : process.env.REACT_APP_FREELANCE_DIRECT}
       </a>
     </div>
   ) : (

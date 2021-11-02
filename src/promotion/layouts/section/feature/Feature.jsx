@@ -4,8 +4,8 @@ import { Follow } from "./components/follow/Follow";
 import { Request } from "./components/request/Request";
 import styles from "./Feature.module.scss";
 
-export const Feature = () => {
-  return (
+export const Feature = ({ option }) => {
+  return !option ? (
     <section className={`${styles.feature} ${root.section}`}>
       <div className={`${root.section_inner} ${root.section_inner_content}`}>
         <h1 className={`${styles.feature_ttl} ${root.section_ttl}`}>機能</h1>
@@ -14,5 +14,7 @@ export const Feature = () => {
         <Request />
       </div>
     </section>
+  ) : (
+    <></>
   );
 };

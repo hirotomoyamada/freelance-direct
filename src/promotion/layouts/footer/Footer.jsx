@@ -1,7 +1,7 @@
 import styles from "./Footer.module.scss";
 import { Link } from "react-router-dom";
 
-export const Footer = ({ handleOpen }) => {
+export const Footer = ({ option }) => {
   return (
     <footer className={styles.footer}>
       <nav className={styles.footer_nav}>
@@ -15,12 +15,18 @@ export const Footer = ({ handleOpen }) => {
               会社情報
             </a>
           </li>
-          <li>
-            <Link to={"/terms"}>利用規約</Link>
-          </li>
-          <li>
-            <Link to={"/contact"}>お問い合わせ</Link>
-          </li>
+
+          {!option && (
+            <li>
+              <Link to={"/terms"}>利用規約</Link>
+            </li>
+          )}
+          
+          {!option && (
+            <li>
+              <Link to={"/contact"}>お問い合わせ</Link>
+            </li>
+          )}
         </ul>
       </nav>
       <small>© Hitmeup, Inc. All Rights Reserved.</small>

@@ -4,12 +4,18 @@ import styles from "./Main.module.scss";
 import { position } from "./functions/position";
 import { location } from "./functions/location";
 
-export const Main = () => {
+export const Main = ({ option }) => {
   return (
     <div className={styles.main}>
-      <h1 className={`${styles.main_ttl} ${root.section_ttl}`}>
-        ご利用いただける方
-      </h1>
+      {!option ? (
+        <h1 className={`${styles.main_ttl} ${root.section_ttl}`}>
+          ご利用いただける方
+        </h1>
+      ) : (
+        <h1 className={`${styles.main_ttl} ${root.section_ttl}`}>
+          利用している<span>フリーランスの方</span>
+        </h1>
+      )}
 
       <div className={styles.main_container}>
         <span className={styles.main_tag}>ポジション</span>

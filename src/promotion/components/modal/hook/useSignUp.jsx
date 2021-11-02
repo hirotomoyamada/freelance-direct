@@ -49,7 +49,7 @@ export const useSignUp = () => {
       .then(async (e) => {
         await auth.currentUser
           .sendEmailVerification({
-            url: `${process.env.REACT_APP_URL}/signup`,
+            url: `${process.env.REACT_APP_FREELANCE_DIRECT}/signup`,
           })
           .then(() => {
             history.push("/signup");

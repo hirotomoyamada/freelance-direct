@@ -11,14 +11,14 @@ import { NotFound } from "./components/NotFound";
 import { Btn } from "../../../components/btn/Btn";
 import { Form } from "./components/form/Form";
 
-export const Search = ({ handleOpen }) => {
+export const Search = ({ handleOpen, option }) => {
   const load = useSelector(rootSlice.load).list;
 
   const posts = useSelector((state) =>
     postSlice.posts({ state: state, page: "search", index: "matters" })
   );
 
-  return (
+  return !option ? (
     <section className={`${styles.search} ${root.section}`}>
       <div className={`${root.section_inner} ${root.section_inner_content}`}>
         <h1 className={`${styles.search_ttl} ${root.section_ttl}`}>
@@ -38,5 +38,7 @@ export const Search = ({ handleOpen }) => {
         </div>
       </div>
     </section>
+  ) : (
+    <></>
   );
 };

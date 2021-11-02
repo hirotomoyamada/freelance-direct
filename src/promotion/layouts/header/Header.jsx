@@ -1,7 +1,7 @@
 import { Auth } from "../../components/auth/Auth";
 import styles from "./Header.module.scss";
 
-export const Header = ({ change }) => {
+export const Header = ({ change, option }) => {
   return (
     <header className={styles.header}>
       <div className={styles.header_inner}>
@@ -44,10 +44,13 @@ export const Header = ({ change }) => {
             </svg>
           </h1>
         </button>
-        <div className={styles.header_auth}>
-          <Auth signup change={change} />
-          <Auth change={change} />
-        </div>
+
+        {!option && (
+          <div className={styles.header_auth}>
+            <Auth signup change={change} />
+            <Auth change={change} />
+          </div>
+        )}
       </div>
     </header>
   );

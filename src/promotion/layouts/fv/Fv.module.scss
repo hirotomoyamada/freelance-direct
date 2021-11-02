@@ -18,6 +18,14 @@ $width: responsive-width(pc);
     height: 592px;
   }
 
+  &_option {
+    height: auto-clamp(640px, 720px);
+
+    @media (max-width: responsive-width(sp)) {
+      height: 480px;
+    }
+  }
+
   &_bg {
     position: absolute;
     width: 100vw;

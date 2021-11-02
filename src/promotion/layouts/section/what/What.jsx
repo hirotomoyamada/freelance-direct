@@ -1,8 +1,8 @@
 import root from "../Section.module.scss";
 import styles from "./What.module.scss";
 
-export const What = () => {
-  return (
+export const What = ({ option }) => {
+  return !option ? (
     <section className={`${styles.what} ${root.section}`}>
       <div className={`${root.section_inner} ${root.section_inner_content}`}>
         <h1 className={`${styles.what_ttl} ${root.section_ttl}`}>
@@ -33,5 +33,7 @@ export const What = () => {
         />
       </div>
     </section>
+  ) : (
+    <></>
   );
 };

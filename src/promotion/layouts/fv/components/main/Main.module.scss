@@ -16,7 +16,7 @@ $width: responsive-width(pc);
 
   &_container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     margin-top: auto-clamp(80px, 240px);
 
     display: flex;
@@ -26,6 +26,19 @@ $width: responsive-width(pc);
     @media (max-width: responsive-width(sp)) {
       margin-top: 48px;
       gap: 16px;
+    }
+
+    &_option {
+      margin-top: auto-clamp(160px, 176px);
+
+      @media (max-width: responsive-width(tb)) {
+        margin-top: 36px;
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        margin-top: 16px;
+        gap: 16px;
+      }
     }
   }
 
@@ -41,10 +54,17 @@ $width: responsive-width(pc);
     @media (max-width: responsive-width(sp)) {
       font-size: 32px;
     }
+
+    &_option {
+      @media (max-width: responsive-width(sp)) {
+        font-size: 28px;
+      }
+    }
   }
 
   &_desc {
     line-height: 1.6;
+    white-space: pre-wrap;
 
     @media (max-width: responsive-width(sp)) {
       font-size: 12px;
@@ -64,9 +84,36 @@ $width: responsive-width(pc);
     }
 
     @media (max-width: responsive-width(tb)) {
+      width: 640px;
+      bottom: -104px;
+      right: -48px;
+    }
+
+    @media (max-width: responsive-width(sp)) {
       width: 400px;
       bottom: -72px;
       right: -24px;
+    }
+
+    &_option {
+      width: 800px;
+      bottom: -120px;
+      right: auto-min(-120px);
+
+      @media (max-width: responsive-width(miniPc)) {
+        width: 720px;
+      }
+
+      @media (max-width: responsive-width(tb)) {
+        width: 640px;
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        opacity: 1;
+        width: 440px;
+        bottom: -72px;
+        right: -64px;
+      }
     }
   }
 }

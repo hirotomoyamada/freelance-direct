@@ -1,21 +1,36 @@
 import styles from "../Can.module.scss";
 
-export const Contact = () => {
+export const Contact = ({ option }) => {
   return (
     <div className={styles.can_container}>
       <div className={styles.can_cnt}>
-        <h2 className={styles.can_cnt_ttl}>案件元に直接問い合わせ</h2>
+        <h2 className={styles.can_cnt_ttl}>
+          {!option ? "案件元に直接問い合わせ" : "プロフィールを見てアプローチ"}
+        </h2>
 
-        <p className={styles.can_cnt_desc}>
-          あなたが関心を持った<span>案件を保有する​案件担当に</span>
-          <br />
-          直接問い合わせすることができます。
-          <br />
-          <br />
-          ​案件担当は、SNSやメールアドレスを公開しています。
-          <br />
-          あなたが、よく使うSNSで連絡を取ることもできます。
-        </p>
+        {!option ? (
+          <p className={styles.can_cnt_desc}>
+            あなたが関心を持った<span>案件を保有する​案件担当に</span>
+            <br />
+            直接問い合わせすることができます。
+            <br />
+            <br />
+            ​案件担当は、SNSやメールアドレスを公開しています。
+            <br />
+            あなたが、よく使うSNSで連絡を取ることもできます。
+          </p>
+        ) : (
+          <p className={styles.can_cnt_desc}>
+            あなたが関心を持った<span>フリーランスへ</span>
+            <br />
+            簡単にアプローチすることが可能です。
+            <br />
+            <br />
+            ​アプローチにはメッセージも送付することができるので
+            <br />
+            レスポンシブ率を底上げします。
+          </p>
+        )}
       </div>
 
       <figure className={`${styles.can_visual} ${styles.can_contact}`}>

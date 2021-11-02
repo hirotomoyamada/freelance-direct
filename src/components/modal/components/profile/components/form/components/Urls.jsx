@@ -30,7 +30,7 @@ export const Urls = () => {
         {urlsFields.map((field, i) => (
           <div key={field.id} className={styles.form_item}>
             <input
-              placeholder={process.env.REACT_APP_URL}
+              placeholder={process.env.REACT_APP_FREELANCE_DIRECT}
               className={`${styles.form_input} ${
                 errors.urls?.[i]?.url && styles.form_input_error
               }`}

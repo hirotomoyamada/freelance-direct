@@ -4,7 +4,7 @@ import * as rootSlice from "../../../root/rootSlice";
 export const handleResend = async ({ dispatch }) => {
   await auth.currentUser
     .sendEmailVerification({
-      url: `${process.env.REACT_APP_URL}/login`,
+      url: `${process.env.REACT_APP_FREELANCE_DIRECT}/login`,
     })
     .then(() => {
       dispatch(
