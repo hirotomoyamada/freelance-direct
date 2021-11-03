@@ -35,7 +35,7 @@ import { separation } from "./data/separation";
 import { law } from "./data/law";
 import { useSetting } from "./hook/useSetting";
 
-export const Terms = ({ create, setTerms, props }) => {
+export const Terms = ({ create, setTerms }) => {
   const sections = [
     definition,
     application,
@@ -64,7 +64,7 @@ export const Terms = ({ create, setTerms, props }) => {
     law,
   ];
 
-  const [setting] = useSetting();
+  const [terms] = useSetting();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -74,7 +74,7 @@ export const Terms = ({ create, setTerms, props }) => {
     <div className={styles.terms}>
       <Header
         create={create}
-        terms={setting}
+        terms={terms}
         handleCancel={() => setTerms(false)}
         type="利用規約"
         back
@@ -82,7 +82,7 @@ export const Terms = ({ create, setTerms, props }) => {
 
       <div
         className={`${styles.terms_inner} ${
-          setting && styles.terms_inner_setting
+          !terms && styles.terms_inner_setting
         }`}
       >
         <Body />

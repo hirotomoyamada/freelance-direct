@@ -87,7 +87,7 @@ export const Header = ({
     <div
       className={`${styles.header} ${styles.header_back} ${
         !type && styles.header_none
-      } ${!terms && styles.header_terms}`}
+      } ${terms && styles.header_terms}`}
     >
       <button
         type="button"
