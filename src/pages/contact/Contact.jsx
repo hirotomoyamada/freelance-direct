@@ -101,7 +101,7 @@ export const Contact = () => {
       />
       {load && (
         <div className={styles.contact_load}>
-          <Loader type="Oval" color="#ff9900" height={56} width={56} />
+          <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
         </div>
       )}
     </div>
