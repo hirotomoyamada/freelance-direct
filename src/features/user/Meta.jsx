@@ -8,7 +8,7 @@ export const Meta = ({ user }) => {
           ? `${user?.profile?.person} - ${user?.profile?.name}｜Freelance Direct`
           : user?.profile?.name
           ? `${user?.profile?.name}｜Freelance Direct`
-          : "Freelance Direct"}
+          : "Freelance Direct｜営業支援App"}
       </title>
     </Helmet>
   );
