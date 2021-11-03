@@ -21,6 +21,8 @@ export const Edit = ({ user }) => {
   return (
     <form className={styles.edit} onSubmit={handleSubmit(handleEdit)}>
       <div className={`${styles.edit_btn} ${styles.edit_btn_select}`}>
+        <span className={styles.edit_btn_display}>{state}</span>
+
         <select {...register("state")} className={styles.edit_btn_input}>
           <option value="案件探し中">案件探し中</option>
           <option value="確定">確定</option>
