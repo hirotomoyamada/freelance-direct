@@ -52,7 +52,7 @@ export const Item = ({ index, post, user, select, selectUser, none }) => {
           type="button"
           onClick={() => handleOpen("user")}
           className={`${styles.item_btn} ${
-            (!post?.user?.uid || select || post?.status === "none") &&
+            (!post?.uid || select || post?.status === "none") &&
             styles.item_btn_disable
           }`}
         >
