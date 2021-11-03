@@ -18,7 +18,7 @@ export const Item = ({ index, post, user, select, selectUser, none }) => {
 
   const handleOpen = (index) => {
     dispatch(rootSlice.handleSearch({ control: true }));
-    history.push(`/${index}/${index === "post" ? post.objectID : post.uid}`);
+    history.push(`/${index}/${index === "post" ? post?.objectID : post?.uid}`);
   };
 
   return (
@@ -52,7 +52,8 @@ export const Item = ({ index, post, user, select, selectUser, none }) => {
           type="button"
           onClick={() => handleOpen("user")}
           className={`${styles.item_btn} ${
-            (select || post.status === "none") && styles.item_btn_disable
+            (!post?.user?.uid || select || post?.status === "none") &&
+            styles.item_btn_disable
           }`}
         >
           <article className={styles.item}>
