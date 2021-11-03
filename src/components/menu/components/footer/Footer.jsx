@@ -1,12 +1,36 @@
 import styles from "./Footer.module.scss";
-import { auth } from "../../../../firebase";
 
-import { Icon } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
+import { useDispatch } from "react-redux";
+import { auth } from "../../../../firebase";
+
+import * as rootSlice from "../../../../features/root/rootSlice";
+
+import { Icon } from "@material-ui/core";
+
 export const Footer = () => {
+  const dispatch = useDispatch();
+
   const logout = () => {
-    auth.signOut();
+    document.body.classList.add("fadeIn");
+    document.body.classList.remove("fadeOut");
+
+    setTimeout(() => {
+      auth.signOut();
+    }, 400);
+
+    setTimeout(() => {
+      document.body.classList.add("fadeOut");
+      document.body.classList.remove("fadeIn");
+    }, 700);
+
+    dispatch(
+      rootSlice.handleAnnounce({
+        type: "success",
+        text: "ログアウトしました",
+      })
+    );
   };
 
   return (
