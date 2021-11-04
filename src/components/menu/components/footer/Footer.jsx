@@ -13,6 +13,8 @@ export const Footer = () => {
   const dispatch = useDispatch();
 
   const logout = () => {
+    dispatch(rootSlice.handleMenu("close"));
+
     document.body.classList.add("fadeIn");
     document.body.classList.remove("fadeOut");
 
