@@ -17,13 +17,13 @@ $width: responsive-width(pc);
   }
 
   &_load {
-    height: 100vh;
+    height: $innerHeight;
     display: flex;
     justify-content: center;
     align-items: center;
 
     @media (max-width: responsive-width(sp)) {
-      height: calc(100vh - 12px * 2);
+      height: calc($innerHeight - 12px * 2);
     }
   }
 

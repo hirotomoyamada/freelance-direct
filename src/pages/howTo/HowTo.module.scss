@@ -14,7 +14,7 @@ $width: responsive-width(pc);
 
   &_inner {
     padding: 0 32px;
-    min-height: 100vh;
+    min-height: $innerHeight;
     background: $base_clr;
 
     @media (max-width: responsive-width(sp)) {

@@ -64,7 +64,7 @@ $width: responsive-width(pc);
 
     @media (max-width: responsive-width(tb)) {
       top: 0;
-      height: 100vh;
+      height: $innerHeight;
       border-radius: 0;
     }
   }

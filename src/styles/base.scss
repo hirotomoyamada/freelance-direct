@@ -20,7 +20,7 @@ body {
 
     background: $bg_clr;
     width: 100vw;
-    height: 100vh;
+    height: $innerHeight;
 
     animation: fadeIn 0.4s ease-out forwards;
 
@@ -47,7 +47,7 @@ body {
 
     background: $bg_clr;
     width: 100vw;
-    height: 100vh;
+    height: $innerHeight;
 
     animation: fadeOut 0.4s ease-out forwards;
 
@@ -79,7 +79,7 @@ body {
   & > div:nth-child(2) {
     position: relative;
     background: $base_clr;
-    min-height: 100vh;
+    min-height: $innerHeight;
   }
 
   @media (max-width: responsive-width(tb)) {
@@ -89,7 +89,7 @@ body {
 
 .disable {
   width: 100vw;
-  height: 100vh;
+  height: $innerHeight;
   display: flex;
   justify-content: center;
   align-items: center;

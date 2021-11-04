@@ -7,7 +7,7 @@ $width: responsive-width(pc);
 
 .setting {
   position: relative;
-  min-height: 100vh;
+  min-height: $innerHeight;
 
   display: grid;
   grid-template-rows: 48px 1fr;
@@ -19,6 +19,7 @@ $width: responsive-width(pc);
 
   @media (max-width: responsive-width(sp)) {
     grid-template-rows: 64px 1fr;
+    overflow: hidden;
   }
 
   &_main {

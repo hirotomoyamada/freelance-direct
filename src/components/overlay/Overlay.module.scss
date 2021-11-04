@@ -13,7 +13,7 @@ $width: responsive-width(pc);
 
   background: $acnt_bg_clr;
   width: 100vw;
-  height: 100vh;
+  height: $innerHeight;
   opacity: 0;
   pointer-events: none;
   cursor: pointer;

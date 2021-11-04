@@ -19,7 +19,7 @@ $width: responsive-width(pc);
   left: 0;
   z-index: 9998;
   width: 100vw;
-  height: 100vh;
+  height: $innerHeight;
   background: $main_clr;
   opacity: 0.8;
 }
@@ -30,7 +30,7 @@ $width: responsive-width(pc);
   left: 50%;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  
+
   &_sp {
     @media (max-width: responsive-width(sp)) {
       top: 0;
