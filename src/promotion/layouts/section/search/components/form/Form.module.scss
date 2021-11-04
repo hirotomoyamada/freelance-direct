@@ -38,6 +38,11 @@ $width: responsive-width(pc);
       border-radius: 20px;
     }
 
+    input::placeholder {
+      color: $sub_clr;
+      opacity: 0.6;
+    }
+
     button {
       display: flex;
       justify-content: center;
