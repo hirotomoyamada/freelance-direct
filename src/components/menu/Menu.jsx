@@ -15,6 +15,7 @@ export const Menu = ({ user }) => {
 
   const page = useSelector(rootSlice.page);
   const menu = useSelector(rootSlice.menu);
+  const disable = useSelector(rootSlice.verified).agree;
 
   const [control, setControl] = useState(
     window.innerWidth < 959 ? true : false
@@ -49,8 +50,13 @@ export const Menu = ({ user }) => {
       }`}
     >
       <div className={styles.menu_inner}>
-        <Header user={user} handlePage={handlePage} />
-        <Nav user={user} page={page} handlePage={handlePage} />
+        <Header user={user} handlePage={handlePage} disable={disable} />
+        <Nav
+          user={user}
+          page={page}
+          handlePage={handlePage}
+          disable={disable}
+        />
         <Footer />
       </div>
     </div>

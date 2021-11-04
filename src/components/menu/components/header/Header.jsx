@@ -1,7 +1,7 @@
 import styles from "./Header.module.scss";
 import { Icon } from "../../../icon/Icon";
 
-export const Header = ({ user, handlePage }) => {
+export const Header = ({ user, handlePage, disable }) => {
   const nickName = [
     "天才エンジニア",
     "究極形態プログラマー",
@@ -12,7 +12,7 @@ export const Header = ({ user, handlePage }) => {
   return (
     <button
       type="button"
-      className={styles.header}
+      className={`${styles.header} ${disable && styles.header_disable}`}
       onClick={() => {
         handlePage("user");
       }}

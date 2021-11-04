@@ -16,6 +16,10 @@ $width: responsive-width(pc);
     opacity: 0.8;
   }
 
+  &_disable {
+    pointer-events: none;
+  }
+
   &_icon {
     width: 48px;
     height: 48px;

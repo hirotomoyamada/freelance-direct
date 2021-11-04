@@ -9,6 +9,10 @@ $width: responsive-width(pc);
   display: flex;
   flex-direction: column;
 
+  &_disable {
+    pointer-events: none;
+  }
+
   &_wrap {
     padding: 16px 0;
     display: flex;

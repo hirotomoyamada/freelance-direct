@@ -25,7 +25,9 @@ export const Agree = () => {
       <div className={styles.agree_body}>{agree?.body}</div>
 
       <div className={styles.agree_link}>
-        <Link to={"/terms"}>利用規約</Link>
+        <Link to={{ pathname: "/terms", state: { setting: true } }}>
+          利用規約
+        </Link>
       </div>
 
       <button type="button" className={styles.agree_btn} onClick={handleAgree}>

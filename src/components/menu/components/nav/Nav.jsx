@@ -10,7 +10,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 
 import { Btn } from "./components/Btn";
 
-export const Nav = ({ page, user, handlePage }) => {
+export const Nav = ({ page, user, handlePage, disable }) => {
   const navs = [
     {
       home: { text: "ホーム", icon: HomeIcon },
@@ -28,7 +28,7 @@ export const Nav = ({ page, user, handlePage }) => {
   ];
 
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${disable && styles.nav_disable}`}>
       {navs.map((nav, index) => (
         <div className={styles.nav_wrap} key={index}>
           {Object.keys(nav).map((i) => (
