@@ -22,7 +22,10 @@ body {
     width: 100vw;
     height: $innerHeight;
 
-    animation: fadeIn 0.4s ease-out forwards;
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 
     @keyframes fadeIn {
       0% {
@@ -49,7 +52,10 @@ body {
     width: 100vw;
     height: $innerHeight;
 
-    animation: fadeOut 0.4s ease-out forwards;
+    animation-name: fadeOut;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 
     @keyframes fadeOut {
       0% {

@@ -19,7 +19,10 @@ $width: responsive-width(pc);
   cursor: pointer;
 
   &_open {
-    animation: open 0.6s ease-out forwards;
+    animation-name: open;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 
     @keyframes open {
       0% {
@@ -34,7 +37,10 @@ $width: responsive-width(pc);
   }
 
   &_close {
-    animation: close 0.6s ease-out forwards;
+    animation-name: close;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 
     @keyframes close {
       0% {

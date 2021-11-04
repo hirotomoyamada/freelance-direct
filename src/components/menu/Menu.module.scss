@@ -20,7 +20,10 @@ $width: responsive-width(pc);
 
   &_open {
     @media (max-width: responsive-width(tb)) {
-      animation: open 0.4s forwards;
+      animation-name: open;
+      animation-duration: 0.4s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-out;
 
       @keyframes open {
         0% {
@@ -36,7 +39,10 @@ $width: responsive-width(pc);
 
   &_close {
     @media (max-width: responsive-width(tb)) {
-      animation: close 0.4s forwards;
+      animation-name: close;
+      animation-duration: 0.4s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-out;
 
       @keyframes close {
         0% {
