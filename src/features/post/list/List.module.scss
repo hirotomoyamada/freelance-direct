@@ -21,7 +21,7 @@ $width: responsive-width(pc);
 
   &_none {
     width: 100%;
-    height: calc($innerHeight - 130px);
+    height: calc(var(--vh, 1vh) * 100 - 130px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,26 +44,26 @@ $width: responsive-width(pc);
     }
 
     &_list {
-      height: calc($innerHeight - 48px);
+      height: calc(var(--vh, 1vh) * 100 - 48px);
 
       @media (max-width: responsive-width(tb)) {
-        height: calc($innerHeight - 80px);
+        height: calc(var(--vh, 1vh) * 100 - 80px);
       }
 
       @media (max-width: responsive-width(sp)) {
-        height: calc($innerHeight - 64px);
+        height: calc(var(--vh, 1vh) * 100 - 64px);
       }
     }
 
     &_requests {
-      height: calc($innerHeight - 97px);
+      height: calc(var(--vh, 1vh) * 100 - 97px);
 
       @media (max-width: responsive-width(tb)) {
-        height: calc($innerHeight - 129px);
+        height: calc(var(--vh, 1vh) * 100 - 129px);
       }
 
       @media (max-width: responsive-width(sp)) {
-        height: calc($innerHeight - 89px);
+        height: calc(var(--vh, 1vh) * 100 - 89px);
       }
     }
   }
