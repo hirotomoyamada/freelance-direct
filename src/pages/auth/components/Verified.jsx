@@ -12,23 +12,21 @@ export const Verified = ({
 
   return (
     <div className={styles.auth_inner}>
-      <>
-        <span className={`${styles.auth_ttl} ${styles.auth_ttl_error}`}>
-          {verified.error
-            ? "プロフィールの作成に失敗しました"
-            : verified.email
-            ? "確認メールを送信しました"
-            : verified.status === "disable"
-            ? "このアカウントでは\nご利用いただけません"
-            : verified.status === "hold" && "ただいま\n承認しております"}
-        </span>
+      <span className={`${styles.auth_ttl} ${styles.auth_ttl_error}`}>
+        {verified.error
+          ? "プロフィールの作成に失敗しました"
+          : verified.email
+          ? "確認メールを送信しました"
+          : verified.status === "disable"
+          ? "このアカウントでは\nご利用いただけません"
+          : verified.status === "hold" && "ただいま\n承認しております"}
+      </span>
 
-        {verified.error && (
-          <span className={`${styles.auth_desc} ${styles.auth_desc_center}`}>
-            {verified.error}
-          </span>
-        )}
-      </>
+      {verified.error && (
+        <span className={`${styles.auth_desc} ${styles.auth_desc_center}`}>
+          {verified.error}
+        </span>
+      )}
 
       <div className={`${styles.auth_wrap} ${styles.auth_wrap_center}`}>
         <button
@@ -38,6 +36,7 @@ export const Verified = ({
         >
           {!verified.error ? "ログイン画面に戻る" : "プロフィール画面に戻る"}
         </button>
+
         {email && (
           <>
             <span className={styles.auth_desc}>|</span>
