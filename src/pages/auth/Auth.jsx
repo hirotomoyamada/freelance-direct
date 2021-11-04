@@ -79,6 +79,10 @@ export const Auth = () => {
     });
   };
 
+  const handleBack = () => {
+    dispatch(rootSlice.handleVerified("reset"));
+  };
+
   const handleReset = (data) => {
     functions.auth.handleReset({ dispatch, reset, setReset, data });
   };
@@ -113,6 +117,7 @@ export const Auth = () => {
           verified.status === "disable" ? (
           <Verified
             handleLogout={handleLogout}
+            handleBack={handleBack}
             handleResend={handleResend}
             email={email}
             verified={verified}

@@ -1,6 +1,5 @@
 import { auth } from "../../../../firebase";
 import { createProfile } from "../../actions/createProfile";
-import * as rootSlice from "../../../root/rootSlice";
 
 export const handleCreate = async ({ dispatch, data }) => {
   const reader = new FileReader();
@@ -22,20 +21,14 @@ export const handleCreate = async ({ dispatch, data }) => {
         .filter((object) => object[Object.keys(object)])
         .map((object) => object[Object.keys(object)]),
       file: base64,
+      type: data.file[0].type,
       agree: data.agree,
       provider: auth.currentUser.providerData[0].providerId,
+
+      fetch: true,
     };
 
-    try {
-      dispatch(createProfile(object));
-    } catch (e) {
-      dispatch(
-        rootSlice.handleAnnounce({
-          type: "error",
-          text: "作成に失敗しました",
-        })
-      );
-    }
+    dispatch(createProfile(object));
   };
 
   reader.readAsArrayBuffer(data.file[0]);

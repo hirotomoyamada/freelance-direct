@@ -49,6 +49,16 @@ $width: responsive-width(pc);
     @media (max-width: responsive-width(sp)) {
       padding-top: 89px;
     }
+
+    &_auth {
+      padding-top: 0;
+      grid-template-columns: 1fr;
+
+      & > div {
+        text-align: center;
+        grid-column: 1 / 2;
+      }
+    }
   }
 
   &_opacity {

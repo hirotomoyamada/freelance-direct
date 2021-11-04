@@ -62,6 +62,11 @@ $width: responsive-width(pc);
     @media (max-width: responsive-width(sp)) {
       font-size: 20px;
     }
+
+    &_error {
+      color: $sub_clr;
+      margin-bottom: 0px;
+    }
   }
 
   &_col {
@@ -158,6 +163,7 @@ $width: responsive-width(pc);
   &_desc {
     color: $sub_clr;
     font-size: 14px;
+    white-space: pre-line;
 
     transition: all 0.4s;
 

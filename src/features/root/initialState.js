@@ -1,6 +1,6 @@
 export const initialState = {
   index: "matters",
-  
+
   page: "home",
 
   menu: { display: false, control: false },
@@ -32,6 +32,7 @@ export const initialState = {
     status: "",
     access: true,
     demo: false,
+    error: "",
   },
 
   load: {
