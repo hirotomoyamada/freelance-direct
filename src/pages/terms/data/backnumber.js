@@ -1,1 +1,1 @@
-export const backnumber = ["2021年10月1日制定"];
+export const backnumber = ["2021年11月11日制定"];

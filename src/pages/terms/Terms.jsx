@@ -13,10 +13,7 @@ import { application } from "./data/application";
 import { examination } from "./data/examination";
 import { account } from "./data/account";
 import { data } from "./data/data";
-import { plan } from "./data/plan";
-import { start } from "./data/start";
 import { price } from "./data/price";
-import { period } from "./data/period";
 import { secret } from "./data/secret";
 import { ban } from "./data/ban";
 import { suspension } from "./data/suspension";
@@ -42,10 +39,7 @@ export const Terms = ({ create, setTerms }) => {
     examination,
     account,
     data,
-    plan,
-    start,
     price,
-    period,
     secret,
     ban,
     suspension,
