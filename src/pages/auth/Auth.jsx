@@ -113,7 +113,7 @@ export const Auth = () => {
         ref={form}
       >
         {terms ? (
-          <Terms create setTerms={setTerms} resize={resize} />
+          <Terms create setTerms={setTerms} />
         ) : email ||
           verified.status === "hold" ||
           verified.status === "disable" ? (
