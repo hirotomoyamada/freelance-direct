@@ -7,7 +7,9 @@ import * as rootSlice from "../../../../../features/root/rootSlice";
 
 export const useSearch = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, watch, reset } = useForm();
+  const { register, handleSubmit, watch, reset } = useForm({
+    defaultValues: { value: "" },
+  });
 
   const status = useSelector(rootSlice.verified).status === "promo";
   const value = watch("value");
@@ -20,6 +22,7 @@ export const useSearch = () => {
 
   useEffect(() => {
     if (status && !control) {
+      console.log(value);
       dispatch(promotionPosts(value));
       setControl(true);
     }
