@@ -46,7 +46,7 @@ export const Auth = () => {
   ] = useVerification(verified);
 
   const [file, error] = useVerifiedFile(methods);
-  const [form, inner] = useResize();
+  const [resize, form, inner] = useResize();
 
   useEffect(() => {
     functions.auth.getRedirect({ dispatch });
@@ -80,7 +80,7 @@ export const Auth = () => {
   };
 
   const handleBack = () => {
-    dispatch(rootSlice.handleVerified("reset"));
+    dispatch(rootSlice.handleVerified());
   };
 
   const handleReset = (data) => {
@@ -98,7 +98,9 @@ export const Auth = () => {
   return (
     <FormProvider {...methods}>
       <form
-        className={`${styles.auth} ${terms && styles.auth_terms}`}
+        className={`${styles.auth} ${terms && styles.auth_terms} ${
+          resize && styles.auth_resize
+        }`}
         onSubmit={
           reset
             ? methods.handleSubmit(handleReset)
@@ -111,7 +113,7 @@ export const Auth = () => {
         ref={form}
       >
         {terms ? (
-          <Terms create setTerms={setTerms} />
+          <Terms create setTerms={setTerms} resize={resize} />
         ) : email ||
           verified.status === "hold" ||
           verified.status === "disable" ? (
@@ -121,6 +123,7 @@ export const Auth = () => {
             handleResend={handleResend}
             email={email}
             verified={verified}
+            resize={resize}
           />
         ) : profile ? (
           <Create
@@ -129,9 +132,10 @@ export const Auth = () => {
             file={file}
             error={error}
             setTerms={setTerms}
+            resize={resize}
           />
         ) : reset ? (
-          <Reset reset={reset} setReset={setReset} />
+          <Reset reset={reset} setReset={setReset} resize={resize} />
         ) : (
           <Sign
             inner={inner}
@@ -140,6 +144,7 @@ export const Auth = () => {
             setSign={setSign}
             setReset={setReset}
             handleProvider={handleProvider}
+            resize={resize}
           />
         )}
         {((sign && !create) || verified.email || verified.status === "hold") &&
