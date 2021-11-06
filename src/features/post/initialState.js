@@ -65,7 +65,7 @@ export const initialState = {
     },
   },
 
-  history: {
+  histories: {
     posts: [],
     hit: {
       posts: 0,

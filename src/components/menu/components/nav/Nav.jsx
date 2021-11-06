@@ -20,7 +20,7 @@ export const Nav = ({ page, user, handlePage, disable }) => {
       likes: { text: "いいね", icon: FavoriteBorderIcon },
       entries: { text: "エントリー", icon: CheckCircleOutlineIcon },
       requests: { text: "リクエスト", icon: PersonAddIcon },
-      history: { text: "閲覧履歴", icon: HistoryIcon },
+      histories: { text: "閲覧履歴", icon: HistoryIcon },
     },
     {
       setting: { text: "設定", icon: SettingsIcon },

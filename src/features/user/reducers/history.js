@@ -1,7 +1,7 @@
 export const addHistory = (state, action) => {
-  state.user.history = [
+  state.user.histories = [
     action.payload.post.objectID,
-    ...state.user.history.filter(
+    ...state.user.histories.filter(
       (objectID) => objectID !== action.payload.post.objectID
     ),
   ];

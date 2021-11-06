@@ -7,7 +7,7 @@ export const initialState = {
     profile: {},
     likes: [],
     entries: [],
-    history: [],
+    histories: [],
     follows: [],
     requests: [],
     home: [],

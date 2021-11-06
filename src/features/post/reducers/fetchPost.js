@@ -3,10 +3,10 @@ export const fetchPost = (state, action) => {
     state.post = action.payload.post;
     state.bests = action.payload.bests;
 
-    if (state.history.posts.length) {
-      state.history.posts = [
+    if (state.histories.posts.length) {
+      state.histories.posts = [
         action.payload.post,
-        ...state.history.posts.filter(
+        ...state.histories.posts.filter(
           (post) => post.objectID !== action.payload.post.objectID
         ),
       ];
