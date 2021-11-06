@@ -2,7 +2,7 @@ import root from "../../../Person.module.scss";
 import styles from "../Resume.module.scss";
 
 import Loader from "react-loader-spinner";
-import AddIcon from "@material-ui/icons/AddCircle";
+import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 
 import { useSelector } from "react-redux";

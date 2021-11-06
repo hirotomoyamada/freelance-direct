@@ -104,14 +104,15 @@ $width: responsive-width(pc);
 
   &_icon {
     position: absolute;
-    top: -14px;
-    right: -14px;
+    top: -12px;
+    right: -12px;
     z-index: 1;
 
     border-radius: 16px;
 
-    color: $acnt_clr;
-    font-size: 28px !important;
+    background: $acnt_clr;
+    color: $base_clr;
+    font-size: 24px !important;
 
     transition: all 0.4s !important;
 
