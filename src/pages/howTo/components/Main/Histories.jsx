@@ -1,7 +1,7 @@
 import styles from "../../HowTo.module.scss";
 import { Tag } from "../tag/Tag";
 
-export const History = () => {
+export const Histories = () => {
   return (
     <div className={styles.howto_main}>
       <h1 className={styles.howto_ttl}>閲覧履歴</h1>

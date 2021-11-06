@@ -3,7 +3,7 @@ import { Search } from "./Search";
 import { Likes } from "./Likes";
 import { Entries } from "./Entries";
 import { Requests } from "./Requests";
-import { History } from "./History";
+import { Histories } from "./Histories";
 import { Profile } from "./Profile";
 
 export const Main = ({ page }) => {
@@ -18,8 +18,8 @@ export const Main = ({ page }) => {
       return <Entries />;
     case "requests":
       return <Requests />;
-    case "history":
-      return <History />;
+    case "histories":
+      return <Histories />;
     case "profile":
       return <Profile />;
   }
