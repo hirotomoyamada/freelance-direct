@@ -1,7 +1,10 @@
 export const initialState = {
   index: "matters",
 
-  page: "home",
+  // page: "home", // ver 1.1.0
+  // ------ 削除予定 ------
+  page: "search",
+  // ------ 削除予定 ------
 
   menu: { display: false, control: false },
 

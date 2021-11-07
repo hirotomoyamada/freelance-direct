@@ -32,7 +32,11 @@ export const List = ({
 
   return (
     <div className={select && styles.list_scroll}>
-      {posts?.length ? (
+      {posts?.length &&
+      // ------ 削除予定 ------
+      index === "matters" // ver 1.1.0
+      // ------ 削除予定 ------
+       ? (
         <Posts
           index={index}
           posts={posts}
