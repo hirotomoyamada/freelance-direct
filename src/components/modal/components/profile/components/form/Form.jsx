@@ -22,10 +22,10 @@ import { Costs } from "./components/Costs";
 
 export const Form = ({ cover, icon, setCover, setIcon }) => {
   return (
-    <>
+    <div className={styles.form}>
       <Header cover={cover} icon={icon} setCover={setCover} setIcon={setIcon} />
 
-      <div className={styles.form}>
+      <div className={styles.form_inner}>
         <NickName />
         <Name />
         <Email />
@@ -64,6 +64,6 @@ export const Form = ({ cover, icon, setCover, setIcon }) => {
           ※1&nbsp;承認後、開示される情報です。
         </span>
       </div>
-    </>
+    </div>
   );
 };
