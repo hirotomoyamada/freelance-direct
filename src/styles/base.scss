@@ -20,7 +20,7 @@ body {
 
     background: $bg_clr;
     width: 100vw;
-    height: $innerHeight;
+    height: 100vh;
 
     animation-name: fadeIn;
     animation-duration: 0.4s;
@@ -50,7 +50,7 @@ body {
 
     background: $bg_clr;
     width: 100vw;
-    height: $innerHeight;
+    height: 100vh;
 
     animation-name: fadeOut;
     animation-duration: 0.4s;

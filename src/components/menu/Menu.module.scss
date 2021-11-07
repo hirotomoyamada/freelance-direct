@@ -18,41 +18,25 @@ $width: responsive-width(pc);
     transform: translateX(-300px);
   }
 
+  transition: all 0.4s;
+
   &_open {
+    transform: translateX(0);
     @media (max-width: responsive-width(tb)) {
-      animation-name: open;
-      animation-duration: 0.4s;
-      animation-fill-mode: forwards;
-      animation-timing-function: ease-out;
-
-      @keyframes open {
-        0% {
-          transform: translateX(-300px);
-        }
-
-        100% {
-          transform: translateX(0);
-        }
-      }
+      // animation-name: open;
+      // animation-duration: 0.4s;
+      // animation-fill-mode: forwards;
+      // animation-timing-function: ease-out;
     }
   }
 
   &_close {
+    transform: translateX(-300px);
     @media (max-width: responsive-width(tb)) {
-      animation-name: close;
-      animation-duration: 0.4s;
-      animation-fill-mode: forwards;
-      animation-timing-function: ease-out;
-
-      @keyframes close {
-        0% {
-          transform: translateX(0);
-        }
-
-        100% {
-          transform: translateX(-300px);
-        }
-      }
+      // animation-name: close;
+      // animation-duration: 0.4s;
+      // animation-fill-mode: forwards;
+      // animation-timing-function: ease-out;
     }
   }
 
@@ -70,8 +54,28 @@ $width: responsive-width(pc);
 
     @media (max-width: responsive-width(tb)) {
       top: 0;
-      height: $innerHeight;
+      height: 100vh;
       border-radius: 0;
     }
+  }
+}
+
+@keyframes open {
+  0% {
+    transform: translateX(-300px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes close {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-300px);
   }
 }

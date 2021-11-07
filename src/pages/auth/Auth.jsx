@@ -34,6 +34,8 @@ export const Auth = () => {
   const [help, setHelp] = useState(false);
   const [terms, setTerms] = useState(false);
 
+  const [file, error] = useVerifiedFile(methods);
+  const [resize, form, inner] = useResize(verified);
   const [
     sign,
     setSign,
@@ -44,9 +46,6 @@ export const Auth = () => {
     create,
     setCreate,
   ] = useVerification(verified);
-
-  const [file, error] = useVerifiedFile(methods);
-  const [resize, form, inner] = useResize();
 
   useEffect(() => {
     functions.auth.getRedirect({ dispatch });
@@ -118,12 +117,12 @@ export const Auth = () => {
           verified.status === "hold" ||
           verified.status === "disable" ? (
           <Verified
+            inner={inner}
             handleLogout={handleLogout}
             handleBack={handleBack}
             handleResend={handleResend}
             email={email}
             verified={verified}
-            resize={resize}
           />
         ) : profile ? (
           <Create
@@ -135,7 +134,12 @@ export const Auth = () => {
             resize={resize}
           />
         ) : reset ? (
-          <Reset reset={reset} setReset={setReset} resize={resize} />
+          <Reset
+            inner={inner}
+            reset={reset}
+            setReset={setReset}
+            resize={resize}
+          />
         ) : (
           <Sign
             inner={inner}
