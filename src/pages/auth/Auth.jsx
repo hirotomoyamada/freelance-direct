@@ -147,7 +147,7 @@ export const Auth = () => {
             resize={resize}
           />
         )}
-        
+
         {((sign && !create) || verified.email || verified.status === "hold") &&
           verified.status !== "disable" && (
             <StartGuide help={help} setHelp={setHelp} resize={resize} />

@@ -1,6 +1,8 @@
 import { auth } from "../../../../firebase";
 import { createProfile } from "../../actions/createProfile";
 
+import * as rootSlice from "../../../root/rootSlice";
+
 export const handleCreate = async ({ dispatch, data }) => {
   const reader = new FileReader();
 
@@ -10,6 +12,27 @@ export const handleCreate = async ({ dispatch, data }) => {
         return p + String.fromCharCode(c);
       }, "")
     );
+
+    if (
+      !data.name ||
+      !data.age ||
+      !data.sex ||
+      !data.position ||
+      !data.location ||
+      !data.handles.length ||
+      !data.agree ||
+      !data.file[0] ||
+      !data.file[0].type
+    ) {
+      dispatch(
+        rootSlice.handleAnnounce({
+          type: "error",
+          text: "登録に失敗しました ページを更新してください",
+        })
+      );
+
+      return;
+    }
 
     const object = {
       name: data.name,
