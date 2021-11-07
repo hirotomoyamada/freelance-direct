@@ -42,10 +42,10 @@ export const useApp = () => {
       document.documentElement.style.setProperty("--vh", `${vh}px`);
     };
 
-    setFillHeight();
+    window.addEventListener("resize", setFillHeight);
 
     return () => {
-      setFillHeight();
+      window.removeEventListener("resize", setFillHeight);
     };
   }, []);
 
