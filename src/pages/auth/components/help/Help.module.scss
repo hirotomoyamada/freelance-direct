@@ -81,7 +81,6 @@ $width: responsive-width(pc);
       background: $acnt_bg_clr;
 
       @media (max-width: responsive-width(sp)) {
-        width: 100%;
         padding: 0 12px;
         height: 40px;
         font-size: 14px;
