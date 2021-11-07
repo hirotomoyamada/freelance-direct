@@ -20,52 +20,59 @@ export const Main = ({ post, user, entry, handleEntry }) => {
 
   return !load && post.objectID ? (
     <div className={styles.main}>
-      <Menu post={post} user={user} />
+      <div className={styles.main_inner}>
+        <Menu post={post} user={user} />
 
-      <Header post={post} user={user} />
+        <Header post={post} user={user} />
 
-      {(post?.handles?.[0] || post?.tools?.[0]) && (
-        <div className={styles.main_col}>
-          <span className={styles.main_tag}>開発環境</span>
-          <Feilds objects={post?.handles} acnt />
-          <Feilds objects={post?.tools} />
-        </div>
-      )}
+        {(post?.handles?.[0] || post?.tools?.[0]) && (
+          <div className={styles.main_col}>
+            <span className={styles.main_tag}>開発環境</span>
+            <Feilds objects={post?.handles} acnt />
+            <Feilds objects={post?.tools} />
+          </div>
+        )}
 
-      <Txt tag="詳細" txt={post?.body} txtarea />
+        <Txt tag="詳細" txt={post?.body} txtarea />
 
-      <Feilds tag="必須" objects={post?.requires} />
+        <Feilds tag="必須" objects={post?.requires} />
 
-      <Feilds tag="尚可" objects={post?.prefers} />
+        <Feilds tag="尚可" objects={post?.prefers} />
 
-      <Period period={post?.period} />
+        <Period period={post?.period} />
 
-      <Txt
-        tag="場所"
-        txt={{ area: post?.location?.area, place: post?.location?.place }}
-        location
-      />
+        <Txt
+          tag="場所"
+          txt={{ area: post?.location?.area, place: post?.location?.place }}
+          location
+        />
 
-      <Txt tag="リモート" txt={post?.remote} />
+        <Txt tag="リモート" txt={post?.remote} />
 
-      <Times times={post?.times} />
+        <Times times={post?.times} />
 
-      <Txt tag="精算" txt={post?.adjustment} />
+        <Txt tag="精算" txt={post?.adjustment} />
 
-      <Costs costs={post?.costs} />
+        <Costs costs={post?.costs} />
 
-      <Txt tag="商流" txt={post?.distribution} />
+        <Txt tag="商流" txt={post?.distribution} />
 
-      <Txt tag="支払いサイト" txt={post?.span} end="日" />
+        <Txt tag="支払いサイト" txt={post?.span} end="日" />
 
-      <Interviews
-        interviews={post?.interviews}
-        none={post?.note ? false : true}
-      />
+        <Interviews
+          interviews={post?.interviews}
+          none={post?.note ? false : true}
+        />
 
-      <Txt tag="備考" txt={post?.note} none txtarea />
+        <Txt tag="備考" txt={post?.note} none txtarea />
 
-      <Entry post={post} user={user} entry={entry} handleEntry={handleEntry} />
+        <Entry
+          post={post}
+          user={user}
+          entry={entry}
+          handleEntry={handleEntry}
+        />
+      </div>
     </div>
   ) : (
     <div className={styles.main_load}>

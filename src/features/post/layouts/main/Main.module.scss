@@ -6,7 +6,6 @@
 $width: responsive-width(pc);
 
 .main {
-  position: relative;
   padding: 32px;
 
   font-size: 16px;
@@ -14,6 +13,10 @@ $width: responsive-width(pc);
   @media (max-width: responsive-width(sp)) {
     padding: 12px;
     font-size: 12px;
+  }
+
+  &_inner {
+    position: relative;
   }
 
   &_load {
