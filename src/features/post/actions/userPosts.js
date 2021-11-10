@@ -14,7 +14,9 @@ export const userPosts = createAsyncThunk("post/userPosts", async (data) => {
         hit: data.hit,
       };
     })
-    .catch((e) => {});
+    .catch((e) => {
+      return { error: "ページを更新してください" };
+    });
 
   return posts;
 });

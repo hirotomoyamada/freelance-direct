@@ -18,7 +18,9 @@ export const fetchPosts = createAsyncThunk("post/fetchPosts", async (data) => {
         hit: data.hit,
       };
     })
-    .catch((e) => {});
+    .catch((e) => {
+      return { error: "ページを更新してください" };
+    });
 
   return posts;
 });

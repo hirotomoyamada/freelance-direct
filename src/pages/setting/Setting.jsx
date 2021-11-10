@@ -39,6 +39,10 @@ export const Setting = () => {
     dispatch(rootSlice.handlePage("setting"));
   }, [dispatch]);
 
+  useEffect(() => {
+    functions.setting.getRedirect({ dispatch });
+  }, [dispatch]);
+
   const handleCancel = () => {
     setEmail(false);
     setPassword(false);

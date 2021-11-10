@@ -10,7 +10,9 @@ export const promotionPosts = createAsyncThunk(
       .then(({ data }) => {
         return data;
       })
-      .catch((e) => {});
+      .catch((e) => {
+        return { error: "ページを更新してください" };
+      });
 
     return posts;
   }

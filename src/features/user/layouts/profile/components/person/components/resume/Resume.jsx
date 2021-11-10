@@ -14,26 +14,26 @@ export const Resume = ({ user }) => {
   const dispatch = useDispatch();
 
   const input = useRef();
-  const [resume, setResume] = useState(null);
+  const [file, setFile] = useState(null);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!resume) {
+    if (!file) {
       setError(null);
       setSuccess(false);
 
       return;
     }
 
-    if (resume?.type !== "application/pdf") {
+    if (file?.type !== "application/pdf") {
       setError("pdf のみアップロードできます");
       setSuccess(false);
 
       return;
     }
 
-    if (resume?.size > 0.4 * 1024 * 1024) {
+    if (file?.size > 0.4 * 1024 * 1024) {
       setError("400KB までアップロードできます");
       setSuccess(false);
 
@@ -42,7 +42,7 @@ export const Resume = ({ user }) => {
 
     setError(null);
     setSuccess(true);
-  }, [resume]);
+  }, [file]);
 
   const handleUpload = (e) => {
     e.preventDefault();
@@ -56,21 +56,21 @@ export const Resume = ({ user }) => {
         }, "")
       );
 
-      dispatch(uploadResume({ file: base64, fetch: true }));
+      dispatch(uploadResume({ type: file.type, file: base64, fetch: true }));
 
       handleCancel();
     };
 
-    reader.readAsArrayBuffer(resume);
+    reader.readAsArrayBuffer(file);
   };
 
   const handleChange = (e) => {
-    setResume(e.target.files[0]);
+    setFile(e.target.files[0]);
   };
 
   const handleCancel = () => {
     input.current.value = null;
-    setResume(null);
+    setFile(null);
     setError(null);
     setSuccess(false);
   };
@@ -89,7 +89,7 @@ export const Resume = ({ user }) => {
 
   return (
     <form onSubmit={handleUpload} className={root.profile_container}>
-      <File user={user} resume={resume} handleDelete={handleDelete} />
+      <File user={user} file={file} handleDelete={handleDelete} />
 
       <Upload
         user={user}
