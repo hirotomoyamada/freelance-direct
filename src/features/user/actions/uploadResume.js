@@ -5,7 +5,8 @@ export const uploadResume = createAsyncThunk(
   "user/uploadResume",
   async (data) => {
     const uploadResume = functions.httpsCallable("fd-uploadResume");
-    const url = uploadResume(data.file)
+
+    const url = await uploadResume(data.file)
       .then(async ({ data }) => {
         return data;
       })

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
 
 import * as reducers from "./reducers/reducers";
+import { extraReducers } from "./extraReducers/extraReducers";
 
 export const rootSlice = createSlice({
   name: "root",
@@ -19,107 +20,7 @@ export const rootSlice = createSlice({
     handleVerified: (state, action) => reducers.verified(state, action),
   },
 
-  extraReducers: (builder) => {
-    builder.addMatcher(
-      (action) => action.type.endsWith("/pending"),
-      (state, action) => {
-        state.load.fetch = action.meta.arg.fetch ? true : false;
-        state.load.list = true;
-      }
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/rejected"),
-      (state) => {
-        state.notFound = true;
-
-        state.load.fetch = false;
-        state.load.list = false;
-      }
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/fulfilled"),
-      (state) => {
-        state.load.fetch = false;
-        state.load.list = false;
-      }
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/login/fulfilled"),
-      (state, action) => reducers.verified(state, action)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/logout"),
-      (state) => {
-        state.load.root = false;
-
-        state.verified = {
-          index: false,
-          email: false,
-          profile: false,
-          agree: false,
-          status: "promo",
-          access: false,
-          demo: false,
-          error: "",
-        };
-      }
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/createProfile/fulfilled"),
-      (state, action) => {
-        state.verified.email = false;
-        state.verified.profile = false;
-        state.verified.agree = false;
-        state.verified.status = "hold";
-
-        if (action.payload) {
-          state.verified.error = action.payload;
-        }
-      }
-    );
-
-    builder.addMatcher(
-      (action) =>
-        action.type.endsWith("/editProfile") ||
-        action.type.endsWith("/deleteResume") ||
-        action.type.endsWith("/disableRequest") ||
-        action.type.endsWith("/updateHome"),
-      (state) => reducers.modal(state)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/enableAgree"),
-      (state) => {
-        state.verified.agree = false;
-        reducers.modal(state);
-      }
-    );
-    builder.addMatcher(
-      (action) => action.type.endsWith("/changeState"),
-      (state) => {
-        state.announce.success = "変更されました";
-      }
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/addProvider"),
-      (state) => {
-        state.announce.success = "認証されました";
-      }
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/fetchPosts/fulfilled"),
-      (state) => {
-        state.search.control = true;
-      }
-    );
-  },
+  extraReducers: (builder) => extraReducers(builder),
 });
 
 export const {

@@ -5,7 +5,8 @@ export const extractPosts = createAsyncThunk(
   "post/extractPosts",
   async (data) => {
     const extractPosts = functions.httpsCallable("fd-extractPosts");
-    const posts = extractPosts({
+
+    const posts = await extractPosts({
       index: data.index,
       type: data.type,
       objectIDs: data.objectIDs,

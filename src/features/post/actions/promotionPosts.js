@@ -6,7 +6,7 @@ export const promotionPosts = createAsyncThunk(
   async (data) => {
     const promotionPosts = functions.httpsCallable("fd-promotionPosts");
 
-    const posts = promotionPosts(data)
+    const posts = await promotionPosts(data)
       .then(({ data }) => {
         return data;
       })

@@ -2,14 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { initialState } from "./initialState";
 
-import { promotionPosts } from "./actions/promotionPosts";
-import { fetchPosts } from "./actions/fetchPosts";
-import { userPosts } from "./actions/userPosts";
-import { homePosts } from "./actions/homePosts";
-import { extractPosts } from "./actions/extractPosts";
-import { fetchPost } from "./actions/fetchPost";
-
 import * as reducers from "./reducers/reducers";
+import { extraReducers } from "./extraReducers/extraReducers";
 
 export const postSlice = createSlice({
   name: "post",
@@ -19,78 +13,7 @@ export const postSlice = createSlice({
     resetPost: (state, action) => reducers.resetPost(state, action),
   },
 
-  extraReducers: (builder) => {
-    builder.addCase(promotionPosts.fulfilled, (state, action) =>
-      reducers.promotionPosts(state, action)
-    );
-
-    builder.addCase(fetchPosts.fulfilled, (state, action) =>
-      reducers.fetchPosts(state, action)
-    );
-
-    builder.addCase(userPosts.fulfilled, (state, action) =>
-      reducers.userPosts(state, action)
-    );
-
-    builder.addCase(homePosts.fulfilled, (state, action) =>
-      reducers.homePosts(state, action)
-    );
-
-    builder.addCase(extractPosts.fulfilled, (state, action) =>
-      reducers.extractPosts(state, action)
-    );
-
-    builder.addCase(fetchPost.fulfilled, (state, action) =>
-      reducers.fetchPost(state, action)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/addLike"),
-      (state, action) => reducers.addLike(state, action)
-    );
-    builder.addMatcher(
-      (action) => action.type.endsWith("/removeLike"),
-      (state, action) => reducers.removeLike(state, action)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/addEntry"),
-      (state, action) => reducers.addEntry(state, action)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/addFollow"),
-      (state, action) => reducers.addFollow(state, action)
-    );
-    builder.addMatcher(
-      (action) => action.type.endsWith("/removeFollow"),
-      (state, action) => reducers.removeFollow(state, action)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/enableRequest"),
-      (state, action) => reducers.enableRequest(state, action)
-    );
-    builder.addMatcher(
-      (action) => action.type.endsWith("/disableRequest"),
-      (state, action) => reducers.disableRequest(state, action)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/updateHome"),
-      (state) => reducers.resetControl(state)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/handleIndex"),
-      (state, action) => reducers.resetPost(state, action)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/handlePage"),
-      (state, action) => reducers.resetPost(state, action)
-    );
-  },
+  extraReducers: (builder) => extraReducers(builder),
 });
 
 export const { resetPost } = postSlice.actions;

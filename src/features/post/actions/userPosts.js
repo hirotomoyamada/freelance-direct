@@ -3,7 +3,8 @@ import { functions } from "../../../firebase";
 
 export const userPosts = createAsyncThunk("post/userPosts", async (data) => {
   const userPosts = functions.httpsCallable("fd-userPosts");
-  const posts = userPosts({
+
+  const posts = await userPosts({
     uid: data.uid,
     page: data.page,
   })
