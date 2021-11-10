@@ -3,7 +3,8 @@ import { functions } from "../../../firebase";
 
 export const userPosts = createAsyncThunk("post/userPosts", async (data) => {
   const userPosts = functions.httpsCallable("fd-userPosts");
-  const posts = userPosts({
+
+  const posts = await userPosts({
     uid: data.uid,
     page: data.page,
   })
@@ -13,7 +14,9 @@ export const userPosts = createAsyncThunk("post/userPosts", async (data) => {
         hit: data.hit,
       };
     })
-    .catch((e) => {});
+    .catch((e) => {
+      return { error: "ページを更新してください" };
+    });
 
   return posts;
 });

@@ -2,11 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { initialState } from "./initialState";
 
-import { login } from "./actions/login";
-import { fetchUser } from "./actions/fetchUser";
-
 import * as reducers from "./reducers/reducers";
-import { uploadResume } from "./actions/uploadResume";
+import { extraReducers } from "./extraReducers/extraReducers";
 
 export const userSlice = createSlice({
   name: "user",
@@ -35,22 +32,7 @@ export const userSlice = createSlice({
     updateHome: (state, action) => reducers.updateHome(state, action),
   },
 
-  extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action) =>
-      reducers.login(state, action)
-    );
-    builder.addCase(fetchUser.fulfilled, (state, action) =>
-      reducers.fetchUser(state, action)
-    );
-    builder.addCase(uploadResume.fulfilled, (state, action) =>
-      reducers.uploadResume(state, action)
-    );
-
-    builder.addMatcher(
-      (action) => action.type.endsWith("/fetchPost/fulfilled"),
-      (state, action) => reducers.addHistory(state, action)
-    );
-  },
+  extraReducers: (builder) => extraReducers(builder),
 });
 
 export const {

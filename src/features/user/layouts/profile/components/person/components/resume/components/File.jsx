@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf } from "@fortawesome/free-regular-svg-icons";
 import * as rootSlice from "../../../../../../../../root/rootSlice";
 
-export const File = ({ user, resume, handleDelete }) => {
+export const File = ({ user, file, handleDelete }) => {
   const load = useSelector(rootSlice.load).fetch;
 
   return (
@@ -50,7 +50,7 @@ export const File = ({ user, resume, handleDelete }) => {
             htmlFor="resume"
             className={`${styles.resume_file} ${styles.resume_file_label}`}
           >
-            <span>{!resume ? "ファイルを選択" : resume?.name}</span>
+            <span>{!file ? "ファイルを選択" : file?.name}</span>
             <AddIcon className={styles.resume_icon} />
           </label>
         )}

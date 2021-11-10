@@ -1,5 +1,5 @@
 export const extractPosts = (state, action) => {
-  if (action.payload) {
+  if (!action.payload.error) {
     if (action.payload.type !== "requests") {
       if (
         action.payload.hit.currentPage !== 0 &&

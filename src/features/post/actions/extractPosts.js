@@ -5,7 +5,8 @@ export const extractPosts = createAsyncThunk(
   "post/extractPosts",
   async (data) => {
     const extractPosts = functions.httpsCallable("fd-extractPosts");
-    const posts = extractPosts({
+
+    const posts = await extractPosts({
       index: data.index,
       type: data.type,
       objectIDs: data.objectIDs,
@@ -19,7 +20,9 @@ export const extractPosts = createAsyncThunk(
           hit: data.hit,
         };
       })
-      .catch((e) => {});
+      .catch((e) => {
+        return { error: "ページを更新してください" };
+      });
 
     return posts;
   }

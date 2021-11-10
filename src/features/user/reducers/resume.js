@@ -1,7 +1,9 @@
 import { functions } from "../../../firebase";
 
 export const uploadResume = (state, action) => {
-  state.user.resume.url = action.payload;
+  if (!action.payload.error) {
+    state.user.resume.url = action.payload;
+  }
 };
 
 export const deleteResume = (state) => {

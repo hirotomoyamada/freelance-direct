@@ -6,11 +6,13 @@ export const promotionPosts = createAsyncThunk(
   async (data) => {
     const promotionPosts = functions.httpsCallable("fd-promotionPosts");
 
-    const posts = promotionPosts(data)
+    const posts = await promotionPosts(data)
       .then(({ data }) => {
         return data;
       })
-      .catch((e) => {});
+      .catch((e) => {
+        return { error: "ページを更新してください" };
+      });
 
     return posts;
   }
