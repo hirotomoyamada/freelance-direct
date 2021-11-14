@@ -34,9 +34,10 @@ export const List = ({
     <div className={select && styles.list_scroll}>
       {posts?.length &&
       // ------ 削除予定 ------
-      {/* index === "matters" // ver 1.1.0 */}
-      // ------ 削除予定 ------
-       ? (
+      {
+        /* index === "matters" // ver 1.1.0 */
+      } ? (
+        // ------ 削除予定 ------
         <Posts
           index={index}
           posts={posts}
@@ -55,7 +56,9 @@ export const List = ({
         />
       )}
 
-      {posts?.length >= 50 && <Load load={load} page={page} hit={hit} />}
+      {hit.pages && page < hit.pages - 1 && (
+        <Load load={load} page={page} hit={hit} />
+      )}
     </div>
   );
 };
