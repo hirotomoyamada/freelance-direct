@@ -15,7 +15,7 @@ export const modal = (builder) => {
     (state, action) => {
       state.verified.agree = false;
 
-      if (action.payload.profile?.person) {
+      if (action.payload.profile?.nickName) {
         reducers.modal(state);
       } else {
         state.modal.type = "profile";
