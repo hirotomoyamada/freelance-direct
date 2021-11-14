@@ -3,6 +3,9 @@ import root from "../../Setting.module.scss";
 
 import { Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+import * as rootSlice from "../../../../features/root/rootSlice";
+
 import { Uid } from "./components/Uid";
 import { Email } from "./components/Email";
 import { Password } from "./components/Password";
@@ -20,6 +23,8 @@ export const Main = ({
   handleProvider,
   handleLogout,
 }) => {
+  const ver = useSelector(rootSlice.ver);
+
   return (
     <div className={`${root.setting_inner} ${styles.main}`}>
       <Uid user={user} />
@@ -62,6 +67,10 @@ export const Main = ({
         >
           アカウント削除
         </button>
+      </div>
+
+      <div className={`${styles.main_col} ${styles.main_col_center}`}>
+        <span className={styles.main_link}>ver&nbsp;{ver}</span>
       </div>
 
       <button
