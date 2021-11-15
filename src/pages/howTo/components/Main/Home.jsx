@@ -11,7 +11,10 @@ export const Home = () => {
       <div className={styles.howto_container}>
         <Tag tag="案件" />
         <p>
-          ホームでは、フォローしている営業の案件が表示されます。
+          <span className={styles.howto_container_tag}>ホーム</span>
+          では、フォローしている営業の
+          <span className={styles.howto_container_tag}>案件</span>
+          が表示されます。
           <br />
           <br />
           <span className={styles.howto_container_acnt}>
@@ -27,7 +30,12 @@ export const Home = () => {
       <div className={styles.howto_container}>
         <Tag tag="フォロー" />
         <p>
-          自分がフォローしている一覧が表示されています。営業のプロフィールへアクセスしたり、フォローを解除することができます。
+          自分が<span className={styles.howto_container_tag}>フォロー</span>
+          している一覧が表示されています。営業の
+          <span className={styles.howto_container_tag}>プロフィール</span>
+          へアクセスしたり、
+          <span className={styles.howto_container_tag}>フォロー</span>
+          を解除することができます。
         </p>
       </div>
     </div>

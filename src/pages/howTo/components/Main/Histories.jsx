@@ -11,8 +11,17 @@ export const Histories = () => {
       <div className={styles.howto_container}>
         <Tag tag="表示" />
         <p>
-          最大
-          100件まで表示されます。100件を超える場合、古い案件から自動的に削除されていきます。一度見たけど、あの案件なんだっけ。そんなときは閲覧履歴を活用しましょう。
+          最大<span className={styles.howto_container_tag}>100件</span>
+          まで表示されます。
+          <br />
+          <br />
+          <span className={styles.howto_container_tag}>100件</span>
+          を超える場合、古い
+          <span className={styles.howto_container_tag}>案件</span>
+          から自動的に削除されていきます。
+          <br />
+          <br />
+          一度見たけど、あの案件なんだっけ。そんなときは閲覧履歴を活用しましょう。
         </p>
       </div>
     </div>
