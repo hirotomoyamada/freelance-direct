@@ -6,7 +6,7 @@ export const verified = (state, action) => {
       state.modal.type = "profile";
       state.modal.open = true;
     }
-    
+
     if (action.payload.user.agree === "disable") {
       state.verified.agree = true;
 
@@ -38,10 +38,12 @@ export const verified = (state, action) => {
 
   if (action.payload && action.payload.emailVerified) {
     state.verified.email = action.payload.emailVerified;
+    state.verified.access = false;
   }
 
   if (action.payload && action.payload.profileVerified) {
     state.verified.profile = action.payload.profileVerified;
+    state.verified.access = false;
   }
 
   if (action.payload && action.payload.statusVerified) {
