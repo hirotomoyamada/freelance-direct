@@ -30,6 +30,14 @@ export const Sign = ({
       }`}
       ref={inner}
     >
+      <button
+        className={styles.auth_btn_back}
+        type="button"
+        onClick={() => setReset(!reset)}
+      >
+        ログイン画面に戻る
+      </button>
+      
       <span className={styles.auth_ttl}>{sign ? "新規登録" : "ログイン"}</span>
 
       <div>
