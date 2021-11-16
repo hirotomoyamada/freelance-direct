@@ -1,8 +1,5 @@
 import { useEffect } from "react";
-import {
-  useDispatch,
-  useSelector,
-} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { usePosts } from "./hook/usePosts";
 
@@ -20,11 +17,7 @@ export const Home = () => {
   const index = useSelector(rootSlice.index);
   const user = useSelector(userSlice.user);
 
-  const {
-    posts,
-    hit,
-    control,
-  } = usePosts({ index: index, page: "home" });
+  const { posts, hit, control } = usePosts({ index: index, page: "home" });
 
   useEffect(() => {
     (index === "matters" || index === "companys") &&
