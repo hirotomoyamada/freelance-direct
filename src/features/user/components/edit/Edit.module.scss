@@ -42,13 +42,14 @@ $width: responsive-width(pc);
       cursor: pointer;
 
       &:after {
+        pointer-events: none;
         border-left: 6px solid transparent;
         border-right: 6px solid transparent;
         border-top: 8px solid $acnt_clr;
         content: "";
         position: absolute;
         right: 12px;
-        top: 14px;
+        top: 15px;
         width: 0;
 
         @media (max-width: responsive-width(tb)) {
@@ -60,6 +61,7 @@ $width: responsive-width(pc);
           border-right: 4px solid transparent;
           border-top: 5px solid $acnt_clr;
           top: 13px;
+          right: 9px;
         }
       }
     }

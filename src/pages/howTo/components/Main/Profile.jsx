@@ -10,25 +10,50 @@ export const Profile = () => {
         <Tag tag="プロフィール" />
         <p>
           Freelance
-          Direct独自のフォーマットですべてのエンジニアが統一された情報を入力、自分の情報を管理することが可能です。人による記入の違いがなくなり、見やすいプロフィールになります。
+          Direct独自のフォーマットですべてのエンジニアが統一された情報を入力、自分の情報を管理することが可能です。
+          <br />
+          <br />
+          人による記入の違いがなくなり、見やすい
+          <span className={styles.howto_container_tag}>プロフィール</span>
+          になります。
         </p>
       </div>
       <div className={styles.howto_container}>
         <Tag tag="言語・ツール・スキルなど" />
         <p>
-          あなたが活躍できる言語やツールを積極的に書き入れましょう。スキルやURLも、判断材料になります。プロフィールは書けば、書くほど閲覧率・獲得率も上がります。
+          あなたが活躍できる
+          <span className={styles.howto_container_tag}>言語</span>
+          <span className={styles.howto_container_tag}>ツール</span>
+          を積極的に書き入れましょう。
+          <br />
+          <br />
+          <span className={styles.howto_container_tag}>スキル</span>
+          <span className={styles.howto_container_tag}>URL</span>
+          も、判断材料になります。
+          <br />
+          <br />
+          <span className={styles.howto_container_tag}>プロフィール</span>
+          は書けば、書くほど閲覧率・獲得率も上がります。
         </p>
       </div>
       <div className={styles.howto_container}>
         <Tag tag="職務経歴書" />
         <p>
-          あなたがアップロードした職務経歴書は営業がPDFとして閲覧が可能です。いつでも再アップロードが可能です。活動ごとにアップロードしていきましょう。
+          あなたがアップロードした
+          <span className={styles.howto_container_tag}>職務経歴書</span>
+          は営業が<span className={styles.howto_container_tag}>PDF</span>
+          として閲覧が可能です。
+          <br />
+          <br />
+          いつでも再アップロードが可能です。活動ごとにアップロードしていきましょう。
         </p>
       </div>
       <div className={styles.howto_container}>
         <Tag tag="リクエスト" />
         <p>
-          営業から見たあなたのプロフィールは、リクエストを承認しない限り一部の情報しか表示されていません。
+          営業から見たあなたの
+          <span className={styles.howto_container_tag}>プロフィール</span>
+          は、リクエストを承認しない限り一部の情報しか表示されていません。
           <br />
           <br />
         </p>

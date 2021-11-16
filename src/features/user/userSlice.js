@@ -15,7 +15,7 @@ export const userSlice = createSlice({
     },
 
     editProfile: (state, action) => reducers.editProfile(state, action),
-    enableAgree: (state) => reducers.enableAgree(state),
+    enableAgree: (state, action) => reducers.enableAgree(state, action),
     addProvider: (state, action) => reducers.addProvider(state, action),
     changeEmail: (state, action) => reducers.changeEmail(state, action),
     changeState: (state, action) => reducers.changeState(state, action),

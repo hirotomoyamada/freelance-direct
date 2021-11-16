@@ -25,17 +25,17 @@ export const NotFound = ({ index, list, select, home, companys }) => {
         <span className={styles.list_none_message}>
           {
             // ------ 削除予定 ------
-            page === "home" 
-            ? "準備中"
+            // page === "home" 
+            // ? "準備中" :
             // ------ 削除予定 ------
-            : index === "matters"
+            index === "matters"
             ? "案件情報がありません"
             // ------ 削除予定 ------
-            : "準備中"
+            // : "準備中"
             // ------ 削除予定 ------
-            // : home // ver 1.1.0
-            // ? "フォローしているユーザーがいません" // ver 1.1.0
-            // : "営業情報がありません" // ver 1.1.0
+            : home // ver 1.1.0
+            ? "フォローしているユーザーがいません" // ver 1.1.0
+            : "営業情報がありません" // ver 1.1.0
           }
         </span>
       )}

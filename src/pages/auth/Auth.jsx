@@ -45,6 +45,7 @@ export const Auth = () => {
     setEmail,
     create,
     setCreate,
+    account,
   ] = useVerification(verified);
 
   useEffect(() => {
@@ -152,7 +153,8 @@ export const Auth = () => {
           />
         )}
 
-        {((sign && !create) || verified.email || verified.status === "hold") &&
+        {!account &&
+          ((sign && !create) || verified.email || verified.status === "hold") &&
           verified.status !== "disable" && (
             <StartGuide help={help} setHelp={setHelp} resize={resize} />
           )}

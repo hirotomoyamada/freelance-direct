@@ -11,13 +11,23 @@ export const Entries = () => {
       <div className={styles.howto_container}>
         <Tag tag="問い合わせする" />
         <p>
-          案件に問い合わせることが可能です。案件の詳細から、「問い合わせをする」を選択すると、メールや投稿した営業のSNSに直接問い合わせすることができます。
+          <span className={styles.howto_container_tag}>案件</span>
+          に問い合わせることが可能です。
+          <span className={styles.howto_container_tag}>案件</span>
+          の詳細から、
+          <span className={styles.howto_container_tag}>問い合わせをする</span>
+          を選択すると、メールや投稿した営業のSNSに直接問い合わせすることができます。
         </p>
       </div>
       <div className={styles.howto_container}>
         <Tag tag="問い合わせしたリスト" />
         <p>
-          一度問い合わせた投稿は、案件・人材別に「お問い合わせ」リストへ格納されます。過去に自分が問い合わせた投稿をチェックすることが可能です。
+          一度問い合わせた
+          <span className={styles.howto_container_tag}>案件</span>は、
+          <span className={styles.howto_container_tag}>お問い合わせ</span>
+          リストへ格納されます。過去に自分が問い合わせた
+          <span className={styles.howto_container_tag}>案件</span>
+          をチェックすることが可能です。
         </p>
       </div>
     </div>

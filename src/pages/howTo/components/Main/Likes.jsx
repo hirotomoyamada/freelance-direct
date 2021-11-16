@@ -6,18 +6,20 @@ export const Likes = () => {
     <div className={styles.howto_main}>
       <h1 className={styles.howto_ttl}>いいね</h1>
       <p className={styles.howto_desc}>
-        あなたが気になる案件に「いいね」ができます
+        あなたが気になる案件にいいねができます
       </p>
       <div className={styles.howto_container}>
         <Tag tag="いいねする" />
         <p>
-          案件を「いいね」リストに格納しておくことができます。再度案件を見たいときなど、幅広い用途でお使いいただけます。
+          案件を<span className={styles.howto_container_tag}>いいね</span>
+          リストに格納しておくことができます。再度案件を見たいときなど、幅広い用途でお使いいただけます。
         </p>
       </div>
       <div className={styles.howto_container}>
         <Tag tag="いいねを解除する" />
         <p>
-          「いいね」している投稿は、再度アイコンをタップすることで自動的に解除されます。
+          <span className={styles.howto_container_tag}>いいね</span>
+          している投稿は、再度アイコンをタップすることで自動的に解除されます。
         </p>
       </div>
     </div>

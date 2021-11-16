@@ -16,6 +16,8 @@ $width: responsive-width(pc);
     align-items: center;
     font-size: 18px;
 
+    white-space: nowrap;
+
     &::before {
       content: "";
       display: block;
@@ -26,29 +28,6 @@ $width: responsive-width(pc);
 
     @media (max-width: responsive-width(sp)) {
       font-size: 12px;
-    }
-  }
-
-  &_type {
-    font-size: 12px;
-    color: $base_clr;
-    border-radius: 4px;
-    padding: 0 8px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &_free {
-      background: $acnt_clr;
-    }
-
-    &_paid {
-      background: $add_clr;
-    }
-
-    @media (max-width: responsive-width(sp)) {
-      font-size: 10px;
     }
   }
 }
