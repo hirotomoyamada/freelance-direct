@@ -1,12 +1,12 @@
-import { useEffect } from "react"; // ver 1.1.0
+import { useEffect } from "react";
 import {
-  useDispatch, // ver 1.1.0
+  useDispatch,
   useSelector,
 } from "react-redux";
 
 import { usePosts } from "./hook/usePosts";
 
-import { homePosts } from "./features/post/actions/homePosts"; // ver 1.1.0
+import { homePosts } from "./features/post/actions/homePosts";
 
 import * as rootSlice from "./features/root/rootSlice";
 import * as userSlice from "./features/user/userSlice";
@@ -15,7 +15,7 @@ import { Header } from "./components/header/Header";
 import { List } from "./features/post/list/List";
 
 export const Home = () => {
-  const dispatch = useDispatch(); // ver 1.1.0
+  const dispatch = useDispatch();
 
   const index = useSelector(rootSlice.index);
   const user = useSelector(userSlice.user);
@@ -23,10 +23,9 @@ export const Home = () => {
   const {
     posts,
     hit,
-    control, // ver 1.1.0
+    control,
   } = usePosts({ index: index, page: "home" });
 
-  // ver 1.1.0
   useEffect(() => {
     (index === "matters" || index === "companys") &&
       (!posts.length || control) &&
