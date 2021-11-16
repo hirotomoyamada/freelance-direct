@@ -20,10 +20,7 @@ export const Search = () => {
   const { posts, hit } = usePosts({ index: index, page: "search" });
 
   useEffect(() => {
-    (index === "matters" || index === "companys") && // ver 1.1.0
-    // ------ 削除予定 ------
-    // index === "matters" &&
-    // ------ 削除予定 ------
+    (index === "matters" || index === "companys") &&
       !search.control &&
       dispatch(
         fetchPosts({
