@@ -1,9 +1,9 @@
 export const initialState = {
   index: "matters",
 
-  page: "home", // ver 1.1.0
+  // page: "home", // ver 1.1.0
   // ------ 削除予定 ------
-  // page: "search",
+  page: "search",
   // ------ 削除予定 ------
 
   menu: { display: false, control: false },
