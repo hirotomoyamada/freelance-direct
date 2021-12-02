@@ -1,7 +1,7 @@
 import styles from "./Footer.module.scss";
 import Loader from "react-loader-spinner";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import * as rootSlice from "../../../root/rootSlice";
@@ -24,13 +24,13 @@ export const Footer = ({ post, posts, user }) => {
         </div>
       )}
 
-      {post?.uid && (
+      {/* {post?.uid && (
         <Link to={`/user/${post?.user?.uid}`}>
           <span className={styles.side_desc}>
             このユーザー の他の投稿を見る
           </span>
         </Link>
-      )}
+      )} */}
 
       <span className={styles.side_tag}>こんな案件もオススメ</span>
 

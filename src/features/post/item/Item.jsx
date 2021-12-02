@@ -9,8 +9,8 @@ import { Post } from "./components/post/Post";
 import { User } from "./components/user/User";
 import { Menu } from "../menu/Menu";
 
-import { Follow } from "../../../components/follow/Follow";
-import { Request } from "../../../components/request/Request";
+// import { Follow } from "../../../components/follow/Follow";
+// import { Request } from "../../../components/request/Request";
 
 export const Item = ({ index, post, user, select, selectUser, none }) => {
   const dispatch = useDispatch();
@@ -23,7 +23,8 @@ export const Item = ({ index, post, user, select, selectUser, none }) => {
 
   return (
     <div className={`${styles.item_outer} ${none && styles.item_outer_none}`}>
-      {index === "matters" ? (
+      {index === "matters" && <Menu post={post} user={user} postItem />}
+      {/* {index === "matters" ? (
         <Menu post={post} user={user} postItem />
       ) : index !== "enable" && index !== "hold" && index !== "disable" ? (
         <Follow
@@ -34,7 +35,7 @@ export const Item = ({ index, post, user, select, selectUser, none }) => {
         />
       ) : (
         <Request index={index} user={post} />
-      )}
+      )} */}
       {index === "matters" ? (
         <button
           type="button"
@@ -52,7 +53,7 @@ export const Item = ({ index, post, user, select, selectUser, none }) => {
           type="button"
           onClick={() => handleOpen("user")}
           className={`${styles.item_btn} ${
-            (!post?.uid || select || post?.status === "none") &&
+            // (!post?.uid || select || post?.status === "none") &&
             styles.item_btn_disable
           }`}
         >
