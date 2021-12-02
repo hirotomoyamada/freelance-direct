@@ -7,27 +7,20 @@ export const User = ({ post }) => {
     <div className={styles.user}>
       <div className={styles.user_head}>
         <div className={styles.user_head_icon}>
-          {/* <Icon src={post?.icon} /> */}
-          <Icon src={"freelanceDirect"} />
+          <Icon src={post?.icon} />
         </div>
 
         <div className={styles.user_head_wrap}>
-          <h1 className={styles.user_person}>
-            Freelance Direct 事務局
-            {/* {post?.profile?.person} */}
-          </h1>
+          <h1 className={styles.user_person}>{post?.profile?.person}</h1>
           {post?.profile?.name && (
-            <h2 className={styles.user_name}>
-              Hit me up株式会社
-              {/* {post?.profile?.name} */}
-            </h2>
+            <h2 className={styles.user_name}>{post?.profile?.name}</h2>
           )}
         </div>
       </div>
 
-      {/* {post?.profile?.body && (
+      {post?.profile?.body && (
         <p className={styles.user_body}>{post?.profile?.body}</p>
-      )} */}
+      )}
     </div>
   );
 };

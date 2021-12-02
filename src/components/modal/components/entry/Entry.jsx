@@ -8,7 +8,7 @@ import * as userSlice from "../../../../features/user/userSlice";
 import { matters } from "./functions/matters";
 
 import { Body } from "./components/Body";
-// import { Social } from "./components/Social";
+import { Social } from "./components/Social";
 
 export const Entry = ({ index, user, post, handleClose }) => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ export const Entry = ({ index, user, post, handleClose }) => {
           user={post.user}
         />
 
-        {/* <Social handleEntry={handleEntry} user={post.user} /> */}
+        <Social handleEntry={handleEntry} user={post.user} />
       </div>
     </div>
   );

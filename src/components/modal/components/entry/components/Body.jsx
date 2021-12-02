@@ -7,7 +7,7 @@ export const Body = ({
   copy,
   handleCopy,
   handleEntry,
-  // user,
+  user,
 }) => {
   return (
     <>
@@ -29,8 +29,7 @@ export const Body = ({
       <div className={styles.entry_email}>
         <button onClick={handleEntry} className={styles.entry_email_btn}>
           <a
-            // href={`mailto:${user.profile.email}`}
-            href={`mailto:contact@freelance-direct.app`}
+            href={`mailto:${user.profile.email}`}
             className={styles.user_main_profile_link}
           >
             メールで問い合わせをする

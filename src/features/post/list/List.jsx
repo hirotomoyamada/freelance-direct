@@ -32,7 +32,7 @@ export const List = ({
 
   return (
     <div className={select && styles.list_scroll}>
-      {index !== "companys" && posts?.length ? (
+      {posts?.length ? (
         <Posts
           index={index}
           posts={posts}
