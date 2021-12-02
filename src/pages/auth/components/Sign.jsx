@@ -39,7 +39,7 @@ export const Sign = ({
         type="button"
         onClick={() => history.push("/")}
       >
-        ログイン画面に戻る
+        トップページにもどる
       </button>
 
       <span className={styles.auth_ttl}>{sign ? "新規登録" : "ログイン"}</span>

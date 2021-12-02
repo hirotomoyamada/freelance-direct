@@ -49,12 +49,8 @@ export const List = (props) => {
   }, [dispatch, type]);
 
   useEffect(() => {
-    // ver 1.1.0
-    // ((type === "requests" && index !== "matters") ||
-    //   (type !== "requests" && index === "matters")) &&
-      // ------ 削除予定 ------
-      type !== "requests" && index === "matters" &&
-      // ------ 削除予定 ------
+    ((type === "requests" && index !== "matters") ||
+      (type !== "requests" && index === "matters")) &&
       !posts.length &&
       dispatch(
         extractPosts({

@@ -23,20 +23,11 @@ export const NotFound = ({ index, list, select, home, companys }) => {
         <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
       ) : (
         <span className={styles.list_none_message}>
-          {
-            // ------ 削除予定 ------
-            page === "home" 
-            ? "準備中" :
-            // ------ 削除予定 ------
-            index === "matters"
+          {index === "matters"
             ? "案件情報がありません"
-            // ------ 削除予定 ------
-            : "準備中"
-            // ------ 削除予定 ------
-            // : home // ver 1.1.0
-            // ? "フォローしているユーザーがいません" // ver 1.1.0
-            // : "営業情報がありません" // ver 1.1.0
-          }
+            : home
+            ? "フォローしているユーザーがいません"
+            : "営業情報がありません"}
         </span>
       )}
     </div>
