@@ -51,11 +51,7 @@ export const List = ({
         />
       )}
 
-<<<<<<< HEAD
-      {hit?.pages && page < hit?.pages - 1 && (
-=======
       {hit?.pages && page < hit?.pages - 1 ? (
->>>>>>> main
         <Load load={load} page={page} hit={hit} />
       ) : (
         <></>
