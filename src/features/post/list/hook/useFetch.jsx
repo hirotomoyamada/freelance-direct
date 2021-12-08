@@ -23,9 +23,9 @@ export const useFetch = (
   const [intersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
-    setPage(hit.currentPage);
+    setPage(hit?.currentPage);
     setIntersecting(false);
-  }, [hit.currentPage, hit.pages]);
+  }, [hit?.currentPage, hit?.pages]);
 
   useEffect(() => {
     const observer = createObserver(
@@ -44,7 +44,7 @@ export const useFetch = (
       ref && observer?.unobserve(ref);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hit.pages, intersecting, page]);
+  }, [hit?.pages, intersecting, page]);
 
   useEffect(() => {
     intersecting &&

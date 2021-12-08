@@ -22,7 +22,6 @@ export const useSearch = () => {
 
   useEffect(() => {
     if (status && !control) {
-      console.log(value);
       dispatch(promotionPosts(value));
       setControl(true);
     }
