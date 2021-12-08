@@ -1,7 +1,7 @@
 import styles from "./Menu.module.scss";
 
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as rootSlice from "../../features/root/rootSlice";
 
@@ -12,6 +12,7 @@ import { Footer } from "./components/footer/Footer";
 export const Menu = ({ user }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
 
   const page = useSelector(rootSlice.page);
   const menu = useSelector(rootSlice.menu);
@@ -43,7 +44,7 @@ export const Menu = ({ user }) => {
     window.scrollTo(0, 0);
   };
 
-  return (
+  return location.pathname !== "/error" ? (
     <div
       className={`${styles.menu} ${
         menu.display ? styles.menu_open : menu.control && styles.menu_close
@@ -60,5 +61,7 @@ export const Menu = ({ user }) => {
         <Footer />
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
