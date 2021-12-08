@@ -72,12 +72,7 @@ export const App = () => {
                   <Redirect exact path="/login" to="/" />
                   <Redirect exact path="/signup" to="/" />
 
-                  {/* ------ 削除予定 ------ */}
-                  <Route exact path={["/", "/search"]} component={Search} />
-                  {/* ------ 削除予定 ------ */}
-
-                  {/* ver 1.1.0 */}
-                  {/* <Route exact path={["/", "/home"]} component={Home} /> */}
+                  <Route exact path={["/", "/home"]} component={Home} />
 
                   <Route exact path="/home" component={Home} />
                   <Route exact path="/search" component={Search} />
@@ -85,6 +80,7 @@ export const App = () => {
 
                   <Route exact path="/howto" component={HowTo} />
                   <Route exact path="/terms" component={Terms} />
+                  <Route exact path="/error" component={NotFound} />
 
                   <Route exact path="/:list" component={List} />
 
