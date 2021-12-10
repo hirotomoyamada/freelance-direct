@@ -4,10 +4,7 @@ import { Item } from "../../item/Item";
 
 export const Posts = ({ index, posts, user, list, select, selectUser }) => {
   return (
-    <div
-      className={styles.list}
-      ref={list}
-    >
+    <div className={styles.list} ref={list}>
       {posts.map(
         (post) =>
           post && (
