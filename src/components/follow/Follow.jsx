@@ -1,10 +1,15 @@
 import styles from "./Follow.module.scss";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as userSlice from "../../features/user/userSlice";
+import * as rootSlice from "../../features/root/rootSlice";
 
 export const Follow = ({ user, post, profile, select, selectUser }) => {
   const dispatch = useDispatch();
+
+  const page = useSelector(rootSlice.page);
+
+  console.log(page);
 
   const [follow, setFollow] = useState(false);
   const [target, setTarget] = useState(false);
@@ -20,7 +25,7 @@ export const Follow = ({ user, post, profile, select, selectUser }) => {
     );
   };
 
-  return post?.uid ? (
+  return post?.uid && (post?.status !== "none" || page === "home") ? (
     !select ? (
       <button
         onClick={handleFollow}
