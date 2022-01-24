@@ -9,8 +9,6 @@ export const Follow = ({ user, post, profile, select, selectUser }) => {
 
   const page = useSelector(rootSlice.page);
 
-  console.log(page);
-
   const [follow, setFollow] = useState(false);
   const [target, setTarget] = useState(false);
 
