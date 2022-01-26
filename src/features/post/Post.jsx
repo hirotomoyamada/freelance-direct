@@ -17,7 +17,7 @@ export const Post = (props) => {
 
       <Main post={post} user={user} entry={entry} handleEntry={handleEntry} />
 
-      <Footer post={post} posts={posts} user={user} />
+      {posts?.length ? <Footer post={post} posts={posts} user={user} /> : <></>}
     </div>
   );
 };
