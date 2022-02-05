@@ -11,7 +11,6 @@ export const useApp = () => {
 
   const user = useSelector(userSlice.user);
   const access = useSelector(rootSlice.verified).access;
-  const notFound = useSelector(rootSlice.notFound);
 
   const [browser, setBrowser] = useState(true);
   const [control, setControl] = useState(
@@ -82,5 +81,5 @@ export const useApp = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [control]);
 
-  return [user, access, notFound, browser, control];
+  return [user, access, browser, control];
 };

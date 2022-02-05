@@ -18,6 +18,12 @@ $width: responsive-width(pc);
   align-items: center;
   justify-content: center;
 
+  padding-top: 192px;
+
+  @media (max-width: responsive-width(sp)) {
+    padding-top: 64px;
+  }
+
   &_inner {
     position: relative;
     display: flex;
@@ -27,12 +33,12 @@ $width: responsive-width(pc);
 
   &_ttl {
     position: absolute;
-    top: 32px;
+    top: 31px;
     font-size: 48px;
     color: $sub_clr;
 
     @media (max-width: responsive-width(sp)) {
-      top: 56px;
+      top: 24px;
       font-size: 24px;
     }
   }

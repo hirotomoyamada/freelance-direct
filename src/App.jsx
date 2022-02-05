@@ -26,22 +26,23 @@ import { useApp } from "./hook/useApp";
 import { Overlay } from "./components/overlay/Overlay";
 
 export const App = () => {
-  const [user, access, notFound, browser, control] = useApp();
+  const [user, access, browser, control] = useApp();
 
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Meta />
 
-        {notFound ? (
-          <NotFound />
-        ) : browser ? (
+        {browser ? (
           <>
             <load.Root />
             <load.Fetch />
 
             <Announce />
+
+            <NotFound />
             <Maintenance />
+
             <Modal />
 
             {!user.uid ? (
