@@ -43,5 +43,5 @@ export const initialState = {
 
   notFound: false,
 
-  ver: "1.1.0",
+  ver: "1.1.8",
 };
