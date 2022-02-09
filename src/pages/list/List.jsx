@@ -10,7 +10,7 @@ import * as userSlice from "../../features/user/userSlice";
 import * as postSlice from "../../features/post/postSlice";
 
 import { Header } from "../../components/header/Header";
-import { List as Main } from "../../features/post/list/List";
+import { List as Main } from "../../components/list/List";
 
 export const List = (props) => {
   const dispatch = useDispatch();

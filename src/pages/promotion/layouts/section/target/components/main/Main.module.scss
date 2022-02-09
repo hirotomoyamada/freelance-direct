@@ -1,0 +1,38 @@
+@import "../../../../../../../styles/config";
+@import "../../../../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.main {
+  padding: 0 16px;
+
+  &_ttl {
+    margin-bottom: 48px;
+  }
+
+  &_container {
+    margin-top: 48px;
+    background: $base_clr;
+    padding: 32px;
+    border-radius: 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      margin-top: 16px;
+    }
+  }
+
+  &_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &_tag {
+    margin-bottom: 24px;
+
+    font-size: 20px;
+    color: $acnt_clr;
+    font-weight: bold;
+  }
+}

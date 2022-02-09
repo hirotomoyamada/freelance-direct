@@ -1,0 +1,198 @@
+// サイト共有の初期設定
+@import "../../../../styles/config";
+@import "../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.open {
+  display: block;
+}
+
+.close {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  width: 100vw;
+  height: $innerHeight;
+  background: $main_clr;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+
+  background: $base_clr;
+  border-radius: 16px;
+  color: $main_clr;
+
+  &_inner {
+    width: 480px;
+
+    padding: 56px 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    @media (max-width: responsive-width(sp)) {
+      padding: 32px 16px;
+      width: calc(100vw - 32px);
+      height: auto;
+      gap: 16px;
+    }
+  }
+
+  &_ttl {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      font-size: 18px;
+    }
+  }
+
+  &_container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      gap: 8px;
+    }
+  }
+
+  &_input {
+    background: $base_clr;
+    border: 1px solid $bdr_clr;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    padding: 8px 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      height: 40px;
+      padding: 4px 12px;
+    }
+
+    &_error {
+      border: 1px solid $remove_clr;
+    }
+
+    &::placeholder {
+      color: $sub_clr;
+      opacity: 0.6;
+    }
+  }
+
+  &_error {
+    display: block;
+    white-space: pre;
+    color: $remove_clr;
+    font-size: 12px;
+    margin-top: 8px;
+
+    @media (max-width: responsive-width(sp)) {
+      margin-top: 4px;
+      font-size: 12px;
+    }
+
+    &_center {
+      text-align: center;
+    }
+  }
+
+  &_login {
+    align-self: flex-start;
+    font-size: 14px;
+    color: $link_clr;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: responsive-width(sp)) {
+      margin: 8px 0;
+      font-size: 12px;
+    }
+  }
+
+  &_strike {
+    position: relative;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    margin: 8px 0;
+
+    span {
+      display: block;
+      position: relative;
+      z-index: 1;
+      background: $base_clr;
+      padding: 0 24px;
+      letter-spacing: 0.35px;
+      color: $sub_clr;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: $bdr_clr;
+      top: 50%;
+      left: 0;
+      position: absolute;
+    }
+  }
+
+  &_btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 48px;
+
+    background: $sign_clr;
+    color: $base_clr;
+
+    transition: all 0.4s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: responsive-width(sp)) {
+      height: 40px;
+      line-height: 40px;
+    }
+
+    &_google {
+      background: $google_clr;
+    }
+
+    &_twitter {
+      background: $twitter_clr;
+    }
+
+    &_github {
+      background: $github_clr;
+    }
+  }
+}

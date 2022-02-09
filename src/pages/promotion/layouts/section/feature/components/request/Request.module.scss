@@ -1,0 +1,69 @@
+@import "../../../../../../../styles/config";
+@import "../../../../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.request {
+  padding-top: 48px;
+
+  &_figure {
+    margin: 48px 0 96px;
+    padding-top: 48px;
+
+    transform-style: preserve-3d;
+    perspective: 480px;
+
+    @media (max-width: responsive-width(sp)) {
+      margin: 0 0 48px;
+    }
+
+    &_user {
+      position: absolute;
+      top: 12px;
+      left: 218px;
+      z-index: 1;
+
+      transform: rotateX(2deg) rotateY(6deg) rotateZ(-4deg);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+
+      width: 480px;
+
+      @media (max-width: responsive-width(tb)) {
+        width: 320px;
+        left: 144px;
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        gap: 8px;
+        width: 240px;
+        top: 0;
+        left: 48px;
+      }
+    }
+
+    &_card {
+      width: 80%;
+      box-shadow: -8px 16px 24px $shdw_clr;
+
+      border-radius: 8px;
+
+      @media (max-width: responsive-width(sp)) {
+        border-radius: 6px;
+      }
+
+      &_acnt {
+        width: 100%;
+      }
+    }
+
+    &_mockup {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

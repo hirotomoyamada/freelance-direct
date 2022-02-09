@@ -1,53 +1,51 @@
 import styles from "./Command.module.scss";
 
-export const Command = ({
-  post,
-  sort,
-  open,
-  handleSortChange,
-  handleEdit,
-  handleVerification,
-  handleOpen,
-}) => {
-  open && window.addEventListener("scroll", handleOpen);
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+
+import { useEffect, useState } from "react";
+
+import { useDispatch } from "react-redux";
+
+import * as userSlice from "../../features/user/userSlice";
+
+export const Command = ({ post, user, postItem }) => {
+  const dispatch = useDispatch();
+
+  const [like, setLike] = useState(false);
+  const [entry, setEntry] = useState(false);
+
+  useEffect(() => {
+    setLike(user.likes?.indexOf(post?.objectID) >= 0 ? true : false);
+    setEntry(user.entries?.indexOf(post?.objectID) >= 0 ? true : false);
+  }, [post?.objectID, user.entries, user.likes]);
+
+  const handleLike = () => {
+    if (!like) {
+      dispatch(userSlice.addLike(post));
+    } else {
+      dispatch(userSlice.removeLike(post));
+    }
+
+    setLike(!like);
+  };
 
   return (
-    <div>
-      {sort && (
-        <div className={`${styles.command} ${styles.command_sort}`}>
-          <button
-            onClick={() =>
-              handleSortChange({ target: "createAt", type: "desc" })
-            }
-            className={styles.command_btn}
-          >
-            新着順
-          </button>
-          <button
-            onClick={() =>
-              handleSortChange({ target: "updateAt", type: "desc" })
-            }
-            className={styles.command_btn}
-          >
-            更新順
-          </button>
-        </div>
-      )}
-      {post && (
-        <div className={styles.command}>
-          <button onClick={handleEdit} className={styles.command_btn}>
-            編集
-          </button>
-          <button
-            onClick={handleVerification}
-            className={`${styles.command_btn} ${styles.command_btn_remove}`}
-          >
-            削除
-          </button>
-        </div>
-      )}
-      {open && (
-        <div onClick={handleOpen} className={styles.command_overlay}></div>
+    <div className={`${styles.command} ${postItem && styles.command_postItem}`}>
+      <button onClick={handleLike}>
+        {like ? (
+          <FavoriteIcon
+            className={`${styles.command_icon} ${styles.command_icon_like}`}
+          />
+        ) : (
+          <FavoriteBorderIcon className={styles.command_icon} />
+        )}
+      </button>
+      {entry && (
+        <CheckCircleOutlineIcon
+          className={`${styles.command_icon} ${styles.command_icon_entry}`}
+        />
       )}
     </div>
   );

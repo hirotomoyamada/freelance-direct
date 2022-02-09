@@ -1,0 +1,46 @@
+@import "../../../../../styles/config";
+@import "../../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.feature {
+  padding-top: 96px;
+
+  &_ttl {
+    margin-bottom: 48px;
+  }
+
+  &_figure {
+    position: relative;
+    width: 100%;
+  }
+
+  &_cnt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+
+    text-align: center;
+
+    &_ttl {
+      font-size: 32px;
+      font-weight: bold;
+      line-height: 1.6;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 20px;
+      }
+    }
+
+    &_desc {
+      font-size: 18px;
+      line-height: 1.6;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 12px;
+      }
+    }
+  }
+}

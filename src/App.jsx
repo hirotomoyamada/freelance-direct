@@ -1,29 +1,33 @@
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
+import { useApp } from "./hook/useApp";
+
 import { Meta } from "./Meta";
 import * as load from "./components/load/Load";
+
 import { Announce } from "./components/announce/Announce";
 import { Modal } from "./components/modal/Modal";
 import { Menu } from "./components/menu/Menu";
-
-import { Home } from "./Home";
-import { Search } from "./Search";
-import { Post } from "./features/post/Post";
-import { User } from "./features/user/User";
+import { Overlay } from "./components/overlay/Overlay";
 
 import { Auth } from "./pages/auth/Auth";
+import { Home } from "./pages/home/Home";
+import { Search } from "./pages/search/Search";
 import { List } from "./pages/list/List";
+import { Post } from "./pages/post/Post";
+import { User } from "./pages/user/User";
+
 import { Setting } from "./pages/setting/Setting";
 import { HowTo } from "./pages/howTo/HowTo";
+
 import { Terms } from "./pages/terms/Terms";
+
 import { NotFound } from "./pages/notFound/NotFound";
 import { Maintenance } from "./pages/maintenance/Maintenance";
-import { Contact } from "./pages/contact/Contact";
 
-import { Promotion } from "./promotion/Promotion";
-import { useApp } from "./hook/useApp";
-import { Overlay } from "./components/overlay/Overlay";
+import { Promotion } from "./pages/promotion/Promotion";
+import { Contact } from "./pages/contact/Contact";
 
 export const App = () => {
   const [user, access, browser, control] = useApp();

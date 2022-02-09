@@ -1,0 +1,75 @@
+@import "../../../../../styles/config";
+@import "../../../../../styles/function";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.can {
+  padding-top: 96px;
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+
+    &:nth-child(odd) {
+      flex-direction: row-reverse;
+
+      @media (max-width: responsive-width(tb)) {
+        flex-direction: column-reverse;
+      }
+    }
+
+    &:not(:first-child) {
+      @media (max-width: responsive-width(tb)) {
+        margin-top: 48px;
+      }
+
+      @media (max-width: responsive-width(sp)) {
+        margin-top: 32px;
+      }
+    }
+
+    @media (max-width: responsive-width(tb)) {
+      grid-template-columns: 1fr;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+
+  &_cnt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+
+    @media (max-width: responsive-width(tb)) {
+      text-align: center;
+    }
+
+    &_ttl {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.6;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 20px;
+      }
+    }
+
+    &_desc {
+      line-height: 1.6;
+    }
+  }
+
+  &_visual {
+    width: 480px;
+
+    @media (max-width: responsive-width(sp)) {
+      width: 100%;
+    }
+
+    &_img {
+      width: 100%;
+    }
+  }
+}

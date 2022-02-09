@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import * as rootSlice from "../../../../features/root/rootSlice";
 
-import { Command } from "../../../command/Command";
+import { Operation } from "../../../operation/Operation";
 
 export const Search = ({ index }) => {
   const dispatch = useDispatch();
@@ -102,7 +102,7 @@ export const Search = ({ index }) => {
             <FilterListIcon className={styles.search_icon} />
           </button>
           {open && (
-            <Command
+            <Operation
               sort
               open={open}
               handleSortChange={handleSortChange}
