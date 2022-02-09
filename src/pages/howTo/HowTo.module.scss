@@ -1,12 +1,18 @@
 // サイト共有の初期設定
 @import "../../styles/config";
 @import "../../styles/function";
+@import "../../styles/animation";
 
 // ページのレスポンシブ設定
 $width: responsive-width(pc);
 
 .howto {
   line-height: 1.4;
+
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 
   @media (max-width: responsive-width(sp)) {
     font-size: 12px;
@@ -40,6 +46,11 @@ $width: responsive-width(pc);
     flex-direction: column;
     gap: 32px;
     padding: 32px 0;
+
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 
     @media (max-width: responsive-width(sp)) {
       gap: 24px;

@@ -22,22 +22,10 @@ $width: responsive-width(pc);
 
   &_open {
     transform: translateX(0);
-    @media (max-width: responsive-width(tb)) {
-      // animation-name: open;
-      // animation-duration: 0.4s;
-      // animation-fill-mode: forwards;
-      // animation-timing-function: ease-out;
-    }
   }
 
   &_close {
     transform: translateX(-300px);
-    @media (max-width: responsive-width(tb)) {
-      // animation-name: close;
-      // animation-duration: 0.4s;
-      // animation-fill-mode: forwards;
-      // animation-timing-function: ease-out;
-    }
   }
 
   &_inner {
@@ -60,22 +48,4 @@ $width: responsive-width(pc);
   }
 }
 
-@keyframes open {
-  0% {
-    transform: translateX(-300px);
-  }
 
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes close {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-300px);
-  }
-}

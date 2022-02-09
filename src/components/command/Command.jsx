@@ -13,6 +13,7 @@ import * as userSlice from "../../features/user/userSlice";
 export const Command = ({ post, user, postItem }) => {
   const dispatch = useDispatch();
 
+  const [clickLike, setClickLike] = useState(false);
   const [like, setLike] = useState(false);
   const [entry, setEntry] = useState(false);
 
@@ -24,8 +25,12 @@ export const Command = ({ post, user, postItem }) => {
   const handleLike = () => {
     if (!like) {
       dispatch(userSlice.addLike(post));
+
+      setClickLike(true);
     } else {
       dispatch(userSlice.removeLike(post));
+
+      setClickLike(false);
     }
 
     setLike(!like);
@@ -36,7 +41,9 @@ export const Command = ({ post, user, postItem }) => {
       <button onClick={handleLike}>
         {like ? (
           <FavoriteIcon
-            className={`${styles.command_icon} ${styles.command_icon_like}`}
+            className={`${styles.command_icon} ${styles.command_icon_like} ${
+              clickLike && styles.command_icon_like_click
+            }`}
           />
         ) : (
           <FavoriteBorderIcon className={styles.command_icon} />

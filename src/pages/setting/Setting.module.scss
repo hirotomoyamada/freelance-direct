@@ -1,6 +1,7 @@
 // サイト共有の初期設定
 @import "../../styles/config";
 @import "../../styles/function";
+@import "../../styles/animation";
 
 // ページのレスポンシブ設定
 $width: responsive-width(pc);
@@ -12,6 +13,11 @@ $width: responsive-width(pc);
   display: grid;
   grid-template-rows: 48px 1fr;
   align-items: center;
+
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 
   @media (max-width: responsive-width(tb)) {
     grid-template-rows: 80px 1fr;
@@ -33,6 +39,11 @@ $width: responsive-width(pc);
     flex-direction: column;
     justify-content: center;
     gap: 24px;
+
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 
     @media (max-width: responsive-width(sp)) {
       gap: 16px;
