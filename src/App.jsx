@@ -76,6 +76,7 @@ export const App = () => {
                 <Switch>
                   <Redirect exact path="/login" to="/" />
                   <Redirect exact path="/signup" to="/" />
+                  <Redirect path="/option" to="/" />
 
                   <Route exact path={["/", "/home"]} component={Home} />
 
@@ -85,7 +86,6 @@ export const App = () => {
 
                   <Route exact path="/howto" component={HowTo} />
                   <Route exact path="/terms" component={Terms} />
-                  <Route exact path="/error" component={NotFound} />
 
                   <Route exact path="/:list" component={List} />
 

@@ -52,7 +52,7 @@ export const List = (props) => {
     type === "histories" ||
     type === "entries"
       ? dispatch(rootSlice.handlePage(type))
-      : history.push("/error");
+      : history.push("/");
   }, [dispatch, history, type]);
 
   useEffect(() => {
