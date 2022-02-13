@@ -1,13 +1,10 @@
 import styles from "./Maintenance.module.scss";
 
 import { useSelector } from "react-redux";
-import { useScrollController } from "../../hook/useScrollController";
 
 import * as rootSlice from "../../features/root/rootSlice";
 
 export const Maintenance = () => {
-  useScrollController();
-
   const maintenance = useSelector(rootSlice.data).maintenance?.status;
   // const maintenance = "enable";
 

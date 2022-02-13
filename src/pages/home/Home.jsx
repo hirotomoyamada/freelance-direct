@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { usePosts } from "../../hook/usePosts";
+import { usePosts } from "../../hooks/usePosts";
 
 import { homePosts } from "../../features/post/actions/homePosts";
 

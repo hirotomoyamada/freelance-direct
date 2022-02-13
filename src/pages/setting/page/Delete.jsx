@@ -4,7 +4,7 @@ import root from "../Setting.module.scss";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useFormContext } from "react-hook-form";
-import { useScrollController } from "../../../hook/useScrollController";
+import { useScrollController } from "../../../hooks/useScrollController";
 
 import * as rootSlice from "../../../features/root/rootSlice.js";
 
