@@ -8,6 +8,7 @@ export const Menu = ({ page, setPage }) => {
     { page: "entries", name: "エントリー" },
     { page: "requests", name: "リクエスト" },
     { page: "histories", name: "閲覧履歴" },
+    { page: "notice", name: "通知" },
     { page: "profile", name: "プロフィール" },
   ];
 

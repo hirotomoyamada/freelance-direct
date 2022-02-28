@@ -5,6 +5,7 @@ import { Entries } from "./Entries";
 import { Requests } from "./Requests";
 import { Histories } from "./Histories";
 import { Profile } from "./Profile";
+import { Notice } from "./Notice";
 
 export const Main = ({ page }) => {
   switch (page) {
@@ -12,6 +13,8 @@ export const Main = ({ page }) => {
       return <Home />;
     case "search":
       return <Search />;
+    case "notice":
+      return <Notice />;
     case "likes":
       return <Likes />;
     case "entries":
