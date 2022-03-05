@@ -60,13 +60,13 @@ export const useSignUp = (): [
       .then(async (): Promise<void> => {
         const currentUser = auth.currentUser;
 
+        history.push("/signup");
+
         if (currentUser) {
           await sendEmailVerification(currentUser, {
             url: `${process.env.REACT_APP_FREELANCE_DIRECT}/signup`,
           })
             .then((): void => {
-              history.push("/signup");
-
               methods.reset();
             })
             .catch((): void => {
