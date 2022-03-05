@@ -33,6 +33,8 @@ export const extraReducers = (
       }>
     ) => {
       if (action.type.includes("/login/")) {
+        state.load.root = true;
+
         return;
       }
 
