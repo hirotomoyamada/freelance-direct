@@ -34,7 +34,7 @@ export interface State {
     email: boolean;
     profile: boolean;
     agree: boolean;
-    status: string;
+    status: string | null;
     access: boolean;
     demo: boolean;
     error: string | null;
@@ -82,7 +82,7 @@ export const initialState: State = {
     email: false,
     profile: false,
     agree: false,
-    status: "promo",
+    status: null,
     access: true,
     demo: false,
     error: null,
