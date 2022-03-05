@@ -139,6 +139,7 @@ export const handleDelete = async ({
     const password = user?.provider?.find(
       (provider) => provider === "password"
     );
+
     const credential =
       password &&
       EmailAuthProvider.credential(currentUser.email, data.password);
@@ -191,28 +192,28 @@ export const handleDelete = async ({
 
             dispatch(rootSlice.handleModal());
           });
-      } else if (!demo) {
-        await deleteUser(currentUser)
-          .then(() => {
-            dispatch(
-              rootSlice.handleAnnounce({
-                success: "アカウントを削除しました",
-              })
-            );
-
-            dispatch(rootSlice.handleModal());
-          })
-          .catch(() => {
-            dispatch(
-              rootSlice.handleAnnounce({
-                error:
-                  "アカウントの削除に失敗しました 再度ログインし直してください",
-              })
-            );
-
-            dispatch(rootSlice.handleModal());
-          });
       }
+    } else if (!demo) {
+      await deleteUser(currentUser)
+        .then(() => {
+          dispatch(
+            rootSlice.handleAnnounce({
+              success: "アカウントを削除しました",
+            })
+          );
+
+          dispatch(rootSlice.handleModal());
+        })
+        .catch(() => {
+          dispatch(
+            rootSlice.handleAnnounce({
+              error:
+                "アカウントの削除に失敗しました 再度ログインし直してください",
+            })
+          );
+
+          dispatch(rootSlice.handleModal());
+        });
     }
   }
 };
