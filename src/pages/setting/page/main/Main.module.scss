@@ -1,6 +1,6 @@
 // サイト共有の初期設定
-@import "../../../../styles/config";
-@import "../../../../styles/function";
+@import "styles/config";
+@import "styles/function";
 
 // ページのレスポンシブ設定
 $width: responsive-width(pc);
@@ -49,7 +49,13 @@ $width: responsive-width(pc);
     }
 
     &_id {
+      position: relative;
+      align-self: flex-start;
       color: $sub_clr;
+
+      &:hover {
+        color: $link_clr;
+      }
     }
 
     &_time {
@@ -57,6 +63,30 @@ $width: responsive-width(pc);
 
       @media (max-width: responsive-width(sp)) {
         font-size: 12px;
+      }
+    }
+
+    &_copy {
+      &:after {
+        content: "コピーしました";
+
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        display: block;
+        background: $link_clr;
+        color: $base_clr;
+        border-radius: 6px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 8px;
+        font-size: 12px;
+
+        @media (max-width: responsive-width(sp)) {
+          top: -29px;
+        }
       }
     }
   }

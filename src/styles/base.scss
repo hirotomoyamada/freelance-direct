@@ -70,13 +70,3 @@ body {
     grid-template-columns: 1fr;
   }
 }
-
-.disable {
-  width: 100vw;
-  height: $innerHeight;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: $sub_clr;
-}

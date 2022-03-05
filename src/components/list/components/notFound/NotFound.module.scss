@@ -1,0 +1,61 @@
+// サイト共有の初期設定
+@import "styles/config";
+@import "styles/function";
+@import "styles/animation";
+
+// ページのレスポンシブ設定
+$width: responsive-width(pc);
+
+.none {
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100 - 130px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &_message {
+    font-size: 14px;
+    color: $sub_clr;
+
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+
+  &_select {
+    height: calc(80vh - 72px);
+
+    @media (max-width: responsive-width(sp)) {
+      height: calc(80vh - 78px);
+    }
+  }
+
+  &_companys {
+    height: 320px;
+  }
+
+  &_list {
+    height: calc(var(--vh, 1vh) * 100 - 48px);
+
+    @media (max-width: responsive-width(tb)) {
+      height: calc(var(--vh, 1vh) * 100 - 80px);
+    }
+
+    @media (max-width: responsive-width(sp)) {
+      height: calc(var(--vh, 1vh) * 100 - 64px);
+    }
+  }
+
+  &_requests {
+    height: calc(var(--vh, 1vh) * 100 - 97px);
+
+    @media (max-width: responsive-width(tb)) {
+      height: calc(var(--vh, 1vh) * 100 - 129px);
+    }
+
+    @media (max-width: responsive-width(sp)) {
+      height: calc(var(--vh, 1vh) * 100 - 89px);
+    }
+  }
+}
