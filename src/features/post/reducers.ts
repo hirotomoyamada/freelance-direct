@@ -137,7 +137,7 @@ export const fetchPost = (
       state.histories.posts = [
         action.payload.post,
         ...state.histories.posts.filter(
-          (post) => post.objectID !== action.payload.post.objectID
+          (post) => post && post.objectID !== action.payload.post.objectID
         ),
       ];
     }
@@ -217,7 +217,7 @@ export const removeLike = (
   action: PayloadAction<Matter>
 ): void => {
   state.likes.posts = state.likes.posts.filter(
-    (post) => post.objectID !== action.payload.objectID
+    (post) => post && post.objectID !== action.payload.objectID
   );
 };
 
@@ -243,11 +243,11 @@ export const removeFollow = (
   action: PayloadAction<Company>
 ): void => {
   state.home.companys.posts = state.home.companys.posts.filter(
-    (post) => post.uid !== action.payload.uid
+    (post) => post && post.uid !== action.payload.uid
   );
 
   state.home.matters.posts = state.home.matters.posts.filter(
-    (post) => post.uid !== action.payload.uid
+    (post) => post && post.uid !== action.payload.uid
   );
 };
 
@@ -267,7 +267,7 @@ export const enableRequest = (
 
     if (type === "hold" || type === "disable") {
       state.requests[type].posts = state.requests[type].posts.filter(
-        (user) => user.uid !== action.payload.uid
+        (user) => user && user.uid !== action.payload.uid
       );
     }
   });
@@ -289,7 +289,7 @@ export const disableRequest = (
 
     if (type === "hold" || type === "enable") {
       state.requests[type].posts = state.requests[type].posts.filter(
-        (user) => user.uid !== action.payload.uid
+        (user) => user && user.uid !== action.payload.uid
       );
     }
   });
