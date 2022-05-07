@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Menu.module.scss";
+import { useNavigate } from "react-router-dom";
 
 interface PropType {
   handleIndex: (
@@ -18,10 +19,12 @@ interface PropType {
 }
 
 export const Menu: React.FC<PropType> = ({ handleIndex, index, type }) => {
+  const navigate = useNavigate();
+
   return type !== "requests" ? (
     <div className={styles.menu}>
       <button
-        onClick={() => handleIndex("matters")}
+        onClick={() => navigate(`/${type}/matters`)}
         className={`${styles.menu_btn} ${
           index === "matters" && styles.menu_btn_active
         }`}
@@ -30,7 +33,7 @@ export const Menu: React.FC<PropType> = ({ handleIndex, index, type }) => {
       </button>
 
       <button
-        onClick={() => handleIndex("companys")}
+        onClick={() => navigate(`/${type}/companys`)}
         className={`${styles.menu_btn} ${
           index === "companys" && styles.menu_btn_active
         }`}
