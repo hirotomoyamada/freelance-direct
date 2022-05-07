@@ -61,6 +61,7 @@ export const Item: React.FC<PropType> = ({
       ) : (
         <Request index={index} user={post as PostType.Company} />
       )}
+
       {index === "matters" ? (
         <button
           type="button"
@@ -80,7 +81,7 @@ export const Item: React.FC<PropType> = ({
           className={`${styles.item_btn} ${
             (!post?.uid ||
               select ||
-              ("type" in post && post.type === "none")) &&
+              ("status" in post && post.status === "none")) &&
             styles.item_btn_disable
           }`}
         >
