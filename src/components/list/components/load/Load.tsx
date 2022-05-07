@@ -19,7 +19,9 @@ export const Load: React.FC<PropType> = ({ load, page, hit }) => {
       ref={load}
       className={`${styles.load} ${page === hit.pages && styles.load_none}`}
     >
-      {page < hit.pages && <Oval color="#1d9bf0" height={32} width={32} />}
+      {page < hit.pages && (
+        <Oval color="#1d9bf0" secondaryColor={""} height={32} width={32} />
+      )}
     </div>
   );
 };
