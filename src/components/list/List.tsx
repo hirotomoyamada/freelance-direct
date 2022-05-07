@@ -14,7 +14,7 @@ interface PropType {
   user: User;
   index?: "matters" | "companys" | "enable" | "hold" | "disable";
   type?: "likes" | "entries" | "requests" | "histories";
-  posts?: Matter[] | Company[];
+  posts?: (Matter | undefined)[] | (Company | undefined)[];
   search?: {
     value: string | null;
     target: string | null;

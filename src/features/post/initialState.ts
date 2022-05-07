@@ -1,227 +1,78 @@
-import { Matter, Company } from "types/post";
+import * as Post from "types/post";
+
+type Matter = {
+  posts: (Post.Matter | undefined)[];
+  hit: {
+    posts: number;
+    pages: number;
+    currentPage: number;
+  };
+};
+
+type Company = {
+  posts: (Post.Company | undefined)[];
+  hit: {
+    posts: number;
+    pages: number;
+    currentPage: number;
+  };
+};
 
 export interface State {
   search: {
-    matters: {
-      posts: Matter[];
-      hit: {
-        posts: number;
-        pages: number;
-        currentPage: number;
-      };
-    };
-
-    companys: {
-      posts: Company[];
-      hit: {
-        posts: number;
-        pages: number;
-        currentPage: number;
-      };
-    };
-  };
-
-  user: {
-    posts: Matter[];
-    hit: {
-      posts: number;
-      pages: number;
-      currentPage: number;
-    };
+    matters: Matter;
+    companys: Company;
   };
 
   home: {
-    matters: {
-      posts: Matter[];
-      hit: {
-        posts: number;
-        pages: number;
-        currentPage: number;
-      };
-
-      control: boolean;
-    };
-
-    companys: {
-      posts: Company[];
-      hit: {
-        posts: number;
-        pages: number;
-        currentPage: number;
-      };
-
-      control: boolean;
-    };
+    matters: Matter & { control: boolean };
+    companys: Company & { control: boolean };
   };
 
-  likes: {
-    posts: Matter[];
-    hit: {
-      posts: number;
-      pages: number;
-      currentPage: number;
-    };
-  };
-
-  entries: {
-    posts: Matter[];
-    hit: {
-      posts: number;
-      pages: number;
-      currentPage: number;
-    };
-  };
-
-  histories: {
-    posts: Matter[];
-    hit: {
-      posts: number;
-      pages: number;
-      currentPage: number;
-    };
-  };
+  user: Matter;
+  likes: Matter;
+  entries: Matter;
+  histories: Matter;
 
   requests: {
-    enable: {
-      posts: Company[];
-      hit: {
-        posts: number;
-        pages: number;
-        currentPage: number;
-      };
-    };
-
-    hold: {
-      posts: Company[];
-      hit: {
-        posts: number;
-        pages: number;
-        currentPage: number;
-      };
-    };
-
-    disable: {
-      posts: Company[];
-      hit: {
-        posts: number;
-        pages: number;
-        currentPage: number;
-      };
-    };
+    enable: Company;
+    hold: Company;
+    disable: Company;
   };
 
   post: Matter | unknown;
-  bests: Matter[];
+  bests: (Post.Matter | undefined)[];
 }
+
+const posts = {
+  posts: [],
+  hit: {
+    posts: 0,
+    pages: 0,
+    currentPage: 0,
+  },
+};
 
 export const initialState: State = {
   search: {
-    matters: {
-      posts: [],
-      hit: {
-        posts: 0,
-        pages: 0,
-        currentPage: 0,
-      },
-    },
-
-    companys: {
-      posts: [],
-      hit: {
-        posts: 0,
-        pages: 0,
-        currentPage: 0,
-      },
-    },
-  },
-
-  user: {
-    posts: [],
-    hit: {
-      posts: 0,
-      pages: 0,
-      currentPage: 0,
-    },
+    matters: posts,
+    companys: posts,
   },
 
   home: {
-    matters: {
-      posts: [],
-      hit: {
-        posts: 0,
-        pages: 0,
-        currentPage: 0,
-      },
-
-      control: true,
-    },
-
-    companys: {
-      posts: [],
-      hit: {
-        posts: 0,
-        pages: 0,
-        currentPage: 0,
-      },
-
-      control: true,
-    },
+    matters: { ...posts, control: true },
+    companys: { ...posts, control: true },
   },
 
-  likes: {
-    posts: [],
-    hit: {
-      posts: 0,
-      pages: 0,
-      currentPage: 0,
-    },
-  },
-
-  entries: {
-    posts: [],
-    hit: {
-      posts: 0,
-      pages: 0,
-      currentPage: 0,
-    },
-  },
-
-  histories: {
-    posts: [],
-    hit: {
-      posts: 0,
-      pages: 0,
-      currentPage: 0,
-    },
-  },
+  user: posts,
+  likes: posts,
+  entries: posts,
+  histories: posts,
 
   requests: {
-    enable: {
-      posts: [],
-      hit: {
-        posts: 0,
-        pages: 0,
-        currentPage: 0,
-      },
-    },
-
-    hold: {
-      posts: [],
-      hit: {
-        posts: 0,
-        pages: 0,
-        currentPage: 0,
-      },
-    },
-
-    disable: {
-      posts: [],
-      hit: {
-        posts: 0,
-        pages: 0,
-        currentPage: 0,
-      },
-    },
+    enable: posts,
+    hold: posts,
+    disable: posts,
   },
 
   post: {},

@@ -7,7 +7,7 @@ import {
 import { useEffect } from "react";
 import { SubmitHandler, UseFormReturn, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import * as rootSlice from "../features/root/rootSlice";
 import { FirebaseError } from "firebase/app";
@@ -23,7 +23,7 @@ export const useSignUp = (): [
   handleSignUp: SubmitHandler<Data>
 ] => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const methods = useForm<Data>();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export const useSignUp = (): [
             })
           );
 
-          history.push("/signup");
+          navigate("/signup");
         }
       })
       .catch((e: FirebaseError) => {
@@ -60,7 +60,7 @@ export const useSignUp = (): [
       .then(async (): Promise<void> => {
         const currentUser = auth.currentUser;
 
-        history.push("/signup");
+        navigate("/signup");
 
         if (currentUser) {
           await sendEmailVerification(currentUser, {

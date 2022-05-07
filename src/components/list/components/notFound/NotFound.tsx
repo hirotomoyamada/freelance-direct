@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./NotFound.module.scss";
 
-import Loader from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 
 import { useSelector } from "react-redux";
 import * as rootSlice from "features/root/rootSlice";
@@ -35,7 +35,7 @@ export const NotFound: React.FC<PropType> = ({
       ref={list}
     >
       {load ? (
-        <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
+        <Grid color="#1d9bf0" height={56} width={56} />
       ) : (
         <span className={styles.none_message}>
           {index === "matters"

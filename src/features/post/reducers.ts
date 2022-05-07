@@ -19,7 +19,7 @@ export const fetchPosts = (
     state.search[action.payload.index].posts = [
       ...state.search[action.payload.index].posts,
       ...action.payload.posts,
-    ] as Matter[] | Company[];
+    ] as (Matter | undefined)[] | (Company | undefined)[];
   } else {
     state.search[action.payload.index].posts = action.payload.posts;
   }
@@ -40,9 +40,12 @@ export const extractPosts = (
       state[action.payload.type].posts = [
         ...state[action.payload.type].posts,
         ...action.payload.posts,
-      ] as Matter[];
+      ] as (Matter | undefined)[];
     } else {
-      state[action.payload.type].posts = action.payload.posts as Matter[];
+      state[action.payload.type].posts = action.payload.posts as (
+        | Matter
+        | undefined
+      )[];
     }
 
     state[action.payload.type].hit = {
@@ -62,10 +65,10 @@ export const extractPosts = (
         state[action.payload.type][action.payload.index].posts = [
           ...state[action.payload.type][action.payload.index].posts,
           ...action.payload.posts,
-        ] as Company[];
+        ] as (Company | undefined)[];
       } else {
         state[action.payload.type][action.payload.index].posts = action.payload
-          .posts as Company[];
+          .posts as (Company | undefined)[];
       }
 
       state[action.payload.type][action.payload.index].hit = {
@@ -85,7 +88,7 @@ export const homePosts = (
     state.home[action.payload.index].posts = [
       ...state.home[action.payload.index].posts,
       ...action.payload.posts,
-    ] as Matter[] | Company[];
+    ] as (Matter | undefined)[] | (Company | undefined)[];
   } else {
     state.home[action.payload.index].posts = action.payload.posts;
 
@@ -103,7 +106,7 @@ export const homePosts = (
 
 export const promotionPosts = (
   state: State,
-  action: PayloadAction<Matter[]>
+  action: PayloadAction<(Matter | undefined)[]>
 ): void => {
   state.search.matters.posts = action.payload;
 };

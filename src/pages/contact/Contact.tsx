@@ -4,7 +4,7 @@ import styles from "./Contact.module.scss";
 import { useForm } from "hooks/useForm";
 import { useContact } from "hooks/useContact";
 
-import Loader from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 
 import { FormProvider } from "react-hook-form";
 
@@ -57,7 +57,7 @@ export const Contact: React.FC = () => {
               <Form person={person} email={email} body={body} />
             )}
           </form>
-          
+
           {error && (
             <span
               className={`${styles.contact_form_error} ${styles.contact_form_error_submit}`}
@@ -78,7 +78,7 @@ export const Contact: React.FC = () => {
 
       {load && (
         <div className={styles.contact_load}>
-          <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
+          <Grid color="#1d9bf0" height={56} width={56} />
         </div>
       )}
     </div>

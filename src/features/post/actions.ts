@@ -153,7 +153,7 @@ export interface FetchPost {
 
   data: {
     post: Matter;
-    bests: Matter[];
+    bests: (Matter | undefined)[];
   };
 }
 

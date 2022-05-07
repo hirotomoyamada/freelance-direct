@@ -24,7 +24,7 @@ export const usePosts = ({
   index,
   page,
 }: PropType): [
-  posts: Matter[] | Company[] | undefined,
+  posts: (Matter | undefined)[] | (Company | undefined)[] | undefined,
   hit:
     | {
         posts: number;

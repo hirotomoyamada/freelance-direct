@@ -12,8 +12,8 @@ import { Matter } from "types/post";
 import { User } from "types/user";
 
 export const usePost = (
-  objectID: string
-): [post: Matter, posts: Matter[], user: User] => {
+  objectID?: string
+): [post: Matter, posts: (Matter | undefined)[], user: User] => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
@@ -27,6 +27,8 @@ export const usePost = (
   }, [dispatch, pathname]);
 
   useEffect(() => {
+    if (!objectID) return;
+
     dispatch(fetchPost(objectID));
 
     return () => {

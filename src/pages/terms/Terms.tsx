@@ -64,8 +64,8 @@ export type Sections = (
 )[];
 
 export const Terms: React.FC<PropType> = ({ create, setTerms }) => {
-  const location = useLocation<{ setting: string }>();
-  const terms = !location?.state?.setting;
+  const location = useLocation();
+  const terms = !(location?.state as { setting: string } | undefined)?.setting;
 
   useEffect(() => {
     window.scrollTo(0, 0);

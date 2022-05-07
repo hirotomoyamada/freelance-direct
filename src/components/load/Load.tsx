@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Load.module.scss";
 
-import Loader from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 
 import { useSelector } from "react-redux";
 
@@ -28,7 +28,7 @@ export const Root: React.FC = () => {
       ${!none && styles.load_none}
       `}
     >
-      <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
+      <Grid color="#1d9bf0" height={56} width={56} />
     </div>
   );
 };
@@ -56,7 +56,7 @@ export const Fetch: React.FC = () => {
       ${!none && styles.load_none}
       `}
     >
-      <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
+      <Grid color="#1d9bf0" height={56} width={56} />
     </div>
   );
 };

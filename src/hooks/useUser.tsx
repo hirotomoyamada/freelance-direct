@@ -13,7 +13,7 @@ import { User } from "types/user";
 import { Matter, Company } from "types/post";
 
 export const useUser = (
-  uid: string
+  uid?: string
 ): [
   currentUser: User,
   user: User | Company,
@@ -54,7 +54,7 @@ export const useUser = (
   }, [dispatch, pathname]);
 
   useEffect(() => {
-    if (currentUser?.uid !== user?.uid) {
+    if (uid && currentUser?.uid !== user?.uid) {
       dispatch(fetchUser(uid));
       dispatch(userPosts({ uid: uid }));
     }
