@@ -65,9 +65,7 @@ export const Resume: React.FC<PropType> = ({ user }) => {
         );
 
         if (file) {
-          dispatch(
-            uploadResume({ type: file.type, file: base64, fetch: true })
-          );
+          dispatch(uploadResume({ type: file.type, file: base64 }));
         }
       }
 

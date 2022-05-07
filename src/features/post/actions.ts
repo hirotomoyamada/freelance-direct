@@ -11,7 +11,7 @@ export interface FetchPosts {
     value?: string | null;
     type?: string | null;
     page?: number | null;
-    fetch?: boolean;
+    pend?: boolean;
   };
 
   data: {
@@ -49,7 +49,7 @@ export interface ExtractPosts {
     type: "likes" | "entries" | "requests" | "histories";
     objectIDs: string[];
     page?: number;
-    fetch?: boolean;
+    pend?: boolean;
   };
 
   data: {
@@ -88,7 +88,7 @@ export interface HomePosts {
     index: "matters" | "companys";
     follows: string[];
     page?: number;
-    fetch?: boolean;
+    pend?: boolean;
   };
   data: {
     index: "matters" | "companys";

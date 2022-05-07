@@ -34,7 +34,7 @@ export const Home: React.FC = () => {
           index: index,
           follows:
             index === "matters" ? [user.uid, ...user.home] : user.follows,
-          fetch: posts?.length ? true : false,
+          pend: posts?.length ? true : false,
         })
       );
   }, [dispatch, index, user.home]);

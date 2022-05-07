@@ -50,7 +50,7 @@ export interface CreateProfile {
     type: string;
     agree: string;
     provider: string;
-    fetch: boolean;
+    pend: boolean;
   };
 
   data: {
@@ -80,7 +80,6 @@ export interface UploadResume {
   org: {
     type: string;
     file: string;
-    fetch?: true;
   };
 
   data: string;

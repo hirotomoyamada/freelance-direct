@@ -42,7 +42,7 @@ export const App: React.FC = () => {
             <Meta />
 
             <load.Root />
-            <load.Fetch />
+            <load.Pending />
             <Announce />
             <NotFound />
             <Maintenance />

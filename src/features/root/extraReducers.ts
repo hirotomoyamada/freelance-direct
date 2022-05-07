@@ -29,7 +29,7 @@ export const extraReducers = (
     (
       state,
       action: ArgAction<{
-        fetch?: boolean;
+        pend?: boolean;
       }>
     ) => {
       if (action.type.includes("/login/")) {
@@ -38,7 +38,12 @@ export const extraReducers = (
         return;
       }
 
-      state.load.fetch = action.meta.arg.fetch ? true : false;
+      if (action.meta.arg.pend) {
+        state.load.pend = true;
+      } else {
+        state.load.fetch = true;
+      }
+
       state.load.list = true;
     }
   );
@@ -108,6 +113,7 @@ export const extraReducers = (
         state.announce.error = action.error.message;
       }
 
+      state.load.pend = false;
       state.load.fetch = false;
       state.load.list = false;
     }
@@ -139,6 +145,7 @@ export const extraReducers = (
         state.search.control = true;
       }
 
+      state.load.pend = false;
       state.load.fetch = false;
       state.load.list = false;
     }

@@ -123,7 +123,7 @@ export const handleCreate = ({ dispatch, data }: HandleCreate): void => {
           agree: data.agree,
           provider: currentUser.providerData[0].providerId,
 
-          fetch: true,
+          pend: true,
         };
 
         await dispatch(createProfile(profile));

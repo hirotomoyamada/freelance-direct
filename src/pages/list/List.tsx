@@ -71,7 +71,7 @@ export const List: React.FC = () => {
             type !== "requests"
               ? user[type]
               : user[type][index as "enable" | "hold" | "disable"],
-          fetch: posts?.length ? true : false,
+          pend: posts?.length ? true : false,
         })
       );
   }, [dispatch, index, type, user]);

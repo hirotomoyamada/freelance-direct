@@ -33,8 +33,8 @@ export const Root: React.FC = () => {
   );
 };
 
-export const Fetch: React.FC = () => {
-  const load = useSelector(rootSlice.load).fetch;
+export const Pending: React.FC = () => {
+  const load = useSelector(rootSlice.load).pend;
   const user = useSelector(userSlice.user).uid;
 
   const [none, setNone] = useState(true);
@@ -49,8 +49,8 @@ export const Fetch: React.FC = () => {
 
   return (
     <div
-      className={`${styles.load} ${styles.load_fetch} ${
-        !user && styles.load_fetch_auth
+      className={`${styles.load} ${styles.load_pend} ${
+        !user && styles.load_pend_auth
       }
       ${!load && styles.load_opacity} 
       ${!none && styles.load_none}
