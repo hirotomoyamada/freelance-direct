@@ -213,6 +213,62 @@ export const addLike = (state: State, action: PayloadAction<Matter>): void => {
   if (state.likes.posts.length) {
     state.likes.posts = [action.payload, ...state.likes.posts];
   }
+
+  Object.keys(state).forEach((posts): void => {
+    let post: Matter | undefined;
+
+    switch (posts) {
+      case "requests":
+        break;
+
+      case "search":
+      case "home": {
+        post = state[posts].matters.posts.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      case "post": {
+        if ("objectID" in (state.post as Matter)) {
+          post = state.post as Matter;
+        }
+
+        break;
+      }
+
+      case "bests": {
+        post = state.bests.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      case "user":
+      case "likes":
+      case "entries":
+      case "histories": {
+        post = state[posts].posts.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      default:
+        break;
+    }
+
+    if (post) {
+      if (post.likes) {
+        post.likes += 1;
+      } else {
+        Object.assign(post, { likes: 1 });
+      }
+    }
+  });
 };
 
 export const removeLike = (
@@ -222,6 +278,58 @@ export const removeLike = (
   state.likes.posts = state.likes.posts.filter(
     (post) => post && post.objectID !== action.payload.objectID
   );
+
+  Object.keys(state).forEach((posts): void => {
+    let post: Matter | undefined;
+
+    switch (posts) {
+      case "requests":
+        break;
+
+      case "search":
+      case "home": {
+        post = state[posts].matters.posts.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      case "post": {
+        if ("objectID" in (state.post as Matter)) {
+          post = state.post as Matter;
+        }
+
+        break;
+      }
+
+      case "bests": {
+        post = state.bests.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      case "user":
+      case "likes":
+      case "entries":
+      case "histories": {
+        post = state[posts].posts.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      default:
+        break;
+    }
+
+    if (post && post.likes) {
+      post.likes -= 1;
+    }
+  });
 };
 
 export const addEntry = (state: State, action: PayloadAction<Matter>): void => {
@@ -301,12 +409,3 @@ export const disableRequest = (
 export const resetControl = (state: State): void => {
   state.home.matters.control = true;
 };
-
-// memo
-// export const load = (state: State) => {
-//   state.load = true;
-// };
-
-// export const fetch = (state: State) => {
-//   state.fetch = true;
-// };
