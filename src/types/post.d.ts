@@ -60,6 +60,7 @@ export interface Matter {
       status: string;
     };
   };
+  likes?: number;
 }
 
 export interface Company {
