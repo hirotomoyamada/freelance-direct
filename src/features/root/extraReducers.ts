@@ -103,12 +103,16 @@ export const extraReducers = (
       }
 
       if (
-        (action.type.includes("/fetchPosts/") ||
+        (action.type.includes("/editProfile/") ||
+          action.type.includes("/fetchPosts/") ||
+          action.type.includes("/fetchPosts/") ||
           action.type.includes("/extractPosts/") ||
           action.type.includes("/homePosts/") ||
           action.type.includes("/promotionPosts/") ||
           action.type.includes("/userPosts/")) &&
-        (!state.modal.open || state.modal.type === "home")
+        (!state.modal.open ||
+          state.modal.type === "home" ||
+          state.modal.type === "profile")
       ) {
         state.announce.error = action.error.message;
       }
@@ -153,10 +157,10 @@ export const extraReducers = (
 
   builder.addMatcher(
     (action: PayloadAction) =>
-      action.type.endsWith("/editProfile") ||
       action.type.endsWith("/deleteResume") ||
       action.type.endsWith("/disableRequest") ||
-      action.type.endsWith("/updateHome"),
+      action.type.endsWith("/updateHome") ||
+      action.type.endsWith("/editProfile/fulfilled"),
     (state) => reducers.modal(state)
   );
 
