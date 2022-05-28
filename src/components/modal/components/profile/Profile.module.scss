@@ -24,4 +24,11 @@ $width: responsive-width(pc);
     grid-template-rows: 48px 1fr;
     font-size: 12px;
   }
+
+  &_fetch {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

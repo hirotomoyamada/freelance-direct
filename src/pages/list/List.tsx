@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
-import { RouteComponentProps } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 
 import { extractPosts } from "features/post/actions";
 
@@ -14,15 +13,15 @@ import { Header } from "components/header/Header";
 import { List as Main } from "components/list/List";
 import { RootState } from "app/store";
 
-export const List: React.FC<
-  RouteComponentProps<{ list: "likes" | "entries" | "requests" | "histories" }>
-> = (props) => {
+export const List: React.FC = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const index = useSelector(rootSlice.index);
   const user = useSelector(userSlice.user);
-  const type = props.match.params.list;
+  const { list: type } = useParams<{
+    list: "likes" | "entries" | "requests" | "histories";
+  }>();
 
   const posts = useSelector((state: RootState) =>
     postSlice.posts({
@@ -56,12 +55,13 @@ export const List: React.FC<
     type === "histories" ||
     type === "entries"
       ? dispatch(rootSlice.handlePage(type))
-      : history.push("/");
+      : navigate("/");
   }, [dispatch, history, type]);
 
   useEffect(() => {
-    ((type === "requests" && index !== "matters") ||
-      (type !== "requests" && index === "matters")) &&
+    type &&
+      ((type === "requests" && index !== "matters") ||
+        (type !== "requests" && index === "matters")) &&
       !posts?.length &&
       dispatch(
         extractPosts({
@@ -71,7 +71,7 @@ export const List: React.FC<
             type !== "requests"
               ? user[type]
               : user[type][index as "enable" | "hold" | "disable"],
-          fetch: posts?.length ? true : false,
+          pend: posts?.length ? true : false,
         })
       );
   }, [dispatch, index, type, user]);

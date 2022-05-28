@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Main.module.scss";
-import Loader from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 
 import { useSelector } from "react-redux";
 import * as rootSlice from "features/root/rootSlice";
@@ -60,7 +60,6 @@ export const Main: React.FC<PropType> = ({
         <Txt
           tag="場所"
           txt={{ area: post?.location?.area, place: post?.location?.place }}
-          location
         />
 
         <Txt tag="リモート" txt={post?.remote} />
@@ -92,7 +91,7 @@ export const Main: React.FC<PropType> = ({
     </div>
   ) : (
     <div className={styles.main_load}>
-      <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
+      <Grid color="#1d9bf0" height={56} width={56} />
     </div>
   );
 };

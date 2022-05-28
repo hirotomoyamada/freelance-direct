@@ -49,8 +49,6 @@ export const userSlice = createSlice({
 
   reducers: {
     logout: () => reducers.logout(),
-    editProfile: (state, action: PayloadAction<Profile>) =>
-      reducers.editProfile(state, action),
     addProvider: (state, action: PayloadAction<Provider>) =>
       reducers.addProvider(state, action),
     changeEmail: (state, action: PayloadAction<string>) =>
@@ -81,7 +79,6 @@ export const userSlice = createSlice({
 
 export const {
   logout,
-  editProfile,
   addProvider,
   changeEmail,
   changeState,

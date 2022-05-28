@@ -6,7 +6,7 @@ import { User } from "types/user";
 
 export const useEntry = (
   user: User,
-  objectID: string
+  objectID?: string
 ): [entry: boolean, handleEntry: () => void] => {
   const dispatch = useDispatch();
 
@@ -17,6 +17,8 @@ export const useEntry = (
   };
 
   useEffect(() => {
+    if (!objectID) return;
+
     const entries: string[] = user?.entries ? user.entries : [];
 
     setEntry(entries.indexOf(objectID) >= 0 ? true : false);

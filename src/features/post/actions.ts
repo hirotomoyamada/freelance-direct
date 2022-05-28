@@ -5,13 +5,13 @@ import { httpsCallable, HttpsCallable } from "firebase/functions";
 import { Matter, Company } from "types/post";
 
 export interface FetchPosts {
-  org: {
+  arg: {
     index: "matters" | "companys";
     target?: string | null;
     value?: string | null;
     type?: string | null;
     page?: number | null;
-    fetch?: boolean;
+    pend?: boolean;
   };
 
   data: {
@@ -27,16 +27,16 @@ export interface FetchPosts {
 
 export const fetchPosts = createAsyncThunk(
   "post/fetchPosts",
-  async (org: FetchPosts["org"]): Promise<FetchPosts["data"]> => {
-    const fetchPosts: HttpsCallable<FetchPosts["org"], FetchPosts["data"]> =
+  async (arg: FetchPosts["arg"]): Promise<FetchPosts["data"]> => {
+    const fetchPosts: HttpsCallable<FetchPosts["arg"], FetchPosts["data"]> =
       httpsCallable(functions, "fd-fetchPosts");
 
     const { data } = await fetchPosts({
-      index: org.index,
-      target: org.target,
-      value: org.value,
-      type: org.type,
-      page: org.page,
+      index: arg.index,
+      target: arg.target,
+      value: arg.value,
+      type: arg.type,
+      page: arg.page,
     });
 
     return data;
@@ -44,12 +44,12 @@ export const fetchPosts = createAsyncThunk(
 );
 
 export interface ExtractPosts {
-  org: {
+  arg: {
     index: "matters" | "companys" | "enable" | "hold" | "disable";
     type: "likes" | "entries" | "requests" | "histories";
     objectIDs: string[];
     page?: number;
-    fetch?: boolean;
+    pend?: boolean;
   };
 
   data: {
@@ -66,17 +66,17 @@ export interface ExtractPosts {
 
 export const extractPosts = createAsyncThunk(
   "post/extractPosts",
-  async (org: ExtractPosts["org"]): Promise<ExtractPosts["data"]> => {
+  async (arg: ExtractPosts["arg"]): Promise<ExtractPosts["data"]> => {
     const extractPosts: HttpsCallable<
-      ExtractPosts["org"],
+      ExtractPosts["arg"],
       ExtractPosts["data"]
     > = httpsCallable(functions, "fd-extractPosts");
 
     const { data } = await extractPosts({
-      index: org.index,
-      type: org.type,
-      objectIDs: org.objectIDs,
-      page: org.page,
+      index: arg.index,
+      type: arg.type,
+      objectIDs: arg.objectIDs,
+      page: arg.page,
     });
 
     return data;
@@ -84,11 +84,11 @@ export const extractPosts = createAsyncThunk(
 );
 
 export interface HomePosts {
-  org: {
+  arg: {
     index: "matters" | "companys";
     follows: string[];
     page?: number;
-    fetch?: boolean;
+    pend?: boolean;
   };
   data: {
     index: "matters" | "companys";
@@ -103,14 +103,14 @@ export interface HomePosts {
 
 export const homePosts = createAsyncThunk(
   "post/homePosts",
-  async (org: HomePosts["org"]): Promise<HomePosts["data"]> => {
-    const homePosts: HttpsCallable<HomePosts["org"], HomePosts["data"]> =
+  async (arg: HomePosts["arg"]): Promise<HomePosts["data"]> => {
+    const homePosts: HttpsCallable<HomePosts["arg"], HomePosts["data"]> =
       httpsCallable(functions, "fd-homePosts");
 
     const { data } = await homePosts({
-      index: org.index,
-      follows: org.follows,
-      page: org.page,
+      index: arg.index,
+      follows: arg.follows,
+      page: arg.page,
     });
 
     return data;
@@ -118,7 +118,7 @@ export const homePosts = createAsyncThunk(
 );
 
 export interface UserPosts {
-  org: {
+  arg: {
     uid: string;
     page?: number;
   };
@@ -135,13 +135,13 @@ export interface UserPosts {
 
 export const userPosts = createAsyncThunk(
   "post/userPosts",
-  async (org: UserPosts["org"]): Promise<UserPosts["data"]> => {
-    const userPosts: HttpsCallable<UserPosts["org"], UserPosts["data"]> =
+  async (arg: UserPosts["arg"]): Promise<UserPosts["data"]> => {
+    const userPosts: HttpsCallable<UserPosts["arg"], UserPosts["data"]> =
       httpsCallable(functions, "fd-userPosts");
 
     const { data } = await userPosts({
-      uid: org.uid,
-      page: org.page,
+      uid: arg.uid,
+      page: arg.page,
     });
 
     return data;
@@ -149,21 +149,21 @@ export const userPosts = createAsyncThunk(
 );
 
 export interface FetchPost {
-  org: string;
+  arg: string;
 
   data: {
     post: Matter;
-    bests: Matter[];
+    bests: (Matter | undefined)[];
   };
 }
 
 export const fetchPost = createAsyncThunk(
   "post/fetchPost",
-  async (org: FetchPost["org"]): Promise<FetchPost["data"]> => {
-    const fetchPost: HttpsCallable<FetchPost["org"], FetchPost["data"]> =
+  async (arg: FetchPost["arg"]): Promise<FetchPost["data"]> => {
+    const fetchPost: HttpsCallable<FetchPost["arg"], FetchPost["data"]> =
       httpsCallable(functions, "fd-fetchPost");
 
-    const { data } = await fetchPost(org);
+    const { data } = await fetchPost(arg);
 
     return data;
   }
@@ -171,13 +171,13 @@ export const fetchPost = createAsyncThunk(
 
 export const promotionPosts = createAsyncThunk(
   "post/promotionPosts",
-  async (org: string): Promise<Matter[]> => {
+  async (arg: string): Promise<Matter[]> => {
     const promotionPosts: HttpsCallable<string, Matter[]> = httpsCallable(
       functions,
       "fd-promotionPosts"
     );
 
-    const { data } = await promotionPosts(org);
+    const { data } = await promotionPosts(arg);
 
     return data;
   }

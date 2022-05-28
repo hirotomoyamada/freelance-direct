@@ -50,7 +50,7 @@ export const Command: React.FC<PropType> = ({ post, user, item }) => {
 
   return (
     <div className={`${styles.command} ${item && styles.command_item}`}>
-      <button onClick={handleLike}>
+      <button onClick={handleLike} className={styles.command_btn}>
         {like ? (
           <FavoriteIcon
             className={`${styles.command_icon} ${styles.command_icon_like} ${
@@ -60,6 +60,14 @@ export const Command: React.FC<PropType> = ({ post, user, item }) => {
         ) : (
           <FavoriteBorderIcon className={styles.command_icon} />
         )}
+
+        <span
+          className={`${styles.command_count} ${
+            like && styles.command_count_like
+          }`}
+        >
+          {post?.likes}
+        </span>
       </button>
 
       {entry && (

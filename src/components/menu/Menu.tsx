@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Menu.module.scss";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import * as rootSlice from "features/root/rootSlice";
@@ -18,7 +18,7 @@ interface PropType {
 
 export const Menu: React.FC<PropType> = ({ user }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const page = useSelector(rootSlice.page);
   const menu = useSelector(rootSlice.menu);
@@ -44,7 +44,7 @@ export const Menu: React.FC<PropType> = ({ user }) => {
     if (p === page) {
       return;
     }
-    history.push(p === "user" ? `/user/${user.uid}` : `/${p}`);
+    navigate(p === "user" ? `/user/${user.uid}` : `/${p}`);
     control && dispatch(rootSlice.handleMenu("close"));
 
     window.scrollTo(0, 0);

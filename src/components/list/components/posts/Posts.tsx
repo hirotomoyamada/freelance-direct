@@ -8,7 +8,7 @@ import { User } from "types/user";
 
 interface PropType {
   user: User;
-  posts: Matter[] | Company[];
+  posts: (Matter | undefined)[] | (Company | undefined)[];
   list: React.RefObject<HTMLDivElement>;
   index?: "matters" | "companys" | "enable" | "hold" | "disable";
   select?: string[];

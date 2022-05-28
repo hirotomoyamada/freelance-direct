@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import styles from "./Delete.module.scss";
 
 interface PropType {
@@ -16,6 +17,8 @@ export const Delete: React.FC<PropType> = ({
   handleDelete,
   block,
 }) => {
+  const [load, setLoad] = useState<boolean>(false);
+
   return (
     <div className={styles.delete}>
       {text !== "出力" && (
@@ -42,9 +45,20 @@ export const Delete: React.FC<PropType> = ({
           form="form"
           type={handleDelete ? "button" : "submit"}
           className={styles.delete_menu_submit}
-          onClick={handleDelete ? handleDelete : undefined}
+          onClick={() => {
+            setLoad(true);
+            if (handleDelete) handleDelete();
+          }}
         >
-          {block ? "ブロック" : text !== "出力" ? "削除" : "すべて削除する"}
+          {load ? (
+            <ThreeDots color="#FFF" height={24} width={24} />
+          ) : block ? (
+            "ブロック"
+          ) : text !== "出力" ? (
+            "削除"
+          ) : (
+            "すべて削除する"
+          )}
         </button>
       </div>
     </div>

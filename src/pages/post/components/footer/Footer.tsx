@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Footer.module.scss";
-import Loader from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,7 @@ import { User } from "types/user";
 
 interface PropType {
   post: Matter;
-  posts: Matter[];
+  posts: (Matter | undefined)[];
   user: User;
 }
 
@@ -30,7 +30,7 @@ export const Footer: React.FC<PropType> = ({ post, posts, user }) => {
         <Item user={user} post={post?.user} none />
       ) : (
         <div className={styles.side_load}>
-          <Loader type="Grid" color="#1d9bf0" height={32} width={32} />
+          <Grid color="#1d9bf0" height={32} width={32} />
         </div>
       )}
 
@@ -59,7 +59,7 @@ export const Footer: React.FC<PropType> = ({ post, posts, user }) => {
           )
         ) : load ? (
           <div className={styles.side_load}>
-            <Loader type="Grid" color="#1d9bf0" height={32} width={32} />
+            <Grid color="#1d9bf0" height={32} width={32} />
           </div>
         ) : (
           <span className={styles.side_desc}>

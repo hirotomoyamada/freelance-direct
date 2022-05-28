@@ -38,11 +38,23 @@ $width: responsive-width(pc);
     position: relative;
   }
 
+  &_btn {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    @media (max-width: responsive-width(sp)) {
+      gap: 8px;
+    }
+  }
+
   &_icon {
     color: $icn_clr;
 
+    font-size: 22px !important;
+
     @media (max-width: responsive-width(sp)) {
-      font-size: 20px !important;
+      font-size: 18px !important;
     }
 
     &_like {
@@ -58,6 +70,23 @@ $width: responsive-width(pc);
 
     &_entry {
       color: $acnt_clr;
+    }
+  }
+
+  &_count {
+    display: block;
+    margin-top: 2px;
+
+    color: $icn_clr;
+    font-size: 16px;
+
+    @media (max-width: responsive-width(sp)) {
+      margin-top: 2px;
+      font-size: 12px;
+    }
+
+    &_like {
+      color: $like_clr;
     }
   }
 }

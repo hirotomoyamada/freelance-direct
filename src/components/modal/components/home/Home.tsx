@@ -51,7 +51,7 @@ export const Home: React.FC<PropType> = ({ user, handleClose }) => {
         homePosts({
           index: "companys",
           follows: user.follows,
-          fetch: posts?.length ? true : false,
+          pend: posts?.length ? true : false,
         })
       );
   }, [dispatch, posts, user.follows, user.uid]);

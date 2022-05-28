@@ -1,10 +1,8 @@
 import styles from "./Profile.module.scss";
 
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
-
-import * as userSlice from "features/user/userSlice";
 
 import { Header } from "./components/header/Header";
 import { Cover } from "./components/cover/Cover";
@@ -13,6 +11,9 @@ import { Form } from "./components/form/Form";
 
 import * as functions from "functions";
 import { User } from "types/user";
+import { editProfile } from "features/user/actions";
+import { Grid } from "react-loader-spinner";
+import * as rootSlice from "features/root/rootSlice";
 
 interface PropType {
   user: User;
@@ -54,6 +55,7 @@ export type Data = {
 
 export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
   const dispatch = useDispatch();
+  const fetch = useSelector(rootSlice.load).fetch;
   const [cover, setCover] = useState(false);
   const [icon, setIcon] = useState(false);
 
@@ -116,7 +118,9 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
       costs: {
         min: user?.profile?.costs.min ? user?.profile?.costs.min : null,
         max: user?.profile?.costs.max ? user?.profile?.costs.max : null,
-        display: user?.profile?.costs.display ? user?.profile?.costs.display : "private",
+        display: user?.profile?.costs.display
+          ? user?.profile?.costs.display
+          : "private",
         type: user?.profile?.costs.type ? user?.profile?.costs.type : "応談",
       },
     },
@@ -133,7 +137,7 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
       ...functions.formatting.profile(data),
     };
 
-    dispatch(userSlice.editProfile(profile));
+    dispatch(editProfile(profile));
   };
 
   return (
@@ -144,23 +148,37 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
       >
         <Header
           user={user}
+          fetch={fetch}
           handleClose={handleClose}
           handleBack={handleBack}
           cover={cover}
           icon={icon}
         />
 
-        {cover ? (
-          <Cover />
-        ) : icon ? (
-          <Icon />
-        ) : (
-          <Form
-            cover={cover}
-            icon={icon}
-            setCover={setCover}
-            setIcon={setIcon}
-          />
+        {(() => {
+          switch (true) {
+            case cover:
+              return <Cover />;
+
+            case icon:
+              return <Icon />;
+
+            default:
+              return (
+                <Form
+                  cover={cover}
+                  icon={icon}
+                  setCover={setCover}
+                  setIcon={setIcon}
+                />
+              );
+          }
+        })()}
+
+        {fetch && (
+          <div className={styles.profile_fetch}>
+            <Grid color="#1d9bf0" height={56} width={56} />
+          </div>
         )}
       </form>
     </FormProvider>

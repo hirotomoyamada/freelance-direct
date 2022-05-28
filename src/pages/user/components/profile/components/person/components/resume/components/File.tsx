@@ -2,7 +2,7 @@ import React from "react";
 import root from "../../../Person.module.scss";
 import styles from "../Resume.module.scss";
 
-import Loader from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 
@@ -53,7 +53,7 @@ export const File: React.FC<PropType> = ({ user, file, handleDelete }) => {
           </div>
         ) : load ? (
           <div className={`${styles.resume_file} ${styles.resume_file_load}`}>
-            <Loader type="Grid" color="#1d9bf0" height={36} width={36} />
+            <Grid color="#1d9bf0" height={36} width={36} />
           </div>
         ) : (
           <label

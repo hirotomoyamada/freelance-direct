@@ -32,7 +32,7 @@ export const Agree: React.FC<PropType> = ({ user }) => {
       <div className={styles.agree_body}>{agree?.body}</div>
 
       <div className={styles.agree_link}>
-        <Link to={{ pathname: "/terms", state: { setting: true } }}>
+        <Link to={"/terms"} state={{ setting: true }}>
           利用規約
         </Link>
       </div>

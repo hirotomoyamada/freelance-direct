@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Page.module.scss";
 import root from "../Setting.module.scss";
 
@@ -6,6 +6,7 @@ import { useFormContext } from "react-hook-form";
 import { useScrollController } from "hooks/useScrollController";
 import { User } from "types/user";
 import { Data } from "../Setting";
+import { ThreeDots } from "react-loader-spinner";
 
 interface PropType {
   next: boolean;
@@ -14,6 +15,8 @@ interface PropType {
 }
 
 export const Email: React.FC<PropType> = ({ next, user, setReset }) => {
+  const [load, setLoad] = useState<boolean>(false);
+
   useScrollController();
 
   const {
@@ -33,7 +36,9 @@ export const Email: React.FC<PropType> = ({ next, user, setReset }) => {
       <div>
         <input
           type="password"
-          className={`${styles.input} ${errors?.password && styles.input_error}`}
+          className={`${styles.input} ${
+            errors?.password && styles.input_error
+          }`}
           placeholder="現在のパスワード"
           {...register("password", {
             required: {
@@ -93,8 +98,12 @@ export const Email: React.FC<PropType> = ({ next, user, setReset }) => {
         <span className={styles.error}>{errors?.email?.message}</span>
       </div>
 
-      <button type="submit" className={root.setting_btn}>
-        変更する
+      <button
+        type="submit"
+        className={root.setting_btn}
+        onClick={() => setLoad(true)}
+      >
+        {load ? <ThreeDots color="#FFF" height={24} width={24} /> : "変更する"}
       </button>
     </div>
   );

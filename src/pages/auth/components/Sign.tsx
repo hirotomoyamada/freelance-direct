@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../Auth.module.scss";
 
 import { useFormContext } from "react-hook-form";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -29,7 +29,7 @@ export const Sign: React.FC<PropType> = ({
   handleProvider,
   resize,
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -49,7 +49,7 @@ export const Sign: React.FC<PropType> = ({
       <button
         className={styles.auth_btn_back}
         type="button"
-        onClick={() => history.push("/")}
+        onClick={() => navigate("/")}
       >
         トップページにもどる
       </button>
@@ -146,9 +146,7 @@ export const Sign: React.FC<PropType> = ({
           )}
 
           {errors?.password?.message && (
-            <span className={styles.auth_error}>
-              {errors.password.message}
-            </span>
+            <span className={styles.auth_error}>{errors.password.message}</span>
           )}
         </div>
       )}
@@ -163,7 +161,7 @@ export const Sign: React.FC<PropType> = ({
             パスワードをお忘れですか？
           </button>
         )}
-        
+
         <button
           type="button"
           className={`${styles.auth_desc} ${styles.auth_desc_sign}`}

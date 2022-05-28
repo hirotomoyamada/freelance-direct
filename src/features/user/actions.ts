@@ -5,6 +5,7 @@ import { httpsCallable, HttpsCallable } from "firebase/functions";
 
 import { Company } from "types/post";
 import { User, Data } from "types/user";
+import { Profile } from "features/user/userSlice";
 
 export interface Login {
   req: {
@@ -23,15 +24,15 @@ export interface Login {
 
 export const login = createAsyncThunk(
   "user/login",
-  async (org: CurrentUser): Promise<Login["data"]> => {
+  async (arg: CurrentUser): Promise<Login["data"]> => {
     const login: HttpsCallable<Login["req"], Login["data"]> = httpsCallable(
       functions,
       "fd-login"
     );
 
     const { data } = await login({
-      emailVerified: org.emailVerified,
-      providerData: org.providerData,
+      emailVerified: arg.emailVerified,
+      providerData: arg.providerData,
     });
 
     return data;
@@ -50,7 +51,7 @@ export interface CreateProfile {
     type: string;
     agree: string;
     provider: string;
-    fetch: boolean;
+    pend: boolean;
   };
 
   data: {
@@ -60,13 +61,13 @@ export interface CreateProfile {
 
 export const createProfile = createAsyncThunk(
   "user/createProfile",
-  async (org: CreateProfile["arg"]): Promise<void> => {
+  async (arg: CreateProfile["arg"]): Promise<void> => {
     const createProfile: HttpsCallable<
       CreateProfile["arg"],
       CreateProfile["data"]
     > = httpsCallable(functions, "fd-createProfile");
 
-    await createProfile(org).then(async ({ data }) => {
+    await createProfile(arg).then(async ({ data }) => {
       if (auth.currentUser) {
         await updateProfile(auth.currentUser, {
           displayName: data.displayName,
@@ -76,11 +77,24 @@ export const createProfile = createAsyncThunk(
   }
 );
 
+export const editProfile = createAsyncThunk(
+  "user/editProfile",
+  async (arg: Profile): Promise<Profile> => {
+    const editProfile: HttpsCallable<Profile, unknown> = httpsCallable(
+      functions,
+      "fd-editProfile"
+    );
+
+    await editProfile(arg);
+
+    return arg;
+  }
+);
+
 export interface UploadResume {
-  org: {
+  arg: {
     type: string;
     file: string;
-    fetch?: true;
   };
 
   data: string;
@@ -88,13 +102,13 @@ export interface UploadResume {
 
 export const uploadResume = createAsyncThunk(
   "user/uploadResume",
-  async (org: UploadResume["org"]): Promise<UploadResume["data"]> => {
+  async (arg: UploadResume["arg"]): Promise<UploadResume["data"]> => {
     const uploadResume: HttpsCallable<
-      UploadResume["org"],
+      UploadResume["arg"],
       UploadResume["data"]
     > = httpsCallable(functions, "fd-uploadResume");
 
-    const { data } = await uploadResume({ type: org.type, file: org.file });
+    const { data } = await uploadResume({ type: arg.type, file: arg.file });
 
     return data;
   }
@@ -102,13 +116,13 @@ export const uploadResume = createAsyncThunk(
 
 export const fetchUser = createAsyncThunk(
   "user/fetchUser",
-  async (org: string): Promise<Company> => {
+  async (arg: string): Promise<Company> => {
     const fetchUser: HttpsCallable<string, Company> = httpsCallable(
       functions,
       "fd-fetchUser"
     );
 
-    const { data } = await fetchUser(org);
+    const { data } = await fetchUser(arg);
 
     return data;
   }

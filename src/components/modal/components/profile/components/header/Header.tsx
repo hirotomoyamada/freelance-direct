@@ -1,9 +1,11 @@
 import React from "react";
+import { ThreeDots } from "react-loader-spinner";
 import { User } from "types/user";
 import styles from "./Header.module.scss";
 
 interface PropType {
   user: User;
+  fetch?: boolean;
   handleClose: () => void;
   handleBack: () => void;
   cover: boolean;
@@ -12,6 +14,7 @@ interface PropType {
 
 export const Header: React.FC<PropType> = ({
   user,
+  fetch,
   handleClose,
   handleBack,
   cover,
@@ -31,9 +34,10 @@ export const Header: React.FC<PropType> = ({
       >
         {cover || icon ? "保存" : "キャンセル"}
       </button>
+
       {!cover && !icon && (
         <button className={styles.header_submit} type="submit">
-          保存
+          {fetch ? <ThreeDots color="#FFF" height={24} width={24} /> : "保存"}
         </button>
       )}
     </div>
