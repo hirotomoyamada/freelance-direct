@@ -19,7 +19,7 @@ export const fetchPosts = (
     state.search[action.payload.index].posts = [
       ...state.search[action.payload.index].posts,
       ...action.payload.posts,
-    ] as Matter[] | Company[];
+    ] as (Matter | undefined)[] | (Company | undefined)[];
   } else {
     state.search[action.payload.index].posts = action.payload.posts;
   }
@@ -40,9 +40,12 @@ export const extractPosts = (
       state[action.payload.type].posts = [
         ...state[action.payload.type].posts,
         ...action.payload.posts,
-      ] as Matter[];
+      ] as (Matter | undefined)[];
     } else {
-      state[action.payload.type].posts = action.payload.posts as Matter[];
+      state[action.payload.type].posts = action.payload.posts as (
+        | Matter
+        | undefined
+      )[];
     }
 
     state[action.payload.type].hit = {
@@ -62,10 +65,10 @@ export const extractPosts = (
         state[action.payload.type][action.payload.index].posts = [
           ...state[action.payload.type][action.payload.index].posts,
           ...action.payload.posts,
-        ] as Company[];
+        ] as (Company | undefined)[];
       } else {
         state[action.payload.type][action.payload.index].posts = action.payload
-          .posts as Company[];
+          .posts as (Company | undefined)[];
       }
 
       state[action.payload.type][action.payload.index].hit = {
@@ -85,7 +88,7 @@ export const homePosts = (
     state.home[action.payload.index].posts = [
       ...state.home[action.payload.index].posts,
       ...action.payload.posts,
-    ] as Matter[] | Company[];
+    ] as (Matter | undefined)[] | (Company | undefined)[];
   } else {
     state.home[action.payload.index].posts = action.payload.posts;
 
@@ -103,7 +106,7 @@ export const homePosts = (
 
 export const promotionPosts = (
   state: State,
-  action: PayloadAction<Matter[]>
+  action: PayloadAction<(Matter | undefined)[]>
 ): void => {
   state.search.matters.posts = action.payload;
 };
@@ -137,7 +140,7 @@ export const fetchPost = (
       state.histories.posts = [
         action.payload.post,
         ...state.histories.posts.filter(
-          (post) => post.objectID !== action.payload.post.objectID
+          (post) => post && post.objectID !== action.payload.post.objectID
         ),
       ];
     }
@@ -210,6 +213,62 @@ export const addLike = (state: State, action: PayloadAction<Matter>): void => {
   if (state.likes.posts.length) {
     state.likes.posts = [action.payload, ...state.likes.posts];
   }
+
+  Object.keys(state).forEach((posts): void => {
+    let post: Matter | undefined;
+
+    switch (posts) {
+      case "requests":
+        break;
+
+      case "search":
+      case "home": {
+        post = state[posts].matters.posts.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      case "post": {
+        if ("objectID" in (state.post as Matter)) {
+          post = state.post as Matter;
+        }
+
+        break;
+      }
+
+      case "bests": {
+        post = state.bests.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      case "user":
+      case "likes":
+      case "entries":
+      case "histories": {
+        post = state[posts].posts.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      default:
+        break;
+    }
+
+    if (post) {
+      if (post.likes) {
+        post.likes += 1;
+      } else {
+        Object.assign(post, { likes: 1 });
+      }
+    }
+  });
 };
 
 export const removeLike = (
@@ -217,8 +276,60 @@ export const removeLike = (
   action: PayloadAction<Matter>
 ): void => {
   state.likes.posts = state.likes.posts.filter(
-    (post) => post.objectID !== action.payload.objectID
+    (post) => post && post.objectID !== action.payload.objectID
   );
+
+  Object.keys(state).forEach((posts): void => {
+    let post: Matter | undefined;
+
+    switch (posts) {
+      case "requests":
+        break;
+
+      case "search":
+      case "home": {
+        post = state[posts].matters.posts.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      case "post": {
+        if ("objectID" in (state.post as Matter)) {
+          post = state.post as Matter;
+        }
+
+        break;
+      }
+
+      case "bests": {
+        post = state.bests.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      case "user":
+      case "likes":
+      case "entries":
+      case "histories": {
+        post = state[posts].posts.find(
+          (post) => post?.objectID === action.payload.objectID
+        );
+
+        break;
+      }
+
+      default:
+        break;
+    }
+
+    if (post && post.likes) {
+      post.likes -= 1;
+    }
+  });
 };
 
 export const addEntry = (state: State, action: PayloadAction<Matter>): void => {
@@ -243,11 +354,11 @@ export const removeFollow = (
   action: PayloadAction<Company>
 ): void => {
   state.home.companys.posts = state.home.companys.posts.filter(
-    (post) => post.uid !== action.payload.uid
+    (post) => post && post.uid !== action.payload.uid
   );
 
   state.home.matters.posts = state.home.matters.posts.filter(
-    (post) => post.uid !== action.payload.uid
+    (post) => post && post.uid !== action.payload.uid
   );
 };
 
@@ -267,7 +378,7 @@ export const enableRequest = (
 
     if (type === "hold" || type === "disable") {
       state.requests[type].posts = state.requests[type].posts.filter(
-        (user) => user.uid !== action.payload.uid
+        (user) => user && user.uid !== action.payload.uid
       );
     }
   });
@@ -289,7 +400,7 @@ export const disableRequest = (
 
     if (type === "hold" || type === "enable") {
       state.requests[type].posts = state.requests[type].posts.filter(
-        (user) => user.uid !== action.payload.uid
+        (user) => user && user.uid !== action.payload.uid
       );
     }
   });
@@ -298,12 +409,3 @@ export const disableRequest = (
 export const resetControl = (state: State): void => {
   state.home.matters.control = true;
 };
-
-// memo
-// export const load = (state: State) => {
-//   state.load = true;
-// };
-
-// export const fetch = (state: State) => {
-//   state.fetch = true;
-// };

@@ -60,6 +60,7 @@ export interface Matter {
       status: string;
     };
   };
+  likes?: number;
 }
 
 export interface Company {
@@ -67,6 +68,7 @@ export interface Company {
   icon: string;
   cover: string;
   type: string;
+  status?: string;
   payment: { status: string };
   profile: {
     name: string;
@@ -87,6 +89,4 @@ export interface Company {
     };
   };
   createAt: number;
-
-  status?: string | null;
 }

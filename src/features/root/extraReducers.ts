@@ -29,7 +29,7 @@ export const extraReducers = (
     (
       state,
       action: ArgAction<{
-        fetch?: boolean;
+        pend?: boolean;
       }>
     ) => {
       if (action.type.includes("/login/")) {
@@ -38,7 +38,12 @@ export const extraReducers = (
         return;
       }
 
-      state.load.fetch = action.meta.arg.fetch ? true : false;
+      if (action.meta.arg.pend) {
+        state.load.pend = true;
+      } else {
+        state.load.fetch = true;
+      }
+
       state.load.list = true;
     }
   );
@@ -98,16 +103,21 @@ export const extraReducers = (
       }
 
       if (
-        (action.type.includes("/fetchPosts/") ||
+        (action.type.includes("/editProfile/") ||
+          action.type.includes("/fetchPosts/") ||
+          action.type.includes("/fetchPosts/") ||
           action.type.includes("/extractPosts/") ||
           action.type.includes("/homePosts/") ||
           action.type.includes("/promotionPosts/") ||
           action.type.includes("/userPosts/")) &&
-        (!state.modal.open || state.modal.type === "home")
+        (!state.modal.open ||
+          state.modal.type === "home" ||
+          state.modal.type === "profile")
       ) {
         state.announce.error = action.error.message;
       }
 
+      state.load.pend = false;
       state.load.fetch = false;
       state.load.list = false;
     }
@@ -139,6 +149,7 @@ export const extraReducers = (
         state.search.control = true;
       }
 
+      state.load.pend = false;
       state.load.fetch = false;
       state.load.list = false;
     }
@@ -146,10 +157,10 @@ export const extraReducers = (
 
   builder.addMatcher(
     (action: PayloadAction) =>
-      action.type.endsWith("/editProfile") ||
       action.type.endsWith("/deleteResume") ||
       action.type.endsWith("/disableRequest") ||
-      action.type.endsWith("/updateHome"),
+      action.type.endsWith("/updateHome") ||
+      action.type.endsWith("/editProfile/fulfilled"),
     (state) => reducers.modal(state)
   );
 

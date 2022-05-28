@@ -69,7 +69,8 @@ export const Main: React.FC<PropType> = ({
         </Link>
 
         <Link
-          to={{ pathname: "/terms", state: { setting: true } }}
+          to={"/terms"}
+          state={{ setting: true }}
           className={styles.main_link}
         >
           利用規約

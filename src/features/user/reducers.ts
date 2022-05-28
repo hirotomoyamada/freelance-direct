@@ -155,12 +155,10 @@ export const addLike = (state: State, action: PayloadAction<Matter>): void => {
     ...(state.user as User).likes,
   ];
 
-  const addLike: HttpsCallable<string, unknown> = httpsCallable(
-    functions,
-    "fd-addLike"
-  );
+  const addLike: HttpsCallable<{ objectID: string; uid: string }, unknown> =
+    httpsCallable(functions, "fd-addLike");
 
-  void addLike(action.payload.objectID);
+  void addLike({ objectID: action.payload.objectID, uid: action.payload.uid });
 };
 
 export const removeLike = (
@@ -171,12 +169,13 @@ export const removeLike = (
     (objectID) => objectID !== action.payload.objectID
   );
 
-  const removeLike: HttpsCallable<string, unknown> = httpsCallable(
-    functions,
-    "fd-removeLike"
-  );
+  const removeLike: HttpsCallable<{ objectID: string; uid: string }, unknown> =
+    httpsCallable(functions, "fd-removeLike");
 
-  void removeLike(action.payload.objectID);
+  void removeLike({
+    objectID: action.payload.objectID,
+    uid: action.payload.uid,
+  });
 };
 
 export const addEntry = (state: State, action: PayloadAction<Matter>): void => {
@@ -185,12 +184,10 @@ export const addEntry = (state: State, action: PayloadAction<Matter>): void => {
     ...(state.user as User).entries,
   ];
 
-  const addEntry: HttpsCallable<string, unknown> = httpsCallable(
-    functions,
-    "fd-addEntry"
-  );
+  const addEntry: HttpsCallable<{ objectID: string; uid: string }, unknown> =
+    httpsCallable(functions, "fd-addEntry");
 
-  void addEntry(action.payload.objectID);
+  void addEntry({ objectID: action.payload.objectID, uid: action.payload.uid });
 };
 
 export const addFollow = (

@@ -42,6 +42,7 @@ export interface State {
 
   load: {
     root: boolean;
+    pend: boolean;
     list: boolean;
     fetch: boolean;
   };
@@ -90,6 +91,7 @@ export const initialState: State = {
 
   load: {
     root: true,
+    pend: false,
     list: false,
     fetch: false,
   },

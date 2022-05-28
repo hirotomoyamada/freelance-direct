@@ -1,6 +1,6 @@
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import { useApp } from "hooks/useApp";
 
@@ -33,6 +33,7 @@ import { Contact } from "pages/contact/Contact";
 
 export const App: React.FC = () => {
   const [user, access, support, control] = useApp();
+
   switch (support) {
     case true:
       return (
@@ -41,67 +42,82 @@ export const App: React.FC = () => {
             <Meta />
 
             <load.Root />
-            <load.Fetch />
-
+            <load.Pending />
             <Announce />
-
             <NotFound />
             <Maintenance />
-
             <Modal />
 
-            {!user.uid ? (
-              <Switch>
-                <Route exact path={["/", "/option"]} component={Promotion} />
-                <Route exact path="/login" component={Auth} />
-                <Route exact path="/signup" component={Auth} />
+            {(() => {
+              switch (true) {
+                case !user?.uid:
+                  return (
+                    <Routes>
+                      <Route index element={<Promotion />} />
+                      <Route path="/option" element={<Promotion />} />
+                      <Route path="/login" element={<Auth />} />
+                      <Route path="/signup" element={<Auth />} />
 
-                <Route exact path="/contact" component={Contact} />
-                <Route exact path="/terms" component={Terms} />
+                      <Route path="/contact" element={<Contact />} />
+                      <Route path="/terms" element={<Terms />} />
 
-                {!access && (
-                  <>
-                    <Redirect path="/home" to="/login" />
-                    <Redirect path="/search" to="/login" />
-                    <Redirect path="/post" to="/login" />
-                    <Redirect path="/user" to="/login" />
-                    <Redirect path="/setting" to="/login" />
-                    <Route component={NotFound} />
-                  </>
-                )}
-              </Switch>
-            ) : (
-              <div className="main">
-                <Menu user={user} />
+                      {!access ? (
+                        <Route
+                          path="*"
+                          element={<Navigate to="/login" replace />}
+                        />
+                      ) : (
+                        <Route path="*" element={<></>} />
+                      )}
+                    </Routes>
+                  );
 
-                <Switch>
-                  <Redirect exact path="/login" to="/" />
-                  <Redirect exact path="/signup" to="/" />
-                  <Redirect exact path="/option" to="/" />
+                default:
+                  return (
+                    <div className="main">
+                      <Menu user={user} />
 
-                  <Route exact path={["/", "/home"]} component={Home} />
+                      <Routes>
+                        <Route
+                          path="/login"
+                          element={<Navigate to="/" replace />}
+                        />
+                        <Route
+                          path="/signup"
+                          element={<Navigate to="/" replace />}
+                        />
+                        <Route
+                          path="/option"
+                          element={<Navigate to="/" replace />}
+                        />
 
-                  <Route exact path="/home" component={Home} />
-                  <Route exact path="/search" component={Search} />
-                  <Route exact path="/setting" component={Setting} />
+                        <Route index element={<Home />} />
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/home/:index" element={<Home />} />
+                        <Route path="/search" element={<Search />} />
+                        <Route path="/search/:index" element={<Search />} />
+                        <Route path="/setting" element={<Setting />} />
 
-                  <Route exact path="/howto" component={HowTo} />
-                  <Route exact path="/terms" component={Terms} />
+                        <Route path="/terms" element={<Terms />} />
+                        <Route path="/howto" element={<HowTo />} />
 
-                  <Route exact path="/:list" component={List} />
+                        <Route path="/user/:uid" element={<User />} />
+                        <Route path="/post/:objectID" element={<Post />} />
 
-                  <Route exact path="/post/:objectID" component={Post} />
-                  <Route exact path="/user/:uid" component={User} />
+                        <Route path="/:list" element={<List />} />
 
-                  <Route component={NotFound} />
-                </Switch>
+                        <Route path="*" element={<NotFound />} />
+                      </Routes>
 
-                {control && <Overlay />}
-              </div>
-            )}
+                      {control && <Overlay />}
+                    </div>
+                  );
+              }
+            })()}
           </BrowserRouter>
         </HelmetProvider>
       );
+
     default:
       return <NotSupported />;
   }

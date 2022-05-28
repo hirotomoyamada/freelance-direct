@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Page.module.scss";
 import root from "../Setting.module.scss";
 
@@ -6,8 +6,11 @@ import { useFormContext } from "react-hook-form";
 import { useScrollController } from "hooks/useScrollController";
 
 import { Data } from "../Setting";
+import { ThreeDots } from "react-loader-spinner";
 
 export const Create: React.FC = () => {
+  const [load, setLoad] = useState<boolean>(false);
+
   useScrollController();
 
   const {
@@ -70,7 +73,9 @@ export const Create: React.FC = () => {
       <div>
         <input
           type="password"
-          className={`${styles.input} ${errors?.password && styles.input_error}`}
+          className={`${styles.input} ${
+            errors?.password && styles.input_error
+          }`}
           placeholder="パスワード確認"
           {...register("password", {
             required: {
@@ -94,8 +99,16 @@ export const Create: React.FC = () => {
         <span className={styles.error}>{errors?.password?.message}</span>
       </div>
 
-      <button type="submit" className={root.setting_btn}>
-        有効にする
+      <button
+        type="submit"
+        className={root.setting_btn}
+        onClick={() => setLoad(true)}
+      >
+        {load ? (
+          <ThreeDots color="#FFF" height={24} width={24} />
+        ) : (
+          "有効にする"
+        )}
       </button>
     </div>
   );

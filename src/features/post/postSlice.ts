@@ -36,7 +36,7 @@ export const posts = ({
     | "histories"
     | "requests"
     | "user";
-}): Matter[] | Company[] | undefined => {
+}): (Matter | undefined)[] | (Company | undefined)[] | undefined => {
   if (index) {
     if (
       (index === "matters" || index === "companys") &&

@@ -1,20 +1,20 @@
 import React from "react";
 import styles from "./NotFound.module.scss";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import * as rootSlice from "features/root/rootSlice";
 
 export const NotFound: React.FC = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const notFound = useSelector(rootSlice.notFound);
 
   const handleHome = () => {
     dispatch(rootSlice.handleNotFound(false));
-    history.push("/");
+    navigate("/");
   };
 
   return notFound ? (

@@ -14,7 +14,7 @@ interface PropType {
   user: User;
   index?: "matters" | "companys" | "enable" | "hold" | "disable";
   type?: "likes" | "entries" | "requests" | "histories";
-  posts?: Matter[] | Company[];
+  posts?: (Matter | undefined)[] | (Company | undefined)[];
   search?: {
     value: string | null;
     target: string | null;
@@ -77,7 +77,7 @@ export const List: React.FC<PropType> = ({
         />
       )}
 
-      {hit?.pages && page < hit?.pages - 1 ? (
+      {hit?.pages && hit?.pages !== 1 && page < hit?.pages ? (
         <Load load={load} page={page} hit={hit} />
       ) : (
         <></>

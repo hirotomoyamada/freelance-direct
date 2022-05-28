@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Header.module.scss";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import * as rootSlice from "features/root/rootSlice";
@@ -48,7 +48,7 @@ export const Header: React.FC<PropType> = ({
   handleCancel,
 }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const info = useSelector(rootSlice.data)?.information;
 
@@ -67,7 +67,7 @@ export const Header: React.FC<PropType> = ({
   };
 
   const handleBack = (): void => {
-    history.goBack();
+    navigate(-1);
   };
 
   return !back || type === "setting" ? (

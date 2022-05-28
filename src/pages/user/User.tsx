@@ -1,10 +1,9 @@
 import React from "react";
 import styles from "./User.module.scss";
 
-import Loader from "react-loader-spinner";
-
+import { Grid } from "react-loader-spinner";
 import { useUser } from "hooks/useUser";
-import { RouteComponentProps } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { Meta } from "./Meta";
 
@@ -18,8 +17,8 @@ import { Back } from "./components/back/Back";
 
 import { Company } from "types/post";
 
-export const User: React.FC<RouteComponentProps<{ uid: string }>> = (props) => {
-  const uid = props.match.params.uid;
+export const User: React.FC = () => {
+  const { uid } = useParams<{ uid: string }>();
   const index = "matters";
 
   const [currentUser, user, posts, hit] = useUser(uid);
@@ -52,7 +51,7 @@ export const User: React.FC<RouteComponentProps<{ uid: string }>> = (props) => {
         </div>
       ) : (
         <div className={styles.user_load}>
-          <Loader type="Grid" color="#1d9bf0" height={56} width={56} />
+          <Grid color="#1d9bf0" height={56} width={56} />
         </div>
       )}
 

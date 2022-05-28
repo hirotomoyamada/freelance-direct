@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Item.module.scss";
 
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import * as rootSlice from "features/root/rootSlice";
 
@@ -34,11 +34,11 @@ export const Item: React.FC<PropType> = ({
   none,
 }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleOpen = (index: "user" | "post"): void => {
     dispatch(rootSlice.handleSearch({ control: true }));
-    history.push(
+    navigate(
       `/${index}/${
         index === "post"
           ? (post as PostType.Matter)?.objectID
@@ -61,6 +61,7 @@ export const Item: React.FC<PropType> = ({
       ) : (
         <Request index={index} user={post as PostType.Company} />
       )}
+
       {index === "matters" ? (
         <button
           type="button"
@@ -80,7 +81,7 @@ export const Item: React.FC<PropType> = ({
           className={`${styles.item_btn} ${
             (!post?.uid ||
               select ||
-              ("type" in post && post.type === "none")) &&
+              ("status" in post && post.status === "none")) &&
             styles.item_btn_disable
           }`}
         >
