@@ -61,4 +61,10 @@ $width: responsive-width(pc);
       opacity: 0.8;
     }
   }
+
+  &_none {
+    color: $sub_clr;
+    border: 1px solid $sub_clr;
+    pointer-events: none;
+  }
 }
