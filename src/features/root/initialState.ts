@@ -98,5 +98,5 @@ export const initialState: State = {
 
   notFound: false,
 
-  ver: "1.2.0",
+  ver: "1.3.0",
 };
