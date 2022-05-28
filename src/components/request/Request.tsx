@@ -33,7 +33,9 @@ export const Request: React.FC<PropType> = ({ index, user }) => {
     return (
       <button
         type="button"
-        className={`${styles.request_btn} ${styles.request_enable}`}
+        className={`${styles.request_btn} ${styles.request_enable} ${
+          user.type === "none" && styles.request_none
+        }`}
         onClick={handleEnable}
       >
         承認する

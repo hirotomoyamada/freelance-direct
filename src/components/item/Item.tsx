@@ -81,7 +81,7 @@ export const Item: React.FC<PropType> = ({
           className={`${styles.item_btn} ${
             (!post?.uid ||
               select ||
-              ("status" in post && post.status === "none")) &&
+              ("type" in post && post.type === "none")) &&
             styles.item_btn_disable
           }`}
         >
