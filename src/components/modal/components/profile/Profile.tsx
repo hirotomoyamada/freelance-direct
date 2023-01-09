@@ -1,19 +1,19 @@
-import styles from "./Profile.module.scss";
+import styles from './Profile.module.scss';
 
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 
-import { Header } from "./components/header/Header";
-import { Cover } from "./components/cover/Cover";
-import { Icon } from "./components/icon/Icon";
-import { Form } from "./components/form/Form";
+import { Header } from './components/header/Header';
+import { Cover } from './components/cover/Cover';
+import { Icon } from './components/icon/Icon';
+import { Form } from './components/form/Form';
 
-import * as functions from "functions";
-import { User } from "types/user";
-import { editProfile } from "features/user/actions";
-import { Grid } from "react-loader-spinner";
-import * as rootSlice from "features/root/rootSlice";
+import * as functions from 'functions';
+import { User } from 'types/user';
+import { editProfile } from 'features/user/actions';
+import { Grid } from 'react-loader-spinner';
+import * as rootSlice from 'features/root/rootSlice';
 
 interface PropType {
   user: User;
@@ -48,10 +48,61 @@ export type Data = {
   costs: {
     min: number | null;
     max: number | null;
-    display: "public" | "private";
+    display: 'public' | 'private';
     type: string;
   };
 };
+
+const positions = [
+  'フロントエンドエンジニア',
+  'バックエンドエンジニア',
+  'サーバーエンジニア',
+  'ブロックチェーンエンジニア',
+  'インフラエンジニア',
+  'データベースエンジニア',
+  'クラウドエジニア',
+  'ネットワークエンジニア',
+  'セキュリティエンジニア',
+  'リードエンジニア',
+  'システムエンジニア',
+  '社内SE',
+  'アプリエンジニア',
+  'iOSエンジニア',
+  'Androidエンジニア',
+  '機械学習エンジニア',
+  'AIエンジニア(人工知能)',
+  '汎用機エンジニア',
+  'マークアップエンジニア',
+  'テストエンジニア',
+  'テスター・デバッガー・QA',
+  '組み込み・制御',
+  'データサイエンティスト',
+  'PdM',
+  'PM/PL',
+  'PMO',
+  'VPoE',
+  'CRE',
+  'SRE',
+  'エンジニアリングマネージャー',
+  'SAP',
+  'プロデューサー',
+  'コンサルタント',
+  'マーケター',
+  'Webディレクター',
+  'Webプランナー',
+  'Webデザイナー',
+  'UI・UXデザイナー',
+  'グラフィックデザイナー',
+  '3Dデザイナー',
+  '2Dデザイナー',
+  'キャラクターデザイナー',
+  'イラストレーター',
+  'アートディレクター',
+  'ゲームプランナー',
+  'ゲームデザイナー',
+  'サポート',
+  'その他',
+];
 
 export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
   const dispatch = useDispatch();
@@ -65,12 +116,13 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
       cover: user?.cover,
       name: user?.profile?.name,
       email: user?.profile?.email,
-
       nickName: user?.profile?.nickName ? user.profile.nickName : undefined,
       body: user?.profile?.body,
       age: user?.profile?.age,
       sex: user?.profile?.sex,
-      position: user?.profile?.position,
+      position: positions.includes(user?.profile?.position)
+        ? user?.profile?.position
+        : undefined,
       location: user?.profile?.location,
       period: {
         year: user?.profile?.period?.year
@@ -112,16 +164,16 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
           }))
         : [{ url: undefined }],
 
-      resident: user?.profile?.resident ? user?.profile?.resident : "常駐可",
+      resident: user?.profile?.resident ? user?.profile?.resident : '常駐可',
       working: user?.profile?.working ? user?.profile?.working : 3,
-      clothes: user?.profile?.clothes ? user?.profile?.clothes : "カジュアル",
+      clothes: user?.profile?.clothes ? user?.profile?.clothes : 'カジュアル',
       costs: {
         min: user?.profile?.costs.min ? user?.profile?.costs.min : null,
         max: user?.profile?.costs.max ? user?.profile?.costs.max : null,
         display: user?.profile?.costs.display
           ? user?.profile?.costs.display
-          : "private",
-        type: user?.profile?.costs.type ? user?.profile?.costs.type : "応談",
+          : 'private',
+        type: user?.profile?.costs.type ? user?.profile?.costs.type : '応談',
       },
     },
   });
@@ -144,8 +196,7 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
     <FormProvider {...methods}>
       <form
         className={styles.profile}
-        onSubmit={methods.handleSubmit(handleEdit)}
-      >
+        onSubmit={methods.handleSubmit(handleEdit)}>
         <Header
           user={user}
           fetch={fetch}
