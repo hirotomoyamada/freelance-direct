@@ -1,6 +1,6 @@
 // サイト共有の初期設定
-@import "styles/config";
-@import "styles/function";
+@import 'styles/config';
+@import 'styles/function';
 
 // ページのレスポンシブ設定
 $width: responsive-width(pc);
@@ -15,6 +15,34 @@ $width: responsive-width(pc);
   @media (max-width: responsive-width(sp)) {
     gap: 6px;
     margin-bottom: 12px;
+  }
+
+  &_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &_industry {
+    align-self: flex-start;
+    border: 1px solid $icn_clr;
+    color: $icn_clr;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 8px;
+
+    @media (max-width: responsive-width(sp)) {
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    &_txt {
+      font-size: 14px;
+
+      @media (max-width: responsive-width(sp)) {
+        font-size: 10px;
+      }
+    }
   }
 
   &_position {
