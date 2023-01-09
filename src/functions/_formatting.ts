@@ -1,13 +1,14 @@
-import { Data } from "components/modal/components/profile/Profile";
-import * as functions from "functions";
+import { Data } from 'components/modal/components/profile/Profile';
+import * as functions from 'functions';
 
-import { Matter } from "types/post";
+import { Matter } from 'types/post';
 
 export const entry = ({ post }: { post: Matter }): string => {
   const value = {
     createAt: `作成：${functions.root.timestamp(post?.createAt)}\n`,
-    title: `■ ${post.title ? post.title : "不明な案件"}\n`,
-    positon: `${post?.position}\n`,
+    title: `■ ${post.title ? post.title : '不明な案件'}\n`,
+    position: `${post?.position}\n`,
+    industry: `業界：${post?.industry ?? '不明'}`,
     period: `開始：${
       post.period && `${post?.period?.year}年 ${post?.period?.month}月`
     }`,
@@ -18,7 +19,7 @@ export const entry = ({ post }: { post: Matter }): string => {
     }`,
     adjustment: `精算：${post?.adjustment}\n`,
     costs: `単価：${
-      post?.costs?.display !== "public"
+      post?.costs?.display !== 'public'
         ? post?.costs?.type
         : post?.costs?.min
         ? `${post?.costs?.min}万 〜 ${post?.costs?.max}万`
@@ -29,11 +30,11 @@ export const entry = ({ post }: { post: Matter }): string => {
       post?.interviews && `${post?.interviews?.type} ${post?.interviews?.count}`
     }`,
   };
-  return `${value.createAt}\n${value.title}\n${value.positon}\n${value.period}\n${value.location}\n${value.remote}\n${value.times}\n${value.adjustment}\n${value.costs}\n${value.distribution}\n${value.interviews}`;
+  return `${value.createAt}\n${value.title}\n${value.position}\n${value.industry}\n${value.period}\n${value.location}\n${value.remote}\n${value.times}\n${value.adjustment}\n${value.costs}\n${value.distribution}\n${value.interviews}`;
 };
 
 export const profile = (
-  data: Data
+  data: Data,
 ): {
   icon: string;
   cover: string;
@@ -60,7 +61,7 @@ export const profile = (
   costs: {
     min: number | null;
     max: number | null;
-    display: "public" | "private";
+    display: 'public' | 'private';
     type: string;
   };
 } => {
