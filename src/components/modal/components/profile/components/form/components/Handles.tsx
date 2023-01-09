@@ -1,12 +1,12 @@
-import React from "react";
-import styles from "../Form.module.scss";
+import React from 'react';
+import styles from '../Form.module.scss';
 
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
-import { useFormContext, useFieldArray } from "react-hook-form";
+import { useFormContext, useFieldArray } from 'react-hook-form';
 
-import { Data } from "components/modal/components/profile/Profile";
+import { Data } from 'components/modal/components/profile/Profile';
 
 export const Handles: React.FC = () => {
   const {
@@ -21,7 +21,7 @@ export const Handles: React.FC = () => {
     remove: handlesRemove,
   } = useFieldArray({
     control,
-    name: "handles",
+    name: 'handles',
   });
 
   return (
@@ -31,26 +31,26 @@ export const Handles: React.FC = () => {
         {handlesFields.map((field, i) => (
           <div key={field.id} className={styles.form_item}>
             <input
-              placeholder="言語"
+              placeholder="言語・フレームワーク"
               className={`${styles.form_input} ${
                 errors.handles?.[i]?.handle && styles.form_input_error
               }`}
               {...register(`handles.${i}.handle` as const, {
                 required: i === 0 && {
                   value: true,
-                  message: "項目を入力してください",
+                  message: '項目を入力してください',
                 },
                 pattern: {
                   value: /^\S+/,
-                  message: "先頭にスペースは使えません",
+                  message: '先頭にスペースは使えません',
                 },
                 minLength: {
                   value: 2,
-                  message: "2文字以上で入力してください",
+                  message: '2文字以上で入力してください',
                 },
                 maxLength: {
                   value: 16,
-                  message: "16文字以内で入力してください",
+                  message: '16文字以内で入力してください',
                 },
               })}
             />
@@ -60,18 +60,16 @@ export const Handles: React.FC = () => {
                 <button
                   type="button"
                   className={styles.form_btn_remove}
-                  onClick={() => handlesRemove(i)}
-                >
+                  onClick={() => handlesRemove(i)}>
                   <RemoveIcon className={styles.form_btn_icon} />
                 </button>
               )}
-              
+
               {i === handlesFields.length - 1 && i < 7 && (
                 <button
                   type="button"
                   className={styles.form_btn_add}
-                  onClick={() => handlesAppend({ handle: "" })}
-                >
+                  onClick={() => handlesAppend({ handle: '' })}>
                   <AddIcon className={styles.form_btn_icon} />
                 </button>
               )}
