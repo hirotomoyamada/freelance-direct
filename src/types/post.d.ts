@@ -12,7 +12,7 @@ export interface Matter {
     month: number;
   };
   costs: {
-    display: "public" | "private";
+    display: 'public' | 'private';
     type: string;
     min?: number;
     max?: number;
@@ -30,6 +30,7 @@ export interface Matter {
   interviews: {
     type: string;
     count: string;
+    setting: string;
   };
   remote: string;
   distribution: string;
@@ -39,7 +40,7 @@ export interface Matter {
   createAt: number;
   updateAt?: number;
   status?: string;
-  display?: "public" | "private";
+  display?: 'public' | 'private';
   memo?: string;
   approval?: string;
   user?: {
