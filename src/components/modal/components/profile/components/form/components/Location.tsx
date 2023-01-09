@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "../Form.module.scss";
+import React from 'react';
+import styles from '../Form.module.scss';
 
-import { useFormContext } from "react-hook-form";
+import { useFormContext } from 'react-hook-form';
 
-import { Data } from "components/modal/components/profile/Profile";
+import { Data } from 'components/modal/components/profile/Profile';
 
 export const Location: React.FC = () => {
   const {
@@ -19,13 +19,12 @@ export const Location: React.FC = () => {
           className={`${styles.form_input} ${
             errors.location && styles.form_input_error
           }`}
-          {...register("location", {
+          {...register('location', {
             required: {
               value: true,
-              message: "エリアを選択してください",
+              message: 'エリアを選択してください',
             },
-          })}
-        >
+          })}>
           <option value="渋谷区">渋谷区</option>
           <option value="新宿区">新宿区</option>
           <option value="千代田区">千代田区</option>
@@ -49,6 +48,7 @@ export const Location: React.FC = () => {
           <option value="練馬区">練馬区</option>
           <option value="葛飾区">葛飾区</option>
           <option value="江戸川区">江戸川区</option>
+          <option value="23区内">23区内</option>
           <option value="23区外">23区外</option>
           <option value="神奈川県">神奈川県</option>
           <option value="千葉県">千葉県</option>
