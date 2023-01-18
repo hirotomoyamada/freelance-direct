@@ -1,23 +1,23 @@
-import React from "react";
-import styles from "./Main.module.scss";
-import { Grid } from "react-loader-spinner";
+import React from 'react';
+import styles from './Main.module.scss';
+import { Grid } from 'react-loader-spinner';
 
-import { useSelector } from "react-redux";
-import * as rootSlice from "features/root/rootSlice";
+import { useSelector } from 'react-redux';
+import * as rootSlice from 'features/root/rootSlice';
 
-import { Command } from "components/command/Command";
+import { Command } from 'components/command/Command';
 
-import { Header } from "./components/header/Header";
-import { Txt } from "./components/Txt";
-import { Feilds } from "./components/Feilds";
-import { Period } from "./components/Period";
-import { Costs } from "./components/Costs";
-import { Times } from "./components/Times";
-import { Interviews } from "./components/Interviews";
-import { Entry } from "./components/entry/Entry";
+import { Header } from './components/header/Header';
+import { Txt } from './components/Txt';
+import { Feilds } from './components/Feilds';
+import { Period } from './components/Period';
+import { Costs } from './components/Costs';
+import { Times } from './components/Times';
+import { Interviews } from './components/Interviews';
+import { Entry } from './components/entry/Entry';
 
-import { Matter } from "types/post";
-import { User } from "types/user";
+import { Matter } from 'types/post';
+import { User } from 'types/user';
 
 interface PropType {
   post: Matter;
@@ -53,7 +53,7 @@ export const Main: React.FC<PropType> = ({
 
         <Feilds tag="必須" array={post?.requires} />
 
-        <Feilds tag="尚可" array={post?.prefers} />
+        <Feilds tag="歓迎" array={post?.prefers} />
 
         <Period period={post?.period} />
 
