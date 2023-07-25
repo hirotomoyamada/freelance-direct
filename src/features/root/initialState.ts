@@ -1,7 +1,7 @@
-import { Data } from "types/user";
+import { Data } from 'types/user';
 
 export interface State {
-  index: "matters" | "companys" | "enable" | "hold" | "disable";
+  index: 'matters' | 'companys' | 'enable' | 'hold' | 'disable';
 
   page: string;
 
@@ -53,9 +53,9 @@ export interface State {
 }
 
 export const initialState: State = {
-  index: "matters",
+  index: 'matters',
 
-  page: "home",
+  page: 'home',
 
   menu: { display: false, control: false },
 
@@ -98,5 +98,5 @@ export const initialState: State = {
 
   notFound: false,
 
-  ver: "1.3.0",
+  ver: '1.4.2',
 };
