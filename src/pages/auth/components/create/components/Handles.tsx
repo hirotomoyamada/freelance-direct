@@ -85,6 +85,19 @@ const options = [
   { label: 'Swing', value: 'Swing' },
   { label: 'Next.js', value: 'Next.js' },
   { label: 'FastAPI', value: 'FastAPI' },
+  { label: 'X++', value: 'X++' },
+  { label: 'Visual Force', value: 'Visual Force' },
+  { label: 'Android Java', value: 'Android Java' },
+  { label: 'ABAP', value: 'ABAP' },
+  { label: 'JSP', value: 'JSP' },
+  { label: 'Visual COBOL', value: 'Visual COBOL' },
+  { label: 'PostgresSQL', value: 'PostgresSQL' },
+  { label: 'RestAPI', value: 'RestAPI' },
+  { label: 'Shell', value: 'Shell' },
+  { label: 'TTL', value: 'TTL' },
+  { label: 'BAT', value: 'BAT' },
+  { label: 'VBS', value: 'VBS' },
+  { label: 'MATLAB', value: 'MATLAB' },
 ];
 
 export const Handles: React.FC = () => {
@@ -128,7 +141,7 @@ export const Handles: React.FC = () => {
                   value={value}
                   onChange={onChange}
                   onBlur={onBlur}
-                  placeholder="言語・フレームワーク"
+                  placeholder='言語・フレームワーク'
                   error={!!errors.handles?.[i]?.handle}
                   options={options}
                 />
@@ -136,7 +149,7 @@ export const Handles: React.FC = () => {
                 <div className={styles.field_btn}>
                   {i !== 0 && (
                     <button
-                      type="button"
+                      type='button'
                       className={styles.field_btn_remove}
                       onClick={() => handlesRemove(i)}>
                       <RemoveIcon className={styles.field_btn_icon} />
@@ -145,7 +158,7 @@ export const Handles: React.FC = () => {
 
                   {i === handlesFields.length - 1 && i < 5 && (
                     <button
-                      type="button"
+                      type='button'
                       className={styles.field_btn_add}
                       onClick={() => handlesAppend({ handle: '' })}>
                       <AddIcon className={styles.field_btn_icon} />
@@ -154,9 +167,7 @@ export const Handles: React.FC = () => {
                 </div>
 
                 {errors?.handles?.[i]?.handle?.message && (
-                  <span className={root.auth_error}>
-                    {errors.handles[i].handle?.message}
-                  </span>
+                  <span className={root.auth_error}>{errors.handles[i].handle?.message}</span>
                 )}
               </div>
             )}

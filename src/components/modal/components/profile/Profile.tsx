@@ -79,7 +79,9 @@ const positions = [
   'データサイエンティスト',
   'PdM',
   'PM/PL',
+  'PM',
   'PMO',
+  'PMOサポート',
   'VPoE',
   'CRE',
   'SRE',
@@ -91,6 +93,7 @@ const positions = [
   'Webディレクター',
   'Webプランナー',
   'Webデザイナー',
+  'Webコーダー',
   'UI・UXデザイナー',
   'グラフィックデザイナー',
   '3Dデザイナー',
@@ -101,6 +104,11 @@ const positions = [
   'ゲームプランナー',
   'ゲームデザイナー',
   'サポート',
+  'キッティング',
+  'ヘルプデスク',
+  'IT事務',
+  '若手枠',
+  '未経験可',
   'その他',
 ];
 
@@ -120,14 +128,10 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
       body: user?.profile?.body,
       age: user?.profile?.age,
       sex: user?.profile?.sex,
-      position: positions.includes(user?.profile?.position)
-        ? user?.profile?.position
-        : undefined,
+      position: positions.includes(user?.profile?.position) ? user?.profile?.position : undefined,
       location: user?.profile?.location,
       period: {
-        year: user?.profile?.period?.year
-          ? user?.profile?.period?.year
-          : new Date().getFullYear(),
+        year: user?.profile?.period?.year ? user?.profile?.period?.year : new Date().getFullYear(),
         month: user?.profile?.period?.month
           ? user?.profile?.period.month
           : new Date().getMonth() + 1,
@@ -147,12 +151,7 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
         ? user?.profile?.tools.map((value) => ({
             tool: value,
           }))
-        : [
-            { tool: undefined },
-            { tool: undefined },
-            { tool: undefined },
-            { tool: undefined },
-          ],
+        : [{ tool: undefined }, { tool: undefined }, { tool: undefined }, { tool: undefined }],
       skills: user?.profile?.skills?.[0]
         ? user?.profile?.skills.map((value) => ({
             skill: value,
@@ -170,9 +169,7 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
       costs: {
         min: user?.profile?.costs.min ? user?.profile?.costs.min : null,
         max: user?.profile?.costs.max ? user?.profile?.costs.max : null,
-        display: user?.profile?.costs.display
-          ? user?.profile?.costs.display
-          : 'private',
+        display: user?.profile?.costs.display ? user?.profile?.costs.display : 'private',
         type: user?.profile?.costs.type ? user?.profile?.costs.type : '応談',
       },
     },
@@ -194,9 +191,7 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
 
   return (
     <FormProvider {...methods}>
-      <form
-        className={styles.profile}
-        onSubmit={methods.handleSubmit(handleEdit)}>
+      <form className={styles.profile} onSubmit={methods.handleSubmit(handleEdit)}>
         <Header
           user={user}
           fetch={fetch}
@@ -215,20 +210,13 @@ export const Profile: React.FC<PropType> = ({ user, handleClose }) => {
               return <Icon />;
 
             default:
-              return (
-                <Form
-                  cover={cover}
-                  icon={icon}
-                  setCover={setCover}
-                  setIcon={setIcon}
-                />
-              );
+              return <Form cover={cover} icon={icon} setCover={setCover} setIcon={setIcon} />;
           }
         })()}
 
         {fetch && (
           <div className={styles.profile_fetch}>
-            <Grid color="#1d9bf0" height={56} width={56} />
+            <Grid color='#1d9bf0' height={56} width={56} />
           </div>
         )}
       </form>
